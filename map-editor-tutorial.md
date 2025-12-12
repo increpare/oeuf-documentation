@@ -259,8 +259,7 @@ Just a bit of geometry.  Not used in the main game.
 ### 8.2.1 "music_"
 - Triggers can run commands; example shown is a **music_trigger** that plays a named track on entry.
   - Look around the main game to see what music is triggered where.
-  - You find a list of all the music files used in the OST <a href="https://store.steampowered.com/app/4217410/Oeuvre_Oeuf_Soundtrack/
-  ">here</a>. The game has about an hour of music, but there are many hours more of tracks iuncluded in teh game for to choose from for your level.
+  - You find a list of all the music files used in the OST [here](https://store.steampowered.com/app/4217410/Oeuvre_Oeuf_Soundtrack/). The game has about an hour of music, but there are many hours more of tracks iuncluded in teh game for to choose from for your level.
 
 <img height="300" alt="image" src="./map-editor-images/fe1278db-b562-4628-9490-ba13f4a47fbd.png" />
 
