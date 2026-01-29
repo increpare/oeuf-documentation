@@ -345,7 +345,7 @@ The thumbnail is generated from the view when you hit save.
 
 <img height="300" src="./map-editor-images/workshop_page_appearance.png">
 
-If you wish to customize the details further you can do it from that page.
+If you wish to customize the details further you can do it from that page.  The mod is associated with the file name of the map - if you resave the file it will update your level on the steamworks server.
 
 ---
 
