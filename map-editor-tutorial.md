@@ -2,6 +2,17 @@
 
 If you prefer a video version of the tutorial, here's one: https://youtu.be/BCKunr3oAbc
 
+## Contents
+* [0. How to add maps](#0-how-to-add-maps)
+* [1. Enabling the Editor](#1-enabling-the-editor)
+* [2. Basic Workflow in Editor](#2-basic-workflow-in-editor)
+* [3. Camera and Movement (Editor Mode)](#3-camera-and-movement-editor-mode)
+* [4. Voxel Tools](#4-voxel-tools)
+* [5. Object Mode](#5-object-mode-entities-and-triggers)
+* [6. Layer Mode](#6-layer-mode-large‑scale-editing)
+* [7. Upload to steamworks](#7-upload-to-steamworks)
+* [8. Feedback and bug reports](#8-feedback-and-bug-reports)
+
 ## 0. How to add maps
 
 <img  height="300" alt="image" src="./map-editor-images/4e172e6a-8c85-4a5c-8d44-3d7c6dda61c5.png" />
@@ -121,7 +132,7 @@ In the top left of the screen you can see :
 
 - **Right‑click variant** deletes large cuboids for cleanup. Basically nothing to do with extrude, more a "delete everything in this volume" tool.
 
-### 6.4 Room / Box Tool
+### 4.4 Room / Box Tool
 
 <img height="300"  alt="image" src="./map-editor-images/a6d88753-b396-4f04-9792-af3de74201fa.png" />
 
@@ -130,7 +141,7 @@ In the top left of the screen you can see :
 
 <img height="300"  alt="image" src="./map-editor-images/52efd428-d08a-4328-96e2-df69cec3cf48.png" />
 
-### 6.5 Paint Tool
+### 4.5 Paint Tool
 
 Paints existing voxels.
 
@@ -141,7 +152,7 @@ Paints existing voxels.
 
 ---
 
-### 6.6 Landscape / Hill Dropper Tool
+### 4.6 Landscape / Hill Dropper Tool
 - Drops blocks from above to form organic hills.
 - **Mouse wheel**: Hill height.
 - **Shift + mouse wheel**: Hill width.
@@ -151,7 +162,7 @@ Paints existing voxels.
 
 ---
 
-### 6.7 Grow / Shrink Tool
+### 4.7 Grow / Shrink Tool
 
 <img height="300" alt="image" src="./map-editor-images/c7b78285-8fef-4007-a6e1-31a1805f57e6.png" />
 
@@ -164,7 +175,7 @@ Spherical modifier with an intensity meter (controlled with **Mouse wheel**):
 
 ---
 
-### 6.8 Add / Subtract Sphere Tool
+### 4.8 Add / Subtract Sphere Tool
 
 <img height="300" alt="image" src="./map-editor-images/6a28e39e-08d3-498d-8d25-9103ed603eb3.png" />
 
@@ -178,7 +189,7 @@ Adds/removes a sphere!
 
 ---
 
-### 6.9 Smooth / Grout Tool
+### 4.9 Smooth / Grout Tool
 
 <img height="300" alt="image" src="./map-editor-images/f3b4592d-4d5c-4eed-a9ba-f157b5dc7dcc.png" />
 
@@ -190,7 +201,7 @@ Adds/removes a sphere!
 
 ---
 
-### 6.0 Planar Draw Tool
+### 4.0 Planar Draw Tool
 - **Click** and drag to draw on the current plane.
 - **Shift + mouse wheel** raises and lowers the drawing plane.
 
@@ -198,19 +209,19 @@ Adds/removes a sphere!
 
 ---
 
-## 8. Object Mode — Entities and Triggers
+## 5. Object Mode: Entities and Triggers
 Enter Object Mode by pressing **backtick** until the Object UI appears.
 
 <img height="300" alt="image" src="./map-editor-images/f0df6a9d-934b-4212-99b0-522bd69dd189.png" />
 
-### 8.1 Entity Tool <img height="40" src="./map-editor-images/d7c0fbfe-3b7f-4003-b53a-f00957440e98.png" />
+### 5.1 Entity Tool <img height="40" src="./map-editor-images/d7c0fbfe-3b7f-4003-b53a-f00957440e98.png" />
 
 This mode has two brushes, one for placing entities, another for placing trigger volumes.  
 
 - **Left Click** to place/select
 - **Right Click** to delete
    
-###  8.1.1 Bonfires (Start/End/Checkpoints) <img height="40"  alt="image" src="./map-editor-images/b7793315-7430-4c65-96f7-ade23827a6ce.png" />
+###  5.1.1 Bonfires (Start/End/Checkpoints) <img height="40"  alt="image" src="./map-editor-images/b7793315-7430-4c65-96f7-ade23827a6ce.png" />
 
 <img height="300" alt="image" src="./map-editor-images/4671b254-cb3a-4379-8fe9-761c861a00a6.png" />
 
@@ -221,50 +232,50 @@ This mode has two brushes, one for placing entities, another for placing trigger
 - Removing them breaks spawning; undo restores them.
 - Intermediate bonfires can have custom messages.
 
-### 8.1.2 Forbidden Checkpoint <img height="40" alt="image" src="./map-editor-images/11e647ac-82e7-463a-b8e9-ae524b3ccfa9.png" />
+### 5.1.2 Forbidden Checkpoint <img height="40" alt="image" src="./map-editor-images/11e647ac-82e7-463a-b8e9-ae524b3ccfa9.png" />
 
 DO NOT USE IT'S AN AD HOC THING TOO FIDDLY TO COMPLAIN AND OF NO GENERAL USE.
 
-### 8.1.3 Chair
+### 5.1.3 Chair
 
 <img height="300" alt="image" src="./map-editor-images/5406d0d6-f2d4-4662-a423-e9f7ec4e024b.png" />
 
 Just a bit of geometry.  Not used in the main game.
 
-### 8.1.4 Nest <img height="40" alt="image" src="./map-editor-images/848eded8-90e0-409f-a390-f4105e9f31bf.png" />
+### 5.1.4 Nest <img height="40" alt="image" src="./map-editor-images/848eded8-90e0-409f-a390-f4105e9f31bf.png" />
 
 <img height="300"  alt="image" src="./map-editor-images/6ac416b1-4110-4bbe-a406-15ebf0e7802f.png" />
 
 DO NOT USE THE NEST.  It is not a cosmetic object, it is used to signal that the game is in the main mode - it triggers intro/end cutscenes and other things.  Fine if you're modifying the main game, but not for new levels!
 
-### 8.1.5 Table
+### 5.1.5 Table
 
 <img height="300" alt="image" src="./map-editor-images/d8c8803e-58f4-4fd3-8d04-11374e784714.png" />
 
 Just a bit of geometry.  Not used in the main game.
 
-### 8.1.6 Torches
+### 5.1.6 Torches
 
 <img height="300" alt="image" src="./map-editor-images/1749efe9-b7dc-41ca-98a8-9eede13e832a.png" />
 
 - What it looks like.  Nice if things are getting a bit dark innit.
 - But don't overdo it, each torch has a light and the cost might add up.
 
-### 8.2 Trigger Boxes
+### 5.2 Trigger Boxes
 - Triggers are rectangular volumes.
 - Properties include:
   - **Position**
   - **Extents/size**
   - the 'meta' field contains some action to trigger when the player goes into the box.
  
-### 8.2.1 "music_"
+### 5.2.1 "music_"
 - Triggers can run commands; example shown is a **music_trigger** that plays a named track on entry.
   - Look around the main game to see what music is triggered where.
   - You find a list of all the music files used in the OST [here](https://store.steampowered.com/app/4217410/Oeuvre_Oeuf_Soundtrack/). The game has about an hour of music, but there are many hours more of tracks included in the game for to choose from for your custom levels.
 
 <img height="300" alt="image" src="./map-editor-images/fe1278db-b562-4628-9490-ba13f4a47fbd.png" />
 
-### 8.2.2 "KILLBOX"
+### 5.2.2 "KILLBOX"
 
 <img height="300" alt="image" src="./map-editor-images/64b99580-4d7e-483e-94ee-34fe2bb7865c.png" />
 
@@ -273,7 +284,7 @@ Just a bit of geometry.  Not used in the main game.
 
 ---
 
-## 9. Layer Mode — Large‑Scale Editing
+## 6. Layer Mode: Large‑Scale Editing
 
 Cycle to Layer Mode with **Backtick** (**`**).
 
@@ -281,7 +292,7 @@ Cycle to Layer Mode with **Backtick** (**`**).
 
 
 
-### Layer Visibility
+### 6.1 Layer Visibility
 - Click a layer to hide/show it.
 - **Shift + click** a layer to hide all other layers; shift‑click again to restore thhem.
 
@@ -289,7 +300,7 @@ Cycle to Layer Mode with **Backtick** (**`**).
 
 ---
 
-### 9.2.1 Layer Selection/Transformation tool <img height="40" alt="image" src="./map-editor-images/025310c3-e0be-4096-8121-f2fc38577e71.png" />
+### 6.2.1 Layer Selection/Transformation tool <img height="40" alt="image" src="./map-editor-images/025310c3-e0be-4096-8121-f2fc38577e71.png" />
 
 <img height="300" alt="image" src="./map-editor-images/703ba35d-dc51-46bd-afc3-f1fe9815d75c.png" />
 
@@ -300,7 +311,7 @@ Cycle to Layer Mode with **Backtick** (**`**).
 
 ---
 
-### 9.2.2 Voxel Assignment Tool <img height="40" alt="image" src="./map-editor-images/9983cbf1-1fc2-4c29-9b3e-465b89c4f254.png" />
+### 6.2.2 Voxel Assignment Tool <img height="40" alt="image" src="./map-editor-images/9983cbf1-1fc2-4c29-9b3e-465b89c4f254.png" />
 
 - Drag a volume; all voxels inside become part of the currently selected layer.
 - Useful for fixing pieces assigned to the wrong layer.
@@ -309,7 +320,7 @@ Cycle to Layer Mode with **Backtick** (**`**).
 
 ---
 
-### 9.3 Copy/Paste Layers<img height="40" alt="image" src="./map-editor-images/07df4b1b-83fe-40dd-91ef-2ac8ce3f8170.png" />
+### 6.3 Copy/Paste Layers<img height="40" alt="image" src="./map-editor-images/07df4b1b-83fe-40dd-91ef-2ac8ce3f8170.png" />
 
 - Copy a selected layer/group and paste it as a brush.
 - Select the Copy tool (3) and click anywhere to copy the current layer to the clipboard.
@@ -319,5 +330,25 @@ Cycle to Layer Mode with **Backtick** (**`**).
 <img height="300" src="./map-editor-images/b54e33d7-6058-4959-a116-73188bdf6d01.png" />
 
 ---
+
+## 7. Upload to steamworks
+
+Uploading to steamworks is a pretty easy affair - when you're happy with your level, just hit the steam button in the toolbar:
+
+<img height="300" src="./map-editor-images/workshop_upload.png" />
+
+Click on this, and wait for a moment, and you will see a message when the upload is complete, and it should open the steamworks page as well.
+
+<img height="300" src="./map-editor-images/workshop_success.png" />
+
+The thumbnail is generated from the view when you hit save.  
+
+<img height="300" src="./map-editor-images/workshop_page_appearance.png">
+
+If you wish to customize the details further you can do it from that page.
+
+---
+
+## 8. Feedback and bug reports
 
 Does this make sense? I hope so - feedback and bug reports always welcome: e-mail me at analytic@gmail.com
