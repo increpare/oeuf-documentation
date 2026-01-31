@@ -274,17 +274,17 @@ Just a bit of geometry.  Not used in the main game.
   - You find a list of all the music files used in the OST [here](https://store.steampowered.com/app/4217410/Oeuvre_Oeuf_Soundtrack/). The game has about an hour of music, but there are many hours more of tracks included in the game for to choose from for your custom levels.
 
 ### 5.2.2 "arealabel_
-<img height="300" alt="image" src="arealabel.png" />
+<img height="300" alt="image" src="./map-editor-images/arealabel.png" />
 So this is a trigger that will cause an area name to appear independetly of a checkpoint being set.  If you the bit afte arealabel_ is a built-in location name (Case-sensitive), then it will display the name of the location as in-game. Otherwise, it will display the text you put in verbatim.  For example, if you put it to be "arealabel_Hello, world!" it will display "Hello, World!"
 
-<img height="300" alt="image" src="arealabel2.png" />
+<img height="300" alt="image" src="./map-editor-images/arealabel2.png" />
 
 
 ### 5.2.2 "KILLBOX"
 
-<img height="300" alt="image" src="./map-editor-images/64b99580-4d7e-483e-94ee-34fe2bb7865c.png" />
+<img height="300" alt="image" src="./map-editor-images/killbox.png" />
 
-- Special trigger volumes that cause the player to die on contact (next time you touch some level geometry).
+- Special trigger volumes (drawn red in the editor for easy identification) that cause the player to die on contact (next time you touch some level geometry).
 - Useful for hazards and boundaries.
 
 ---
