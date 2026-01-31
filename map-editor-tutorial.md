@@ -273,7 +273,12 @@ Just a bit of geometry.  Not used in the main game.
   - Look around the main game to see what music is triggered where.
   - You find a list of all the music files used in the OST [here](https://store.steampowered.com/app/4217410/Oeuvre_Oeuf_Soundtrack/). The game has about an hour of music, but there are many hours more of tracks included in the game for to choose from for your custom levels.
 
-<img height="300" alt="image" src="./map-editor-images/fe1278db-b562-4628-9490-ba13f4a47fbd.png" />
+### 5.2.2 "arealabel_
+<img height="300" alt="image" src="arealabel.png" />
+So this is a trigger that will cause an area name to appear independetly of a checkpoint being set.  If you the bit afte arealabel_ is a built-in location name (Case-sensitive), then it will display the name of the location as in-game. Otherwise, it will display the text you put in verbatim.  For example, if you put it to be "arealabel_Hello, world!" it will display "Hello, World!"
+
+<img height="300" alt="image" src="arealabel2.png" />
+
 
 ### 5.2.2 "KILLBOX"
 
