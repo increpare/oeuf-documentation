@@ -223,7 +223,7 @@ This mode has two brushes, one for placing entities, another for placing trigger
    
 ###  5.1.1 Bonfires (Start/End/Checkpoints) <img height="40"  alt="image" src="./map-editor-images/b7793315-7430-4c65-96f7-ade23827a6ce.png" />
 
-<img height="300" alt="image" src="./map-editor-images/4671b254-cb3a-4379-8fe9-761c861a00a6.png" />
+<img height="300" alt="image" src="./map-editor-images/object_1_checkpoint.png" />
 
 - Every level must include:
   - A start bonfire named exactly `START` (Case important)
@@ -232,29 +232,39 @@ This mode has two brushes, one for placing entities, another for placing trigger
 - Removing them breaks spawning; undo restores them.
 - Intermediate bonfires can have custom messages.
 
-### 5.1.2 Forbidden Checkpoint <img height="40" alt="image" src="./map-editor-images/11e647ac-82e7-463a-b8e9-ae524b3ccfa9.png" />
+### 5.1.2 Forbidden Checkpoint <img height="40" alt="image" src="./map-editor-images/object_2_forbidden_checkpoint.png" />
 
-DO NOT USE IT'S AN AD HOC THING TOO FIDDLY TO COMPLAIN AND OF NO GENERAL USE.
+DO NOT USE IT'S AN AD HOC THING TOO FIDDLY TO EXPLAIN AND OF NO GENERAL USE.
 
-### 5.1.3 Chair
+### 5.1.3 Chair <img height="40" alt="image" src="./map-editor-images/object_3_chair.png" />
 
 <img height="300" alt="image" src="./map-editor-images/5406d0d6-f2d4-4662-a423-e9f7ec4e024b.png" />
 
 Just a bit of geometry.  Not used in the main game.
 
-### 5.1.4 Nest <img height="40" alt="image" src="./map-editor-images/848eded8-90e0-409f-a390-f4105e9f31bf.png" />
+### 5.1.4 Nest <img height="40" alt="image" src="./map-editor-images/object_4_nest.png" />
 
 <img height="300"  alt="image" src="./map-editor-images/6ac416b1-4110-4bbe-a406-15ebf0e7802f.png" />
 
 DO NOT USE THE NEST.  It is not a cosmetic object, it is used to signal that the game is in the main mode - it triggers intro/end cutscenes and other things.  Fine if you're modifying the main game, but not for new levels!
 
-### 5.1.5 Table
+### 5.1.5 Star <img height="40" alt="image" src="./map-editor-images/object_5_star.png" />
+
+<img height="300"  alt="image" src="./map-editor-images/star_shot.png" />
+
+<img height="300"  alt="image" src="./map-editor-images/star_collect.png" />
+
+- Makes a nice sound when you collect them and shows you how many you've collected vs total in the level.
+- Totally optional and of no consequence.
+- (I implemented these thinking I might want to put them in the main game, but decided better of it in the end).
+
+### 5.1.6 Table  <img height="40" alt="image" src="./map-editor-images/object_6_table.png" />
 
 <img height="300" alt="image" src="./map-editor-images/d8c8803e-58f4-4fd3-8d04-11374e784714.png" />
 
 Just a bit of geometry.  Not used in the main game.
 
-### 5.1.6 Torches
+### 5.1.7 Torches <img height="40" alt="image" src="./map-editor-images/object_7_torch.png" />
 
 <img height="300" alt="image" src="./map-editor-images/1749efe9-b7dc-41ca-98a8-9eede13e832a.png" />
 
