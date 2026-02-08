@@ -214,12 +214,18 @@ Enter Object Mode by pressing **backtick** until the Object UI appears.
 
 <img height="300" alt="image" src="./map-editor-images/f0df6a9d-934b-4212-99b0-522bd69dd189.png" />
 
+In Object Mode the **toolbar** shows entity-type tabs: **Static** (props/objects), **Trigger Volume**, and **Water**. The **sidebar** on the right is the property panel: when you select an entity it shows that entity’s properties (position, size, meta, etc.). For trigger volumes the sidebar also shows **specialist inspectors** (e.g. music track dropdown, area-name field) depending on the trigger type.
+
+**Gizmos:** When an entity is selected, a **move gizmo** appears so you can drag it in the viewport. For props, a **rotate** control is available too. For **trigger and water volumes** there is no rotation; instead, **resize handles** appear on the six faces of the box—drag a face to resize the volume (a cyan preview shows the new size). Position and extents can also be edited numerically in the sidebar.
+
 ### 5.1 Entity Tool <img height="40" src="./map-editor-images/d7c0fbfe-3b7f-4003-b53a-f00957440e98.png" />
 
 This mode has two brushes, one for placing entities, another for placing trigger volumes.  
 
 - **Left Click** to place/select
 - **Right Click** to delete
+
+**Toolbar and palette:** Some entity types (Door, Character, Rope) are hidden from the main toolbar and are for advanced use. Some static objects (e.g. spawn-only bonfire, Nest) are **hidden from the object palette** but can still be assigned via the sidebar’s **asset_name** dropdown when editing an existing entity.
    
 ###  5.1.1 Bonfires (Start/End/Checkpoints) <img height="40"  alt="image" src="./map-editor-images/b7793315-7430-4c65-96f7-ade23827a6ce.png" />
 
@@ -272,30 +278,33 @@ Just a bit of geometry.  Not used in the main game.
 - But don't overdo it, each torch has a light and the cost might add up.
 
 ### 5.2 Trigger Boxes
-- Triggers are rectangular volumes.
-- Properties include:
-  - **Position**
-  - **Extents/size**
-  - the 'meta' field contains some action to trigger when the player goes into the box.
- 
-### 5.2.1 "music_"
-- Triggers can run commands; example shown is a **music_trigger** that plays a named track on entry.
-  - Look around the main game to see what music is triggered where.
-  - You find a list of all the music files used in the OST [here](https://store.steampowered.com/app/4217410/Oeuvre_Oeuf_Soundtrack/). The game has about an hour of music, but there are many hours more of tracks included in the game for to choose from for your custom levels.
+- Triggers are rectangular volumes. Place them from the **Trigger Volume** tab in the toolbar, then **select** a trigger to edit it in the **sidebar** (property panel).
+- In the sidebar you can edit **Position**, **Extents/size** (size_WUN / size_EDS), and the **meta** field that defines what happens when the player enters the box. For common trigger types the sidebar shows **specialist inspectors** (e.g. music track dropdown, area name text field) instead of raw meta strings.
+- You can also **move** and **resize** trigger volumes in the viewport using the **move gizmo** and **face resize handles** (drag the coloured handles on each face of the box).
 
-### 5.2.2 "arealabel_
+### 5.2.1 "music_"
+- Place a music trigger from the trigger palette, then select it. The sidebar shows a **music track** dropdown listing all tracks in the game.
+- Look around the main game to see what music is triggered where.
+- A list of music files used in the OST is [here](https://store.steampowered.com/app/4217410/Oeuvre_Oeuf_Soundtrack/). The game has about an hour of music, plus many more tracks you can use in custom levels.
+
+### 5.2.2 "arealabel_"
 <img height="300" alt="image" src="./map-editor-images/arealabel.png" />
-So this is a trigger that will cause an area name to appear independetly of a checkpoint being set.  If you the bit afte arealabel_ is a built-in location name (Case-sensitive), then it will display the name of the location as in-game. Otherwise, it will display the text you put in verbatim.  For example, if you put it to be "arealabel_Hello, world!" it will display "Hello, World!"
+Area label triggers show an area name when the player enters, independently of checkpoints. When you select one, the sidebar shows an **area name** field. If the text after `arealabel_` is a built-in location name (case-sensitive), the game displays that location name; otherwise it displays your text verbatim. For example, `arealabel_Hello, world!` displays "Hello, World!".
 
 <img height="300" alt="image" src="./map-editor-images/arealabel2.png" />
 
-
-### 5.2.2 "KILLBOX"
+### 5.2.3 "KILLBOX"
 
 <img height="300" alt="image" src="./map-editor-images/killbox.png" />
 
 - Special trigger volumes (drawn red in the editor for easy identification) that cause the player to die on contact (next time you touch some level geometry).
 - Useful for hazards and boundaries.
+
+### 5.2.4 "TORCH"
+- While the player is inside the volume, they emit light. Handy for dark areas so you can see where you're going without placing loads of torch props.
+
+### 5.2.5 Other triggers
+- There are a few other really finicky trigger types—you can spot them by their meta tags in the palette or sidebar. I don't think they're appropriate for general use, so I haven't gone out of my way to document them.
 
 ---
 
@@ -308,8 +317,9 @@ Cycle to Layer Mode with **Backtick** (**`**).
 
 
 ### 6.1 Layer Visibility
+- **Empty layers** (layers with no voxels) are shown with a **red tint** in the layer list so you can spot them easily.
 - Click a layer to hide/show it.
-- **Shift + click** a layer to hide all other layers; shift‑click again to restore thhem.
+- **Shift + click** a layer to hide all other layers; shift‑click again to restore them.
 
 <img height="300" alt="image" src="./map-editor-images/0e233973-4c4a-4819-9932-c77c675cf991.png" />
 
@@ -321,7 +331,7 @@ Cycle to Layer Mode with **Backtick** (**`**).
 
 - Use the layer selection tool to pick a layer by clicking geometry.
 - You can then **move**, **rotate**, or **mirror/flip** the entire layer.
-- One one voxel can occupy a single position - if you drag one layer to overlap another, voxels are going to get deleted from one of the layers!
+- Only one voxel can occupy a single position - if you drag one layer to overlap another, voxels are going to get deleted from one of the layers!
 - Do not use the staircase block - it does not play well with egg physics.
 
 ---
