@@ -338,7 +338,9 @@ code.hljs {
 <li><a href="#2-basic-workflow-in-editor">2. Basic Workflow in Editor</a></li>
 <li><a href="#3-camera-and-movement-editor-mode">3. Camera and Movement (Editor Mode)</a></li>
 <li><a href="#4-voxel-tools">4. Voxel Tools</a></li>
-<li><a href="#5-object-mode-entities-and-triggers">5. Object Mode</a></li>
+<li><a href="#5-object-mode-entities-and-trigger-boxes">5. Object Mode (Entities and Trigger Boxes)</a><br />
+<strong><a href="#51-entity-tool-img-height40-srcmap-editor-imagesd7c0fbfe-3b7f-4003-b53a-f00957440e98png-">5.1 Entity Tool</a></strong><br />
+<strong><a href="#52-trigger-box-tool">5.2 Trigger Box Tool</a></strong></li>
 <li><a href="#6-layer-mode-large‑scale-editing">6. Layer Mode</a></li>
 <li><a href="#7-upload-to-steamworks">7. Upload to steamworks</a></li>
 <li><a href="#8-feedback-and-bug-reports">8. Feedback and bug reports</a></li>
@@ -448,6 +450,7 @@ code.hljs {
 <li><strong>V</strong>: Flip vertically.</li>
 <li>Helpful for slopes, roofs, and non‑cubic geometry.</li>
 <li>If you're drawing a plane and have the 45 degree slope selected, you drag a 45* slope rather than an axis-aligned plane.</li>
+<li>Do <em>not</em> use the staircase block anywhere where the player might roll across it - it does not play well with egg physics.</li>
 </ul>
 <p><img height="300" alt="image" src="./map-editor-images/e16c5379-3e0a-472b-8729-d67dfd6a6890.png" /></p>
 <hr />
@@ -515,14 +518,14 @@ code.hljs {
 </ul>
 <p><img height="300" alt="image" src="./map-editor-images/e15cd4e3-473d-4f49-ad7f-a26ea4e44354.png" /></p>
 <hr />
-<h3 id="40-planar-draw-tool">4.0 Planar Draw Tool</h3>
+<h3 id="410-planar-draw-tool">4.10 Planar Draw Tool</h3>
 <ul>
 <li><strong>Click</strong> and drag to draw on the current plane.</li>
 <li><strong>Shift + mouse wheel</strong> raises and lowers the drawing plane.</li>
 </ul>
 <p><img height="300" alt="image" src="./map-editor-images/5a7a12fe-4344-4d9e-aaeb-ea6050e37ab9.png" /></p>
 <hr />
-<h2 id="5-object-mode-entities-and-triggers-boxes">5. Object Mode: Entities and Triggers Boxes</h2>
+<h2 id="5-object-mode-entities-and-trigger-boxes">5. Object Mode: Entities and Trigger Boxes</h2>
 <p>Enter Object Mode by pressing <strong>backtick</strong> until the Object UI appears.</p>
 <p><img height="300" alt="image" src="./map-editor-images/f0df6a9d-934b-4212-99b0-522bd69dd189.png" /></p>
 <p>In Object Mode there are two tools - entity placement and trigger box placement.  Entities are things that are placed in the world that you can see and generally just occupy a single tile, like checkpoints and torches.  Trigger boxes are larger areas, invisible to the player, where something happens if you enter them, like playing a music track, or displaying a message. </p>
@@ -624,7 +627,6 @@ code.hljs {
 <li>Use the layer selection tool to pick a layer by clicking geometry.</li>
 <li>You can then <strong>move</strong>, <strong>rotate</strong>, or <strong>mirror/flip</strong> the entire layer.</li>
 <li>Only one voxel can occupy a single position - if you drag one layer to overlap another, voxels are going to get deleted from one of the layers!</li>
-<li>Do not use the staircase block - it does not play well with egg physics.</li>
 </ul>
 <hr />
 <h4 id="622-voxel-assignment-tool-img-height40-altimage-srcmap-editor-images9983cbf1-1fc2-4c29-9b3e-465b89c4f254png-">6.2.2 Voxel Assignment Tool <img height="40" alt="image" src="./map-editor-images/9983cbf1-1fc2-4c29-9b3e-465b89c4f254.png" /></h4>
@@ -653,7 +655,7 @@ code.hljs {
 <p>If you wish to customize the details further you can do it from that page.  The mod is associated with the file name of the map - if you resave the file it will update your level on the steamworks server.</p>
 <hr />
 <h2 id="8-feedback-and-bug-reports">8. Feedback and bug reports</h2>
-<p>Does this make sense? I hope so - feedback and bug reports always welcome: e-mail me at <a href="&#109;ai&#x6c;&#x74;o&#x3a;&#97;&#x6e;&#x61;&#108;&#121;&#x74;i&#x63;&#x40;&#x67;&#x6d;&#x61;&#x69;&#x6c;&#46;&#x63;&#111;&#x6d;">&#97;&#x6e;&#x61;l&#121;&#116;&#105;&#x63;&#64;&#x67;&#109;a&#105;&#108;&#x2e;&#99;o&#x6d;</a></p>
+<p>Does this make sense? I hope so - feedback and bug reports always welcome: e-mail me at <a href="&#x6d;&#x61;&#x69;&#108;&#116;&#111;&#x3a;&#x61;&#110;&#x61;&#x6c;&#121;&#x74;&#x69;&#x63;&#x40;gm&#97;i&#108;&#46;&#x63;&#111;&#x6d;">&#x61;&#110;&#97;&#108;y&#116;&#105;&#x63;&#64;&#103;&#109;&#97;&#105;&#x6c;&#x2e;&#99;&#x6f;m</a></p>
             </main>
           </body>
         </html>
