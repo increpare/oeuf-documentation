@@ -8,7 +8,9 @@ If you prefer a video version of the tutorial, here's one: https://youtu.be/BCKu
 * [2. Basic Workflow in Editor](#2-basic-workflow-in-editor)
 * [3. Camera and Movement (Editor Mode)](#3-camera-and-movement-editor-mode)
 * [4. Voxel Tools](#4-voxel-tools)
-* [5. Object Mode](#5-object-mode-entities-and-triggers)
+* [5. Object Mode (Entities and Trigger Boxes)](#5-object-mode-entities-and-trigger-boxes)
+**[5.1 Entity Tool](#51-entity-tool-img-height40-srcmap-editor-imagesd7c0fbfe-3b7f-4003-b53a-f00957440e98png-)**
+**[5.2 Trigger Box Tool](#52-trigger-box-tool)**
 * [6. Layer Mode](#6-layer-mode-large‑scale-editing)
 * [7. Upload to steamworks](#7-upload-to-steamworks)
 * [8. Feedback and bug reports](#8-feedback-and-bug-reports)
@@ -134,6 +136,7 @@ In the top left of the screen you can see :
 - **V**: Flip vertically.
 - Helpful for slopes, roofs, and non‑cubic geometry.
 - If you're drawing a plane and have the 45 degree slope selected, you drag a 45* slope rather than an axis-aligned plane.
+- Do *not* use the staircase block anywhere where the player might roll across it - it does not play well with egg physics.
 
 <img height="300" alt="image" src="./map-editor-images/e16c5379-3e0a-472b-8729-d67dfd6a6890.png" />
 
@@ -216,7 +219,7 @@ Adds/removes a sphere!
 
 ---
 
-### 4.0 Planar Draw Tool
+### 4.10 Planar Draw Tool
 - **Click** and drag to draw on the current plane.
 - **Shift + mouse wheel** raises and lowers the drawing plane.
 
@@ -224,7 +227,7 @@ Adds/removes a sphere!
 
 ---
 
-## 5. Object Mode: Entities and Triggers Boxes
+## 5. Object Mode: Entities and Trigger Boxes
 Enter Object Mode by pressing **backtick** until the Object UI appears.
 
 <img height="300" alt="image" src="./map-editor-images/f0df6a9d-934b-4212-99b0-522bd69dd189.png" />
@@ -352,7 +355,6 @@ Cycle to Layer Mode with **Backtick** (**`**).
 - Use the layer selection tool to pick a layer by clicking geometry.
 - You can then **move**, **rotate**, or **mirror/flip** the entire layer.
 - Only one voxel can occupy a single position - if you drag one layer to overlap another, voxels are going to get deleted from one of the layers!
-- Do not use the staircase block - it does not play well with egg physics.
 
 ---
 
