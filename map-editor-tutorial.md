@@ -3,7 +3,7 @@
 If you prefer a video version of the tutorial, here's one: https://youtu.be/BCKunr3oAbc
 
 ## Contents
-* [0. How to add maps](#0-how-to-add-maps)
+* [0. Adding Player-Made Maps](#0-adding-player-made-maps)
 * [1. Enabling the Editor](#1-enabling-the-editor)
 * [2. Basic Workflow in Editor](#2-basic-workflow-in-editor)
 * [3. Camera and Movement (Editor Mode)](#3-camera-and-movement-editor-mode)
@@ -13,7 +13,11 @@ If you prefer a video version of the tutorial, here's one: https://youtu.be/BCKu
 * [7. Upload to steamworks](#7-upload-to-steamworks)
 * [8. Feedback and bug reports](#8-feedback-and-bug-reports)
 
-## 0. How to add maps
+## 0. Adding Player-Made Maps
+
+There are two ways to add maps by other people - if you already have the file, you can add it manually, or if you want to download it from steam workshop, you can do that too.
+
+### 0.1 Adding Maps Manually
 
 <img  height="300" alt="image" src="./map-editor-images/4e172e6a-8c85-4a5c-8d44-3d7c6dda61c5.png" />
 
@@ -23,7 +27,17 @@ If you prefer a video version of the tutorial, here's one: https://youtu.be/BCKu
 
 2. Go to **Open Maps Folder** to open the map folder in your browser. You can add maps that you have gotten from other people here.
 
+### 0.2 Adding Maps from Steam Workshop
 
+1. Go to **Custom Maps** on the title screen
+
+2. Click on **Steam Workshop**
+
+<img height="300" alt="image" src="./map-editor-images/workshop_download.png" />
+
+3. On Steam Workshop, you 'subscribe' to things to download them.  Once you've done that, they should just be visible in the map list to play.
+
+<img height="300" alt="image" src="./map-editor-images/workshop_subscribed.png" />
 
 ## 1. Enabling the Editor
 1. Open **Settings**.
@@ -31,7 +45,7 @@ If you prefer a video version of the tutorial, here's one: https://youtu.be/BCKu
 <img height="300" alt="image" src="./map-editor-images/8774fe92-ef1f-4e8b-b678-ce9e627328e5.png" />
 
 2. Enable **Map Editor**.
-3. Load a level (custom levels are easiest to work with - the main game level has hard-coded stuff).
+3. Load into a level (custom levels are easiest to work with - the main game level has hard-coded stuff).
 4. Press **Tab** to open the editor.
 
 <img height="300" alt="image" src="./map-editor-images/a63f9a9f-f53c-4f11-ac1b-b5afa84399a2.png" />
@@ -44,12 +58,12 @@ If you prefer a video version of the tutorial, here's one: https://youtu.be/BCKu
 ### Editor Modes:
 
 - **Tab**:
-  - Enters/exits editor mode.
-  - In editor mode, toggles mouse control between camera/cursor mode.
-- **Space**: Respawn where you're pointing at.
-- **Backtick** (**`**) to cycle:
+  - If you're in-game, it enters editor mode.
+  - In editor mode, it toggles mouse control between camera and cursor mode.
+- **Space**: Exits edit mode, and spawns you where you're pointing at.
+- **Backtick** (**`**) to cycle between:
   - **Voxel Mode** (editing terrain)
-  - **Object Mode** (checkpoints, triggers, props)
+  - **Object Mode** (checkpoints, props, trigger boxes)
   - **Layer Mode** (moving large sections of terrain)
 
 ### General commands:
@@ -57,24 +71,25 @@ If you prefer a video version of the tutorial, here's one: https://youtu.be/BCKu
 - **CTRL + S** save.
 - **F5** reload from save.
 - **CTRL + Z** undo.
+- **CTRL + Y** redo.
 
 <img width="322" height="142" alt="image" src="./map-editor-images/898dc489-160f-45db-b982-bb0d8608db64.png" />
 
 In the top left of the screen you can see :
 
 * the current file name (change and press enter to save as a new file)
-  * (note Some built‑in maps are read‑only (e.g., `minimal`, `egg world`). You can save them under other files names ok though!)
-* the dropdown button to list/open existing files
-* the button to open up the levels folder (shortcut: **Ctrl + L** in your operating system's file browser, should you wish to share levels with others. :)
+  * (note: some built‑in maps are read‑only (e.g., `minimal`, `egg world`). You can save them under other files names ok though!)
+* the dropdown menu to show all built-in maps files, and those you have saved in your level folder.
+* the button to open up the levels folder (shortcut: **Ctrl + L**)
 
 ---
 
 ## 3. Camera and Movement (Editor Mode)
-- **WASD**: Move.
+- **WASD**: Move camera.
 - **Shift**: Faster movement.
 - **Q / E**: Down / Up.
 - **Z / C**: Rotate Left / Right.
-- (don't forget, **TAB** toggles camera/cursor mode)
+- (don't forget, **TAB** toggles camera/cursor modes)
 
 ---
 
@@ -209,14 +224,12 @@ Adds/removes a sphere!
 
 ---
 
-## 5. Object Mode: Entities and Triggers
+## 5. Object Mode: Entities and Triggers Boxes
 Enter Object Mode by pressing **backtick** until the Object UI appears.
 
 <img height="300" alt="image" src="./map-editor-images/f0df6a9d-934b-4212-99b0-522bd69dd189.png" />
 
-In Object Mode the **toolbar** shows entity-type tabs: **Static** (props/objects), **Trigger Volume**, and **Water**. The **sidebar** on the right is the property panel: when you select an entity it shows that entity’s properties (position, size, meta, etc.). For trigger volumes the sidebar also shows **specialist inspectors** (e.g. music track dropdown, area-name field) depending on the trigger type.
-
-**Gizmos:** When an entity is selected, a **move gizmo** appears so you can drag it in the viewport. For props, a **rotate** control is available too. For **trigger and water volumes** there is no rotation; instead, **resize handles** appear on the six faces of the box—drag a face to resize the volume (a cyan preview shows the new size). Position and extents can also be edited numerically in the sidebar.
+In Object Mode there are two tools - entity placement and trigger box placement.  Entities are things that are placed in the world that you can see and generally just occupy a single tile, like checkpoints and torches.  Trigger boxes are larger areas, invisible to the player, where something happens if you enter them, like playing a music track, or displaying a message. 
 
 ### 5.1 Entity Tool <img height="40" src="./map-editor-images/d7c0fbfe-3b7f-4003-b53a-f00957440e98.png" />
 
@@ -227,7 +240,7 @@ This mode has two brushes, one for placing entities, another for placing trigger
 
 **Toolbar and palette:** Some entity types (Door, Character, Rope) are hidden from the main toolbar and are for advanced use. Some static objects (e.g. spawn-only bonfire, Nest) are **hidden from the object palette** but can still be assigned via the sidebar’s **asset_name** dropdown when editing an existing entity.
    
-###  5.1.1 Bonfires (Start/End/Checkpoints) <img height="40"  alt="image" src="./map-editor-images/b7793315-7430-4c65-96f7-ade23827a6ce.png" />
+####  5.1.1 Bonfires (Start/End/Checkpoints) <img height="40"  alt="image" src="./map-editor-images/b7793315-7430-4c65-96f7-ade23827a6ce.png" />
 
 <img height="300" alt="image" src="./map-editor-images/object_1_checkpoint.png" />
 
@@ -238,73 +251,83 @@ This mode has two brushes, one for placing entities, another for placing trigger
 - Removing them breaks spawning; undo restores them.
 - Intermediate bonfires can have custom messages.
 
-### 5.1.2 Forbidden Checkpoint <img height="40" alt="image" src="./map-editor-images/object_2_forbidden_checkpoint.png" />
-
-DO NOT USE IT'S AN AD HOC THING TOO FIDDLY TO EXPLAIN AND OF NO GENERAL USE.
-
-### 5.1.3 Chair <img height="40" alt="image" src="./map-editor-images/object_3_chair.png" />
-
-<img height="300" alt="image" src="./map-editor-images/5406d0d6-f2d4-4662-a423-e9f7ec4e024b.png" />
-
-Just a bit of geometry.  Not used in the main game.
-
-### 5.1.4 Nest <img height="40" alt="image" src="./map-editor-images/object_4_nest.png" />
-
-<img height="300"  alt="image" src="./map-editor-images/6ac416b1-4110-4bbe-a406-15ebf0e7802f.png" />
-
-DO NOT USE THE NEST.  It is not a cosmetic object, it is used to signal that the game is in the main mode - it triggers intro/end cutscenes and other things.  Fine if you're modifying the main game, but not for new levels!
-
-### 5.1.5 Star <img height="40" alt="image" src="./map-editor-images/object_5_star.png" />
-
-<img height="300"  alt="image" src="./map-editor-images/star_shot.png" />
-
-<img height="300"  alt="image" src="./map-editor-images/star_collect.png" />
-
-- Makes a nice sound when you collect them and shows you how many you've collected vs total in the level.
-- Totally optional and of no consequence.
-- (I implemented these thinking I might want to put them in the main game, but decided better of it in the end).
-
-### 5.1.6 Table  <img height="40" alt="image" src="./map-editor-images/object_6_table.png" />
-
-<img height="300" alt="image" src="./map-editor-images/d8c8803e-58f4-4fd3-8d04-11374e784714.png" />
-
-Just a bit of geometry.  Not used in the main game.
-
-### 5.1.7 Torches <img height="40" alt="image" src="./map-editor-images/object_7_torch.png" />
+#### 5.1.2 Torches <img height="40" alt="image" src="./map-editor-images/object_2_torch.png" />
 
 <img height="300" alt="image" src="./map-editor-images/1749efe9-b7dc-41ca-98a8-9eede13e832a.png" />
 
 - What it looks like.  Nice if things are getting a bit dark innit.
 - But don't overdo it, each torch has a light and the cost might add up.
 
-### 5.2 Trigger Boxes
-- Triggers are rectangular volumes. Place them from the **Trigger Volume** tab in the toolbar, then **select** a trigger to edit it in the **sidebar** (property panel).
-- In the sidebar you can edit **Position**, **Extents/size** (size_WUN / size_EDS), and the **meta** field that defines what happens when the player enters the box. For common trigger types the sidebar shows **specialist inspectors** (e.g. music track dropdown, area name text field) instead of raw meta strings.
+#### 5.1.3 Star <img height="40" alt="image" src="./map-editor-images/object_3_star.png" />
+
+<img height="300"  alt="image" src="./map-editor-images/star_shot.png" />
+
+<img height="300"  alt="image" src="./map-editor-images/star_collect.png" />
+
+- Makes a nice sound when you collect them and shows you how many you've collected vs total in the level.
+- Totally optional and of no consequence (I implemented these thinking I might want to put them in the main game, but decided better of it in the end).
+
+#### 5.1.4 Chair <img height="40" alt="image" src="./map-editor-images/object_3_chair.png" />
+
+<img height="300" alt="image" src="./map-editor-images/5406d0d6-f2d4-4662-a423-e9f7ec4e024b.png" />
+
+Just a bit of geometry.  Not used in the main game.
+
+#### 5.1.5 Table  <img height="40" alt="image" src="./map-editor-images/object_6_table.png" />
+
+<img height="300" alt="image" src="./map-editor-images/d8c8803e-58f4-4fd3-8d04-11374e784714.png" />
+
+Just a bit of geometry.  Not used in the main game.
+
+
+#### 5.1.6 Other entities
+
+There are other objects in the game, but they contain weird/hacky behaviour, and so I don't recommend using them.  Stuff like the nest object, that just has a lot of hard-coded and very particular behaviour that I don't want to explain.  However, modifying the main game map should be safe enough - just don't move around these weird objects too much if you come across them.
+
+### 5.2 Trigger Box Tool
+
+- Trigger boxes are big invisible areas that do something when the player enters them.
+
+<img height="300" alt="image" src="./map-editor-images/triggerbox.png" />
+
+- In the sidebar you can edit various properties, but position and size you can also edit visually by dragging the Trigger Box's widgets.
+
 - You can also **move** and **resize** trigger volumes in the viewport using the **move gizmo** and **face resize handles** (drag the coloured handles on each face of the box).
 
-### 5.2.1 "music_"
-- Place a music trigger from the trigger palette, then select it. The sidebar shows a **music track** dropdown listing all tracks in the game.
-- Look around the main game to see what music is triggered where.
-- A list of music files used in the OST is [here](https://store.steampowered.com/app/4217410/Oeuvre_Oeuf_Soundtrack/). The game has about an hour of music, plus many more tracks you can use in custom levels.
+<img height="300" alt="image" src="./map-editor-images/resize_trigger.gif" />
 
-### 5.2.2 "arealabel_"
-<img height="300" alt="image" src="./map-editor-images/arealabel.png" />
-Area label triggers show an area name when the player enters, independently of checkpoints. When you select one, the sidebar shows an **area name** field. If the text after `arealabel_` is a built-in location name (case-sensitive), the game displays that location name; otherwise it displays your text verbatim. For example, `arealabel_Hello, world!` displays "Hello, World!".
+#### 5.2.1 "music_" <img height="40" alt="image" src="./map-editor-images/trigger_icon_1.png" />
+- This causes music to play if you enter it.  
+- Usually you want to have a music trigger at each checkpoint, so that if a player resumes a save game, there'll automatically be the right music playing.
+- You can choose the music track from a dropdown list in the properties panel.
+
+<img height="300" alt="image" src="./map-editor-images/music_property_panel.png" />
+
+- Any time in the editor you click on a music trigger you'll hear a preview of its music.
+- You can't include your own music files. However in addition to the core OST of the game, there are several hours of bonus tracks included for people who want to make their own levels to use.
+- The Music OST is [here](https://store.steampowered.com/app/4217410/Oeuvre_Oeuf_Soundtrack/) if you want to listen to it casually.
+
+#### 5.2.2 "arealabel_" <img height="40" alt="image" src="./map-editor-images/trigger_icon_2.png" />
+<img height="300" alt="image" src="./map-editor-images/arealabel_props.png" />
+
+- Arealabel triggers show a message on screen when the player enters, independently of checkpoints. If the 'area name'is a built-in location name (case-sensitive), the game displays that location name (and will localise it. e.g. if you enter "FOREST" the text will be "Forest of Branching Paths"); otherwise it displays your text verbatim. So if you enter `Hello, world!` as your area name, it displays "Hello, World!".
+- The game remembers the last message it displayed, and it won't display the same message twice in a row.
 
 <img height="300" alt="image" src="./map-editor-images/arealabel2.png" />
 
-### 5.2.3 "KILLBOX"
+#### 5.2.3 "KILLBOX" <img height="40" alt="image" src="./map-editor-images/trigger_icon_3.png" />
 
 <img height="300" alt="image" src="./map-editor-images/killbox.png" />
 
-- Special trigger volumes (drawn red in the editor for easy identification) that cause the player to die on contact (next time you touch some level geometry).
+- Special trigger volumes (drawn red in the editor for easy identification) that cause the player to die on contact the next time you touch some horizontal-ish level geometry (Ramps should also kill).
 - Useful for hazards and boundaries.
 
-### 5.2.4 "TORCH"
-- While the player is inside the volume, they emit light. Handy for dark areas so you can see where you're going without placing loads of torch props.
+#### 5.2.4 "TORCH" <img height="40" alt="image" src="./map-editor-images/trigger_icon_4.png" />
+- While players are inside the volume, they emit light. Handy for subtly making dark areas easier to understand without needing to place loads of torch props, which can be expensive/distracting.
 
-### 5.2.5 Other triggers
-- There are a few other really finicky trigger types—you can spot them by their meta tags in the palette or sidebar. I don't think they're appropriate for general use, so I haven't gone out of my way to document them.
+#### 5.2.5 Generic triggers <img height="40" alt="image" src="./map-editor-images/trigger_icon_5.png" />
+
+There are a few other really finicky trigger types - you can spot them by their meta tags in the properties window and might bump into them in the start area of the main map. I don't think they're appropriate for general use, so I haven't gone out of my way to document them.  It's fine to leave them in the main map if you're editing it, but don't use them in new levels you're building from scratch - there might behave weirdly in ways that are not obvious from their names.
 
 ---
 
@@ -313,19 +336,16 @@ Area label triggers show an area name when the player enters, independently of c
 Cycle to Layer Mode with **Backtick** (**`**).
 
 - It can be useful to divide large maps into sections/layers
-
-
+- Empty layers are shown with a red tint in the layer list so you can spot them easily.
 
 ### 6.1 Layer Visibility
-- **Empty layers** (layers with no voxels) are shown with a **red tint** in the layer list so you can spot them easily.
-- Click a layer to hide/show it.
 - **Shift + click** a layer to hide all other layers; shift‑click again to restore them.
 
 <img height="300" alt="image" src="./map-editor-images/0e233973-4c4a-4819-9932-c77c675cf991.png" />
 
 ---
 
-### 6.2.1 Layer Selection/Transformation tool <img height="40" alt="image" src="./map-editor-images/025310c3-e0be-4096-8121-f2fc38577e71.png" />
+#### 6.2.1 Layer Selection/Transformation tool <img height="40" alt="image" src="./map-editor-images/025310c3-e0be-4096-8121-f2fc38577e71.png" />
 
 <img height="300" alt="image" src="./map-editor-images/703ba35d-dc51-46bd-afc3-f1fe9815d75c.png" />
 
@@ -336,7 +356,7 @@ Cycle to Layer Mode with **Backtick** (**`**).
 
 ---
 
-### 6.2.2 Voxel Assignment Tool <img height="40" alt="image" src="./map-editor-images/9983cbf1-1fc2-4c29-9b3e-465b89c4f254.png" />
+#### 6.2.2 Voxel Assignment Tool <img height="40" alt="image" src="./map-editor-images/9983cbf1-1fc2-4c29-9b3e-465b89c4f254.png" />
 
 - Drag a volume; all voxels inside become part of the currently selected layer.
 - Useful for fixing pieces assigned to the wrong layer.
