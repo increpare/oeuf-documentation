@@ -228,7 +228,7 @@ Adds/removes a sphere!
 ---
 
 ## 5. Object Mode: Entities and Trigger Boxes
-Enter Object Mode by pressing **backtick** until the Object UI appears.
+Enter Object Mode by pressing **backtick** (if you have a different keyboard layout, it should still be whatever button is to the left of the 1 key on the top-left of your keyboard) until the Object UI appears.
 
 <img height="300" alt="image" src="./map-editor-images/f0df6a9d-934b-4212-99b0-522bd69dd189.png" />
 
