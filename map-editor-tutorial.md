@@ -9,8 +9,8 @@ If you prefer a video version of the tutorial, here's one: https://youtu.be/BCKu
 * [3. Camera and Movement (Editor Mode)](#3-camera-and-movement-editor-mode)
 * [4. Voxel Tools](#4-voxel-tools)
 * [5. Object Mode (Entities and Trigger Boxes)](#5-object-mode-entities-and-trigger-boxes)
-**[5.1 Entity Tool](#51-entity-tool-img-height40-srcmap-editor-imagesd7c0fbfe-3b7f-4003-b53a-f00957440e98png-)**
-**[5.2 Trigger Box Tool](#52-trigger-box-tool)**
+  * [5.1 Entity Tool](#51-entity-tool-img-height40-srcmap-editor-imagesd7c0fbfe-3b7f-4003-b53a-f00957440e98png-)
+  * [5.2 Trigger Box Tool](#52-trigger-box-tool)
 * [6. Layer Mode](#6-layer-mode-large‑scale-editing)
 * [7. Upload to steamworks](#7-upload-to-steamworks)
 * [8. Feedback and bug reports](#8-feedback-and-bug-reports)
@@ -70,10 +70,11 @@ There are two ways to add maps by other people - if you already have the file, y
 
 ### General commands:
 
-- **CTRL + S** save.
+- **Ctrl + S** save.
 - **F5** reload from save.
-- **CTRL + Z** undo.
-- **CTRL + Y** redo.
+- **Ctrl + Z** undo.
+- **Ctrl + Y** redo.
+- **Ctrl + R**: gives all normie cubes with the currently-selected tile in the currently-selected layer a random rotation.
 
 <img width="322" height="142" alt="image" src="./map-editor-images/898dc489-160f-45db-b982-bb0d8608db64.png" />
 
