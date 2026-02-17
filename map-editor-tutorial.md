@@ -23,7 +23,7 @@ There are two ways to add maps by other people - if you already have the file, y
 
 ### 0.1 Adding Maps Manually
 
-If you have a map file, you can add it like this : (doesn't work on steam deck!)
+If you have a map file, you can add it like this : (doesn't work on Steam Deck!)
 
 <img  height="300" alt="image" src="./map-editor-images/4e172e6a-8c85-4a5c-8d44-3d7c6dda61c5.png" />
 
@@ -89,7 +89,7 @@ If you have a map file, you can add it like this : (doesn't work on steam deck!)
 In the top left of the screen you can see :
 
 * the current file name (change and press enter to save as a new file)
-  * (note : some built‑in maps are read‑only (e.g., `minimal`, `eggworld`). You can save them under other files names ok though!)
+  * (note : some built‑in maps are read‑only (e.g., `minimal`, `eggworld`). You can save them under other files names OK though!)
 * the dropdown menu shows all built-in maps files, and those you have saved in your level folder.
 * the button to open up the levels folder (shortcut : **Ctrl + L**).
 
