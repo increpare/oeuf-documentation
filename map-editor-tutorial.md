@@ -29,7 +29,7 @@ If you have a map file, you can add it like this : (doesn't work on steam deck!)
 
 <img height="300" alt="image" src="./map-editor-images/3755ee22-6eb6-4406-aa1f-e3f7b4867b35.png" />
 
-2. Go to **Open Maps Folder** to open the map folder in your browser. You can add map files that you have gotten from other people here.
+2. Go to **Open Maps Folder** to open the maps folder in your file manager. You can add map files that you have gotten from other people here.
 
 ### 0.2 Adding Maps from Steam Workshop
 
@@ -143,7 +143,7 @@ In the top left of the screen you can see :
 - **R** : Rotate selected shape.
 - **V** : Flip vertically.
 - The shortcuts are as listed above - note that an underscore **_** means to hold **Shift** while pressing the named key.
-- If you're drawing a plane and have the 45° slope selected, you drag the plane alone the slope :
+- If you're drawing a plane and have the 45° slope selected, you drag the plane along the slope :
 
 <img height="300" alt="image" src="./map-editor-images/e16c5379-3e0a-472b-8729-d67dfd6a6890.png" />
 
@@ -295,7 +295,7 @@ Just a bit of geometry.  Not used in the main game.
 
 Just a bit of geometry.  Not used in the main game.
 
-#### 5.1.6 Other entities
+#### 5.1.8 Other entities
 
 There are other objects in the game, accessible via the asset_name dropdown in the object info panel, but they contain weird/hacky behaviour specific to the main game, so I don't recommend using them.  Stuff like the Nest.tscn object that just has a lot of hard-coded and very particular behaviour that I don't want to explain.  However, modifying the main game map should be safe enough, even though it contains these objects - just be careful of modifying these objects or their surroundings in-game if you come across them!
 
@@ -366,6 +366,8 @@ Cycle to Layer Mode with **Backtick** (**`**).
 
 ---
 
+### 6.2 Layer Tools
+
 #### 6.2.1 Layer Selection/Transformation tool <img height="40" alt="image" src="./map-editor-images/025310c3-e0be-4096-8121-f2fc38577e71.png" />
 
 <img height="300" alt="image" src="./map-editor-images/703ba35d-dc51-46bd-afc3-f1fe9815d75c.png" />
@@ -396,13 +398,13 @@ Cycle to Layer Mode with **Backtick** (**`**).
 
 ---
 
-## 7. Upload to steamworks
+## 7. Upload to Steam Workshop
 
-Uploading to steamworks is a pretty easy affair - when you're happy with your level, just hit the steam button in the toolbar :
+Uploading to Steam Workshop is a pretty easy affair - when you're happy with your level, just hit the steam button in the toolbar :
 
 <img height="300" src="./map-editor-images/workshop_upload.png" />
 
-Click on this, and wait for a moment, and you will see a message when the upload is complete, and it should open the steamworks page as well.
+Click on this, and wait for a moment, and you will see a message when the upload is complete, and it should open the Steam Workshop page as well.
 
 <img height="300" src="./map-editor-images/workshop_success.png" />
 
@@ -410,10 +412,10 @@ The thumbnail is generated from the view when you hit save.
 
 <img height="300" src="./map-editor-images/workshop_page_appearance.png">
 
-If you wish to customize the details further you can do it from that page.  The mod is associated with the file name of the map - if you resave the file it will update your level on the steamworks server.
+If you wish to customize the details further you can do it from that page.  The mod is associated with the file name of the map - if you resave the file it will update your level on the Steam Workshop.
 
 ---
 
 ## 8. Feedback and bug reports
 
-Does this make sense? I hope so - feedback and bug reports always welcome : e-mail me at analytic@gmail.com
+Does this make sense? I hope so - feedback and bug reports always welcome : e-mail me at analytic@gmail.com .
