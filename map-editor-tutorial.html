@@ -2,7 +2,7 @@
         <!DOCTYPE html>
         <html>
           <head>
-            <title>Oeuf Map Editor Tutorial</title>
+            <title>Oeuf Map Eggitor Tutorial</title>
             <meta charset="utf-8">
             <meta name="viewport" content="width=device-width, initial-scale=1">
             <style>
@@ -329,8 +329,8 @@ code.hljs {
           </head>
           <body>
             <main>
-        <h1 id="oeufhttpsstoresteampoweredcomapp3831080oeuf-map-eggitor-tutorial"><a href="https://store.steampowered.com/app/3831080/Oeuf/">OEUF</a> MAP EGGITOR TUTORIAL</h1>
-<p>If you prefer a video version of the tutorial, here's one: <a href="https://youtu.be/BCKunr3oAbc">https://youtu.be/BCKunr3oAbc</a></p>
+        <h1 id="oeufhttps-storesteampoweredcomapp3831080oeuf-map-eggitor-tutorial">[OEUF](https ://store.steampowered.com/app/3831080/Oeuf/) MAP EGGITOR TUTORIAL</h1>
+<p>If you prefer a video version of the tutorial, here's one : https ://youtu.be/BCKunr3oAbc</p>
 <h2 id="contents">Contents</h2>
 <ul>
 <li><a href="#0-adding-player-made-maps">0. Adding Player-Made Maps</a></li>
@@ -348,13 +348,14 @@ code.hljs {
 <h2 id="0-adding-player-made-maps">0. Adding Player-Made Maps</h2>
 <p>There are two ways to add maps by other people - if you already have the file, you can add it manually, or if you want to download it from steam workshop, you can do that too.</p>
 <h3 id="01-adding-maps-manually">0.1 Adding Maps Manually</h3>
+<p>If you have a map file, you can add it like this : (doesn't work on steam deck!)</p>
 <p><img  height="300" alt="image" src="./map-editor-images/4e172e6a-8c85-4a5c-8d44-3d7c6dda61c5.png" /></p>
 <ol>
 <li>Go to <strong>Custom Maps</strong> on the title screen</li>
 </ol>
 <p><img height="300" alt="image" src="./map-editor-images/3755ee22-6eb6-4406-aa1f-e3f7b4867b35.png" /></p>
 <ol start="2">
-<li>Go to <strong>Open Maps Folder</strong> to open the map folder in your browser. You can add maps that you have gotten from other people here.</li>
+<li>Go to <strong>Open Maps Folder</strong> to open the map folder in your browser. You can add map files that you have gotten from other people here.</li>
 </ol>
 <h3 id="02-adding-maps-from-steam-workshop">0.2 Adding Maps from Steam Workshop</h3>
 <ol>
@@ -363,12 +364,16 @@ code.hljs {
 </ol>
 <p><img height="300" alt="image" src="./map-editor-images/workshop_download.png" /></p>
 <ol start="3">
-<li>On Steam Workshop, you 'subscribe' to things to download them.  Once you've done that, they should just be visible in the map list to play.</li>
+<li>On Steam Workshop, you 'subscribe' to things to download them.  </li>
 </ol>
 <p><img height="300" alt="image" src="./map-editor-images/workshop_subscribed.png" /></p>
+<ol start="4">
+<li>Once you've done that, they should just be visible in the map list to play.</li>
+</ol>
+<p><img height="300" alt="image" src="./map-editor-images/map_in_list.png" /></p>
 <h2 id="1-enabling-the-editor">1. Enabling the Editor</h2>
 <ol>
-<li>Open <strong>Settings</strong>.</li>
+<li>Open <strong>Settings</strong> :</li>
 </ol>
 <p><img height="300" alt="image" src="./map-editor-images/8774fe92-ef1f-4e8b-b678-ce9e627328e5.png" /></p>
 <ol start="2">
@@ -379,156 +384,159 @@ code.hljs {
 <p><img height="300" alt="image" src="./map-editor-images/a63f9a9f-f53c-4f11-ac1b-b5afa84399a2.png" /></p>
 <hr />
 <h2 id="2-basic-workflow-in-editor">2. Basic Workflow in Editor</h2>
-<h3 id="editor-modes">Editor Modes:</h3>
+<h3 id="editor-modes-">Editor Modes :</h3>
 <ul>
-<li><strong>Tab</strong>:<ul>
-<li>If you're in-game, it enters editor mode.</li>
-<li>In editor mode, it toggles mouse control between camera and cursor mode.</li></ul></li>
-<li><strong>Space</strong>: Exits edit mode, and spawns you where you're pointing at.</li>
-<li><strong>Backtick</strong> (<strong>`</strong>) to cycle between:<ul>
+<li><strong>Tab</strong> :<ul>
+<li>If you're in-game, it opens the map editor!</li>
+<li>In editor mode, it toggles mouse control between camera-look and cursor-pointing.</li></ul></li>
+<li><strong>Space</strong> : Exits edit mode and spawns you where you're pointing at.</li>
+<li><strong>Backtick</strong> (<strong>`</strong>, or whatever key is to the left of the '1' on your keyboard) to cycle between :<ul>
 <li><strong>Voxel Mode</strong> (editing terrain)</li>
 <li><strong>Object Mode</strong> (checkpoints, props, trigger boxes)</li>
 <li><strong>Layer Mode</strong> (moving large sections of terrain)</li></ul></li>
 </ul>
-<h3 id="general-commands">General commands:</h3>
+<h3 id="general-commands-">General commands :</h3>
 <ul>
-<li><strong>Ctrl + S</strong> save.</li>
-<li><strong>F5</strong> reload from save.</li>
-<li><strong>Ctrl + Z</strong> undo.</li>
-<li><strong>Ctrl + Y</strong> redo.</li>
-<li><strong>Ctrl + R</strong>: gives all normie cubes with the currently-selected tile in the currently-selected layer a random rotation.</li>
+<li><strong>Ctrl + S</strong> save</li>
+<li><strong>F5</strong> reload</li>
+<li><strong>Ctrl + Z</strong> undo</li>
+<li><strong>Ctrl + Y</strong> redo</li>
+<li><strong>Ctrl + R</strong> : randomly rotates all cubes with the currently-selected tile-graphic in the currently-selected layer.</li>
 </ul>
 <p><img width="322" height="142" alt="image" src="./map-editor-images/898dc489-160f-45db-b982-bb0d8608db64.png" /></p>
 <p>In the top left of the screen you can see :</p>
 <ul>
 <li>the current file name (change and press enter to save as a new file)<ul>
-<li>(note: some built‑in maps are read‑only (e.g., <code>minimal</code>, <code>egg world</code>). You can save them under other files names ok though!)</li></ul></li>
-<li>the dropdown menu to show all built-in maps files, and those you have saved in your level folder.</li>
-<li>the button to open up the levels folder (shortcut: <strong>Ctrl + L</strong>)</li>
+<li>(note : some built‑in maps are read‑only (e.g., <code>minimal</code>, <code>eggworld</code>). You can save them under other files names ok though!)</li></ul></li>
+<li>the dropdown menu shows all built-in maps files, and those you have saved in your level folder.</li>
+<li>the button to open up the levels folder (shortcut : <strong>Ctrl + L</strong>).</li>
 </ul>
 <hr />
 <h2 id="3-camera-and-movement-editor-mode">3. Camera and Movement (Editor Mode)</h2>
 <ul>
-<li><strong>WASD</strong>: Move camera.</li>
-<li><strong>Shift</strong>: Faster movement.</li>
-<li><strong>Q / E</strong>: Down / Up.</li>
-<li><strong>Z / C</strong>: Rotate Left / Right.</li>
-<li>(don't forget, <strong>TAB</strong> toggles camera/cursor modes)</li>
+<li><strong>WASD</strong> : Move camera.</li>
+<li><strong>Shift</strong> : Faster movement.</li>
+<li><strong>Q / E</strong> : Down / Up.</li>
+<li><strong>Z / C</strong> : Rotate Left / Right.</li>
+<li>(don't forget : <strong>TAB</strong> toggles camera/cursor mouse-modes)</li>
 </ul>
 <hr />
-<h2 id="4-voxel-tools">4. Voxel Tools:</h2>
-<h3 id="41-basic-voxel-placer">4.1 Basic Voxel Placer</h3>
+<h2 id="4-voxel-tools-">4. Voxel Tools :</h2>
+<!--nearest neighbour upscaling-->
+<h3 id="41-basic-voxel-placer-img-height30-srcmap-editor-imagestool_1png-styleimage-rendering--pixelated-">4.1 Basic Voxel Placer <img height="30" src="./map-editor-images/tool_1.png" style="image-rendering : pixelated;" /></h3>
 <ul>
-<li><strong>Left click</strong>: Place block.</li>
-<li><strong>Right click</strong>: Delete block.</li>
-<li><strong>Shift + left click (hold)</strong>: Rapid placement.</li>
-<li><strong>Shift + right click (hold)</strong>: Rapid deletion.</li>
-<li><strong>Ctrl + left click</strong>: Place a block one tile removed from the face you're targetting.</li>
-<li><strong>Alt + click</strong>: Sample an existing block (eyedropper).</li>
-<li><strong>Mouse wheel</strong> or <strong>"Shift+number keys"</strong>: Change current tile.</li>
-<li><strong>Ctrl + mouse wheel</strong> or <strong>- / +</strong>: Change tile page.</li>
+<li><strong>Left click</strong> : Place block.</li>
+<li><strong>Right click</strong> : Delete block.</li>
+<li><strong>Shift + left click (hold)</strong> : Rapid placement.</li>
+<li><strong>Shift + right click (hold)</strong> : Rapid deletion.</li>
+<li><strong>Ctrl + left click</strong> : Place a block one tile removed from the face you're targetting.</li>
+<li><strong>Alt + click</strong> : Sample an existing block (eyedropper).</li>
+<li><strong>Mouse wheel</strong> or <strong>"Shift+number keys"</strong> : Change current tile.</li>
+<li><strong>Ctrl + mouse wheel</strong> or <strong>- / +</strong> : Change tile page.</li>
 </ul>
-<h3 id="42-plane-drag--wall-tool">4.2 Plane Drag / Wall Tool</h3>
+<h3 id="42-plane-drag--wall-tool-img-height30-srcmap-editor-imagestool_2png-styleimage-rendering--pixelated-">4.2 Plane-Drag / Wall Tool <img height="30" src="./map-editor-images/tool_2.png" style="image-rendering : pixelated;" /></h3>
 <p><img height="300" alt="image" src="./map-editor-images/66861a5d-948f-419e-826b-0709e8901460.png" /></p>
 <ul>
 <li><p><strong>Left click + drag</strong> to draw a planar sheet (floor or wall).</p></li>
-<li><p><strong>Shift while dragging</strong>: Push the plane one voxel into the target surface for a flush surface:</p></li>
+<li><p><strong>Shift while dragging</strong> : Push the plane one voxel into the target surface for a flush surface :</p></li>
 </ul>
 <p><img height="300" alt="image" src="./map-editor-images/fed6c022-ccac-4f50-a183-e54a1910b819.png" /></p>
 <ul>
-<li><strong>Right click + drag</strong>: Delete a planar region (good for making doors/openings)</li>
+<li><strong>Right click + drag</strong> : Delete a planar region (good for making doors/openings)</li>
 </ul>
 <p><img height="300" alt="image" src="./map-editor-images/3e38286a-fc16-4f8e-8b2c-f0b84892fb11.png" /></p>
 <ul>
-<li>Holding <strong>Alt</strong> while doing the above causes the initial point you click to be the centre of the plane rather than the corner.</li>
+<li>Holding <strong>Alt</strong> while doing the above causes the initial point you click to be the <em>centre</em> of the plane rather than the corner.</li>
 </ul>
 <p><img height="300" height="631" alt="image" src="./map-editor-images/082ad691-7389-431c-8dcd-d478a5997fc8.png" /></p>
-<h3 id="42b-aside---voxel-shapes-and-rotation">4.2b aside - Voxel Shapes and Rotation</h3>
-<p><img height="91" alt="image" src="./map-editor-images/92a5c76f-a2ac-4fb8-b0f4-4794cd3f34ad.png" /></p>
+<h3 id="42b-aside--voxel-shapes-and-rotation">4.2b (Aside : Voxel Shapes and Rotation)</h3>
+<p><img height="91" alt="image" src="./map-editor-images/shape_toolbar.png" /></p>
 <ul>
-<li>The top-right palette includes ramps and other shaped voxels.</li>
-<li><strong>R</strong>: Rotate selected shape.</li>
-<li><strong>V</strong>: Flip vertically.</li>
-<li>Helpful for slopes, roofs, and non‑cubic geometry.</li>
-<li>If you're drawing a plane and have the 45 degree slope selected, you drag a 45* slope rather than an axis-aligned plane.</li>
-<li>Do <em>not</em> use the staircase block anywhere where the player might roll across it - it does not play well with egg physics.</li>
+<li>The top-right toolbar includes ramps and other shapes.</li>
+<li><strong>R</strong> : Rotate selected shape.</li>
+<li><strong>V</strong> : Flip vertically.</li>
+<li>The shortcuts are as listed above - note that an underscore <strong>_</strong> means to hold <strong>Shift</strong> while pressing the named key.</li>
+<li>If you're drawing a plane and have the 45° slope selected, you drag the plane alone the slope :</li>
 </ul>
 <p><img height="300" alt="image" src="./map-editor-images/e16c5379-3e0a-472b-8729-d67dfd6a6890.png" /></p>
+<ul>
+<li>Do <em>not</em> use the staircase block anywhere where the player might roll across it - it does not play well with egg physics.</li>
+</ul>
 <hr />
-<h3 id="43-extrude-tool">4.3 Extrude Tool</h3>
+<h3 id="43-extrude-tool-img-height30-srcmap-editor-imagestool_3png-styleimage-rendering--pixelated-">4.3 Extrude Tool <img height="30" src="./map-editor-images/tool_3.png" style="image-rendering : pixelated;" /></h3>
 <ul>
 <li><strong>Select an area</strong>, then <strong>drag</strong> to extrude it outward.</li>
-<li>Works on irregular shapes.</li>
+<li>Works on irregular shapes :</li>
 </ul>
 <p><img height="300" alt="image" src="./map-editor-images/e489ee33-5702-471a-b6dc-6cfb11471ad1.png" /></p>
 <ul>
-<li><strong>Right‑click variant</strong> deletes large cuboids for cleanup. Basically nothing to do with extrude, more a "delete everything in this volume" tool.</li>
+<li><strong>Right‑click variant</strong> deletes large cuboids for cleanup. Nothing to do with extrude, really, more a "delete everything in this volume" tool.</li>
 </ul>
-<h3 id="44-room--box-tool">4.4 Room / Box Tool</h3>
+<h3 id="44-room--box-tool-img-height30-srcmap-editor-imagestool_4png-styleimage-rendering--pixelated-">4.4 Room / Box Tool <img height="30" src="./map-editor-images/tool_4.png" style="image-rendering : pixelated;" /></h3>
 <p><img height="300"  alt="image" src="./map-editor-images/a6d88753-b396-4f04-9792-af3de74201fa.png" /></p>
 <ul>
 <li><strong>Click + drag</strong> to create a hollow rectangular volume.</li>
-<li><strong>Shift while using</strong>: Removes end caps (for tunnels / open boxes).</li>
+<li><strong>Shift while using</strong> : Removes end caps (for tunnels / open boxes).</li>
 </ul>
 <p><img height="300"  alt="image" src="./map-editor-images/52efd428-d08a-4328-96e2-df69cec3cf48.png" /></p>
-<h3 id="45-paint-tool">4.5 Paint Tool</h3>
+<h3 id="45-paint-tool-img-height30-srcmap-editor-imagestool_5png-styleimage-rendering--pixelated-">4.5 Paint Tool <img height="30" src="./map-editor-images/tool_5.png" style="image-rendering : pixelated;" /></h3>
 <p>Paints existing voxels.</p>
 <ul>
-<li><strong>Alt + click</strong>: Sample tile (including shape).</li>
-<li><strong>Click</strong>: Paint.</li>
-<li><strong>Shift + mouse wheel</strong>: Adjust brush radius.</li>
-<li><strong>Shift + click</strong>: Replace all tiles in the current layer with the selected tile (undoable, but be careful).</li>
+<li><strong>Alt + click</strong> : Sample tile (including shape).</li>
+<li><strong>Click</strong> : Repaint.</li>
+<li><strong>Shift + mouse wheel</strong> : Adjust brush radius.</li>
+<li><strong>Shift + click</strong> : Replace all tiles of the pointed-at graphic in the current layer with the selected tile (undoable, but be careful).</li>
 </ul>
 <hr />
-<h3 id="46-landscape--hill-dropper-tool">4.6 Landscape / Hill Dropper Tool</h3>
+<h3 id="46-landscape--hill-dropper-tool-img-height30-srcmap-editor-imagestool_6png-styleimage-rendering--pixelated-">4.6 Landscape / Hill-Dropper Tool <img height="30" src="./map-editor-images/tool_6.png" style="image-rendering : pixelated;" /></h3>
 <ul>
 <li>Drops blocks from above to form organic hills.</li>
-<li><strong>Mouse wheel</strong>: Hill height.</li>
-<li><strong>Shift + mouse wheel</strong>: Hill width.</li>
-<li>Useful for mountains and natural terrain; can layer materials.</li>
+<li><strong>Mouse wheel</strong> : Hill height.</li>
+<li><strong>Shift + mouse wheel</strong> : Hill width.</li>
+<li>Useful for mountains and natural terrain; can be used to create 'geological'-looking layers.</li>
 </ul>
 <p><img height="300" alt="image" src="./map-editor-images/9676771a-aec1-4354-8203-8a037999b901.png" /></p>
 <hr />
-<h3 id="47-grow--shrink-tool">4.7 Grow / Shrink Tool</h3>
+<h3 id="47-grow--shrink-tool-img-height30-srcmap-editor-imagestool_7png-styleimage-rendering--pixelated-">4.7 Grow / Shrink Tool <img height="30" src="./map-editor-images/tool_7.png" style="image-rendering : pixelated;" /></h3>
 <p><img height="300" alt="image" src="./map-editor-images/c7b78285-8fef-4007-a6e1-31a1805f57e6.png" /></p>
-<p>Spherical modifier with an intensity meter (controlled with <strong>Mouse wheel</strong>):</p>
+<p>Spherical modifier with an intensity meter (controlled with <strong>Mouse wheel</strong>) :</p>
 <ul>
-<li>Low setting: shrink/erase inside the sphere.</li>
-<li>High setting: grow/extrude outward.</li>
-<li>Mid setting: tends to square off shapes.<ul>
-<li><strong>Shift + mouse wheel</strong>: Adjust brush radius.</li></ul></li>
+<li>Low setting : shrink/erase inside the sphere.</li>
+<li>High setting : grow/extrude outward.</li>
+<li>Mid setting : tends to square off shapes.<ul>
+<li><strong>Shift + mouse wheel</strong> : Adjust brush radius.</li></ul></li>
 </ul>
 <hr />
-<h3 id="48-add--subtract-sphere-tool">4.8 Add / Subtract Sphere Tool</h3>
+<h3 id="48-add--subtract-sphere-tool-img-height30-srcmap-editor-imagestool_8png-styleimage-rendering--pixelated-">4.8 Add / Subtract Sphere Tool <img height="30" src="./map-editor-images/tool_8.png" style="image-rendering : pixelated;" /></h3>
 <p><img height="300" alt="image" src="./map-editor-images/6a28e39e-08d3-498d-8d25-9103ed603eb3.png" /></p>
 <p>Adds/removes a sphere!</p>
 <ul>
-<li><strong>Mouse wheel</strong>: Choose tile.</li>
-<li><strong>Shift + mouse wheel</strong>: Change sphere size.</li>
-<li><strong>Left click</strong>: Add a sphere.</li>
-<li><strong>Shift + left click</strong>: Center sphere on cursor point.</li>
-<li><strong>Right click</strong>: Subtract a sphere (good for caves).</li>
+<li><strong>Mouse wheel</strong> : Choose tile.</li>
+<li><strong>Shift + mouse wheel</strong> : Change sphere size.</li>
+<li><strong>Left click</strong> : Add a sphere.</li>
+<li><strong>Shift + left click</strong> : Centre sphere on cursor point.</li>
+<li><strong>Right click</strong> : Subtract a sphere (good for caves).</li>
 </ul>
 <hr />
-<h3 id="49-smooth--grout-tool">4.9 Smooth / Grout Tool</h3>
+<h3 id="49-smooth--grout-tool-img-height30-srcmap-editor-imagestool_9png-styleimage-rendering--pixelated-">4.9 Smooth / Grout Tool <img height="30" src="./map-editor-images/tool_9.png" style="image-rendering : pixelated;" /></h3>
 <p><img height="300" alt="image" src="./map-editor-images/f3b4592d-4d5c-4eed-a9ba-f157b5dc7dcc.png" /></p>
 <ul>
-<li><strong>Click</strong>: Smooth terrain by inserting appropriate edge pieces (using one of the neighbouring textures).</li>
-<li><strong>Shift + mouse wheel</strong>: Change brush size.</li>
-<li><strong>Shift + click</strong>: Grout mode; fills seams using the current tile instead of smoothing.</li>
+<li><strong>Click</strong> : Smooth terrain by inserting appropriate edge pieces (using one of the neighbouring textures).</li>
+<li><strong>Shift + mouse wheel</strong> : Change brush size.</li>
+<li><strong>Shift + click</strong> : Grout mode; fills seams using the current tile instead of smoothing.</li>
 </ul>
 <p><img height="300" alt="image" src="./map-editor-images/e15cd4e3-473d-4f49-ad7f-a26ea4e44354.png" /></p>
 <hr />
-<h3 id="410-planar-draw-tool">4.10 Planar Draw Tool</h3>
+<h3 id="410-planar-draw-tool-img-height30-srcmap-editor-imagestool_0png-styleimage-rendering--pixelated-">4.10 Planar-Draw Tool <img height="30" src="./map-editor-images/tool_0.png" style="image-rendering : pixelated;" /></h3>
 <ul>
 <li><strong>Click</strong> and drag to draw on the current plane.</li>
 <li><strong>Shift + mouse wheel</strong> raises and lowers the drawing plane.</li>
 </ul>
 <p><img height="300" alt="image" src="./map-editor-images/5a7a12fe-4344-4d9e-aaeb-ea6050e37ab9.png" /></p>
 <hr />
-<h2 id="5-object-mode-entities-and-trigger-boxes">5. Object Mode: Entities and Trigger Boxes</h2>
+<h2 id="5-object-mode--entities-and-trigger-boxes">5. Object Mode : Entities and Trigger Boxes</h2>
 <p>Enter Object Mode by pressing <strong>backtick</strong> (if you have a different keyboard layout, it should still be whatever button is to the left of the 1 key on the top-left of your keyboard) until the Object UI appears.</p>
-<p><img height="300" alt="image" src="./map-editor-images/f0df6a9d-934b-4212-99b0-522bd69dd189.png" /></p>
+<p><img height="300" alt="image" src="./map-editor-images/object_mode.png" /></p>
 <p>In Object Mode there are two tools - entity placement and trigger box placement.  Entities are things that are placed in the world that you can see and generally just occupy a single tile, like checkpoints and torches.  Trigger boxes are larger areas, invisible to the player, where something happens if you enter them, like playing a music track, or displaying a message. </p>
 <h3 id="51-entity-tool-img-height40-srcmap-editor-imagesd7c0fbfe-3b7f-4003-b53a-f00957440e98png-">5.1 Entity Tool <img height="40" src="./map-editor-images/d7c0fbfe-3b7f-4003-b53a-f00957440e98.png" /></h3>
 <p>This mode has two brushes, one for placing entities, another for placing trigger volumes.  </p>
@@ -536,11 +544,10 @@ code.hljs {
 <li><strong>Left Click</strong> to place/select</li>
 <li><strong>Right Click</strong> to delete</li>
 </ul>
-<p><strong>Toolbar and palette:</strong> Some entity types (Door, Character, Rope) are hidden from the main toolbar and are for advanced use. Some static objects (e.g. spawn-only bonfire, Nest) are <strong>hidden from the object palette</strong> but can still be assigned via the sidebar’s <strong>asset_name</strong> dropdown when editing an existing entity.</p>
-<h4 id="511-bonfires-startendcheckpoints-img-height40--altimage-srcmap-editor-imagesb7793315-7430-4c65-96f7-ade23827a6cepng-">5.1.1 Bonfires (Start/End/Checkpoints) <img height="40"  alt="image" src="./map-editor-images/b7793315-7430-4c65-96f7-ade23827a6ce.png" /></h4>
+<h4 id="511-checkpoints-startendcheckpoints-img-height40--altimage-srcmap-editor-imagesb7793315-7430-4c65-96f7-ade23827a6cepng-">5.1.1 Checkpoints (Start/End/Checkpoints) <img height="40"  alt="image" src="./map-editor-images/b7793315-7430-4c65-96f7-ade23827a6ce.png" /></h4>
 <p><img height="300" alt="image" src="./map-editor-images/object_1_checkpoint.png" /></p>
 <ul>
-<li>Every level must include:<ul>
+<li>Every level must include :<ul>
 <li>A start bonfire named exactly <code>START</code> (Case important)</li>
 <li>An end bonfire named exactly <code>END</code></li></ul></li>
 <li>Names are case‑sensitive.</li>
@@ -567,7 +574,7 @@ code.hljs {
 <p><img height="300" alt="image" src="./map-editor-images/d8c8803e-58f4-4fd3-8d04-11374e784714.png" /></p>
 <p>Just a bit of geometry.  Not used in the main game.</p>
 <h4 id="516-other-entities">5.1.6 Other entities</h4>
-<p>There are other objects in the game, but they contain weird/hacky behaviour, and so I don't recommend using them.  Stuff like the nest object, that just has a lot of hard-coded and very particular behaviour that I don't want to explain.  However, modifying the main game map should be safe enough - just don't move around these weird objects too much if you come across them.</p>
+<p>There are other objects in the game, accessible via the asset_name dropdown in the object info panel, but they contain weird/hacky behaviour specific to the main game, and so I don't recommend using them.  Stuff like the nest object, that just has a lot of hard-coded and very particular behaviour that I don't want to explain.  However, modifying the main game map should be safe enough, even though it contains these objects - just be careful of modifying these objects or their surroundings in-game if you come across them!</p>
 <h3 id="52-trigger-box-tool">5.2 Trigger Box Tool</h3>
 <ul>
 <li>Trigger boxes are big invisible areas that do something when the player enters them.</li>
@@ -588,7 +595,7 @@ code.hljs {
 <ul>
 <li>Any time in the editor you click on a music trigger you'll hear a preview of its music.</li>
 <li>You can't include your own music files. However in addition to the core OST of the game, there are several hours of bonus tracks included for people who want to make their own levels to use.</li>
-<li>The Music OST is <a href="https://store.steampowered.com/app/4217410/Oeuvre_Oeuf_Soundtrack/">here</a> if you want to listen to it casually.</li>
+<li>The Music OST is [here](https ://store.steampowered.com/app/4217410/Oeuvre_Oeuf_Soundtrack/) if you want to listen to it casually.</li>
 </ul>
 <h4 id="522-arealabel_-img-height40-altimage-srcmap-editor-imagestrigger_icon_2png-">5.2.2 "arealabel_" <img height="40" alt="image" src="./map-editor-images/trigger_icon_2.png" /></h4>
 <p><img height="300" alt="image" src="./map-editor-images/arealabel_props.png" /></p>
@@ -610,7 +617,7 @@ code.hljs {
 <h4 id="525-generic-triggers-img-height40-altimage-srcmap-editor-imagestrigger_icon_5png-">5.2.5 Generic triggers <img height="40" alt="image" src="./map-editor-images/trigger_icon_5.png" /></h4>
 <p>There are a few other really finicky trigger types - you can spot them by their meta tags in the properties window and might bump into them in the start area of the main map. I don't think they're appropriate for general use, so I haven't gone out of my way to document them.  It's fine to leave them in the main map if you're editing it, but don't use them in new levels you're building from scratch - there might behave weirdly in ways that are not obvious from their names.</p>
 <hr />
-<h2 id="6-layer-mode-large‑scale-editing">6. Layer Mode: Large‑Scale Editing</h2>
+<h2 id="6-layer-mode--large‑scale-editing">6. Layer Mode : Large‑Scale Editing</h2>
 <p>Cycle to Layer Mode with <strong>Backtick</strong> (<strong>`</strong>).</p>
 <ul>
 <li>It can be useful to divide large maps into sections/layers</li>
@@ -647,7 +654,7 @@ code.hljs {
 <p><img height="300" src="./map-editor-images/b54e33d7-6058-4959-a116-73188bdf6d01.png" /></p>
 <hr />
 <h2 id="7-upload-to-steamworks">7. Upload to steamworks</h2>
-<p>Uploading to steamworks is a pretty easy affair - when you're happy with your level, just hit the steam button in the toolbar:</p>
+<p>Uploading to steamworks is a pretty easy affair - when you're happy with your level, just hit the steam button in the toolbar :</p>
 <p><img height="300" src="./map-editor-images/workshop_upload.png" /></p>
 <p>Click on this, and wait for a moment, and you will see a message when the upload is complete, and it should open the steamworks page as well.</p>
 <p><img height="300" src="./map-editor-images/workshop_success.png" /></p>
@@ -656,7 +663,7 @@ code.hljs {
 <p>If you wish to customize the details further you can do it from that page.  The mod is associated with the file name of the map - if you resave the file it will update your level on the steamworks server.</p>
 <hr />
 <h2 id="8-feedback-and-bug-reports">8. Feedback and bug reports</h2>
-<p>Does this make sense? I hope so - feedback and bug reports always welcome: e-mail me at <a href="&#x6d;&#97;&#x69;&#x6c;&#x74;&#x6f;&#58;&#97;&#x6e;&#x61;&#x6c;&#121;&#x74;&#x69;&#99;&#x40;g&#109;&#97;&#x69;&#108;&#x2e;c&#x6f;&#x6d;">&#x61;&#110;&#97;&#108;&#121;t&#105;&#99;&#x40;&#103;ma&#105;&#108;&#x2e;&#99;&#x6f;&#x6d;</a></p>
+<p>Does this make sense? I hope so - feedback and bug reports always welcome : e-mail me at <a href="&#109;a&#x69;l&#116;&#111;&#x3a;&#97;&#110;&#97;&#x6c;&#121;&#116;&#105;&#99;&#64;&#x67;&#x6d;&#x61;&#x69;&#x6c;&#46;&#x63;&#x6f;&#109;">&#97;n&#x61;&#108;&#121;&#116;&#x69;c&#x40;&#103;&#x6d;&#x61;&#105;&#x6c;&#46;&#x63;&#x6f;&#x6d;</a></p>
             </main>
           </body>
         </html>
