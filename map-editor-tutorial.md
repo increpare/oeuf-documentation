@@ -110,7 +110,7 @@ In the top left of the screen you can see :
 - **Right click** : Delete block.
 - **Shift + left click (hold)** : Rapid placement.
 - **Shift + right click (hold)** : Rapid deletion.
-- **Ctrl + left click** : Place a block one tile removed from the face you're targetting.
+- **Ctrl + left click** : Place a block one tile removed from the face you're targeting.
 - **Alt + click** : Sample an existing block (eyedropper).
 - **Mouse wheel** or **"Shift+number keys"** : Change current tile.
 - **Ctrl + mouse wheel** or **- / +** : Change tile page.
@@ -131,7 +131,7 @@ In the top left of the screen you can see :
 
 - Holding **Alt** while doing the above causes the initial point you click to be the *centre* of the plane rather than the corner.
 
-<img height="300" height="631" alt="image" src="./map-editor-images/082ad691-7389-431c-8dcd-d478a5997fc8.png" />
+<img height="300" alt="image" src="./map-editor-images/082ad691-7389-431c-8dcd-d478a5997fc8.png" />
 
 
 ### 4.2b (Aside : Voxel Shapes and Rotation) 
@@ -261,7 +261,7 @@ This mode has two brushes, one for placing entities, another for placing trigger
 #### 5.1.2 Normal Checkpoint <img height="40"  alt="image" src="./map-editor-images/entity_2.png" />
 - Totally normal checkpoint.
 - You can set the area_name tag to whatever you want to display when the player activates it.
-- If you want to trigger music when you reach the point, or spawn back to the it, you have to use a music trigger-box for that.
+- If you want to trigger music when you reach the point, or spawn back to it, you have to use a music trigger-box for that.
 
 #### 5.1.3 End-Checkpoint <img height="40"  alt="image" src="./map-editor-images/entity_3.png" />
 - Unlike the main game, custom levels don't really have a proper final checkpoint (unless they use the nest).  This is just a normal checkpoint really.
@@ -348,7 +348,7 @@ There are other objects in the game, accessible via the asset_name dropdown in t
 
 #### 5.2.5 Generic trigger-boxes <img height="40" alt="image" src="./map-editor-images/trigger_icon_5.png" />
 
-- There are a few other really finicky trigger-box types - what they do is specified by their meta tags. I don't think they're appropriate for general use, so I won't document them.  It's fine to leave them in the main map if you're modding it, but don't use them in new levels you're building from scratch - there might behave weirdly in ways that are not obvious from their names.
+- There are a few other really finicky trigger-box types - what they do is specified by their meta tags. I don't think they're appropriate for general use, so I won't document them.  It's fine to leave them in the main map if you're modding it, but don't use them in new levels you're building from scratch - they might behave weirdly in ways that are not obvious from their names.
 
 ---
 
@@ -410,7 +410,7 @@ Click on this, and wait for a moment, and you will see a message when the upload
 
 The thumbnail is generated from the view when you hit save.  
 
-<img height="300" src="./map-editor-images/workshop_page_appearance.png">
+<img height="300" src="./map-editor-images/workshop_page_appearance.png" />
 
 If you wish to customize the details further you can do it from that page.  The mod is associated with the file name of the map - if you resave the file it will update your level on the Steam Workshop.
 
