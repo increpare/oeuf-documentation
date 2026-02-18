@@ -17,6 +17,9 @@ const converter = new showdown.Converter({
 
 let body = converter.makeHtml(md);
 
+// CSS selectors can't start with a digit, so prefix bare-numeric IDs
+body = body.replace(/(<h[2-4]\s+id=")(\d)/g, '$1section-$2');
+
 // --- Extract heading IDs + text for the sidebar (before adding classes) ---
 const headings = [];
 const headingRe = /<h([2-4])\s+id="([^"]+)"[^>]*>([\s\S]*?)<\/h\1>/g;
