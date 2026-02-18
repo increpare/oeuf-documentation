@@ -114,7 +114,7 @@ In the top left of the screen you can see :
 - **Shift + right click (hold)** : Rapid deletion.
 - **Ctrl + left click** : Place a block one tile removed from the face you're targeting.
 - **Alt + click** : Sample an existing block (eyedropper).
-- **Mouse wheel** or **"Shift+number keys"** : Change current tile.
+- **Mouse wheel** or **Shift+number keys** : Change current tile.
 - **Ctrl + mouse wheel** or **- / +** : Change tile page.
 
 
