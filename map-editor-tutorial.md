@@ -114,8 +114,8 @@ In the top left of the screen you can see :
 - **Shift + right click (hold)** : Rapid deletion.
 - **Ctrl + left click** : Place a block one tile removed from the face you're targeting.
 - **Alt + click** : Sample an existing block (eyedropper).
-- **Mouse wheel** or **Shift+number keys** : Change current tile.
-- **Ctrl + mouse wheel** or **- / +** : Change tile page.
+- **Scroll-Wheel** or **Shift+number keys** : Change current tile.
+- **Ctrl + scroll-wheel** or **- / +** : Change tile page.
 
 
 ### 4.1b (Aside : Voxel Shapes and Rotation) 
@@ -176,15 +176,15 @@ Paints existing voxels.
 
 - **Alt + click** : Sample tile (including shape).
 - **Click** : Repaint.
-- **Shift + mouse wheel** : Adjust brush radius.
+- **Shift + scroll-wheel** : Adjust brush radius.
 - **Shift + click** : Replace all tiles of the pointed-at graphic in the current layer with the selected tile (undoable, but be careful).
 
 ---
 
 ### 4.6 Landscape / Hill-Dropper Tool <img height="30" src="./map-editor-images/tool_6.png" style="image-rendering : pixelated;" />
 - Drops blocks from above to form organic hills.
-- **Mouse wheel** : Hill height.
-- **Shift + mouse wheel** : Hill width.
+- **Scroll-Wheel** : Hill height.
+- **Shift + scroll-wheel** : Hill width.
 - Useful for mountains and natural terrain; can be used to create 'geological'-looking layers.
 
 <img height="300" alt="image" src="./map-editor-images/9676771a-aec1-4354-8203-8a037999b901.png" />
@@ -195,12 +195,12 @@ Paints existing voxels.
 
 <img height="300" alt="image" src="./map-editor-images/c7b78285-8fef-4007-a6e1-31a1805f57e6.png" />
 
-Spherical modifier with an intensity meter (controlled with **Mouse wheel**) :
+Spherical modifier with an intensity meter (controlled with **Scroll-Wheel**) :
 
   - Low setting : shrink/erase inside the sphere.
   - High setting : grow/extrude outward.
   - Mid setting : tends to square off shapes.
-- **Shift + mouse wheel** : Adjust brush radius.
+- **Shift + scroll-wheel** : Adjust brush radius.
 
 ---
 
@@ -210,8 +210,8 @@ Spherical modifier with an intensity meter (controlled with **Mouse wheel**) :
 
 Adds/removes a sphere!
 
-- **Mouse wheel** : Choose tile.
-- **Shift + mouse wheel** : Change sphere size.
+- **Scroll-Wheel** : Choose tile.
+- **Shift + scroll-wheel** : Change sphere size.
 - **Left click** : Add a sphere.
 - **Shift + left click** : Centre sphere on cursor point.
 - **Right click** : Subtract a sphere (good for caves).
@@ -223,7 +223,7 @@ Adds/removes a sphere!
 <img height="300" alt="image" src="./map-editor-images/f3b4592d-4d5c-4eed-a9ba-f157b5dc7dcc.png" />
 
 - **Click** : Smooth terrain by inserting appropriate edge pieces (using one of the neighbouring textures).
-- **Shift + mouse wheel** : Change brush size.
+- **Shift + scroll-wheel** : Change brush size.
 - **Shift + click** : Grout mode; fills seams using the current tile instead of smoothing.
 
 <img height="300" alt="image" src="./map-editor-images/e15cd4e3-473d-4f49-ad7f-a26ea4e44354.png" />
@@ -232,7 +232,7 @@ Adds/removes a sphere!
 
 ### 4.10 Planar-Draw Tool <img height="30" src="./map-editor-images/tool_0.png" style="image-rendering : pixelated;" />
 - **Click** and drag to draw on the current plane.
-- **Shift + mouse wheel** raises and lowers the drawing plane.
+- **Shift + scroll-wheel** raises and lowers the drawing plane.
 
 <img height="300" alt="image" src="./map-editor-images/5a7a12fe-4344-4d9e-aaeb-ea6050e37ab9.png" />
 
