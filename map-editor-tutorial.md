@@ -65,16 +65,16 @@ If you have a map file, you can add it like this : (doesn't work on Steam Deck!)
 
 ## 2. Basic Workflow in Editor
 
-### Editor Modes :
+### Editor Modes
 
-- **Tab** :
+- **Tab**
   - If you're in-game, it opens the map editor!
   - In editor mode, it toggles mouse control between camera-look and cursor-pointing.
 - **Space** : Exits edit mode and spawns you where you're pointing at.
-- **Backtick** (**`**, or whatever key is to the left of the '1' on your keyboard) to cycle between :
-  - **Voxel Mode** (editing terrain)
-  - **Object Mode** (checkpoints, props, trigger-boxes)
-  - **Layer Mode** (moving large sections of terrain)
+- **Backtick** (**`** or whatever key is to the left of the '1' on your keyboard) to cycle between :
+  - **Block Mode** : Editing terrain
+  - **Object Mode** : Checkpoints, props, trigger-boxes
+  - **Layer Mode** : Moving large sections of terrain
 
 ### General commands :
 
@@ -86,12 +86,11 @@ If you have a map file, you can add it like this : (doesn't work on Steam Deck!)
 
 <img width="322" height="142" alt="image" src="./map-editor-images/898dc489-160f-45db-b982-bb0d8608db64.png" />
 
-In the top left of the screen you can see :
+To the top left of the screen you can see :
 
-* the current file name (change and press enter to save as a new file)
-  * (note : some built‑in maps are read‑only (e.g., `minimal`, `eggworld`). You can save them under other files names OK though!)
-* the dropdown menu shows all built-in maps files, and those you have saved in your level folder.
-* the button to open up the levels folder (shortcut : **Ctrl + L**).
+- the current map name (change and press enter to save as a new file)
+- the dropdown menu - it lists all **built-in maps** (e.g., `minimal`, `eggworld`), alongside those you have saved in your level folder (N.B. built‑in maps are read‑only. You can save them under other files names though!)
+- the button to open up the levels folder (shortcut : **Ctrl + L**).
 
 ---
 
@@ -100,25 +99,25 @@ In the top left of the screen you can see :
 - **Shift** : Faster movement
 - **Q / E** : Up / Down
 - **Z / C** : Rotate Left / Right
-- (don't forget : **TAB** toggles camera/cursor mouse-modes)
+- (don't forget : **TAB** toggles camera-look and cursor-pointing modes.)
 
 ---
 
-## 4. Voxel Tools :
+## 4. Block Tools :
 
 <!--nearest neighbour upscaling-->
-### 4.1 Basic Voxel Placer <img height="30" src="./map-editor-images/tool_1.png" style="image-rendering : pixelated;" />
-- **Left click** : Place block.
-- **Right click** : Delete block.
+### 4.1 Basic Block Placer <img height="30" src="./map-editor-images/tool_1.png" style="image-rendering : pixelated;" />
+- **Left Click** : Place block.
+- **Right Click** : Delete block.
 - **Shift + left click (hold)** : Rapid placement.
 - **Shift + right click (hold)** : Rapid deletion.
-- **Ctrl + left click** : Place a block one block removed from the face you're targeting.
-- **Alt + click** : Sample an existing block (eyedropper).
+- **Ctrl + Left Click** : Place a block one block removed from the face you're targeting.
+- **Alt + Click** : Sample an existing block (eyedropper).
 - **Scroll-Wheel** or **Shift+number keys** : Change currently-selected block-texture in the left toolbar.
-- **Ctrl + scroll-wheel** or **- / +** : Change texture page in the left toolbar.
+- **Ctrl + Scroll-Wheel** or **- / +** : Change texture page in the left toolbar.
 
 
-### 4.1b (Aside : Voxel Shapes and Rotation) 
+#### 4.1b (Aside : Block Shapes) 
 
 <img height="91" alt="image" src="./map-editor-images/shape_toolbar.png" />
 
@@ -154,37 +153,37 @@ In the top left of the screen you can see :
 ---
 
 ### 4.3 Extrude Tool <img height="30" src="./map-editor-images/tool_3.png" style="image-rendering : pixelated;" />
-- **Select an area**, then **drag** to extrude it outward.
+- **Drag&Drop to select a 2D-area**, then move your mouse and **Click** to extrude your selection to that point.  Very useful!
 - Works on irregular shapes :
 
 <img height="300" alt="image" src="./map-editor-images/e489ee33-5702-471a-b6dc-6cfb11471ad1.png" />
 
-- **Right‑click variant** deletes large cuboids for cleanup. Nothing to do with extrude, really, more a "delete everything in this volume" tool.
+- **Right‑click variant** Nothing to do with extrude, really, more a "delete everything inside this box" tool.
 
-### 4.4 Room / Box Tool <img height="30" src="./map-editor-images/tool_4.png" style="image-rendering : pixelated;" />
+### 4.4 Box Tool <img height="30" src="./map-editor-images/tool_4.png" style="image-rendering : pixelated;" />
 
 <img height="300"  alt="image" src="./map-editor-images/a6d88753-b396-4f04-9792-af3de74201fa.png" />
 
-- **Click + drag** to create a hollow rectangular volume.
+- **Click + drag** to create a hollow rectangular box.
 - **Shift while using** : Removes end caps (for tunnels / open boxes).
 
 <img height="300"  alt="image" src="./map-editor-images/52efd428-d08a-4328-96e2-df69cec3cf48.png" />
 
 ### 4.5 Paint Tool <img height="30" src="./map-editor-images/tool_5.png" style="image-rendering : pixelated;" />
 
-Paints existing voxels.
+Paints existing blocks.
 
-- **Alt + click** : Sample block (including texture and shape).
+- **Alt + Click** : Sample block (including texture and shape).
 - **Click** : Repaint
-- **Shift + scroll-wheel** : Adjust brush radius.
-- **Shift + click** : Replace all blocks of the pointed-at texture in the current layer with the selected texture (undoable, but be careful).
+- **Shift + Scroll-Wheel** : Adjust brush radius.
+- **Shift + Click** : Replace all blocks of the pointed-at texture in the current layer with the selected texture (undoable, but be careful).
 
 ---
 
 ### 4.6 Landscape / Hill-Dropper Tool <img height="30" src="./map-editor-images/tool_6.png" style="image-rendering : pixelated;" />
 - Drops blocks from above to form organic hills.
 - **Scroll-Wheel** : Hill height.
-- **Shift + scroll-wheel** : Hill width.
+- **Shift + Scroll-Wheel** : Hill width.
 - Useful for mountains and natural terrain; can be used to create 'geological'-looking layers.
 
 <img height="300" alt="image" src="./map-editor-images/9676771a-aec1-4354-8203-8a037999b901.png" />
@@ -200,7 +199,7 @@ Spherical modifier with an intensity meter (controlled with **Scroll-Wheel**) :
   - Low setting : shrink/erase inside the sphere.
   - High setting : grow/extrude outward.
   - Mid setting : tends to square off shapes.
-- **Shift + scroll-wheel** : Adjust brush radius.
+- **Shift + Scroll-Wheel** : Adjust brush radius.
 
 ---
 
@@ -211,10 +210,10 @@ Spherical modifier with an intensity meter (controlled with **Scroll-Wheel**) :
 Adds/removes a sphere!
 
 - **Scroll-Wheel** : Choose texture.
-- **Shift + scroll-wheel** : Change sphere size.
-- **Left click** : Add a sphere.
-- **Shift + left click** : Centre sphere on cursor point.
-- **Right click** : Subtract a sphere (good for caves).
+- **Shift + Scroll-Wheel** : Change sphere size.
+- **Left Click** : Add a sphere.
+- **Shift + Left Click** : Centre sphere on cursor point.
+- **Right Click** : Subtract a sphere (good for caves).
 
 ---
 
@@ -223,8 +222,8 @@ Adds/removes a sphere!
 <img height="300" alt="image" src="./map-editor-images/f3b4592d-4d5c-4eed-a9ba-f157b5dc7dcc.png" />
 
 - **Click** : Smooth terrain by inserting appropriate edge pieces (using one of the neighbouring textures).
-- **Shift + scroll-wheel** : Change brush size.
-- **Shift + click** : Grout mode; smooths using the currently selected toolbar texture instead of picking a texture to match the surrounding terrain.
+- **Shift + Scroll-Wheel** : Change brush size.
+- **Shift + Click** : Grout mode; smooths using the currently selected toolbar texture instead of picking a texture to match the surrounding terrain.
 
 <img height="300" alt="image" src="./map-editor-images/e15cd4e3-473d-4f49-ad7f-a26ea4e44354.png" />
 
@@ -232,7 +231,7 @@ Adds/removes a sphere!
 
 ### 4.10 Planar-Draw Tool <img height="30" src="./map-editor-images/tool_0.png" style="image-rendering : pixelated;" />
 - **Click** and drag to draw on the current plane.
-- **Shift + scroll-wheel** raises and lowers the drawing plane.
+- **Shift + Scroll-Wheel** raises and lowers the drawing plane.
 
 <img height="300" alt="image" src="./map-editor-images/5a7a12fe-4344-4d9e-aaeb-ea6050e37ab9.png" />
 
@@ -344,7 +343,7 @@ There are other objects in the game, accessible via the asset_name dropdown in t
 - Useful for hazards and boundaries.
 
 #### 5.2.4 TORCH <img height="40" alt="image" src="./map-editor-images/trigger_icon_4.png" />
-- While players are inside the volume, they emit light. Handy for subtly making dark areas easier to understand without needing to place loads of torch props, which can be expensive/distracting.
+- While players are inside the trigger, they emit light. Handy for subtly making dark areas easier to understand without needing to place loads of torch props, which can be expensive/distracting.
 
 <img height="300" alt="image" src="./map-editor-images/torchbox.png" />
 
@@ -362,7 +361,7 @@ Cycle to Layer Mode with **Backtick** (**`**).
 - Empty layers are shown with a red tint in the layer list so you can spot them easily.
 
 ### 6.1 Layer Visibility
-- **Shift + click** a layer to hide all other layers; shift‑click again to restore them.
+- **Shift + Click** a layer to hide all other layers; shift‑click again to restore them.
 
 <img height="300" alt="image" src="./map-editor-images/0e233973-4c4a-4819-9932-c77c675cf991.png" />
 
@@ -376,13 +375,13 @@ Cycle to Layer Mode with **Backtick** (**`**).
 
 - Use the layer selection tool to pick a layer by clicking geometry.
 - You can then **move**, **rotate**, or **mirror/flip** the entire layer.
-- Only one voxel can occupy a single position - if you drag one layer to overlap another, voxels are going to get deleted from one of the layers!
+- Only one block can occupy a single position - if you drag one layer to overlap another, blocks are going to get deleted from one of the layers!
 
 ---
 
-#### 6.2.2 Voxel Assignment Tool <img height="40" alt="image" src="./map-editor-images/9983cbf1-1fc2-4c29-9b3e-465b89c4f254.png" />
+#### 6.2.2 Layer-Assignment Tool <img height="40" alt="image" src="./map-editor-images/9983cbf1-1fc2-4c29-9b3e-465b89c4f254.png" />
 
-- Drag a volume; all voxels inside become part of the currently selected layer.
+- Drag a box; all blocks inside become part of the currently selected layer.
 - Useful for fixing pieces assigned to the wrong layer.
 
 <img height="300" alt="image" src="./map-editor-images/47ee56de-ddc6-4ba6-b265-2ba522d36c10.png" />
