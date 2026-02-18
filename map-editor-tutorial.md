@@ -50,7 +50,7 @@ If you have a map file, you can add it like this (doesn't work on Steam Deck!) :
 
 ## 2. Basic Workflow in Editor
 
-### Editor Modes
+### 2.1 Editor Modes
 
 - **Tab**
   - If you're in-game, it opens the map-editor!
@@ -61,7 +61,7 @@ If you have a map file, you can add it like this (doesn't work on Steam Deck!) :
   - **Object Mode** : Checkpoints, props, trigger-boxes
   - **Layer Mode** : Moving large sections of terrain
 
-### General commands :
+### 2.2 General Shortcuts
 
 - **Ctrl + S** : Save
 - **F5** : Reload
@@ -230,14 +230,14 @@ Enter Object Mode by pressing **Backtick** **`** until the Object UI appears.
 
 In Object Mode there are two tools - *entity* placement and *trigger-box* placement.  Entities are things that are placed in the world that you can see and are placed at a single coordinate, like checkpoints and torches.  Trigger-boxes are larger areas, invisible to the player, which trigger an effect when the player enters them, like playing a music track, or displaying a message. 
 
-### 5.1 Entity Tool <img height="40" src="./map-editor-images/d7c0fbfe-3b7f-4003-b53a-f00957440e98.png" />
+### 5.1 <img src="./map-editor-images/d7c0fbfe-3b7f-4003-b53a-f00957440e98.png" /> Entity Tool 
 
 This mode has two brushes, one for placing entities, another for placing trigger-boxes.  
 
 - **Left-Click** to place/select
 - **Right-Click** to delete
    
-####  5.1.1 Start-Checkpoint <img height="40"  alt="image" src="./map-editor-images/entity_1.png" />
+#### 5.1.1 <img src="./map-editor-images/entity_1.png" /> Start-Checkpoint 
 
 - Every level *must* include a **Start-Checkpoint**.
 - This is where the player spawns in custom levels, but looks just like a normal checkpoint.
@@ -246,23 +246,23 @@ This mode has two brushes, one for placing entities, another for placing trigger
 
 <img height="300" alt="image" src="./map-editor-images/start_checkpoint.png" />
 
-#### 5.1.2 Normal Checkpoint <img height="40"  alt="image" src="./map-editor-images/entity_2.png" />
+#### 5.1.2 <img src="./map-editor-images/entity_2.png" /> Normal Checkpoint 
 - Totally normal checkpoint.
 - You can set the area_name tag to whatever you want to display when the player activates it.
 - If you want to trigger music when you reach the point, or spawn back to it, you have to use a music trigger-box for that.
 
-#### 5.1.3 End-Checkpoint <img height="40"  alt="image" src="./map-editor-images/entity_3.png" />
+#### 5.1.3 <img src="./map-editor-images/entity_3.png" /> End-Checkpoint 
 - Unlike the main game, custom levels don't really have a proper final checkpoint (unless they use the nest).  This is just a normal checkpoint really.
 - By default the area_name tag is "CUSTOM_LEVEL_YOU_MADE_IT", which is localized to "You made it!" in English. But you can put whatever you want in there.
 
-#### 5.1.4 Torches <img height="40" alt="image" src="./map-editor-images/entity_4.png" />
+#### 5.1.4 <img src="./map-editor-images/entity_4.png" /> Torches 
 
 <img height="300" alt="image" src="./map-editor-images/1749efe9-b7dc-41ca-98a8-9eede13e832a.png" />
 
 - What it looks like.  Nice if things are getting a bit dark innit.
 - But don't overdo it, each torch has a light and the cost might add up.
 
-#### 5.1.5 Star <img height="40" alt="image" src="./map-editor-images/entity_5.png" />
+#### 5.1.5 <img src="./map-editor-images/entity_5.png" /> Star 
 
 <img height="300"  alt="image" src="./map-editor-images/star_shot.png" />
 
@@ -271,13 +271,13 @@ This mode has two brushes, one for placing entities, another for placing trigger
 - Makes a nice sound when you collect them and shows you how many you've collected vs total in the level.
 - Totally optional and of no consequence (I implemented these thinking I might want to put them in the main game, but decided better of it in the end).
 
-#### 5.1.6 Chair <img height="40" alt="image" src="./map-editor-images/entity_6.png" />
+#### 5.1.6 <img src="./map-editor-images/entity_6.png" /> Chair 
 
 <img height="300" alt="image" src="./map-editor-images/5406d0d6-f2d4-4662-a423-e9f7ec4e024b.png" />
 
 Just a bit of geometry.  Not used in the main game.
 
-#### 5.1.7 Table  <img height="40" alt="image" src="./map-editor-images/entity_7.png" />
+#### 5.1.7 <img src="./map-editor-images/entity_7.png" /> Table 
 
 <img height="300" alt="image" src="./map-editor-images/d8c8803e-58f4-4fd3-8d04-11374e784714.png" />
 
@@ -287,7 +287,7 @@ Just a bit of geometry.  Not used in the main game.
 
 There are other objects in the game, accessible via the asset_name dropdown in the object info panel, but they contain weird/hacky behaviour specific to the main game, so I don't recommend using them.  Stuff like the Nest.tscn object that just has a lot of hard-coded and very particular behaviour that I don't want to explain.  However, modifying the main game map should be safe enough, even though it contains these objects - just be careful of modifying these objects or their surroundings in-game if you come across them!
 
-### 5.2 Trigger-Box Tool <img height="40" alt="image" src="./map-editor-images/trigger_box_tool.png" />
+### 5.2 <img src="./map-editor-images/trigger_box_tool.png" /> Trigger-Box Tool 
 
 - Trigger-boxes are big invisible areas that do something when the player enters them.
 
@@ -301,7 +301,7 @@ There are other objects in the game, accessible via the asset_name dropdown in t
 
 <img height="300" alt="image" src="./map-editor-images/resize_trigger.gif" />
 
-#### 5.2.1 music <img height="40" alt="image" src="./map-editor-images/trigger_icon_1.png" />
+#### 5.2.1 <img src="./map-editor-images/trigger_icon_1.png" /> music 
 - This causes music to play if you enter it.  
 - Usually you want to have a music trigger at each checkpoint, so that if a player resumes a save game, there'll automatically be the right music playing.
 - You can choose the music track from a dropdown list in the properties panel.
@@ -312,31 +312,31 @@ There are other objects in the game, accessible via the asset_name dropdown in t
 - You can't include your own music files. However in addition to the core OST of the game, there are several hours of bonus tracks included for people who want to make their own levels to use.
 - The Music OST is [here](https://store.steampowered.com/app/4217410/Oeuvre_Oeuf_Soundtrack/) if you want to listen to it casually.
 
-#### 5.2.2 arealabel <img height="40" alt="image" src="./map-editor-images/trigger_icon_2.png" />
+#### 5.2.2 <img src="./map-editor-images/trigger_icon_2.png" /> arealabel 
 <img height="300" alt="image" src="./map-editor-images/arealabel_props.png" />
 
-- Arealabel trigger-boxes show a message on screen when the player enters, independently of checkpoints. If the 'area name' is a built-in location name (case-sensitive), the game displays that location name (and will localise it. e.g. if you enter "FOREST" the text will be "Forest of Branching Paths"); otherwise it displays your text verbatim. So if you enter `Hello, world!` as your area name, it displays "Hello, World!".
+Arealabel trigger-boxes show a message on screen when the player enters, independently of checkpoints. If the 'area name' is a built-in location name (case-sensitive), the game displays that location name (and will localise it. e.g. if you enter "FOREST" the text will be "Forest of Branching Paths"); otherwise it displays your text verbatim. So if you enter `Hello, world!` as your area name, it displays "Hello, World!".
 
 <img height="300" alt="image" src="./map-editor-images/arealabel2.png" />
 
 - The game remembers the last message it displayed, and it won't display the same message twice in a row.
 
 
-#### 5.2.3 KILLBOX <img height="40" alt="image" src="./map-editor-images/trigger_icon_3.png" />
+#### 5.2.3 <img src="./map-editor-images/trigger_icon_3.png" /> KILLBOX 
 
 <img height="300" alt="image" src="./map-editor-images/killbox.png" />
 
 - Special trigger-boxes (drawn red in the editor for easy identification) that cause the player to die on contact the next time you touch some horizontal-ish level geometry (Ramps should also kill).
 - Useful for hazards and boundaries.
 
-#### 5.2.4 TORCH <img height="40" alt="image" src="./map-editor-images/trigger_icon_4.png" />
-- While players are inside the trigger, they emit light. Handy for subtly making dark areas easier to understand without needing to place loads of torch props, which can be expensive/distracting.
+#### 5.2.4 <img src="./map-editor-images/trigger_icon_4.png" /> TORCH 
+While players are inside the trigger, they emit light. Handy for subtly making dark areas easier to understand without needing to place loads of torch props, which can be expensive/distracting.
 
 <img height="300" alt="image" src="./map-editor-images/torchbox.png" />
 
-#### 5.2.5 Generic trigger-boxes <img height="40" alt="image" src="./map-editor-images/trigger_icon_5.png" />
+#### 5.2.5 <img src="./map-editor-images/trigger_icon_5.png" /> Generic Trigger-Boxes 
 
-- There are a few other really finicky trigger-box types - what they do is specified by their meta tags. I don't think they're appropriate for general use, so I won't document them.  It's fine to leave them in the main map if you're modding it, but don't use them in new levels you're building from scratch - they might behave weirdly in ways that are not obvious from their names.
+There are a few other really finicky trigger-box types - what they do is specified by their meta tags. I don't think they're appropriate for general use, so I won't document them.  It's fine to leave them in the main map if you're modding it, but don't use them in new levels you're building from scratch - they might behave weirdly in ways that are not obvious from their names.
 
 ---
 
@@ -356,7 +356,7 @@ Cycle to Layer Mode with **Backtick** (**`**).
 
 ### 6.2 Layer Tools
 
-#### 6.2.1 Layer Selection/Transformation tool <img height="40" alt="image" src="./map-editor-images/025310c3-e0be-4096-8121-f2fc38577e71.png" />
+#### 6.2.1 <img src="./map-editor-images/025310c3-e0be-4096-8121-f2fc38577e71.png" /> Layer Selection/Transformation tool 
 
 <img height="300" alt="image" src="./map-editor-images/703ba35d-dc51-46bd-afc3-f1fe9815d75c.png" />
 
@@ -366,7 +366,7 @@ Cycle to Layer Mode with **Backtick** (**`**).
 
 ---
 
-#### 6.2.2 Layer-Assignment Tool <img height="40" alt="image" src="./map-editor-images/9983cbf1-1fc2-4c29-9b3e-465b89c4f254.png" />
+#### 6.2.2 <img src="./map-editor-images/9983cbf1-1fc2-4c29-9b3e-465b89c4f254.png" /> Layer-Assignment Tool 
 
 - Drag a box; all blocks inside become part of the currently selected layer.
 - Useful for fixing pieces assigned to the wrong layer.
@@ -375,7 +375,7 @@ Cycle to Layer Mode with **Backtick** (**`**).
 
 ---
 
-### 6.3 Copy/Paste Layers<img height="40" alt="image" src="./map-editor-images/07df4b1b-83fe-40dd-91ef-2ac8ce3f8170.png" />
+### 6.3 <img src="./map-editor-images/07df4b1b-83fe-40dd-91ef-2ac8ce3f8170.png" /> Copy/Paste Layers
 
 - Copy a selected layer/group and paste it as a brush.
 - Select the Copy tool (3) and click anywhere to copy the current layer to the clipboard.
@@ -406,4 +406,4 @@ If you wish to customize the details further you can do it from that page.  The 
 
 ## 8. Feedback and bug reports
 
-Does this make sense? I hope so - feedback and bug reports always welcome : e-mail me at analytic@gmail.com .
+Does this make sense? I hope so - feedback and bug reports always welcome : e-mail me at [analytic@gmail.com](mailto:analytic@gmail.com) .

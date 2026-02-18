@@ -46,16 +46,18 @@ body = body
   .replace(/<img(?=\s)/g,       '<img class="img-fluid rounded shadow-sm d-block my-3"')
   .replace(/<blockquote>/g,     '<blockquote class="blockquote border-start border-3 ps-3 py-1 my-3">')
   .replace(/<pre>/g,            '<pre class="rounded p-3 border">')
-  .replace(/<hr\s*\/?>/g,       '<hr class="my-5 opacity-25">')
+  .replace(/<hr\s*\/?>/g,       '<hr class="my-5 opacity-0">')
   .replace(/<h2 /g,             '<h2 class="mt-5 mb-3 pb-2 border-bottom" ')
   .replace(/<h3 /g,             '<h3 class="mt-4 mb-3" ')
   .replace(/<h4 /g,             '<h4 class="mt-3 mb-2 opacity-75" ');
 
-// --- Build sidebar nav links (h2 + h3 only, h4 is too granular) ---
+// --- Build sidebar nav links (h2 + h3 + h4) ---
 const sidebarHtml = headings
-  .filter(h => h.level <= 3)
+  .filter(h => h.level <= 4)
   .map(h => {
-    const cls = h.level === 2 ? 'fw-semibold' : 'ms-3 small';
+    const cls = h.level === 2 ? 'fw-semibold'
+              : h.level === 3 ? 'ms-3 small'
+              : 'ms-5 small';
     return `<a class="nav-link py-1 ${cls}" href="#${h.id}">${h.text}</a>`;
   }).join('\n');
 
@@ -65,7 +67,7 @@ const page = `<!DOCTYPE html>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Oeuf Map Eggitor Tutorial</title>
+  <title>Oeuf Map-Eggitor Tutorial</title>
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="vendor/bootstrap-icons/font/bootstrap-icons.min.css" rel="stylesheet">
   <style>
@@ -73,7 +75,7 @@ const page = `<!DOCTYPE html>
       scroll-padding-top: 5rem;
 
       --page-bg:       white;
-      --surface:       #fdf6ec;
+      --surface:       #56d5eb;
       --border:        #f0dfc0;
       --chrome:        #c79cba;
       --heading:       #0d2e5f;
@@ -84,7 +86,7 @@ const page = `<!DOCTYPE html>
       --heading-minor: #0d2e5f;
       --link:          #0d2e5f;
       --nav-link-color: #0d2e5f;
-      --accent:        #f0a500;
+      --accent:        #56d5eb;
       --text-color:    black;
       --strong-text-color:rgb(44, 167, 188);
     }
@@ -123,7 +125,7 @@ const page = `<!DOCTYPE html>
     /* ── Content ── */
     .navbar-brand { 
       color: var(--heading-text-color);
-      font-size: 1.5rem;
+      font-size: 2rem;
       font-weight: bold;
       text-shadow: 1px 1px 0 var(--heading-outline-color), -1px -1px 0 var(--heading-outline-color), 1px -1px 0 var(--heading-outline-color), -1px 1px 0 var(--heading-outline-color);
     }    
@@ -173,7 +175,9 @@ const page = `<!DOCTYPE html>
     .btn-top.show  { opacity: 1; pointer-events: auto; }
 
     /* ── Footer ── */
-    footer { background: var(--chrome); }
+    footer { background: var(--chrome); font-size: 1.5rem; font-weight: bold; 
+    text-shadow: 1px 1px 0 var(--heading-outline-color), -1px -1px 0 var(--heading-outline-color), 1px -1px 0 var(--heading-outline-color), -1px 1px 0 var(--heading-outline-color);
+    }
     footer a { color: var(--accent) !important; }
     footer a:hover { color: #fff !important; }
 
@@ -188,6 +192,13 @@ const page = `<!DOCTYPE html>
       image-rendering : pixelated !important;
     } 
     
+    h4 > img.d-block {
+      display: inline !important;
+      height: 50px !important;
+      box-shadow: none !important;
+      image-rendering : pixelated !important;
+    } 
+    
     [id] { scroll-margin-top: 5rem; }
   </style>
 </head>
@@ -196,7 +207,7 @@ const page = `<!DOCTYPE html>
   <nav class="navbar sticky-top shadow-sm">
     <div class="container-fluid px-3">
       <a class="navbar-brand" href="https://store.steampowered.com/app/3831080/Oeuf/" target="_blank" rel="noopener">
-        OEUF MAP EGGITOR TUTORIAL
+        OEUF MAP-EGGITOR TUTORIAL
       </a>
       <div class="d-flex gap-2">
         <a href="https://youtu.be/BCKunr3oAbc" class="btn btn-sm btn-outline-light d-none d-md-inline-flex align-items-center gap-1" target="_blank" rel="noopener">
@@ -236,11 +247,11 @@ const page = `<!DOCTYPE html>
     <div class="container text-center">
       <p class="mb-1">
         <a href="https://store.steampowered.com/app/3831080/Oeuf/" class="text-decoration-none" target="_blank" rel="noopener">
-          OEUF Map Eggitor Tutorial
+          OEUF Map-Eggitor Tutorial
         </a>
       </p>
       <p class="small mb-0 opacity-75">
-        Feedback &amp; bug reports: <a href="mailto:analytic@gmail.com">analytic@gmail.com</a>
+        Feedback &amp; bug reports: <a href="mailto:analytic@gmail.com">analytic@gmail.com</a> or <a href="https://github.com/increpare/oeuf-documentation/issues">GitHub</a>
       </p>
     </div>
   </footer>
