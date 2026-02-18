@@ -1,5 +1,10 @@
 {
+  "scripts": {
+    "build": "node convert.js"
+  },
   "dependencies": {
+    "bootstrap": "^5.3.8",
+    "bootstrap-icons": "^1.11.3",
     "showdown": "^2.1.0"
   }
 }

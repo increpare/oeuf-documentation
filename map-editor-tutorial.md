@@ -1,21 +1,6 @@
-# [OEUF](https://store.steampowered.com/app/3831080/Oeuf/) MAP EGGITOR TUTORIAL
+# [OEUF](https://store.steampowered.com/app/3831080/Oeuf/) MAP-EGGITOR TUTORIAL
 
-If you prefer a video version of the tutorial, here's one : https://youtu.be/BCKunr3oAbc
-
-## Contents
-* [0. Adding Player-Made Maps](#0-adding-player-made-maps)
-* [1. Enabling the Editor](#1-enabling-the-editor)
-* [2. Basic Workflow in Editor](#2-basic-workflow-in-editor)
-* [3. Camera and Movement (Editor Mode)](#3-camera-and-movement-editor-mode)
-* [4. Voxel Tools](#4-voxel-tools-)
-* [5. Object Mode (Entities and Trigger-Boxes)](#5-object-mode--entities-and-trigger-boxes)
-  * [5.1 Entity Tool](#51-entity-tool-img-height40-srcmap-editor-imagesd7c0fbfe-3b7f-4003-b53a-f00957440e98png-)
-  * [5.2 Trigger-Box Tool](#52-trigger-box-tool-img-height40-altimage-srcmap-editor-imagestrigger_box_toolpng-)
-* [6. Layer Mode (Large‑Scale Editing)](#6-layer-mode--large‑scale-editing)
-  * [6.1 Layer Visibility](#61-layer-visibility)
-  * [6.2 Layer Tools](#62-layer-tools)
-* [7. Upload to Steam Workshop](#7-upload-to-steam-workshop)
-* [8. Feedback and bug reports](#8-feedback-and-bug-reports)
+If you prefer a video version of the tutorial, here's one: [https://youtu.be/BCKunr3oAbc](https://youtu.be/BCKunr3oAbc)
 
 ## 0. Adding Player-Made Maps
 
@@ -23,7 +8,7 @@ There are two ways to add maps by other people - if you already have the file, y
 
 ### 0.1 Adding Maps Manually
 
-If you have a map file, you can add it like this : (doesn't work on Steam Deck!)
+If you have a map file, you can add it like this (doesn't work on Steam Deck!) :
 
 <img  height="300" alt="image" src="./map-editor-images/4e172e6a-8c85-4a5c-8d44-3d7c6dda61c5.png" />
 
@@ -54,7 +39,7 @@ If you have a map file, you can add it like this : (doesn't work on Steam Deck!)
 
 <img height="300" alt="image" src="./map-editor-images/8774fe92-ef1f-4e8b-b678-ce9e627328e5.png" />
 
-2. Enable **Map Editor**.
+2. Enable **Map-Editor**.
 3. Load into a level (custom levels are easiest to work with - the main game level has hard-coded stuff).
 4. Press **Tab** to open the editor.
 
@@ -68,7 +53,7 @@ If you have a map file, you can add it like this : (doesn't work on Steam Deck!)
 ### Editor Modes
 
 - **Tab**
-  - If you're in-game, it opens the map editor!
+  - If you're in-game, it opens the map-editor!
   - In editor mode, it toggles mouse control between camera-look and cursor-pointing.
 - **Space** : Exits edit mode and spawns you where you're pointing at.
 - **Backtick** (**`** or whatever key is to the left of the '1' on your keyboard) to cycle between :
@@ -106,12 +91,12 @@ To the top left of the screen you can see :
 ## 4. Block Tools :
 
 <!--nearest neighbour upscaling-->
-### 4.1 Basic Block Placer <img height="30" src="./map-editor-images/tool_1.png" style="image-rendering : pixelated;" />
-- **Left Click** : Place block.
-- **Right Click** : Delete block.
-- **Shift + left click (hold)** : Rapid placement.
-- **Shift + right click (hold)** : Rapid deletion.
-- **Ctrl + Left Click** : Place a block one block removed from the face you're targeting.
+### 4.1 <img src="./map-editor-images/tool_1.png" /> Basic Block Placer 
+- **Left-Click** : Place block.
+- **Right-Click** : Delete block.
+- **Shift + Left-Click (hold)** : Rapid placement.
+- **Shift + Right-Click (hold)** : Rapid deletion.
+- **Ctrl + Left-Click** : Place a block one block removed from the face you're targeting.
 - **Alt + Click** : Sample an existing block (eyedropper).
 - **Scroll-Wheel** or **Shift+number keys** : Change currently-selected block-texture in the left toolbar.
 - **Ctrl + Scroll-Wheel** or **- / +** : Change texture page in the left toolbar.
@@ -132,17 +117,17 @@ To the top left of the screen you can see :
 
 - Do *not* use the staircase block anywhere where the player might roll across it - it does not play well with egg physics.
 
-### 4.2 Plane-Drag / Wall Tool <img height="30" src="./map-editor-images/tool_2.png" style="image-rendering : pixelated;" />
+### 4.2 <img src="./map-editor-images/tool_2.png" /> Plane-Drag / Wall Tool
 
 <img height="300" alt="image" src="./map-editor-images/66861a5d-948f-419e-826b-0709e8901460.png" />
 
-- **Left click + drag** to draw a planar sheet (floor or wall).
+- **Left-Click + Drag** to draw a planar sheet (floor or wall).
 
 - **Shift while dragging** : Push the plane one voxel into the target surface for a flush surface :
 
 <img height="300" alt="image" src="./map-editor-images/fed6c022-ccac-4f50-a183-e54a1910b819.png" />
 
-- **Right click + drag** : Delete a planar region (good for making doors/openings)
+- **Right-Click + Drag** : Delete a planar region (good for making doors/openings)
 
 <img height="300" alt="image" src="./map-editor-images/3e38286a-fc16-4f8e-8b2c-f0b84892fb11.png" />
 
@@ -152,24 +137,24 @@ To the top left of the screen you can see :
 
 ---
 
-### 4.3 Extrude Tool <img height="30" src="./map-editor-images/tool_3.png" style="image-rendering : pixelated;" />
-- **Drag&Drop to select a 2D-area**, then move your mouse and **Click** to extrude your selection to that point.  Very useful!
+### 4.3 <img src="./map-editor-images/tool_3.png" /> Extrude Tool 
+- **Drag out a 2D-area**, then move your mouse and **Click** to extrude your selection to that point.  Very useful!
 - Works on irregular shapes :
 
 <img height="300" alt="image" src="./map-editor-images/e489ee33-5702-471a-b6dc-6cfb11471ad1.png" />
 
-- **Right‑click variant** Nothing to do with extrude, really, more a "delete everything inside this box" tool.
+- **Right‑Mouse-Button** Nothing to do with extrude, really, more a "delete everything inside this box" tool.
 
-### 4.4 Box Tool <img height="30" src="./map-editor-images/tool_4.png" style="image-rendering : pixelated;" />
+### 4.4 <img src="./map-editor-images/tool_4.png" /> Box Tool 
 
 <img height="300"  alt="image" src="./map-editor-images/a6d88753-b396-4f04-9792-af3de74201fa.png" />
 
-- **Click + drag** to create a hollow rectangular box.
-- **Shift while using** : Removes end caps (for tunnels / open boxes).
+- **Click + Drag** to create a hollow rectangular box.
+- **Shift** while dragging : Removes end caps (for tunnels / open boxes).
 
 <img height="300"  alt="image" src="./map-editor-images/52efd428-d08a-4328-96e2-df69cec3cf48.png" />
 
-### 4.5 Paint Tool <img height="30" src="./map-editor-images/tool_5.png" style="image-rendering : pixelated;" />
+### 4.5 <img src="./map-editor-images/tool_5.png" /> Paint Tool 
 
 Paints existing blocks.
 
@@ -180,7 +165,7 @@ Paints existing blocks.
 
 ---
 
-### 4.6 Landscape / Hill-Dropper Tool <img height="30" src="./map-editor-images/tool_6.png" style="image-rendering : pixelated;" />
+### 4.6 <img src="./map-editor-images/tool_6.png" /> Hill-Dropper Tool 
 - Drops blocks from above to form organic hills.
 - **Scroll-Wheel** : Hill height.
 - **Shift + Scroll-Wheel** : Hill width.
@@ -190,20 +175,21 @@ Paints existing blocks.
 
 ---
 
-### 4.7 Grow / Shrink Tool <img height="30" src="./map-editor-images/tool_7.png" style="image-rendering : pixelated;" />
+### 4.7 <img src="./map-editor-images/tool_7.png" /> Sculpt Tool 
 
 <img height="300" alt="image" src="./map-editor-images/c7b78285-8fef-4007-a6e1-31a1805f57e6.png" />
 
-Spherical modifier with an intensity meter (controlled with **Scroll-Wheel**) :
+Grow/shrink your terrain within a sphere.
 
-  - Low setting : shrink/erase inside the sphere.
-  - High setting : grow/extrude outward.
-  - Mid setting : tends to square off shapes.
+- **Scroll-Wheel** : control intensity
+  - ****Low** : shrink/erase terrain inside the sphere.
+  - **High** : grow/extrude terrain inside the sphere.
+  - **Mid** : tends to square off shapes.
 - **Shift + Scroll-Wheel** : Adjust brush radius.
 
 ---
 
-### 4.8 Add / Subtract Sphere Tool <img height="30" src="./map-editor-images/tool_8.png" style="image-rendering : pixelated;" />
+### 4.8 <img src="./map-editor-images/tool_8.png" /> Sphere Tool 
 
 <img height="300" alt="image" src="./map-editor-images/6a28e39e-08d3-498d-8d25-9103ed603eb3.png" />
 
@@ -211,13 +197,13 @@ Adds/removes a sphere!
 
 - **Scroll-Wheel** : Choose texture.
 - **Shift + Scroll-Wheel** : Change sphere size.
-- **Left Click** : Add a sphere.
-- **Shift + Left Click** : Centre sphere on cursor point.
-- **Right Click** : Subtract a sphere (good for caves).
+- **Left-Click** : Add a sphere.
+- **Shift + Left-Click** : Centre sphere on cursor point.
+- **Right-Click** : Subtract a sphere (good for caves).
 
 ---
 
-### 4.9 Smooth / Grout Tool <img height="30" src="./map-editor-images/tool_9.png" style="image-rendering : pixelated;" />
+### 4.9 <img src="./map-editor-images/tool_9.png" /> Smooth / Grout Tool
 
 <img height="300" alt="image" src="./map-editor-images/f3b4592d-4d5c-4eed-a9ba-f157b5dc7dcc.png" />
 
@@ -229,7 +215,7 @@ Adds/removes a sphere!
 
 ---
 
-### 4.10 Planar-Draw Tool <img height="30" src="./map-editor-images/tool_0.png" style="image-rendering : pixelated;" />
+### 4.10 <img src="./map-editor-images/tool_0.png" /> Planar-Draw Tool 
 - **Click** and drag to draw on the current plane.
 - **Shift + Scroll-Wheel** raises and lowers the drawing plane.
 
@@ -237,8 +223,8 @@ Adds/removes a sphere!
 
 ---
 
-## 5. Object Mode : Entities and Trigger-Boxes
-Enter Object Mode by pressing **backtick** (if you have a different keyboard layout, it should still be whatever button is to the left of the 1 key on the top-left of your keyboard) until the Object UI appears.
+## 5. Object Mode
+Enter Object Mode by pressing **Backtick** **`** until the Object UI appears.
 
 <img height="300" alt="image" src="./map-editor-images/object_mode.png" />
 
@@ -248,14 +234,15 @@ In Object Mode there are two tools - *entity* placement and *trigger-box* placem
 
 This mode has two brushes, one for placing entities, another for placing trigger-boxes.  
 
-- **Left Click** to place/select
-- **Right Click** to delete
+- **Left-Click** to place/select
+- **Right-Click** to delete
    
 ####  5.1.1 Start-Checkpoint <img height="40"  alt="image" src="./map-editor-images/entity_1.png" />
-- Every level must include a start checkpoint.
+
+- Every level *must* include a **Start-Checkpoint**.
 - This is where the player spawns in custom levels, but looks just like a normal checkpoint.
 - The area_name tag is what text gets shown when you spawn into the level. By default the value is "CUSTOM_LEVEL_LETS_GO", which is a specific localized key that is "Let's go!" in English.
-- (The 'Nest.tcsn' asset can also function as a 'start' checkpoint, but its behaviour has a lot of hard-coded nonsense in it so I don't recommend using it in your own levels, unless they mod the regular game - and even then, be careful to test it and not modify the geometry around the starting area too much)
+- (The 'Nest.tcsn' asset can also function as a 'start checkpoint', but its behaviour has a lot of hard-coded nonsense in it so I don't recommend using it in your own levels, unless they mod the regular game - and even then, be careful to test it and not modify the geometry around the starting area too much)
 
 <img height="300" alt="image" src="./map-editor-images/start_checkpoint.png" />
 
