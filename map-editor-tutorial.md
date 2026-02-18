@@ -96,10 +96,10 @@ In the top left of the screen you can see :
 ---
 
 ## 3. Camera and Movement (Editor Mode)
-- **WASD** : Move camera.
-- **Shift** : Faster movement.
-- **Q / E** : Down / Up.
-- **Z / C** : Rotate Left / Right.
+- **WASD** : Move camera
+- **Shift** : Faster movement
+- **Q / E** : Up / Down
+- **Z / C** : Rotate Left / Right
 - (don't forget : **TAB** toggles camera/cursor mouse-modes)
 
 ---
@@ -116,6 +116,22 @@ In the top left of the screen you can see :
 - **Alt + click** : Sample an existing block (eyedropper).
 - **Mouse wheel** or **"Shift+number keys"** : Change current tile.
 - **Ctrl + mouse wheel** or **- / +** : Change tile page.
+
+
+### 4.1b (Aside : Voxel Shapes and Rotation) 
+
+<img height="91" alt="image" src="./map-editor-images/shape_toolbar.png" />
+
+
+- The top-right toolbar includes ramps and other shapes.
+- **R** : Rotate selected shape.
+- **V** : Flip vertically.
+- The shortcuts are as listed above - note that an underscore **_** means to hold **Shift** while pressing the named key.
+- If you're drawing a plane and have the 45° slope selected, you drag the plane along the slope :
+
+<img height="300" alt="image" src="./map-editor-images/e16c5379-3e0a-472b-8729-d67dfd6a6890.png" />
+
+- Do *not* use the staircase block anywhere where the player might roll across it - it does not play well with egg physics.
 
 ### 4.2 Plane-Drag / Wall Tool <img height="30" src="./map-editor-images/tool_2.png" style="image-rendering : pixelated;" />
 
@@ -134,22 +150,6 @@ In the top left of the screen you can see :
 - Holding **Alt** while doing the above causes the initial point you click to be the *centre* of the plane rather than the corner.
 
 <img height="300" alt="image" src="./map-editor-images/082ad691-7389-431c-8dcd-d478a5997fc8.png" />
-
-
-### 4.2b (Aside : Voxel Shapes and Rotation) 
-
-<img height="91" alt="image" src="./map-editor-images/shape_toolbar.png" />
-
-
-- The top-right toolbar includes ramps and other shapes.
-- **R** : Rotate selected shape.
-- **V** : Flip vertically.
-- The shortcuts are as listed above - note that an underscore **_** means to hold **Shift** while pressing the named key.
-- If you're drawing a plane and have the 45° slope selected, you drag the plane along the slope :
-
-<img height="300" alt="image" src="./map-editor-images/e16c5379-3e0a-472b-8729-d67dfd6a6890.png" />
-
-- Do *not* use the staircase block anywhere where the player might roll across it - it does not play well with egg physics.
 
 ---
 
