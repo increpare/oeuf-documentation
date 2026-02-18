@@ -112,10 +112,10 @@ In the top left of the screen you can see :
 - **Right click** : Delete block.
 - **Shift + left click (hold)** : Rapid placement.
 - **Shift + right click (hold)** : Rapid deletion.
-- **Ctrl + left click** : Place a block one tile removed from the face you're targeting.
+- **Ctrl + left click** : Place a block one block removed from the face you're targeting.
 - **Alt + click** : Sample an existing block (eyedropper).
-- **Scroll-Wheel** or **Shift+number keys** : Change current tile.
-- **Ctrl + scroll-wheel** or **- / +** : Change tile page.
+- **Scroll-Wheel** or **Shift+number keys** : Change currently-selected tile-graphic in the left toolbar.
+- **Ctrl + scroll-wheel** or **- / +** : Change tile-graphic page in the left toolbar.
 
 
 ### 4.1b (Aside : Voxel Shapes and Rotation) 
@@ -174,10 +174,10 @@ In the top left of the screen you can see :
 
 Paints existing voxels.
 
-- **Alt + click** : Sample tile (including shape).
-- **Click** : Repaint.
+- **Alt + click** : Sample tile (including graphic and shape).
+- **Click** : Repaint
 - **Shift + scroll-wheel** : Adjust brush radius.
-- **Shift + click** : Replace all tiles of the pointed-at graphic in the current layer with the selected tile (undoable, but be careful).
+- **Shift + click** : Replace all tiles of the pointed-at tile-graphic in the current layer with the selected tile-graphic (undoable, but be careful).
 
 ---
 
@@ -210,7 +210,7 @@ Spherical modifier with an intensity meter (controlled with **Scroll-Wheel**) :
 
 Adds/removes a sphere!
 
-- **Scroll-Wheel** : Choose tile.
+- **Scroll-Wheel** : Choose tile-graphic.
 - **Shift + scroll-wheel** : Change sphere size.
 - **Left click** : Add a sphere.
 - **Shift + left click** : Centre sphere on cursor point.
@@ -224,7 +224,7 @@ Adds/removes a sphere!
 
 - **Click** : Smooth terrain by inserting appropriate edge pieces (using one of the neighbouring textures).
 - **Shift + scroll-wheel** : Change brush size.
-- **Shift + click** : Grout mode; fills seams using the current tile instead of smoothing.
+- **Shift + click** : Grout mode; smooths using the currently selected toolbar tile-graphic instead of picking a tile-graphic to match the surrounding terrain.
 
 <img height="300" alt="image" src="./map-editor-images/e15cd4e3-473d-4f49-ad7f-a26ea4e44354.png" />
 
@@ -243,7 +243,7 @@ Enter Object Mode by pressing **backtick** (if you have a different keyboard lay
 
 <img height="300" alt="image" src="./map-editor-images/object_mode.png" />
 
-In Object Mode there are two tools - *entity* placement and *trigger-box* placement.  Entities are things that are placed in the world that you can see and generally just occupy a single tile, like checkpoints and torches.  Trigger-boxes are larger areas, invisible to the player, where something happens if you enter them, like playing a music track, or displaying a message. 
+In Object Mode there are two tools - *entity* placement and *trigger-box* placement.  Entities are things that are placed in the world that you can see and are placed at a single coordinate, like checkpoints and torches.  Trigger-boxes are larger areas, invisible to the player, which trigger an effect when the player enters them, like playing a music track, or displaying a message. 
 
 ### 5.1 Entity Tool <img height="40" src="./map-editor-images/d7c0fbfe-3b7f-4003-b53a-f00957440e98.png" />
 
