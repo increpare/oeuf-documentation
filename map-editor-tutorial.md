@@ -78,11 +78,11 @@ If you have a map file, you can add it like this : (doesn't work on Steam Deck!)
 
 ### General commands :
 
-- **Ctrl + S** save
-- **F5** reload
-- **Ctrl + Z** undo
-- **Ctrl + Y** redo
-- **Ctrl + R** : randomly rotates all cubes with the currently-selected tile-graphic in the currently-selected layer.
+- **Ctrl + S** : Save
+- **F5** : Reload
+- **Ctrl + Z** : Undo
+- **Ctrl + Y** : Redo
+- **Ctrl + R** : Randomly rotates all *cube-shaped blocks* with the currently-selected texture in the currently-selected layer.
 
 <img width="322" height="142" alt="image" src="./map-editor-images/898dc489-160f-45db-b982-bb0d8608db64.png" />
 
@@ -114,8 +114,8 @@ In the top left of the screen you can see :
 - **Shift + right click (hold)** : Rapid deletion.
 - **Ctrl + left click** : Place a block one block removed from the face you're targeting.
 - **Alt + click** : Sample an existing block (eyedropper).
-- **Scroll-Wheel** or **Shift+number keys** : Change currently-selected tile-graphic in the left toolbar.
-- **Ctrl + scroll-wheel** or **- / +** : Change tile-graphic page in the left toolbar.
+- **Scroll-Wheel** or **Shift+number keys** : Change currently-selected block-texture in the left toolbar.
+- **Ctrl + scroll-wheel** or **- / +** : Change texture page in the left toolbar.
 
 
 ### 4.1b (Aside : Voxel Shapes and Rotation) 
@@ -174,10 +174,10 @@ In the top left of the screen you can see :
 
 Paints existing voxels.
 
-- **Alt + click** : Sample tile (including graphic and shape).
+- **Alt + click** : Sample block (including texture and shape).
 - **Click** : Repaint
 - **Shift + scroll-wheel** : Adjust brush radius.
-- **Shift + click** : Replace all tiles of the pointed-at tile-graphic in the current layer with the selected tile-graphic (undoable, but be careful).
+- **Shift + click** : Replace all blocks of the pointed-at texture in the current layer with the selected texture (undoable, but be careful).
 
 ---
 
@@ -210,7 +210,7 @@ Spherical modifier with an intensity meter (controlled with **Scroll-Wheel**) :
 
 Adds/removes a sphere!
 
-- **Scroll-Wheel** : Choose tile-graphic.
+- **Scroll-Wheel** : Choose texture.
 - **Shift + scroll-wheel** : Change sphere size.
 - **Left click** : Add a sphere.
 - **Shift + left click** : Centre sphere on cursor point.
@@ -224,7 +224,7 @@ Adds/removes a sphere!
 
 - **Click** : Smooth terrain by inserting appropriate edge pieces (using one of the neighbouring textures).
 - **Shift + scroll-wheel** : Change brush size.
-- **Shift + click** : Grout mode; smooths using the currently selected toolbar tile-graphic instead of picking a tile-graphic to match the surrounding terrain.
+- **Shift + click** : Grout mode; smooths using the currently selected toolbar texture instead of picking a texture to match the surrounding terrain.
 
 <img height="300" alt="image" src="./map-editor-images/e15cd4e3-473d-4f49-ad7f-a26ea4e44354.png" />
 
