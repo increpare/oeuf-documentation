@@ -149,24 +149,23 @@ To the top left of the screen you can see :
 
 <img height="300"  alt="image" src="./map-editor-images/a6d88753-b396-4f04-9792-af3de74201fa.png" />
 
-- **Click + Drag** to create a hollow rectangular box.
+- **Left-Click + Drag** to create a hollow box.
 - **Shift** while dragging : Removes end caps (for tunnels / open boxes).
 
 <img height="300"  alt="image" src="./map-editor-images/52efd428-d08a-4328-96e2-df69cec3cf48.png" />
 
 ### 4.5 <img src="./map-editor-images/tool_5.png" /> Paint Tool 
 
-Paints existing blocks.
-
-- **Alt + Click** : Sample block (including texture and shape).
-- **Click** : Repaint
+- **Left-Click** : Apply texture to block
+- **Right-Click** or **Alt + Left-Click** : Sample block texture and shape.
 - **Shift + Scroll-Wheel** : Adjust brush radius.
-- **Shift + Click** : Replace all blocks of the pointed-at texture in the current layer with the selected texture (undoable, but be careful).
+- **Shift + Left-Click** : Replace all blocks of the pointed-at texture in the current layer with the selected texture (undoable, but be careful).
 
 ---
 
 ### 4.6 <img src="./map-editor-images/tool_6.png" /> Hill-Dropper Tool 
-- Drops blocks from above to form organic hills.
+- **Left-Click** : Drop blocks from above to form organic hills.
+- **Right-Click** : Subtract hill-shape from terrain.
 - **Scroll-Wheel** : Hill height.
 - **Shift + Scroll-Wheel** : Hill width.
 - Useful for mountains and natural terrain; can be used to create 'geological'-looking layers.
