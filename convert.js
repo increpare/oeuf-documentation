@@ -37,10 +37,7 @@ const tocListHtml = headings.map(h => {
   const indent = '  '.repeat(h.level - minLevel);
   return `${indent}<li><a href="#${h.id}">${h.text}</a></li>`;
 }).join('\n');
-body = body.replace(
-  /<p>\[\[<em>TOC<\/em>\]\]<\/p>/,
-  `<nav class="my-4 p-3 rounded" style="background:var(--surface);border:1px solid var(--border)">\n<h5 class="mb-3">Contents</h5>\n<ul class="list-unstyled mb-0">\n${tocListHtml}\n</ul>\n</nav>`
-);
+
 
 // --- Light post-processing: just add Bootstrap utility classes to bare tags ---
 
@@ -74,8 +71,8 @@ const page = `<!DOCTYPE html>
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="vendor/bootstrap-icons/font/bootstrap-icons.min.css" rel="stylesheet">
   <style>
+    html { scroll-behavior: smooth; }
     :root {
-      scroll-padding-top: 5rem;
 
       --page-bg:       white;
       --surface:       #56d5eb;
@@ -118,7 +115,7 @@ const page = `<!DOCTYPE html>
       transition: background .15s, color .15s;
     }
     #sidebar-nav .nav-link.active {
-      background: var(--accent);
+      background: var(--chrome);
       color: #fff;
     }
     #sidebar-nav .nav-link:hover:not(.active) {
@@ -201,11 +198,14 @@ const page = `<!DOCTYPE html>
       box-shadow: none !important;
       image-rendering : pixelated !important;
     } 
-    
-    [id] { scroll-margin-top: 5rem; }
+
+    /* Targets of anchor links: keep them below the fixed navbar */
+    main [id] {
+      scroll-margin-top: 5rem;   /* match navbar height (e.g. 4.5rem–5rem) */
+    }
   </style>
 </head>
-<body data-bs-spy="scroll" data-bs-target="#sidebar-nav" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" tabindex="0">
+<body data-bs-spy="scroll" data-bs-target="#sidebar-nav" data-bs-root-margin="0px 0px -40%" tabindex="0">
 
   <nav class="navbar sticky-top shadow-sm">
     <div class="container-fluid px-3">
