@@ -202,21 +202,23 @@ Adds/removes a sphere!
 
 ---
 
-### 4.9 <img src="./map-editor-images/tool_9.png" /> Smooth / Grout Tool
+### 4.9 <img src="./map-editor-images/tool_9.png" /> Grout Tool
 
 <img height="300" alt="image" src="./map-editor-images/f3b4592d-4d5c-4eed-a9ba-f157b5dc7dcc.png" />
 
-- **Click** : Smooth terrain by inserting appropriate edge pieces (using one of the neighbouring textures).
+- **Left-Click** : Smooth terrain by adding appropriate edge pieces using one of the neighbouring textures.
+- **Ctrl + Click** : Smooths using the currently selected toolbar texture.
+- **Right-Click** : Removes non-cube blocks.
 - **Shift + Scroll-Wheel** : Change brush size.
-- **Shift + Click** : Grout mode; smooths using the currently selected toolbar texture instead of picking a texture to match the surrounding terrain.
 
 <img height="300" alt="image" src="./map-editor-images/e15cd4e3-473d-4f49-ad7f-a26ea4e44354.png" />
 
 ---
 
 ### 4.10 <img src="./map-editor-images/tool_0.png" /> Planar-Draw Tool 
-- **Click** and drag to draw on the current plane.
-- **Shift + Scroll-Wheel** raises and lowers the drawing plane.
+- **Left-Click** and drag : draw on the current plane.
+- **Right-Click** : Remove blocks
+- **Shift + Scroll-Wheel** : Raise / Lower the drawing plane.
 
 <img height="300" alt="image" src="./map-editor-images/5a7a12fe-4344-4d9e-aaeb-ea6050e37ab9.png" />
 
