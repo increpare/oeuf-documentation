@@ -66,6 +66,28 @@
     #sidebar-nav .nav-link:hover:not(.active) {
       background: var(--surface);
     }
+    #sidebar-nav .nav-link img,
+    #tocOffcanvas .nav-link img {
+      display: inline-block !important;
+      width: 1.15em;
+      height: 1.15em !important;
+      max-height: 1.15em !important;
+      margin-right: .35em;
+      vertical-align: -0.15em;
+      object-fit: contain;
+      box-shadow: none !important;
+      border-radius: 0 !important;
+      padding: 0 !important;
+      background: transparent !important;
+      filter: grayscale(1) brightness(0) saturate(100%);
+      opacity: .85;
+      image-rendering: auto !important;
+    }
+    #sidebar-nav .nav-link.active img,
+    #tocOffcanvas .nav-link.active img {
+      filter: brightness(0) invert(1);
+      opacity: 1;
+    }
 
     /* ── Content ── */
     .navbar-brand { 
@@ -197,40 +219,40 @@
 <a class="nav-link py-1 ms-3 small" href="#section-22-general-shortcuts">2.2 General Shortcuts</a>
 <a class="nav-link py-1 fw-semibold" href="#section-3-camera-and-movement-editor-mode">3. Camera and Movement (Editor Mode)</a>
 <a class="nav-link py-1 fw-semibold" href="#section-4-block-tools-">4. Block Tools</a>
-<a class="nav-link py-1 ms-3 small" href="#section-41-img-srcmap-editor-imagestool_1png--basic-block-placer">4.1  Basic Block Placer</a>
+<a class="nav-link py-1 ms-3 small" href="#section-41-img-srcmap-editor-imagestool_1png--basic-block-placer">4.1 <img src="./map-editor-images/tool_1.png" /> Basic Block Placer</a>
 <a class="nav-link py-1 ms-5 small" href="#section-41b-aside--block-shapes">4.1b (Aside : Block Shapes)</a>
-<a class="nav-link py-1 ms-3 small" href="#section-42-img-srcmap-editor-imagestool_2png--plane-drag--wall-tool">4.2  Plane-Drag / Wall Tool</a>
-<a class="nav-link py-1 ms-3 small" href="#section-43-img-srcmap-editor-imagestool_3png--extrude-tool">4.3  Extrude Tool</a>
-<a class="nav-link py-1 ms-3 small" href="#section-44-img-srcmap-editor-imagestool_4png--box-tool">4.4  Box Tool</a>
-<a class="nav-link py-1 ms-3 small" href="#section-45-img-srcmap-editor-imagestool_5png--paint-tool">4.5  Paint Tool</a>
-<a class="nav-link py-1 ms-3 small" href="#section-46-img-srcmap-editor-imagestool_6png--hill-dropper-tool">4.6  Hill-Dropper Tool</a>
-<a class="nav-link py-1 ms-3 small" href="#section-47-img-srcmap-editor-imagestool_7png--sculpt-tool">4.7  Sculpt Tool</a>
-<a class="nav-link py-1 ms-3 small" href="#section-48-img-srcmap-editor-imagestool_8png--sphere-tool">4.8  Sphere Tool</a>
-<a class="nav-link py-1 ms-3 small" href="#section-49-img-srcmap-editor-imagestool_9png--grout-tool">4.9  Grout Tool</a>
-<a class="nav-link py-1 ms-3 small" href="#section-410-img-srcmap-editor-imagestool_0png--planar-draw-tool">4.10  Planar-Draw Tool</a>
+<a class="nav-link py-1 ms-3 small" href="#section-42-img-srcmap-editor-imagestool_2png--plane-drag--wall-tool">4.2 <img src="./map-editor-images/tool_2.png" /> Plane-Drag / Wall Tool</a>
+<a class="nav-link py-1 ms-3 small" href="#section-43-img-srcmap-editor-imagestool_3png--extrude-tool">4.3 <img src="./map-editor-images/tool_3.png" /> Extrude Tool</a>
+<a class="nav-link py-1 ms-3 small" href="#section-44-img-srcmap-editor-imagestool_4png--box-tool">4.4 <img src="./map-editor-images/tool_4.png" /> Box Tool</a>
+<a class="nav-link py-1 ms-3 small" href="#section-45-img-srcmap-editor-imagestool_5png--paint-tool">4.5 <img src="./map-editor-images/tool_5.png" /> Paint Tool</a>
+<a class="nav-link py-1 ms-3 small" href="#section-46-img-srcmap-editor-imagestool_6png--hill-dropper-tool">4.6 <img src="./map-editor-images/tool_6.png" /> Hill-Dropper Tool</a>
+<a class="nav-link py-1 ms-3 small" href="#section-47-img-srcmap-editor-imagestool_7png--sculpt-tool">4.7 <img src="./map-editor-images/tool_7.png" /> Sculpt Tool</a>
+<a class="nav-link py-1 ms-3 small" href="#section-48-img-srcmap-editor-imagestool_8png--sphere-tool">4.8 <img src="./map-editor-images/tool_8.png" /> Sphere Tool</a>
+<a class="nav-link py-1 ms-3 small" href="#section-49-img-srcmap-editor-imagestool_9png--grout-tool">4.9 <img src="./map-editor-images/tool_9.png" /> Grout Tool</a>
+<a class="nav-link py-1 ms-3 small" href="#section-410-img-srcmap-editor-imagestool_0png--planar-draw-tool">4.10 <img src="./map-editor-images/tool_0.png" /> Planar-Draw Tool</a>
 <a class="nav-link py-1 fw-semibold" href="#section-5-object-mode">5. Object Mode</a>
-<a class="nav-link py-1 ms-3 small" href="#section-51-img-srcmap-editor-imagesobject_tool_entitypng--entity-tool">5.1  Entity Tool</a>
-<a class="nav-link py-1 ms-5 small" href="#section-511-img-srcmap-editor-imagesentity_1_bonfire_startpng--start-checkpoint">5.1.1  Start-Checkpoint</a>
-<a class="nav-link py-1 ms-5 small" href="#section-512-img-srcmap-editor-imagesentity_2_bonfirepng--normal-checkpoint">5.1.2  Normal Checkpoint</a>
-<a class="nav-link py-1 ms-5 small" href="#section-513-img-srcmap-editor-imagesentity_3_bonfire_endpng--end-checkpoint">5.1.3  End-Checkpoint</a>
-<a class="nav-link py-1 ms-5 small" href="#section-514-img-srcmap-editor-imagesentity_4_torchpng--torch">5.1.4  Torch</a>
-<a class="nav-link py-1 ms-5 small" href="#section-515-img-srcmap-editor-imagesentity_5_starpng--star">5.1.5  Star</a>
-<a class="nav-link py-1 ms-5 small" href="#section-516-img-srcmap-editor-imagesentity_6_chairpng--chair">5.1.6  Chair</a>
-<a class="nav-link py-1 ms-5 small" href="#section-517-img-srcmap-editor-imagesentity_7_tablepng--table">5.1.7  Table</a>
+<a class="nav-link py-1 ms-3 small" href="#section-51-img-srcmap-editor-imagesobject_tool_entitypng--entity-tool">5.1 <img src="./map-editor-images/object_tool_entity.png" /> Entity Tool</a>
+<a class="nav-link py-1 ms-5 small" href="#section-511-img-srcmap-editor-imagesentity_1_bonfire_startpng--start-checkpoint">5.1.1 <img src="./map-editor-images/entity_1_Bonfire_Start.png" /> Start-Checkpoint</a>
+<a class="nav-link py-1 ms-5 small" href="#section-512-img-srcmap-editor-imagesentity_2_bonfirepng--normal-checkpoint">5.1.2 <img src="./map-editor-images/entity_2_Bonfire.png" /> Normal Checkpoint</a>
+<a class="nav-link py-1 ms-5 small" href="#section-513-img-srcmap-editor-imagesentity_3_bonfire_endpng--end-checkpoint">5.1.3 <img src="./map-editor-images/entity_3_Bonfire_End.png" /> End-Checkpoint</a>
+<a class="nav-link py-1 ms-5 small" href="#section-514-img-srcmap-editor-imagesentity_4_torchpng--torch">5.1.4 <img src="./map-editor-images/entity_4_Torch.png" /> Torch</a>
+<a class="nav-link py-1 ms-5 small" href="#section-515-img-srcmap-editor-imagesentity_5_starpng--star">5.1.5 <img src="./map-editor-images/entity_5_Star.png" /> Star</a>
+<a class="nav-link py-1 ms-5 small" href="#section-516-img-srcmap-editor-imagesentity_6_chairpng--chair">5.1.6 <img src="./map-editor-images/entity_6_Chair.png" /> Chair</a>
+<a class="nav-link py-1 ms-5 small" href="#section-517-img-srcmap-editor-imagesentity_7_tablepng--table">5.1.7 <img src="./map-editor-images/entity_7_Table.png" /> Table</a>
 <a class="nav-link py-1 ms-5 small" href="#section-518-other-entities">5.1.8 Other entities</a>
-<a class="nav-link py-1 ms-3 small" href="#section-52-img-srcmap-editor-imagesobject_tool_triggerpng--trigger-box-tool">5.2  Trigger-Box Tool</a>
-<a class="nav-link py-1 ms-5 small" href="#section-521-img-srcmap-editor-imagestrigger_1_musicpng--music">5.2.1  music</a>
-<a class="nav-link py-1 ms-5 small" href="#section-522-img-srcmap-editor-imagestrigger_2_arealabelpng--arealabel">5.2.2  arealabel</a>
-<a class="nav-link py-1 ms-5 small" href="#section-523-img-srcmap-editor-imagestrigger_3_killboxpng--killbox">5.2.3  KILLBOX</a>
-<a class="nav-link py-1 ms-5 small" href="#section-524-img-srcmap-editor-imagestrigger_4_torchpng--torch">5.2.4  TORCH</a>
-<a class="nav-link py-1 ms-5 small" href="#section-525-img-srcmap-editor-imagestrigger_5_advancedpng--generic-trigger-boxes">5.2.5  Generic Trigger-Boxes</a>
+<a class="nav-link py-1 ms-3 small" href="#section-52-img-srcmap-editor-imagesobject_tool_triggerpng--trigger-box-tool">5.2 <img src="./map-editor-images/object_tool_trigger.png" /> Trigger-Box Tool</a>
+<a class="nav-link py-1 ms-5 small" href="#section-521-img-srcmap-editor-imagestrigger_1_musicpng--music">5.2.1 <img src="./map-editor-images/trigger_1_music.png" /> music</a>
+<a class="nav-link py-1 ms-5 small" href="#section-522-img-srcmap-editor-imagestrigger_2_arealabelpng--arealabel">5.2.2 <img src="./map-editor-images/trigger_2_arealabel.png" /> arealabel</a>
+<a class="nav-link py-1 ms-5 small" href="#section-523-img-srcmap-editor-imagestrigger_3_killboxpng--killbox">5.2.3 <img src="./map-editor-images/trigger_3_killbox.png" /> KILLBOX</a>
+<a class="nav-link py-1 ms-5 small" href="#section-524-img-srcmap-editor-imagestrigger_4_torchpng--torch">5.2.4 <img src="./map-editor-images/trigger_4_torch.png" /> TORCH</a>
+<a class="nav-link py-1 ms-5 small" href="#section-525-img-srcmap-editor-imagestrigger_5_advancedpng--generic-trigger-boxes">5.2.5 <img src="./map-editor-images/trigger_5_advanced.png" /> Generic Trigger-Boxes</a>
 <a class="nav-link py-1 fw-semibold" href="#section-6-layer-mode--large‑scale-editing">6. Layer Mode : Large‑Scale Editing</a>
 <a class="nav-link py-1 ms-3 small" href="#section-61-layer-visibility">6.1 Layer Visibility</a>
 <a class="nav-link py-1 ms-3 small" href="#section-62-layer-tools">6.2 Layer Tools</a>
-<a class="nav-link py-1 ms-5 small" href="#section-621-img-srcmap-editor-imageslayer_transform_tool_iconpng--layer-selection--transformation-tool">6.2.1  Layer Selection / Transformation tool</a>
-<a class="nav-link py-1 ms-5 small" href="#section-622-img-srcmap-editor-imageslayer_assignment_tool_iconpng--layer-assignment-tool">6.2.2  Layer-Assignment Tool</a>
-<a class="nav-link py-1 ms-3 small" href="#section-63-img-srcmap-editor-imageslayer_copypng--copy--img-srcmap-editor-imageslayer_pastepng--paste-layers">6.3  Copy /  Paste Layers</a>
-<a class="nav-link py-1 fw-semibold" href="#section-7-img-srcmap-editor-imagesupload_iconpng--upload-to-steam-workshop">7.  Upload to Steam Workshop</a>
+<a class="nav-link py-1 ms-5 small" href="#section-621-img-srcmap-editor-imageslayer_transform_tool_iconpng--layer-selection--transformation-tool">6.2.1 <img src="./map-editor-images/layer_transform_tool_icon.png" /> Layer Selection / Transformation tool</a>
+<a class="nav-link py-1 ms-5 small" href="#section-622-img-srcmap-editor-imageslayer_assignment_tool_iconpng--layer-assignment-tool">6.2.2 <img src="./map-editor-images/layer_assignment_tool_icon.png" /> Layer-Assignment Tool</a>
+<a class="nav-link py-1 ms-3 small" href="#section-63-img-srcmap-editor-imageslayer_copypng--copy--img-srcmap-editor-imageslayer_pastepng--paste-layers">6.3 <img src="./map-editor-images/layer_copy.png" /> Copy / <img src="./map-editor-images/layer_paste.png" /> Paste Layers</a>
+<a class="nav-link py-1 fw-semibold" href="#section-7-img-srcmap-editor-imagesupload_iconpng--upload-to-steam-workshop">7. <img src="./map-editor-images/upload_icon.png" /> Upload to Steam Workshop</a>
 <a class="nav-link py-1 fw-semibold" href="#section-8-feedback-and-bug-reports">8. Feedback and bug reports</a></nav>
     </div>
   </div>
@@ -249,40 +271,40 @@
 <a class="nav-link py-1 ms-3 small" href="#section-22-general-shortcuts">2.2 General Shortcuts</a>
 <a class="nav-link py-1 fw-semibold" href="#section-3-camera-and-movement-editor-mode">3. Camera and Movement (Editor Mode)</a>
 <a class="nav-link py-1 fw-semibold" href="#section-4-block-tools-">4. Block Tools</a>
-<a class="nav-link py-1 ms-3 small" href="#section-41-img-srcmap-editor-imagestool_1png--basic-block-placer">4.1  Basic Block Placer</a>
+<a class="nav-link py-1 ms-3 small" href="#section-41-img-srcmap-editor-imagestool_1png--basic-block-placer">4.1 <img src="./map-editor-images/tool_1.png" /> Basic Block Placer</a>
 <a class="nav-link py-1 ms-5 small" href="#section-41b-aside--block-shapes">4.1b (Aside : Block Shapes)</a>
-<a class="nav-link py-1 ms-3 small" href="#section-42-img-srcmap-editor-imagestool_2png--plane-drag--wall-tool">4.2  Plane-Drag / Wall Tool</a>
-<a class="nav-link py-1 ms-3 small" href="#section-43-img-srcmap-editor-imagestool_3png--extrude-tool">4.3  Extrude Tool</a>
-<a class="nav-link py-1 ms-3 small" href="#section-44-img-srcmap-editor-imagestool_4png--box-tool">4.4  Box Tool</a>
-<a class="nav-link py-1 ms-3 small" href="#section-45-img-srcmap-editor-imagestool_5png--paint-tool">4.5  Paint Tool</a>
-<a class="nav-link py-1 ms-3 small" href="#section-46-img-srcmap-editor-imagestool_6png--hill-dropper-tool">4.6  Hill-Dropper Tool</a>
-<a class="nav-link py-1 ms-3 small" href="#section-47-img-srcmap-editor-imagestool_7png--sculpt-tool">4.7  Sculpt Tool</a>
-<a class="nav-link py-1 ms-3 small" href="#section-48-img-srcmap-editor-imagestool_8png--sphere-tool">4.8  Sphere Tool</a>
-<a class="nav-link py-1 ms-3 small" href="#section-49-img-srcmap-editor-imagestool_9png--grout-tool">4.9  Grout Tool</a>
-<a class="nav-link py-1 ms-3 small" href="#section-410-img-srcmap-editor-imagestool_0png--planar-draw-tool">4.10  Planar-Draw Tool</a>
+<a class="nav-link py-1 ms-3 small" href="#section-42-img-srcmap-editor-imagestool_2png--plane-drag--wall-tool">4.2 <img src="./map-editor-images/tool_2.png" /> Plane-Drag / Wall Tool</a>
+<a class="nav-link py-1 ms-3 small" href="#section-43-img-srcmap-editor-imagestool_3png--extrude-tool">4.3 <img src="./map-editor-images/tool_3.png" /> Extrude Tool</a>
+<a class="nav-link py-1 ms-3 small" href="#section-44-img-srcmap-editor-imagestool_4png--box-tool">4.4 <img src="./map-editor-images/tool_4.png" /> Box Tool</a>
+<a class="nav-link py-1 ms-3 small" href="#section-45-img-srcmap-editor-imagestool_5png--paint-tool">4.5 <img src="./map-editor-images/tool_5.png" /> Paint Tool</a>
+<a class="nav-link py-1 ms-3 small" href="#section-46-img-srcmap-editor-imagestool_6png--hill-dropper-tool">4.6 <img src="./map-editor-images/tool_6.png" /> Hill-Dropper Tool</a>
+<a class="nav-link py-1 ms-3 small" href="#section-47-img-srcmap-editor-imagestool_7png--sculpt-tool">4.7 <img src="./map-editor-images/tool_7.png" /> Sculpt Tool</a>
+<a class="nav-link py-1 ms-3 small" href="#section-48-img-srcmap-editor-imagestool_8png--sphere-tool">4.8 <img src="./map-editor-images/tool_8.png" /> Sphere Tool</a>
+<a class="nav-link py-1 ms-3 small" href="#section-49-img-srcmap-editor-imagestool_9png--grout-tool">4.9 <img src="./map-editor-images/tool_9.png" /> Grout Tool</a>
+<a class="nav-link py-1 ms-3 small" href="#section-410-img-srcmap-editor-imagestool_0png--planar-draw-tool">4.10 <img src="./map-editor-images/tool_0.png" /> Planar-Draw Tool</a>
 <a class="nav-link py-1 fw-semibold" href="#section-5-object-mode">5. Object Mode</a>
-<a class="nav-link py-1 ms-3 small" href="#section-51-img-srcmap-editor-imagesobject_tool_entitypng--entity-tool">5.1  Entity Tool</a>
-<a class="nav-link py-1 ms-5 small" href="#section-511-img-srcmap-editor-imagesentity_1_bonfire_startpng--start-checkpoint">5.1.1  Start-Checkpoint</a>
-<a class="nav-link py-1 ms-5 small" href="#section-512-img-srcmap-editor-imagesentity_2_bonfirepng--normal-checkpoint">5.1.2  Normal Checkpoint</a>
-<a class="nav-link py-1 ms-5 small" href="#section-513-img-srcmap-editor-imagesentity_3_bonfire_endpng--end-checkpoint">5.1.3  End-Checkpoint</a>
-<a class="nav-link py-1 ms-5 small" href="#section-514-img-srcmap-editor-imagesentity_4_torchpng--torch">5.1.4  Torch</a>
-<a class="nav-link py-1 ms-5 small" href="#section-515-img-srcmap-editor-imagesentity_5_starpng--star">5.1.5  Star</a>
-<a class="nav-link py-1 ms-5 small" href="#section-516-img-srcmap-editor-imagesentity_6_chairpng--chair">5.1.6  Chair</a>
-<a class="nav-link py-1 ms-5 small" href="#section-517-img-srcmap-editor-imagesentity_7_tablepng--table">5.1.7  Table</a>
+<a class="nav-link py-1 ms-3 small" href="#section-51-img-srcmap-editor-imagesobject_tool_entitypng--entity-tool">5.1 <img src="./map-editor-images/object_tool_entity.png" /> Entity Tool</a>
+<a class="nav-link py-1 ms-5 small" href="#section-511-img-srcmap-editor-imagesentity_1_bonfire_startpng--start-checkpoint">5.1.1 <img src="./map-editor-images/entity_1_Bonfire_Start.png" /> Start-Checkpoint</a>
+<a class="nav-link py-1 ms-5 small" href="#section-512-img-srcmap-editor-imagesentity_2_bonfirepng--normal-checkpoint">5.1.2 <img src="./map-editor-images/entity_2_Bonfire.png" /> Normal Checkpoint</a>
+<a class="nav-link py-1 ms-5 small" href="#section-513-img-srcmap-editor-imagesentity_3_bonfire_endpng--end-checkpoint">5.1.3 <img src="./map-editor-images/entity_3_Bonfire_End.png" /> End-Checkpoint</a>
+<a class="nav-link py-1 ms-5 small" href="#section-514-img-srcmap-editor-imagesentity_4_torchpng--torch">5.1.4 <img src="./map-editor-images/entity_4_Torch.png" /> Torch</a>
+<a class="nav-link py-1 ms-5 small" href="#section-515-img-srcmap-editor-imagesentity_5_starpng--star">5.1.5 <img src="./map-editor-images/entity_5_Star.png" /> Star</a>
+<a class="nav-link py-1 ms-5 small" href="#section-516-img-srcmap-editor-imagesentity_6_chairpng--chair">5.1.6 <img src="./map-editor-images/entity_6_Chair.png" /> Chair</a>
+<a class="nav-link py-1 ms-5 small" href="#section-517-img-srcmap-editor-imagesentity_7_tablepng--table">5.1.7 <img src="./map-editor-images/entity_7_Table.png" /> Table</a>
 <a class="nav-link py-1 ms-5 small" href="#section-518-other-entities">5.1.8 Other entities</a>
-<a class="nav-link py-1 ms-3 small" href="#section-52-img-srcmap-editor-imagesobject_tool_triggerpng--trigger-box-tool">5.2  Trigger-Box Tool</a>
-<a class="nav-link py-1 ms-5 small" href="#section-521-img-srcmap-editor-imagestrigger_1_musicpng--music">5.2.1  music</a>
-<a class="nav-link py-1 ms-5 small" href="#section-522-img-srcmap-editor-imagestrigger_2_arealabelpng--arealabel">5.2.2  arealabel</a>
-<a class="nav-link py-1 ms-5 small" href="#section-523-img-srcmap-editor-imagestrigger_3_killboxpng--killbox">5.2.3  KILLBOX</a>
-<a class="nav-link py-1 ms-5 small" href="#section-524-img-srcmap-editor-imagestrigger_4_torchpng--torch">5.2.4  TORCH</a>
-<a class="nav-link py-1 ms-5 small" href="#section-525-img-srcmap-editor-imagestrigger_5_advancedpng--generic-trigger-boxes">5.2.5  Generic Trigger-Boxes</a>
+<a class="nav-link py-1 ms-3 small" href="#section-52-img-srcmap-editor-imagesobject_tool_triggerpng--trigger-box-tool">5.2 <img src="./map-editor-images/object_tool_trigger.png" /> Trigger-Box Tool</a>
+<a class="nav-link py-1 ms-5 small" href="#section-521-img-srcmap-editor-imagestrigger_1_musicpng--music">5.2.1 <img src="./map-editor-images/trigger_1_music.png" /> music</a>
+<a class="nav-link py-1 ms-5 small" href="#section-522-img-srcmap-editor-imagestrigger_2_arealabelpng--arealabel">5.2.2 <img src="./map-editor-images/trigger_2_arealabel.png" /> arealabel</a>
+<a class="nav-link py-1 ms-5 small" href="#section-523-img-srcmap-editor-imagestrigger_3_killboxpng--killbox">5.2.3 <img src="./map-editor-images/trigger_3_killbox.png" /> KILLBOX</a>
+<a class="nav-link py-1 ms-5 small" href="#section-524-img-srcmap-editor-imagestrigger_4_torchpng--torch">5.2.4 <img src="./map-editor-images/trigger_4_torch.png" /> TORCH</a>
+<a class="nav-link py-1 ms-5 small" href="#section-525-img-srcmap-editor-imagestrigger_5_advancedpng--generic-trigger-boxes">5.2.5 <img src="./map-editor-images/trigger_5_advanced.png" /> Generic Trigger-Boxes</a>
 <a class="nav-link py-1 fw-semibold" href="#section-6-layer-mode--large‑scale-editing">6. Layer Mode : Large‑Scale Editing</a>
 <a class="nav-link py-1 ms-3 small" href="#section-61-layer-visibility">6.1 Layer Visibility</a>
 <a class="nav-link py-1 ms-3 small" href="#section-62-layer-tools">6.2 Layer Tools</a>
-<a class="nav-link py-1 ms-5 small" href="#section-621-img-srcmap-editor-imageslayer_transform_tool_iconpng--layer-selection--transformation-tool">6.2.1  Layer Selection / Transformation tool</a>
-<a class="nav-link py-1 ms-5 small" href="#section-622-img-srcmap-editor-imageslayer_assignment_tool_iconpng--layer-assignment-tool">6.2.2  Layer-Assignment Tool</a>
-<a class="nav-link py-1 ms-3 small" href="#section-63-img-srcmap-editor-imageslayer_copypng--copy--img-srcmap-editor-imageslayer_pastepng--paste-layers">6.3  Copy /  Paste Layers</a>
-<a class="nav-link py-1 fw-semibold" href="#section-7-img-srcmap-editor-imagesupload_iconpng--upload-to-steam-workshop">7.  Upload to Steam Workshop</a>
+<a class="nav-link py-1 ms-5 small" href="#section-621-img-srcmap-editor-imageslayer_transform_tool_iconpng--layer-selection--transformation-tool">6.2.1 <img src="./map-editor-images/layer_transform_tool_icon.png" /> Layer Selection / Transformation tool</a>
+<a class="nav-link py-1 ms-5 small" href="#section-622-img-srcmap-editor-imageslayer_assignment_tool_iconpng--layer-assignment-tool">6.2.2 <img src="./map-editor-images/layer_assignment_tool_icon.png" /> Layer-Assignment Tool</a>
+<a class="nav-link py-1 ms-3 small" href="#section-63-img-srcmap-editor-imageslayer_copypng--copy--img-srcmap-editor-imageslayer_pastepng--paste-layers">6.3 <img src="./map-editor-images/layer_copy.png" /> Copy / <img src="./map-editor-images/layer_paste.png" /> Paste Layers</a>
+<a class="nav-link py-1 fw-semibold" href="#section-7-img-srcmap-editor-imagesupload_iconpng--upload-to-steam-workshop">7. <img src="./map-editor-images/upload_icon.png" /> Upload to Steam Workshop</a>
 <a class="nav-link py-1 fw-semibold" href="#section-8-feedback-and-bug-reports">8. Feedback and bug reports</a></nav>
         </div>
       </aside>

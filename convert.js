@@ -27,8 +27,9 @@ let m;
 while ((m = headingRe.exec(body)) !== null) {
   const level = parseInt(m[1]);
   const id = m[2];
-  let text = m[3].replace(/<[^>]+>/g, '').replace(/\s*:\s*$/, '').trim();
-  headings.push({ level, id, text });
+  const html = m[3].replace(/\s*:\s*$/, '').trim();
+  const text = html.replace(/<[^>]+>/g, '').trim();
+  headings.push({ level, id, text, html });
 }
 
 // --- Expand [[_TOC_]] into a generated table of contents ---
@@ -58,7 +59,7 @@ const sidebarHtml = headings
     const cls = h.level === 2 ? 'fw-semibold'
               : h.level === 3 ? 'ms-3 small'
               : 'ms-5 small';
-    return `<a class="nav-link py-1 ${cls}" href="#${h.id}">${h.text}</a>`;
+    return `<a class="nav-link py-1 ${cls}" href="#${h.id}">${h.html}</a>`;
   }).join('\n');
 
 // --- Assemble page ---
@@ -129,6 +130,28 @@ const page = `<!DOCTYPE html>
     }
     #sidebar-nav .nav-link:hover:not(.active) {
       background: var(--surface);
+    }
+    #sidebar-nav .nav-link img,
+    #tocOffcanvas .nav-link img {
+      display: inline-block !important;
+      width: 1.15em;
+      height: 1.15em !important;
+      max-height: 1.15em !important;
+      margin-right: .35em;
+      vertical-align: -0.15em;
+      object-fit: contain;
+      box-shadow: none !important;
+      border-radius: 0 !important;
+      padding: 0 !important;
+      background: transparent !important;
+      filter: grayscale(1) brightness(0) saturate(100%);
+      opacity: .85;
+      image-rendering: auto !important;
+    }
+    #sidebar-nav .nav-link.active img,
+    #tocOffcanvas .nav-link.active img {
+      filter: brightness(0) invert(1);
+      opacity: 1;
     }
 
     /* ── Content ── */
