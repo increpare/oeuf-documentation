@@ -78,6 +78,7 @@ const page = `<!DOCTYPE html>
       --surface:       #56d5eb;
       --border:        #f0dfc0;
       --chrome:        #c79cba;
+      --selected-icon-color: #94c758;
       --heading:       #0d2e5f;
       --heading-outline-color: black;
       --heading-outline-width: 1px;
@@ -96,6 +97,14 @@ const page = `<!DOCTYPE html>
       color: var(--text-color); 
     }
 
+    .entity-icon {
+      display: inline-block;
+      width: 50px;
+      height: 50px;
+      background-color: var(--chrome);
+      border-radius: 5px;
+      padding: 5px;
+    }
     /* ── Navbar ── */
     .navbar { background: var(--chrome) !important; }
 
@@ -136,6 +145,7 @@ const page = `<!DOCTYPE html>
     .navbar  {
       /*drop shadow*/
     }
+      
     main h2 { color: var(--heading); border-color: var(--border) !important; }
     main h3 { color: var(--heading-sub); }
     main h4 { color: var(--heading-minor); }
@@ -182,6 +192,15 @@ const page = `<!DOCTYPE html>
     footer a:hover { color: #fff !important; }
 
     
+    h2 > img.d-block {
+      display: inline !important;
+      height: 50px !important;
+      box-shadow: none !important;
+      border-radius: 5px !important;
+      background-color: var(--chrome) !important;
+      padding: 5px !important;
+      /*image-rendering : pixelated !important; don't pixelate this one*/
+    } 
     h3 > img.d-block {
       display: inline !important;
       height: 50px !important;
@@ -196,6 +215,9 @@ const page = `<!DOCTYPE html>
       display: inline !important;
       height: 50px !important;
       box-shadow: none !important;
+      border-radius: 5px !important;
+      background-color: var(--selected-icon-color) !important;
+      padding: 5px !important;
       image-rendering : pixelated !important;
     } 
 
