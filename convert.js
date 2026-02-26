@@ -98,7 +98,7 @@ const page = `<!DOCTYPE html>
       color: var(--text-color); 
     }
 
-    .entity-icon {
+    .object-icon {
       display: inline-block;
       width: 50px;
       height: 50px;

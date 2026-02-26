@@ -58,7 +58,7 @@ If you have a map file, you can add it like this (doesn't work on Steam Deck!) :
 - **Space** : Exits edit mode and spawns you where you're pointing at.
 - **Backtick** (**`** or whatever key is to the left of the '1' on your keyboard) to cycle between :
   - **Block Mode** : Editing terrain
-  - **Object Mode** : Checkpoints, props, trigger-boxes
+  - **Entity Mode** : Checkpoints, props, trigger-boxes
   - **Layer Mode** : Moving large sections of terrain
 
 ### 2.2 General Shortcuts
@@ -224,21 +224,21 @@ Adds/removes a sphere!
 
 ---
 
-## 5. Object Mode
-Enter Object Mode by pressing **Backtick** **`** until the Object UI appears.
+## 5. Entity Mode
+Enter Entity Mode by pressing **Backtick** **`** until the Entity UI appears.
 
-<img height="300" alt="image" src="./map-editor-images/object_mode.png" />
+<img height="300" alt="image" src="./map-editor-images/entity_mode.png" />
 
-In Object Mode there are two tools - *entity* placement and *trigger-box* placement.  Entities are things that are placed in the world that you can see and are placed at a single coordinate, like checkpoints and torches.  Trigger-boxes are larger areas, invisible to the player, which trigger an effect when the player enters them, like playing a music track, or displaying a message. 
+In Entity Mode there are two tools - *object* placement and *trigger-box* placement.  Objects are things that are placed in the world that you can see and are placed at a single coordinate, like checkpoints and torches.  Trigger-boxes are larger areas, invisible to the player, which trigger an effect when the player enters them, like playing a music track, or displaying a message. 
 
-### 5.1 <img src="./map-editor-images/object_tool_entity.png" /> Entity Tool 
+### 5.1 <img src="./map-editor-images/entity_tool_object.png" /> Object Tool 
 
-This mode has two brushes, one for placing entities, another for placing trigger-boxes.  
+This mode has two brushes, one for placing objects, another for placing trigger-boxes.  
 
 - **Left-Click** to place/select
 - **Right-Click** to delete
    
-#### 5.1.1 <img src="./map-editor-images/entity_1_Bonfire_Start.png" /> Start-Checkpoint 
+#### 5.1.1 <img src="./map-editor-images/object_1_Bonfire_Start.png" /> Start-Checkpoint 
 
 - Every level *must* include a **Start-Checkpoint**.
 - This is where the player spawns in custom levels, but looks just like a normal checkpoint.
@@ -247,23 +247,23 @@ This mode has two brushes, one for placing entities, another for placing trigger
 
 <img height="300" alt="image" src="./map-editor-images/start_checkpoint.png" />
 
-#### 5.1.2 <img src="./map-editor-images/entity_2_Bonfire.png" /> Normal Checkpoint 
+#### 5.1.2 <img src="./map-editor-images/object_2_Bonfire.png" /> Normal Checkpoint 
 - Totally normal checkpoint.
 - You can set the area_name tag to whatever you want to display when the player activates it.
 - If you want to trigger music when you reach the point, or spawn back to it, you have to use a music trigger-box for that.
 
-#### 5.1.3 <img src="./map-editor-images/entity_3_Bonfire_End.png" /> End-Checkpoint 
+#### 5.1.3 <img src="./map-editor-images/object_3_Bonfire_End.png" /> End-Checkpoint 
 - Unlike the main game, custom levels don't really have a proper final checkpoint (unless they use the nest).  This is just a normal checkpoint really.
 - By default the area_name tag is "CUSTOM_LEVEL_YOU_MADE_IT", which is localized to "You made it!" in English. But you can put whatever you want in there.
 
-#### 5.1.4 <img src="./map-editor-images/entity_4_Torch.png" /> Torch 
+#### 5.1.4 <img src="./map-editor-images/object_4_Torch.png" /> Torch 
 
-<img height="300" alt="image" src="./map-editor-images/entity_torch_example.png" />
+<img height="300" alt="image" src="./map-editor-images/object_torch_example.png" />
 
 - What it looks like.  Nice if things are getting a bit dark innit.
 - But don't overdo it, each torch has a light and the cost might add up.
 
-#### 5.1.5 <img src="./map-editor-images/entity_5_Star.png" /> Star 
+#### 5.1.5 <img src="./map-editor-images/object_5_Star.png" /> Star 
 
 <img height="300"  alt="image" src="./map-editor-images/star_shot.png" />
 
@@ -272,23 +272,23 @@ This mode has two brushes, one for placing entities, another for placing trigger
 - Makes a nice sound when you collect them and shows you how many you've collected vs total in the level.
 - Totally optional and of no consequence (I implemented these thinking I might want to put them in the main game, but decided better of it in the end).
 
-#### 5.1.6 <img src="./map-editor-images/entity_6_Chair.png" /> Chair 
+#### 5.1.6 <img src="./map-editor-images/object_6_Chair.png" /> Chair 
 
-<img height="300" alt="image" src="./map-editor-images/entity_chair_example.png" />
-
-Just a bit of geometry.  Not used in the main game.
-
-#### 5.1.7 <img src="./map-editor-images/entity_7_Table.png" /> Table 
-
-<img height="300" alt="image" src="./map-editor-images/entity_table_example.png" />
+<img height="300" alt="image" src="./map-editor-images/object_chair_example.png" />
 
 Just a bit of geometry.  Not used in the main game.
 
-#### 5.1.8 Other entities
+#### 5.1.7 <img src="./map-editor-images/object_7_Table.png" /> Table 
 
-There are other objects in the game, accessible via the asset_name dropdown in the object info panel, but they contain weird/hacky behaviour specific to the main game, so I don't recommend using them.  Stuff like the Nest.tscn object that just has a lot of hard-coded and very particular behaviour that I don't want to explain.  However, modifying the main game map should be safe enough, even though it contains these objects - just be careful of modifying these objects or their surroundings in-game if you come across them!
+<img height="300" alt="image" src="./map-editor-images/object_table_example.png" />
 
-### 5.2 <img src="./map-editor-images/object_tool_trigger.png" /> Trigger-Box Tool 
+Just a bit of geometry.  Not used in the main game.
+
+#### 5.1.8 Other objects
+
+There are other objects in the game, accessible via the asset_name dropdown in the entity info panel, but they contain weird/hacky behaviour specific to the main game, so I don't recommend using them.  Stuff like the Nest.tscn object that just has a lot of hard-coded and very particular behaviour that I don't want to explain.  However, modifying the main game map should be safe enough, even though it contains these objects - just be careful of modifying these objects or their surroundings in-game if you come across them!
+
+### 5.2 <img src="./map-editor-images/entity_tool_trigger.png" /> Trigger-Box Tool 
 
 - Trigger-boxes are big invisible areas that do something when the player enters them.
 
