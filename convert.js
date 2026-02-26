@@ -250,7 +250,7 @@ const page = `<!DOCTYPE html>
     }
   </style>
 </head>
-<body data-bs-spy="scroll" data-bs-target="#sidebar-nav" data-bs-root-margin="0px 0px -40%" tabindex="0">
+<body>
 
   <nav class="navbar sticky-top shadow-sm">
     <div class="container-fluid px-3">
@@ -275,7 +275,7 @@ const page = `<!DOCTYPE html>
       <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body">
-      <nav class="nav flex-column">${sidebarHtml}</nav>
+      <nav id="toc-nav" class="nav flex-column">${sidebarHtml}</nav>
     </div>
   </div>
 
@@ -312,6 +312,57 @@ const page = `<!DOCTYPE html>
   <script>
     const btnTop = document.getElementById('btnTop');
     addEventListener('scroll', () => btnTop.classList.toggle('show', scrollY > 400));
+
+    // Keep the latest passed section active in nav (no "empty" state between headings).
+    const headingEls = Array.from(document.querySelectorAll('main h2[id], main h3[id], main h4[id]'));
+    const navLinks = Array.from(document.querySelectorAll('#sidebar-nav .nav-link, #toc-nav .nav-link'));
+    const linksById = new Map();
+
+    navLinks.forEach(link => {
+      const id = decodeURIComponent(link.getAttribute('href')?.slice(1) || '');
+      if (!id) return;
+      if (!linksById.has(id)) linksById.set(id, []);
+      linksById.get(id).push(link);
+    });
+
+    const setActiveById = (id) => {
+      navLinks.forEach(link => link.classList.remove('active'));
+      const activeLinks = linksById.get(id);
+      activeLinks?.forEach(link => link.classList.add('active'));
+      // Scroll sidebar (and offcanvas TOC) so the active link stays in view
+      activeLinks?.forEach(link => link.scrollIntoView({ block: 'nearest', behavior: 'smooth' }));
+    };
+
+    const updateActiveSection = () => {
+      if (!headingEls.length) return;
+      const activationOffset = 96; // fixed navbar height + breathing room
+      let activeId = headingEls[0].id;
+
+      for (const heading of headingEls) {
+        if (heading.getBoundingClientRect().top <= activationOffset) {
+          activeId = heading.id;
+        } else {
+          break;
+        }
+      }
+
+      setActiveById(activeId);
+    };
+
+    let ticking = false;
+    const onScrollUpdateActive = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        updateActiveSection();
+        ticking = false;
+      });
+    };
+
+    addEventListener('scroll', onScrollUpdateActive, { passive: true });
+    addEventListener('resize', onScrollUpdateActive);
+    addEventListener('load', updateActiveSection);
+    updateActiveSection();
 
     const oc = document.getElementById('tocOffcanvas');
     oc?.querySelectorAll('.nav-link').forEach(a =>
