@@ -41,10 +41,22 @@ const tocListHtml = headings.map(h => {
 
 
 // --- Light post-processing: just add Bootstrap utility classes to bare tags ---
+const defaultImgClasses = ['img-fluid', 'rounded', 'shadow-sm', 'd-block', 'my-3'];
+const mergeClasses = (attrText, classesToAdd) => {
+  const classRe = /\bclass=(["'])(.*?)\1/i;
+  const m = attrText.match(classRe);
+  if (!m) {
+    return ` class="${classesToAdd.join(' ')}"${attrText}`;
+  }
+
+  const existing = m[2].trim().split(/\s+/).filter(Boolean);
+  const merged = [...new Set([...existing, ...classesToAdd])];
+  return attrText.replace(classRe, `class="${merged.join(' ')}"`);
+};
 
 body = body
   .replace(/<table(?=[>\s])/g,  '<table class="table table-striped table-bordered"')
-  .replace(/<img(?=\s)/g,       '<img class="img-fluid rounded shadow-sm d-block my-3"')
+  .replace(/<img\b([^>]*)>/g,   (_, attrs) => `<img${mergeClasses(attrs, defaultImgClasses)}>`)
   .replace(/<blockquote>/g,     '<blockquote class="blockquote border-start border-3 ps-3 py-1 my-3">')
   .replace(/<pre>/g,            '<pre class="rounded p-3 border">')
   .replace(/<hr\s*\/?>/g,       '<hr class="my-5 opacity-0">')
@@ -194,6 +206,17 @@ const page = `<!DOCTYPE html>
     main hr { border-color: var(--border); }
 
     main img { max-height: 380px; }
+    main img.img-inline {
+      display: inline !important;
+      margin: 0 !important;
+      width: auto !important;
+      max-height: 1.2em;
+      vertical-align: -0.12em;
+      box-shadow: none !important;
+      border-radius: 0 !important;
+      padding: 0 !important;
+      background: transparent !important;
+    }
 
     /* ── Offcanvas ── */
     .offcanvas { --bs-offcanvas-width: 280px; }

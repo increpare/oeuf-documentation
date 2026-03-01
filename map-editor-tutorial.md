@@ -331,6 +331,7 @@ Arealabel trigger-boxes show a message on screen when the player enters, indepen
 
 - Special trigger-boxes (drawn red in the editor for easy identification) that cause the player to die on contact the next time you touch some horizontal-ish level geometry (Ramps should also kill).
 - Useful for hazards and boundaries.
+- If you enter a killbox, you are internally marked as 'doomed' - you will not trigger any checkpoints in this mode until you restart.
 
 #### 5.2.4 <img src="./map-editor-images/trigger_4_torch.png" /> TORCH 
 While players are inside the trigger, they emit light. Handy for subtly making dark areas easier to understand without needing to place loads of torch props, which can be expensive/distracting.
@@ -363,7 +364,8 @@ Cycle to Layer Mode with **Backtick** (**`**).
 
 <img height="300" alt="image" src="./map-editor-images/layer_transform_example.png" />
 
-- Use the layer selection tool to pick a layer by clicking geometry.
+- **Left-Click** to select a layer.
+- Use the layer selection tool to manipulate the selected layer.
 - You can then **move**, **rotate**, or **mirror/flip** the entire layer.
 - Only one block can occupy a single position - if you drag one layer to overlap another, blocks are going to get deleted from one of the layers!
 
@@ -371,25 +373,54 @@ Cycle to Layer Mode with **Backtick** (**`**).
 
 #### 6.2.2 <img src="./map-editor-images/layer_assignment_tool_icon.png" /> Layer-Assignment Tool 
 
-- Drag a box; all blocks inside become part of the currently selected layer.
+- **Left-Click** and drag out a box : all visible blocks and entities inside get assigned to the currently selected layer.
 - Useful for fixing pieces assigned to the wrong layer.
 
 <img height="300" alt="image" src="./map-editor-images/layer_assignment_example.png" />
 
 ---
 
-### 6.3 <img src="./map-editor-images/layer_copy.png" /> Copy / <img src="./map-editor-images/layer_paste.png" /> Paste Layers
+### 6.3 <img src="./map-editor-images/layer_clipboard.png" /> Clipboard
 
-- Copy a selected layer/group and paste it as a brush.
-- Select the Copy tool (3) and click anywhere to copy the current layer to the clipboard.
-- Select paste and move (not rotate) your camera - note that you can now see the outline of the layer move with your camera - click to paste a copy of the copied layer.
+- **Left-Click** on a layer to copy it to the clipboard.
+- **Right-Click** paste the contents of the  clipboard in the indicated position (the purple box).
+- **Ctrl + C** copy the currently selected layer to the clipboard.
 - You can copy/paste between different files!
 
 <img height="300" src="./map-editor-images/layer_copy_paste_example.png" />
 
 ---
 
-## 7. <img src="./map-editor-images/upload_icon.png" /> Upload to Steam Workshop
+## 7. Layer List
+
+<img height="300" src="./map-editor-images/layer_list_view.png" />
+
+- On the right-hand side of the screen you have the list of layers, with some buttons.
+- Empty layers are shown with a red tint in the layer list so you can spot them easily.
+
+### 7.1 <img src="./map-editor-images/layer_item_up_down.png" /> Move Layer Up/Down
+
+Rearranges layers.
+
+### 7.2 <img src="./map-editor-images/layer_item_visible.png" /> Visibility
+
+Toggles the visibility of the layer (visible: <img class="img-inline" src="./map-editor-images/layer_item_visible_black.png" />, hidden: <img class="img-inline" src="./map-editor-images/layer_item_invisible_black.png" />).
+
+### 7.3 <img src="./map-editor-images/layer_item_delete.png" /> Delete
+
+Deletes the layer.
+
+### 7.4 <img src="./map-editor-images/layer_item_merge_up.png" /> Merge Up
+
+Merges the layer into the layer above it.
+
+### 7.5 <img src="./map-editor-images/layer_item_new.png" /> New Layer
+
+Creates a new empty layer.
+
+---
+
+## 8. <img src="./map-editor-images/upload_icon.png" /> Upload to Steam Workshop
 
 Uploading to Steam Workshop is a pretty easy affair - when you're happy with your level, just hit the steam button in the toolbar :
 
@@ -407,6 +438,6 @@ If you wish to customize the details further you can do it from that page.  The 
 
 ---
 
-## 8. Feedback and bug reports
+## 9. Feedback and bug reports
 
 Does this make sense? I hope so - feedback and bug reports always welcome : e-mail me at [analytic@gmail.com](mailto:analytic@gmail.com) .

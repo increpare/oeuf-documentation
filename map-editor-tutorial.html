@@ -129,6 +129,17 @@
     main hr { border-color: var(--border); }
 
     main img { max-height: 380px; }
+    main img.img-inline {
+      display: inline !important;
+      margin: 0 !important;
+      width: auto !important;
+      max-height: 1.2em;
+      vertical-align: -0.12em;
+      box-shadow: none !important;
+      border-radius: 0 !important;
+      padding: 0 !important;
+      background: transparent !important;
+    }
 
     /* ── Offcanvas ── */
     .offcanvas { --bs-offcanvas-width: 280px; }
@@ -251,9 +262,15 @@
 <a class="nav-link py-1 ms-3 small" href="#section-62-layer-tools">6.2 Layer Tools</a>
 <a class="nav-link py-1 ms-5 small" href="#section-621-img-srcmap-editor-imageslayer_transform_tool_iconpng--layer-selection--transformation-tool">6.2.1 <img src="./map-editor-images/layer_transform_tool_icon.png" /> Layer Selection / Transformation tool</a>
 <a class="nav-link py-1 ms-5 small" href="#section-622-img-srcmap-editor-imageslayer_assignment_tool_iconpng--layer-assignment-tool">6.2.2 <img src="./map-editor-images/layer_assignment_tool_icon.png" /> Layer-Assignment Tool</a>
-<a class="nav-link py-1 ms-3 small" href="#section-63-img-srcmap-editor-imageslayer_copypng--copy--img-srcmap-editor-imageslayer_pastepng--paste-layers">6.3 <img src="./map-editor-images/layer_copy.png" /> Copy / <img src="./map-editor-images/layer_paste.png" /> Paste Layers</a>
-<a class="nav-link py-1 fw-semibold" href="#section-7-img-srcmap-editor-imagesupload_iconpng--upload-to-steam-workshop">7. <img src="./map-editor-images/upload_icon.png" /> Upload to Steam Workshop</a>
-<a class="nav-link py-1 fw-semibold" href="#section-8-feedback-and-bug-reports">8. Feedback and bug reports</a></nav>
+<a class="nav-link py-1 ms-3 small" href="#section-63-img-srcmap-editor-imageslayer_clipboardpng--clipboard">6.3 <img src="./map-editor-images/layer_clipboard.png" /> Clipboard</a>
+<a class="nav-link py-1 fw-semibold" href="#section-7-layer-list">7. Layer List</a>
+<a class="nav-link py-1 ms-3 small" href="#section-71-img-srcmap-editor-imageslayer_item_up_downpng--move-layer-updown">7.1 <img src="./map-editor-images/layer_item_up_down.png" /> Move Layer Up/Down</a>
+<a class="nav-link py-1 ms-3 small" href="#section-72-img-srcmap-editor-imageslayer_item_visiblepng--visibility">7.2 <img src="./map-editor-images/layer_item_visible.png" /> Visibility</a>
+<a class="nav-link py-1 ms-3 small" href="#section-73-img-srcmap-editor-imageslayer_item_deletepng--delete">7.3 <img src="./map-editor-images/layer_item_delete.png" /> Delete</a>
+<a class="nav-link py-1 ms-3 small" href="#section-74-img-srcmap-editor-imageslayer_item_merge_uppng--merge-up">7.4 <img src="./map-editor-images/layer_item_merge_up.png" /> Merge Up</a>
+<a class="nav-link py-1 ms-3 small" href="#section-75-img-srcmap-editor-imageslayer_item_newpng--new-layer">7.5 <img src="./map-editor-images/layer_item_new.png" /> New Layer</a>
+<a class="nav-link py-1 fw-semibold" href="#section-8-img-srcmap-editor-imagesupload_iconpng--upload-to-steam-workshop">8. <img src="./map-editor-images/upload_icon.png" /> Upload to Steam Workshop</a>
+<a class="nav-link py-1 fw-semibold" href="#section-9-feedback-and-bug-reports">9. Feedback and bug reports</a></nav>
     </div>
   </div>
 
@@ -303,9 +320,15 @@
 <a class="nav-link py-1 ms-3 small" href="#section-62-layer-tools">6.2 Layer Tools</a>
 <a class="nav-link py-1 ms-5 small" href="#section-621-img-srcmap-editor-imageslayer_transform_tool_iconpng--layer-selection--transformation-tool">6.2.1 <img src="./map-editor-images/layer_transform_tool_icon.png" /> Layer Selection / Transformation tool</a>
 <a class="nav-link py-1 ms-5 small" href="#section-622-img-srcmap-editor-imageslayer_assignment_tool_iconpng--layer-assignment-tool">6.2.2 <img src="./map-editor-images/layer_assignment_tool_icon.png" /> Layer-Assignment Tool</a>
-<a class="nav-link py-1 ms-3 small" href="#section-63-img-srcmap-editor-imageslayer_copypng--copy--img-srcmap-editor-imageslayer_pastepng--paste-layers">6.3 <img src="./map-editor-images/layer_copy.png" /> Copy / <img src="./map-editor-images/layer_paste.png" /> Paste Layers</a>
-<a class="nav-link py-1 fw-semibold" href="#section-7-img-srcmap-editor-imagesupload_iconpng--upload-to-steam-workshop">7. <img src="./map-editor-images/upload_icon.png" /> Upload to Steam Workshop</a>
-<a class="nav-link py-1 fw-semibold" href="#section-8-feedback-and-bug-reports">8. Feedback and bug reports</a></nav>
+<a class="nav-link py-1 ms-3 small" href="#section-63-img-srcmap-editor-imageslayer_clipboardpng--clipboard">6.3 <img src="./map-editor-images/layer_clipboard.png" /> Clipboard</a>
+<a class="nav-link py-1 fw-semibold" href="#section-7-layer-list">7. Layer List</a>
+<a class="nav-link py-1 ms-3 small" href="#section-71-img-srcmap-editor-imageslayer_item_up_downpng--move-layer-updown">7.1 <img src="./map-editor-images/layer_item_up_down.png" /> Move Layer Up/Down</a>
+<a class="nav-link py-1 ms-3 small" href="#section-72-img-srcmap-editor-imageslayer_item_visiblepng--visibility">7.2 <img src="./map-editor-images/layer_item_visible.png" /> Visibility</a>
+<a class="nav-link py-1 ms-3 small" href="#section-73-img-srcmap-editor-imageslayer_item_deletepng--delete">7.3 <img src="./map-editor-images/layer_item_delete.png" /> Delete</a>
+<a class="nav-link py-1 ms-3 small" href="#section-74-img-srcmap-editor-imageslayer_item_merge_uppng--merge-up">7.4 <img src="./map-editor-images/layer_item_merge_up.png" /> Merge Up</a>
+<a class="nav-link py-1 ms-3 small" href="#section-75-img-srcmap-editor-imageslayer_item_newpng--new-layer">7.5 <img src="./map-editor-images/layer_item_new.png" /> New Layer</a>
+<a class="nav-link py-1 fw-semibold" href="#section-8-img-srcmap-editor-imagesupload_iconpng--upload-to-steam-workshop">8. <img src="./map-editor-images/upload_icon.png" /> Upload to Steam Workshop</a>
+<a class="nav-link py-1 fw-semibold" href="#section-9-feedback-and-bug-reports">9. Feedback and bug reports</a></nav>
         </div>
       </aside>
       <main class="col-lg-9 py-4 px-4 px-lg-5"><p>If you prefer a video version of the tutorial, here's one: <a href="https://youtu.be/BCKunr3oAbc">https://youtu.be/BCKunr3oAbc</a></p>
@@ -590,6 +613,7 @@
 <ul>
 <li>Special trigger-boxes (drawn red in the editor for easy identification) that cause the player to die on contact the next time you touch some horizontal-ish level geometry (Ramps should also kill).</li>
 <li>Useful for hazards and boundaries.</li>
+<li>If you enter a killbox, you are internally marked as 'doomed' - you will not trigger any checkpoints in this mode until you restart.</li>
 </ul>
 <h4 class="mt-3 mb-2 opacity-75" id="section-524-img-srcmap-editor-imagestrigger_4_torchpng--torch">5.2.4 <img class="img-fluid rounded shadow-sm d-block my-3" src="./map-editor-images/trigger_4_torch.png" /> TORCH</h4>
 <p>While players are inside the trigger, they emit light. Handy for subtly making dark areas easier to understand without needing to place loads of torch props, which can be expensive/distracting.</p>
@@ -613,28 +637,46 @@
 <h4 class="mt-3 mb-2 opacity-75" id="section-621-img-srcmap-editor-imageslayer_transform_tool_iconpng--layer-selection--transformation-tool">6.2.1 <img class="img-fluid rounded shadow-sm d-block my-3" src="./map-editor-images/layer_transform_tool_icon.png" /> Layer Selection / Transformation tool</h4>
 <p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/layer_transform_example.png" /></p>
 <ul>
-<li>Use the layer selection tool to pick a layer by clicking geometry.</li>
+<li><strong>Left-Click</strong> to select a layer.</li>
+<li>Use the layer selection tool to manipulate the selected layer.</li>
 <li>You can then <strong>move</strong>, <strong>rotate</strong>, or <strong>mirror/flip</strong> the entire layer.</li>
 <li>Only one block can occupy a single position - if you drag one layer to overlap another, blocks are going to get deleted from one of the layers!</li>
 </ul>
 <hr class="my-5 opacity-0">
 <h4 class="mt-3 mb-2 opacity-75" id="section-622-img-srcmap-editor-imageslayer_assignment_tool_iconpng--layer-assignment-tool">6.2.2 <img class="img-fluid rounded shadow-sm d-block my-3" src="./map-editor-images/layer_assignment_tool_icon.png" /> Layer-Assignment Tool</h4>
 <ul>
-<li>Drag a box; all blocks inside become part of the currently selected layer.</li>
+<li><strong>Left-Click</strong> and drag out a box : all visible blocks and entities inside get assigned to the currently selected layer.</li>
 <li>Useful for fixing pieces assigned to the wrong layer.</li>
 </ul>
 <p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/layer_assignment_example.png" /></p>
 <hr class="my-5 opacity-0">
-<h3 class="mt-4 mb-3" id="section-63-img-srcmap-editor-imageslayer_copypng--copy--img-srcmap-editor-imageslayer_pastepng--paste-layers">6.3 <img class="img-fluid rounded shadow-sm d-block my-3" src="./map-editor-images/layer_copy.png" /> Copy / <img class="img-fluid rounded shadow-sm d-block my-3" src="./map-editor-images/layer_paste.png" /> Paste Layers</h3>
+<h3 class="mt-4 mb-3" id="section-63-img-srcmap-editor-imageslayer_clipboardpng--clipboard">6.3 <img class="img-fluid rounded shadow-sm d-block my-3" src="./map-editor-images/layer_clipboard.png" /> Clipboard</h3>
 <ul>
-<li>Copy a selected layer/group and paste it as a brush.</li>
-<li>Select the Copy tool (3) and click anywhere to copy the current layer to the clipboard.</li>
-<li>Select paste and move (not rotate) your camera - note that you can now see the outline of the layer move with your camera - click to paste a copy of the copied layer.</li>
+<li><strong>Left-Click</strong> on a layer to copy it to the clipboard.</li>
+<li><strong>Right-Click</strong> paste the contents of the  clipboard in the indicated position (the purple box).</li>
+<li><strong>Ctrl + C</strong> copy the currently selected layer to the clipboard.</li>
 <li>You can copy/paste between different files!</li>
 </ul>
 <p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" src="./map-editor-images/layer_copy_paste_example.png" /></p>
 <hr class="my-5 opacity-0">
-<h2 class="mt-5 mb-3 pb-2 border-bottom" id="section-7-img-srcmap-editor-imagesupload_iconpng--upload-to-steam-workshop">7. <img class="img-fluid rounded shadow-sm d-block my-3" src="./map-editor-images/upload_icon.png" /> Upload to Steam Workshop</h2>
+<h2 class="mt-5 mb-3 pb-2 border-bottom" id="section-7-layer-list">7. Layer List</h2>
+<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" src="./map-editor-images/layer_list_view.png" /></p>
+<ul>
+<li>On the right-hand side of the screen you have the list of layers, with some buttons.</li>
+<li>Empty layers are shown with a red tint in the layer list so you can spot them easily.</li>
+</ul>
+<h3 class="mt-4 mb-3" id="section-71-img-srcmap-editor-imageslayer_item_up_downpng--move-layer-updown">7.1 <img class="img-fluid rounded shadow-sm d-block my-3" src="./map-editor-images/layer_item_up_down.png" /> Move Layer Up/Down</h3>
+<p>Rearranges layers.</p>
+<h3 class="mt-4 mb-3" id="section-72-img-srcmap-editor-imageslayer_item_visiblepng--visibility">7.2 <img class="img-fluid rounded shadow-sm d-block my-3" src="./map-editor-images/layer_item_visible.png" /> Visibility</h3>
+<p>Toggles the visibility of the layer (visible: <img class="img-inline img-fluid rounded shadow-sm d-block my-3" src="./map-editor-images/layer_item_visible_black.png" />, hidden: <img class="img-inline img-fluid rounded shadow-sm d-block my-3" src="./map-editor-images/layer_item_invisible_black.png" />).</p>
+<h3 class="mt-4 mb-3" id="section-73-img-srcmap-editor-imageslayer_item_deletepng--delete">7.3 <img class="img-fluid rounded shadow-sm d-block my-3" src="./map-editor-images/layer_item_delete.png" /> Delete</h3>
+<p>Deletes the layer.</p>
+<h3 class="mt-4 mb-3" id="section-74-img-srcmap-editor-imageslayer_item_merge_uppng--merge-up">7.4 <img class="img-fluid rounded shadow-sm d-block my-3" src="./map-editor-images/layer_item_merge_up.png" /> Merge Up</h3>
+<p>Merges the layer into the layer above it.</p>
+<h3 class="mt-4 mb-3" id="section-75-img-srcmap-editor-imageslayer_item_newpng--new-layer">7.5 <img class="img-fluid rounded shadow-sm d-block my-3" src="./map-editor-images/layer_item_new.png" /> New Layer</h3>
+<p>Creates a new empty layer.</p>
+<hr class="my-5 opacity-0">
+<h2 class="mt-5 mb-3 pb-2 border-bottom" id="section-8-img-srcmap-editor-imagesupload_iconpng--upload-to-steam-workshop">8. <img class="img-fluid rounded shadow-sm d-block my-3" src="./map-editor-images/upload_icon.png" /> Upload to Steam Workshop</h2>
 <p>Uploading to Steam Workshop is a pretty easy affair - when you're happy with your level, just hit the steam button in the toolbar :</p>
 <p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" src="./map-editor-images/workshop_upload.png" /></p>
 <p>Click on this, and wait for a moment, and you will see a message when the upload is complete, and it should open the Steam Workshop page as well.</p>
@@ -643,7 +685,7 @@
 <p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" src="./map-editor-images/workshop_page_appearance.png" /></p>
 <p>If you wish to customize the details further you can do it from that page.  The mod is associated with the file name of the map - if you resave the file it will update your level on the Steam Workshop.</p>
 <hr class="my-5 opacity-0">
-<h2 class="mt-5 mb-3 pb-2 border-bottom" id="section-8-feedback-and-bug-reports">8. Feedback and bug reports</h2>
+<h2 class="mt-5 mb-3 pb-2 border-bottom" id="section-9-feedback-and-bug-reports">9. Feedback and bug reports</h2>
 <p>Does this make sense? I hope so - feedback and bug reports always welcome : e-mail me at <a href="mailto:analytic@gmail.com">analytic@gmail.com</a> .</p></main>
     </div>
   </div>
