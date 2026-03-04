@@ -1,6 +1,6 @@
 # [OEUF](https://store.steampowered.com/app/3831080/Oeuf/) MAP-EGGITOR TUTORIAL
 
-If you prefer a video version of the tutorial, here's one: [https://youtu.be/BCKunr3oAbc](https://youtu.be/BCKunr3oAbc)
+> **If you prefer a video-tutorial, click here: [https://youtu.be/brkR8vVeSMg](https://youtu.be/brkR8vVeSMg)**
 
 ## 0. Adding Player-Made Maps
 

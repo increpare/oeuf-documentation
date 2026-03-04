@@ -58,6 +58,7 @@ body = body
   .replace(/<table(?=[>\s])/g,  '<table class="table table-striped table-bordered"')
   .replace(/<img\b([^>]*)>/g,   (_, attrs) => `<img${mergeClasses(attrs, defaultImgClasses)}>`)
   .replace(/<blockquote>/g,     '<blockquote class="blockquote border-start border-3 ps-3 py-1 my-3">')
+  .replace(/<blockquote class="blockquote border-start border-3 ps-3 py-1 my-3">/, '<blockquote class="blockquote border-start border-3 ps-3 py-1 my-3 video-callout">')
   .replace(/<pre>/g,            '<pre class="rounded p-3 border">')
   .replace(/<hr\s*\/?>/g,       '<hr class="my-5 opacity-0">')
   .replace(/<h2 /g,             '<h2 class="mt-5 mb-3 pb-2 border-bottom" ')
@@ -189,6 +190,13 @@ const page = `<!DOCTYPE html>
     main strong { 
       color: var(--strong-text-color); 
     }
+    main blockquote strong {
+      color: var(--heading);
+    }
+    main blockquote strong a {
+      color: blue;   
+    }
+
     main code {
       background: var(--surface);
       border: 1px solid var(--border);
@@ -203,6 +211,15 @@ const page = `<!DOCTYPE html>
     }
     main pre code { border: none; padding: 0; background: transparent; }
     main blockquote { border-color: var(--accent) !important; }
+    main blockquote.video-callout {
+      background: #fce4ec;
+      border-radius: .5rem;
+      padding: 1rem 1.25rem !important;
+      margin: 1rem 0;
+      display: inline-block;
+      border: none !important;
+    }
+    main blockquote.video-callout p:last-child { margin-bottom: 0; }
     main hr { border-color: var(--border); }
 
     main img { max-height: 380px; }
@@ -281,7 +298,7 @@ const page = `<!DOCTYPE html>
         OEUF MAP-EGGITOR TUTORIAL
       </a>
       <div class="d-flex gap-2">
-        <a href="https://youtu.be/BCKunr3oAbc" class="btn btn-sm btn-outline-light d-none d-md-inline-flex align-items-center gap-1" target="_blank" rel="noopener">
+        <a href="https://youtu.be/brkR8vVeSMg" class="btn btn-sm btn-outline-light d-none d-md-inline-flex align-items-center gap-1" target="_blank" rel="noopener">
           <i class="bi bi-youtube"></i> Video Tutorial
         </a>
         <button class="btn btn-sm btn-outline-light d-lg-none" type="button"

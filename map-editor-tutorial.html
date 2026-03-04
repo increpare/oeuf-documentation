@@ -112,6 +112,13 @@
     main strong { 
       color: var(--strong-text-color); 
     }
+    main blockquote strong {
+      color: var(--heading);
+    }
+    main blockquote strong a {
+      color: blue;   
+    }
+
     main code {
       background: var(--surface);
       border: 1px solid var(--border);
@@ -126,6 +133,15 @@
     }
     main pre code { border: none; padding: 0; background: transparent; }
     main blockquote { border-color: var(--accent) !important; }
+    main blockquote.video-callout {
+      background: #fce4ec;
+      border-radius: .5rem;
+      padding: 1rem 1.25rem !important;
+      margin: 1rem 0;
+      display: inline-block;
+      border: none !important;
+    }
+    main blockquote.video-callout p:last-child { margin-bottom: 0; }
     main hr { border-color: var(--border); }
 
     main img { max-height: 380px; }
@@ -204,7 +220,7 @@
         OEUF MAP-EGGITOR TUTORIAL
       </a>
       <div class="d-flex gap-2">
-        <a href="https://youtu.be/BCKunr3oAbc" class="btn btn-sm btn-outline-light d-none d-md-inline-flex align-items-center gap-1" target="_blank" rel="noopener">
+        <a href="https://youtu.be/brkR8vVeSMg" class="btn btn-sm btn-outline-light d-none d-md-inline-flex align-items-center gap-1" target="_blank" rel="noopener">
           <i class="bi bi-youtube"></i> Video Tutorial
         </a>
         <button class="btn btn-sm btn-outline-light d-lg-none" type="button"
@@ -331,7 +347,9 @@
 <a class="nav-link py-1 fw-semibold" href="#section-9-feedback-and-bug-reports">9. Feedback and bug reports</a></nav>
         </div>
       </aside>
-      <main class="col-lg-9 py-4 px-4 px-lg-5"><p>If you prefer a video version of the tutorial, here's one: <a href="https://youtu.be/BCKunr3oAbc">https://youtu.be/BCKunr3oAbc</a></p>
+      <main class="col-lg-9 py-4 px-4 px-lg-5"><blockquote class="blockquote border-start border-3 ps-3 py-1 my-3 video-callout">
+  <p><strong>If you prefer a video-tutorial, click here: <a href="https://youtu.be/brkR8vVeSMg">https://youtu.be/brkR8vVeSMg</a></strong></p>
+</blockquote>
 <h2 class="mt-5 mb-3 pb-2 border-bottom" id="section-0-adding-player-made-maps">0. Adding Player-Made Maps</h2>
 <p>There are two ways to add maps by other people - if you already have the file, you can add it manually, or if you want to download it from steam workshop, you can do that too.</p>
 <h3 class="mt-4 mb-3" id="section-01-adding-maps-manually">0.1 Adding Maps Manually</h3>
