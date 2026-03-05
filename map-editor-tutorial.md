@@ -143,7 +143,7 @@ To the top left of the screen you can see :
 
 <img height="300" alt="image" src="./map-editor-images/extrude_irregular_shape.png" />
 
-- **Right‑Mouse-Button** Nothing to do with extrude, really, more a "delete everything inside this box" tool.
+- **Right‑Click** Nothing to do with extrude, really, more a "delete everything inside this box" tool.
 
 ### 4.4 <img src="./map-editor-images/tool_4.png" /> Box Tool 
 
