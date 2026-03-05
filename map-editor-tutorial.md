@@ -361,7 +361,7 @@ Cycle to Layer Mode with **Backtick** (**`**).
 
 ### 6.2 Layer Tools
 
-#### 6.2.1 <img src="./map-editor-images/layer_transform_tool_icon.png" /> Layer-Transform tool 
+#### 6.2.1 <img src="./map-editor-images/layer_transform_tool_icon.png" /> Layer-Transform Tool 
 
 <img height="300" alt="image" src="./map-editor-images/layer_transform_example.png" />
 
