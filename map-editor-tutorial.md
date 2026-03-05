@@ -74,7 +74,10 @@ If you have a map file, you can add it like this (doesn't work on Steam Deck!) :
 To the top left of the screen you can see :
 
 - the current map name (change and press enter to save as a new file)
-- the dropdown menu - it lists all **built-in maps** (e.g., `minimal`, `eggworld`), alongside those you have saved in your level folder (N.B. built-in maps are read-only. You can save them under other files names though!)
+- the dropdown menu - it lists all **built-in maps** (e.g., `minimal`, `eggworld`), **Steam Workshop maps**, alongside **user maps** you have saved in your level folder (N.B. built-in and Steam Workshopmaps are <em>read-only</em>. You can save them under other files names though!)
+
+<img height="300" alt="image" src="./map-editor-images/file_dropdown.png" />
+
 - the button to open up the levels folder (shortcut : **Ctrl+L**).
 
 ---
