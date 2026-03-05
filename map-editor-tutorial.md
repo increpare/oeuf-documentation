@@ -151,6 +151,7 @@ To the top left of the screen you can see :
 
 - **Left-Click + Drag** to create a hollow box.
 - **Shift** while dragging : Removes end caps (for tunnels / open boxes).
+- **Right-Click** : Carve out a room.
 
 <img height="300"  alt="image" src="./map-editor-images/box_tool_no_end_caps.png" />
 
@@ -374,6 +375,7 @@ Cycle to Layer Mode with **Backtick** (**`**).
 #### 6.2.2 <img src="./map-editor-images/layer_assignment_tool_icon.png" /> Layer-Assignment Tool 
 
 - **Left-Click** and drag out a box : all visible blocks and entities inside get assigned to the currently selected layer.
+- **Alt + Left-Click** select highlighted layer.
 - Useful for fixing pieces assigned to the wrong layer.
 
 <img height="300" alt="image" src="./map-editor-images/layer_assignment_example.png" />
