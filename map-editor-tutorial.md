@@ -1,6 +1,6 @@
 # [OEUF](https://store.steampowered.com/app/3831080/Oeuf/) MAP-EGGITOR TUTORIAL
 
-> **If you prefer a video-tutorial, click here: [https://youtu.be/brkR8vVeSMg](https://youtu.be/brkR8vVeSMg)**
+> **If you prefer a video tutorial, click here: [https://youtu.be/brkR8vVeSMg](https://youtu.be/brkR8vVeSMg)**
 
 ## 0. Adding Player-Made Maps
 
@@ -34,27 +34,27 @@ If you have a map file, you can add it like this (doesn't work on Steam Deck!) :
 
 <img height="300" alt="image" src="./map-editor-images/map_in_list.png" />
 
-## 1. Enabling the Map-Editor
+## 1. Enabling the Map Editor
 1. Open **Settings** :
 
 <img height="300" alt="image" src="./map-editor-images/settings_menu.png" />
 
 2. Enable **Map-Editor**.
 3. Load into a level (custom levels are easiest to work with - the main game level has hard-coded stuff).
-4. Press **Tab** to open the map-editor.
+4. Press **Tab** to open the map editor.
 
 <img height="300" alt="image" src="./map-editor-images/map_editor_opened.png" />
 
 
 ---
 
-## 2. Basic Workflow in the Map-Editor
+## 2. Basic Workflow in the Map Editor
 
 ### 2.1 Map-Editor Modes
 
 - **Tab**
-  - If you're in-game, it opens the map-editor!
-  - In the map-editor, it toggles mouse control between camera-look and cursor-pointing.
+  - If you're in-game, it opens the map editor!
+  - In the map editor, it toggles mouse control between camera-look and cursor-pointing.
 - **Space** : Exits edit mode and spawns you where you're pointing at.
 - **Backtick** (**`** or whatever key is to the left of the '1' on your keyboard) to cycle between :
   - **Block Mode** : Editing terrain
@@ -67,14 +67,14 @@ If you have a map file, you can add it like this (doesn't work on Steam Deck!) :
 - **F5** : Reload
 - **Ctrl + Z** : Undo
 - **Ctrl + Y** : Redo
-- **Ctrl + R** : Randomly rotates all *cube-shaped blocks* with the currently-selected texture in the currently-selected layer.
+- **Ctrl + R** : Randomly rotates all *cube-shaped blocks* with the currently selected texture in the currently selected layer.
 
 <img width="322" height="142" alt="image" src="./map-editor-images/editor_ui_top_left.png" />
 
 To the top left of the screen you can see :
 
 - the current map name (change and press enter to save as a new file)
-- the dropdown menu - it lists all **built-in maps** (e.g., `minimal`, `eggworld`), alongside those you have saved in your level folder (N.B. built‑in maps are read‑only. You can save them under other files names though!)
+- the dropdown menu - it lists all **built-in maps** (e.g., `minimal`, `eggworld`), alongside those you have saved in your level folder (N.B. built-in maps are read-only. You can save them under other files names though!)
 - the button to open up the levels folder (shortcut : **Ctrl + L**).
 
 ---
@@ -92,13 +92,13 @@ To the top left of the screen you can see :
 
 <!--nearest neighbour upscaling-->
 ### 4.1 <img src="./map-editor-images/tool_1.png" /> Basic Block-Placer 
-- **Left-Click** : Place block.
+- **Click** : Place block.
 - **Right-Click** : Delete block.
-- **Shift + Left-Click (hold)** : Rapid placement.
+- **Shift + Click (hold)** : Rapid placement.
 - **Shift + Right-Click (hold)** : Rapid deletion.
-- **Ctrl + Left-Click** : Place a block one block removed from the face you're targeting.
+- **Ctrl + Click** : Place a block one block removed from the face you're targeting.
 - **Alt + Click** : Sample an existing block (eyedropper).
-- **Scroll-Wheel** or **Shift+number keys** : Change currently-selected block-texture in the left toolbar.
+- **Scroll-Wheel** or **Shift+number keys** : Change currently selected block-texture in the left toolbar.
 - **Ctrl + Scroll-Wheel** or **- / +** : Change texture page in the left toolbar.
 
 
@@ -121,7 +121,7 @@ To the top left of the screen you can see :
 
 <img height="300" alt="image" src="./map-editor-images/plane_drag_basic.png" />
 
-- **Left-Click + Drag** to draw a planar sheet (floor or wall).
+- **Click + Drag** to draw a planar sheet (floor or wall).
 
 - **Shift while dragging** : Push the plane one voxel into the target surface for a flush surface :
 
@@ -138,18 +138,18 @@ To the top left of the screen you can see :
 ---
 
 ### 4.3 <img src="./map-editor-images/tool_3.png" /> Extrude Tool 
-- **Drag out a 2D-area**, then move your mouse and **Click** to extrude your selection to that point.  Very useful!
+- **Drag out a 2D area**, then move your mouse and **Click** to extrude your selection to that point.  Very useful!
 - Works on irregular shapes :
 
 <img height="300" alt="image" src="./map-editor-images/extrude_irregular_shape.png" />
 
-- **Right‑Click** Nothing to do with extrude, really, more a "delete everything inside this box" tool.
+- **Right-Click** Nothing to do with extrude, really, more a "delete everything inside this box" tool.
 
 ### 4.4 <img src="./map-editor-images/tool_4.png" /> Box Tool 
 
 <img height="300"  alt="image" src="./map-editor-images/box_tool_hollow_box.png" />
 
-- **Left-Click + Drag** to create a hollow box.
+- **Click + Drag** to create a hollow box.
 - **Shift** while dragging : Removes end caps (for tunnels / open boxes).
 - **Right-Click** : Carve out a room.
 
@@ -157,15 +157,15 @@ To the top left of the screen you can see :
 
 ### 4.5 <img src="./map-editor-images/tool_5.png" /> Paint Tool 
 
-- **Left-Click** : Apply texture to block
-- **Right-Click** or **Alt + Left-Click** : Sample block texture and shape.
+- **Click** : Apply texture to block
+- **Right-Click** or **Alt + Click** : Sample block texture and shape.
 - **Shift + Scroll-Wheel** : Adjust brush radius.
-- **Shift + Left-Click** : Replace all blocks of the pointed-at texture in the current layer with the selected texture (undoable, but be careful).
+- **Shift + Click** : Replace all blocks of the pointed-at texture in the current layer with the selected texture (undoable, but be careful).
 
 ---
 
 ### 4.6 <img src="./map-editor-images/tool_6.png" /> Hill-Dropper Tool 
-- **Left-Click** : Drop blocks from above to form organic hills.
+- **Click** : Drop blocks from above to form organic hills.
 - **Right-Click** : Subtract hill-shape from terrain.
 - **Scroll-Wheel** : Hill height.
 - **Shift + Scroll-Wheel** : Hill width.
@@ -197,8 +197,8 @@ Adds/removes a sphere!
 
 - **Scroll-Wheel** : Choose texture.
 - **Shift + Scroll-Wheel** : Change sphere size.
-- **Left-Click** : Add a sphere.
-- **Shift + Left-Click** : Centre sphere on cursor point.
+- **Click** : Add a sphere.
+- **Shift + Click** : Centre sphere on cursor point.
 - **Right-Click** : Subtract a sphere (good for caves).
 
 ---
@@ -207,7 +207,7 @@ Adds/removes a sphere!
 
 <img height="300" alt="image" src="./map-editor-images/grout_tool_smoothing.png" />
 
-- **Left-Click** : Smooth terrain by adding appropriate edge pieces using one of the neighbouring textures.
+- **Click** : Smooth terrain by adding appropriate edge pieces using one of the neighbouring textures.
 - **Ctrl + Click** : Smooths using the currently selected toolbar texture.
 - **Right-Click** : Removes non-cube blocks.
 - **Shift + Scroll-Wheel** : Change brush size.
@@ -217,7 +217,7 @@ Adds/removes a sphere!
 ---
 
 ### 4.10 <img src="./map-editor-images/tool_0.png" /> Planar Drawing Tool 
-- **Left-Click** and drag : draw on the current horizontal plane.
+- **Click** and drag : draw on the current horizontal plane.
 - **Right-Click** : Remove blocks
 - **Shift + Scroll-Wheel** : Raise / Lower the drawing plane.
 
@@ -236,7 +236,7 @@ In Entity Mode there are two tools - *object* placement and *trigger-box* placem
 
 This mode has two brushes, one for placing objects, another for placing trigger-boxes.  
 
-- **Left-Click** to place/select
+- **Click** to place/select
 - **Right-Click** to delete
    
 #### 5.1.1 <img src="./map-editor-images/object_1_Bonfire_Start.png" /> Start-Checkpoint 
@@ -312,7 +312,7 @@ There are other objects in the game, accessible via the asset_name dropdown in t
 
 <img height="300" alt="image" src="./map-editor-images/music_property_panel.png" />
 
-- Any time in the map-editor you click on a music trigger you'll hear a preview of its music.
+- Any time in the map editor you click on a music trigger you'll hear a preview of its music.
 - You can't include your own music files. However in addition to the core OST of the game, there are several hours of bonus tracks included for people who want to make their own levels to use.
 - The Music OST is [here](https://store.steampowered.com/app/4217410/Oeuvre_Oeuf_Soundtrack/) if you want to listen to it casually.
 
@@ -330,7 +330,7 @@ Arealabel trigger-boxes show a message on screen when the player enters, indepen
 
 <img height="300" alt="image" src="./map-editor-images/killbox.png" />
 
-- Special trigger-boxes (drawn red in the map-view for easy identification) that cause the player to die on contact the next time you touch some horizontal-ish level geometry (Ramps should also kill).
+- Special trigger-boxes (drawn red in the map view for easy identification) that cause the player to die on contact the next time you touch some horizontal-ish level geometry (Ramps should also kill).
 - Useful for hazards and boundaries.
 - If you enter a killbox, you are internally marked as 'doomed' - you will not trigger any checkpoints in this mode until you restart.
 
@@ -345,7 +345,7 @@ There are a few other really finicky trigger-box types - what they do is specifi
 
 ---
 
-## 6. Layer Mode : Large‑Scale Editing
+## 6. Layer Mode : Large-Scale Editing
 
 Cycle to Layer Mode with **Backtick** (**`**).
 
@@ -353,7 +353,7 @@ Cycle to Layer Mode with **Backtick** (**`**).
 - Empty layers are shown with a red tint in the layer list so you can spot them easily.
 
 ### 6.1 Layer Visibility
-- **Shift + Click** a layer to hide all other layers; shift‑click again to restore them.
+- **Shift + Click** a layer to hide all other layers; shift-click again to restore them.
 
 <img height="300" alt="image" src="./map-editor-images/layer_visibility_example.png" />
 
@@ -365,7 +365,7 @@ Cycle to Layer Mode with **Backtick** (**`**).
 
 <img height="300" alt="image" src="./map-editor-images/layer_transform_example.png" />
 
-- **Left-Click** to select a layer.
+- **Click** to select a layer.
 - You can then **move**, **rotate**, or **mirror/flip** the entire layer by clicking or dragging the gizmo.
 - Only one block can occupy a single position - if you drag one layer to overlap another, blocks are going to get deleted from one of the layers!
 
@@ -373,8 +373,8 @@ Cycle to Layer Mode with **Backtick** (**`**).
 
 #### 6.2.2 <img src="./map-editor-images/layer_assignment_tool_icon.png" /> Layer-Assignment Tool 
 
-- **Left-Click** and drag out a box : all visible blocks and entities inside get assigned to the currently selected layer.
-- **Alt + Left-Click** select highlighted layer.
+- **Click** and drag out a box : all visible blocks and entities inside get assigned to the currently selected layer.
+- **Alt + Click** select highlighted layer.
 - Useful for fixing pieces assigned to the wrong layer.
 
 <img height="300" alt="image" src="./map-editor-images/layer_assignment_example.png" />
@@ -383,7 +383,7 @@ Cycle to Layer Mode with **Backtick** (**`**).
 
 ### 6.3 <img src="./map-editor-images/layer_clipboard.png" /> Clipboard
 
-- **Left-Click** on a layer to copy it to the clipboard.
+- **Click** on a layer to copy it to the clipboard.
 - **Right-Click** paste the contents of the  clipboard in the indicated position (the purple box).
 - **Ctrl + C** copy the currently selected layer to the clipboard.
 - You can copy/paste between different files!
