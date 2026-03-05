@@ -91,7 +91,7 @@ To the top left of the screen you can see :
 ## 4. Block Tools :
 
 <!--nearest neighbour upscaling-->
-### 4.1 <img src="./map-editor-images/tool_1.png" /> Basic Block Placer 
+### 4.1 <img src="./map-editor-images/tool_1.png" /> Basic Block-Placer 
 - **Left-Click** : Place block.
 - **Right-Click** : Delete block.
 - **Shift + Left-Click (hold)** : Rapid placement.
