@@ -439,6 +439,6 @@ If you wish to customize the details further you can do it from that page.  The 
 
 ---
 
-## 9. Feedback and bug reports
+## 9. Feedback and Bug Reports
 
 Does this make sense? I hope so - feedback and bug reports always welcome : e-mail me at [analytic@gmail.com](mailto:analytic@gmail.com) .
