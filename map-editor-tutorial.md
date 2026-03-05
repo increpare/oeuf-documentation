@@ -34,27 +34,27 @@ If you have a map file, you can add it like this (doesn't work on Steam Deck!) :
 
 <img height="300" alt="image" src="./map-editor-images/map_in_list.png" />
 
-## 1. Enabling the Editor
+## 1. Enabling the Map-Editor
 1. Open **Settings** :
 
 <img height="300" alt="image" src="./map-editor-images/settings_menu.png" />
 
 2. Enable **Map-Editor**.
 3. Load into a level (custom levels are easiest to work with - the main game level has hard-coded stuff).
-4. Press **Tab** to open the editor.
+4. Press **Tab** to open the map-editor.
 
 <img height="300" alt="image" src="./map-editor-images/map_editor_opened.png" />
 
 
 ---
 
-## 2. Basic Workflow in Editor
+## 2. Basic Workflow in the Map-Editor
 
-### 2.1 Editor Modes
+### 2.1 Map-Editor Modes
 
 - **Tab**
   - If you're in-game, it opens the map-editor!
-  - In editor mode, it toggles mouse control between camera-look and cursor-pointing.
+  - In the map-editor, it toggles mouse control between camera-look and cursor-pointing.
 - **Space** : Exits edit mode and spawns you where you're pointing at.
 - **Backtick** (**`** or whatever key is to the left of the '1' on your keyboard) to cycle between :
   - **Block Mode** : Editing terrain
@@ -117,7 +117,7 @@ To the top left of the screen you can see :
 
 - Do *not* use the staircase block anywhere where the player might roll across it - it does not play well with egg physics.
 
-### 4.2 <img src="./map-editor-images/tool_2.png" /> Plane-Drag / Wall Tool
+### 4.2 <img src="./map-editor-images/tool_2.png" /> Plane Tool
 
 <img height="300" alt="image" src="./map-editor-images/plane_drag_basic.png" />
 
@@ -216,8 +216,8 @@ Adds/removes a sphere!
 
 ---
 
-### 4.10 <img src="./map-editor-images/tool_0.png" /> Planar-Draw Tool 
-- **Left-Click** and drag : draw on the current plane.
+### 4.10 <img src="./map-editor-images/tool_0.png" /> Planar Drawing Tool 
+- **Left-Click** and drag : draw on the current horizontal plane.
 - **Right-Click** : Remove blocks
 - **Shift + Scroll-Wheel** : Raise / Lower the drawing plane.
 
@@ -312,7 +312,7 @@ There are other objects in the game, accessible via the asset_name dropdown in t
 
 <img height="300" alt="image" src="./map-editor-images/music_property_panel.png" />
 
-- Any time in the editor you click on a music trigger you'll hear a preview of its music.
+- Any time in the map-editor you click on a music trigger you'll hear a preview of its music.
 - You can't include your own music files. However in addition to the core OST of the game, there are several hours of bonus tracks included for people who want to make their own levels to use.
 - The Music OST is [here](https://store.steampowered.com/app/4217410/Oeuvre_Oeuf_Soundtrack/) if you want to listen to it casually.
 
@@ -330,7 +330,7 @@ Arealabel trigger-boxes show a message on screen when the player enters, indepen
 
 <img height="300" alt="image" src="./map-editor-images/killbox.png" />
 
-- Special trigger-boxes (drawn red in the editor for easy identification) that cause the player to die on contact the next time you touch some horizontal-ish level geometry (Ramps should also kill).
+- Special trigger-boxes (drawn red in the map-view for easy identification) that cause the player to die on contact the next time you touch some horizontal-ish level geometry (Ramps should also kill).
 - Useful for hazards and boundaries.
 - If you enter a killbox, you are internally marked as 'doomed' - you will not trigger any checkpoints in this mode until you restart.
 
@@ -361,13 +361,12 @@ Cycle to Layer Mode with **Backtick** (**`**).
 
 ### 6.2 Layer Tools
 
-#### 6.2.1 <img src="./map-editor-images/layer_transform_tool_icon.png" /> Layer Selection / Transformation tool 
+#### 6.2.1 <img src="./map-editor-images/layer_transform_tool_icon.png" /> Layer-Transform tool 
 
 <img height="300" alt="image" src="./map-editor-images/layer_transform_example.png" />
 
 - **Left-Click** to select a layer.
-- Use the layer selection tool to manipulate the selected layer.
-- You can then **move**, **rotate**, or **mirror/flip** the entire layer.
+- You can then **move**, **rotate**, or **mirror/flip** the entire layer by clicking or dragging the gizmo.
 - Only one block can occupy a single position - if you drag one layer to overlap another, blocks are going to get deleted from one of the layers!
 
 ---
