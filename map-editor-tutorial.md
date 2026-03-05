@@ -63,11 +63,11 @@ If you have a map file, you can add it like this (doesn't work on Steam Deck!) :
 
 ### 2.2 General Shortcuts
 
-- **Ctrl + S** : Save
+- **Ctrl+S** : Save
 - **F5** : Reload
-- **Ctrl + Z** : Undo
-- **Ctrl + Y** : Redo
-- **Ctrl + R** : Randomly rotates all *cube-shaped blocks* with the currently selected texture in the currently selected layer.
+- **Ctrl+Z** : Undo
+- **Ctrl+Y** : Redo
+- **Ctrl+R** : Randomly rotates all *cube-shaped blocks* with the currently selected texture in the currently selected layer.
 
 <img width="322" height="142" alt="image" src="./map-editor-images/editor_ui_top_left.png" />
 
@@ -75,7 +75,7 @@ To the top left of the screen you can see :
 
 - the current map name (change and press enter to save as a new file)
 - the dropdown menu - it lists all **built-in maps** (e.g., `minimal`, `eggworld`), alongside those you have saved in your level folder (N.B. built-in maps are read-only. You can save them under other files names though!)
-- the button to open up the levels folder (shortcut : **Ctrl + L**).
+- the button to open up the levels folder (shortcut : **Ctrl+L**).
 
 ---
 
@@ -94,12 +94,12 @@ To the top left of the screen you can see :
 ### 4.1 <img src="./map-editor-images/tool_1.png" /> Basic Block-Placer 
 - **Click** : Place block.
 - **Right-Click** : Delete block.
-- **Shift + Click (hold)** : Rapid placement.
-- **Shift + Right-Click (hold)** : Rapid deletion.
-- **Ctrl + Click** : Place a block one block removed from the face you're targeting.
-- **Alt + Click** : Sample an existing block (eyedropper).
-- **Scroll-Wheel** or **Shift+number keys** : Change currently selected block-texture in the left toolbar.
-- **Ctrl + Scroll-Wheel** or **- / +** : Change texture page in the left toolbar.
+- **Shift+Click (hold)** : Rapid placement.
+- **Shift+Right-Click (hold)** : Rapid deletion.
+- **Ctrl+Click** : Place a block one block removed from the face you're targeting.
+- **Alt+Click** : Sample an existing block (eyedropper).
+- **Scroll-Wheel** or **Shift+Number Key** : Change currently selected block-texture in the left toolbar.
+- **Ctrl+Scroll-Wheel** or **- / =** : Change texture page in the left toolbar.
 
 
 #### 4.1b (Aside : Block Shapes) 
@@ -121,13 +121,13 @@ To the top left of the screen you can see :
 
 <img height="300" alt="image" src="./map-editor-images/plane_drag_basic.png" />
 
-- **Click + Drag** to draw a planar sheet (floor or wall).
+- **Click+Drag** to draw a planar sheet (floor or wall).
 
 - **Shift while dragging** : Push the plane one voxel into the target surface for a flush surface :
 
 <img height="300" alt="image" src="./map-editor-images/plane_drag_shift_flush.png" />
 
-- **Right-Click + Drag** : Delete a planar region (good for making doors/openings)
+- **Right-Click+Drag** : Delete a planar region (good for making doors/openings)
 
 <img height="300" alt="image" src="./map-editor-images/plane_drag_delete_region.png" />
 
@@ -149,7 +149,7 @@ To the top left of the screen you can see :
 
 <img height="300"  alt="image" src="./map-editor-images/box_tool_hollow_box.png" />
 
-- **Click + Drag** to create a hollow box.
+- **Click+Drag** to create a hollow box.
 - **Shift** while dragging : Removes end caps (for tunnels / open boxes).
 - **Right-Click** : Carve out a room.
 
@@ -158,9 +158,9 @@ To the top left of the screen you can see :
 ### 4.5 <img src="./map-editor-images/tool_5.png" /> Paint Tool 
 
 - **Click** : Apply texture to block
-- **Right-Click** or **Alt + Click** : Sample block texture and shape.
-- **Shift + Scroll-Wheel** : Adjust brush radius.
-- **Shift + Click** : Replace all blocks of the pointed-at texture in the current layer with the selected texture (undoable, but be careful).
+- **Right-Click** or **Alt+Click** : Sample block texture and shape.
+- **Shift+Scroll-Wheel** : Adjust brush radius.
+- **Shift+Click** : Replace all blocks of the pointed-at texture in the current layer with the selected texture (undoable, but be careful).
 
 ---
 
@@ -168,7 +168,7 @@ To the top left of the screen you can see :
 - **Click** : Drop blocks from above to form organic hills.
 - **Right-Click** : Subtract hill-shape from terrain.
 - **Scroll-Wheel** : Hill height.
-- **Shift + Scroll-Wheel** : Hill width.
+- **Shift+Scroll-Wheel** : Hill width.
 - Useful for mountains and natural terrain; can be used to create 'geological'-looking layers.
 
 <img height="300" alt="image" src="./map-editor-images/hill_dropper_example.png" />
@@ -185,7 +185,7 @@ Grow/shrink your terrain within a sphere.
   - ****Low** : shrink/erase terrain inside the sphere.
   - **High** : grow/extrude terrain inside the sphere.
   - **Mid** : tends to square off shapes.
-- **Shift + Scroll-Wheel** : Adjust brush radius.
+- **Shift+Scroll-Wheel** : Adjust brush radius.
 
 ---
 
@@ -196,9 +196,9 @@ Grow/shrink your terrain within a sphere.
 Adds/removes a sphere!
 
 - **Scroll-Wheel** : Choose texture.
-- **Shift + Scroll-Wheel** : Change sphere size.
+- **Shift+Scroll-Wheel** : Change sphere size.
 - **Click** : Add a sphere.
-- **Shift + Click** : Centre sphere on cursor point.
+- **Shift+Click** : Centre sphere on cursor point.
 - **Right-Click** : Subtract a sphere (good for caves).
 
 ---
@@ -208,9 +208,9 @@ Adds/removes a sphere!
 <img height="300" alt="image" src="./map-editor-images/grout_tool_smoothing.png" />
 
 - **Click** : Smooth terrain by adding appropriate edge pieces using one of the neighbouring textures.
-- **Ctrl + Click** : Smooths using the currently selected toolbar texture.
+- **Ctrl+Click** : Smooths using the currently selected toolbar texture.
 - **Right-Click** : Removes non-cube blocks.
-- **Shift + Scroll-Wheel** : Change brush size.
+- **Shift+Scroll-Wheel** : Change brush size.
 
 <img height="300" alt="image" src="./map-editor-images/grout_tool_cleanup.png" />
 
@@ -219,7 +219,7 @@ Adds/removes a sphere!
 ### 4.10 <img src="./map-editor-images/tool_0.png" /> Planar Drawing Tool 
 - **Click** and drag : draw on the current horizontal plane.
 - **Right-Click** : Remove blocks
-- **Shift + Scroll-Wheel** : Raise / Lower the drawing plane.
+- **Shift+Scroll-Wheel** : Raise / Lower the drawing plane.
 
 <img height="300" alt="image" src="./map-editor-images/planar_draw_example.png" />
 
@@ -353,7 +353,7 @@ Cycle to Layer Mode with **Backtick** (**`**).
 - Empty layers are shown with a red tint in the layer list so you can spot them easily.
 
 ### 6.1 Layer Visibility
-- **Shift + Click** a layer to hide all other layers; shift-click again to restore them.
+- **Shift+Click** a layer to hide all other layers; shift-click again to restore them.
 
 <img height="300" alt="image" src="./map-editor-images/layer_visibility_example.png" />
 
@@ -374,7 +374,7 @@ Cycle to Layer Mode with **Backtick** (**`**).
 #### 6.2.2 <img src="./map-editor-images/layer_assignment_tool_icon.png" /> Layer-Assignment Tool 
 
 - **Click** and drag out a box : all visible blocks and entities inside get assigned to the currently selected layer.
-- **Alt + Click** select highlighted layer.
+- **Alt+Click** select highlighted layer.
 - Useful for fixing pieces assigned to the wrong layer.
 
 <img height="300" alt="image" src="./map-editor-images/layer_assignment_example.png" />
@@ -385,7 +385,7 @@ Cycle to Layer Mode with **Backtick** (**`**).
 
 - **Click** on a layer to copy it to the clipboard.
 - **Right-Click** paste the contents of the  clipboard in the indicated position (the purple box).
-- **Ctrl + C** copy the currently selected layer to the clipboard.
+- **Ctrl+C** copy the currently selected layer to the clipboard.
 - You can copy/paste between different files!
 
 <img height="300" src="./map-editor-images/layer_copy_paste_example.png" />
