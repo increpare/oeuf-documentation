@@ -258,7 +258,7 @@ In Entity Mode there are two tools - the **Object Tool** and the **Trigger-Box T
 
 - Totally normal checkpoint.
 - Set the `area_name` tag to control the text shown when the player activates it.
-- You will often want to put checkpoints inside **music** trigger-boxes so that if a player resumes a saved game, the correct music will play.
+- You will often want to put checkpoints inside music trigger-boxes so that if a player resumes a saved game, the correct music will play.
 
 #### 5.1.3 <img src="./map-editor-images/object_3_Bonfire_End.png" /> End-Checkpoint
 
@@ -277,7 +277,7 @@ Provides a point of light.  Handy when things are getting a bit dark - but don't
 
 <img height="300" alt="image" src="./map-editor-images/star_collect.png" />
 
-- Makes a satisfying sound when collected, and displays a running count of stars collected vs. the total number of starts on the map.
+- Makes a satisfying sound when collected, and displays a running count of stars collected vs. the total number of stars on the map.
 - Not used in the main game.
 
 #### 5.1.6 <img src="./map-editor-images/object_6_Chair.png" /> Chair
@@ -429,7 +429,7 @@ Creates a new empty layer.
 
 ## 8. <img src="./map-editor-images/upload_icon.png" /> Upload to Steam Workshop
 
-When you're happy with your map and want to share it on the Steam Workshop, click the Steam button in the toolbar:
+When you're happy with your map and want to share it on the Steam Workshop, click the Steam button in the toolbar :
 
 <img height="300" src="./map-editor-images/workshop_upload.png" />
 
