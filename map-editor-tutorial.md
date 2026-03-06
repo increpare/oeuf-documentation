@@ -40,7 +40,7 @@ If you have a map file, you can add it like this (doesn't work on Steam Deck!) :
 <img height="300" alt="image" src="./map-editor-images/settings_menu.png" />
 
 2. Enable **Map-Editor**.
-3. Load into a level (custom levels are easiest to work with - the main game level has hard-coded stuff).
+3. Load into a map (custom maps are easiest to work with - the main game map has hard-coded stuff).
 4. Press **Tab** to open the map editor.
 
 <img height="300" alt="image" src="./map-editor-images/map_editor_opened.png" />
@@ -78,7 +78,7 @@ To the top left of the screen you can see :
 
 <img height="300" alt="image" src="./map-editor-images/file_dropdown.png" />
 
-- The button to open the levels folder (shortcut : **Ctrl+L**).
+- The button to open the maps folder (shortcut : **Ctrl+L**).
 
 ---
 
@@ -249,10 +249,10 @@ In Entity Mode there are two tools - the **Object Tool** and the **Trigger-Box T
 
 #### 5.1.1 <img src="./map-editor-images/object_1_Bonfire_Start.png" /> Start Checkpoint
 
-- Every level *must* include a **Start Checkpoint**.
-- This is where the player spawns in custom levels; it looks just like a normal checkpoint.
-- The `area_name` tag controls the text shown when the player spawns into the level.  The default value is `"CUSTOM_LEVEL_LETS_GO"`, a localisation tag that amounts to "Let's go!" in English, but you can change it to whatever message you like.
-- (The `Nest.tscn` asset can also function as a start checkpoint, but its behaviour is heavily hard-coded - I don't recommend using it in your own levels unless you're modding the main game, and even then, test carefully and avoid modifying the geometry around the starting area.)
+- Every map *must* include a **Start Checkpoint**.
+- This is where the player spawns in custom maps; it looks just like a normal checkpoint.
+- The `area_name` tag controls the text shown when the player starts a new game on your map.  The default value is `"CUSTOM_LEVEL_LETS_GO"`, a localisation tag that amounts to "Let's go!" in English, but you can change it to whatever message you like.
+- (The `Nest.tscn` asset can also function as a start checkpoint, but its behaviour is heavily hard-coded - I don't recommend using it in your own maps unless you're modding the main game, and even then, test carefully and avoid modifying the geometry around the starting area.)
 
 <img height="300" alt="image" src="./map-editor-images/start_checkpoint.png" />
 
@@ -264,7 +264,7 @@ In Entity Mode there are two tools - the **Object Tool** and the **Trigger-Box T
 
 #### 5.1.3 <img src="./map-editor-images/object_3_Bonfire_End.png" /> End Checkpoint
 
-- Custom levels don't have a dedicated final checkpoint (unless using the nest).  This behaves like a normal checkpoint.
+- Custom maps don't have a dedicated final checkpoint (unless using the nest).  This behaves like a normal checkpoint.
 - The default `area_name` tag value is `"CUSTOM_LEVEL_YOU_MADE_IT"`, which localises to "You made it!" in English - but you can put whatever you like in there.
 
 #### 5.1.4 <img src="./map-editor-images/object_4_Torch.png" /> Torch
@@ -279,7 +279,7 @@ Provides a point of light.  Handy when things are getting a bit dark - but don't
 
 <img height="300" alt="image" src="./map-editor-images/star_collect.png" />
 
-- Makes a satisfying sound when collected, and displays a running count of stars collected vs. the level total.
+- Makes a satisfying sound when collected, and displays a running count of stars collected vs. the total number of starts on the map.
 - Entirely optional and inconsequential. (I added these thinking I might use them in the main game, but decided against it in the end.)
 
 #### 5.1.6 <img src="./map-editor-images/object_6_Chair.png" /> Chair
@@ -296,7 +296,7 @@ Purely decorative geometry.  Not used in the main game.
 
 #### 5.1.8 Other Objects
 
-There are other objects accessible via the `asset_name` dropdown in the properties panel, but they have unusual or hard-coded behaviour tied to the main game, so I don't recommend using them in custom levels. (The `Nest.tscn` object, for instance, has a great deal of specific hard-coded logic and spawns invisible collision geometry during cutscenes.) It's fine to leave them in place if you're modding the main game map, just be careful to not modify these objects or their surrounding geometry.
+There are other objects accessible via the `asset_name` dropdown in the properties panel, but they have unusual or hard-coded behaviour tied to the main game, so I don't recommend using them in custom maps. (The `Nest.tscn` object, for instance, has a great deal of specific hard-coded logic and spawns invisible collision geometry during cutscenes.) It's fine to leave them in place if you're modding the main game map, just be careful to not modify these objects or their surrounding geometry.
 
 ### 5.2 <img src="./map-editor-images/entity_tool_trigger.png" /> Trigger-Box Tool
 
@@ -319,17 +319,17 @@ There are other objects accessible via the `asset_name` dropdown in the properti
 - Starts playing a music track when the player enters.
 - Usually you want to have a music trigger at each checkpoint so that the correct music plays when a player resumes a saved game.
 - Choose the track from the dropdown in the properties panel.
-- Any time in the map editor you click on a music trigger you'll hear a preview of its music.
-- You can't add your own music files, but in addition to the main OST there are several hours of bonus tracks included for use in custom levels.
-- The OST is [here](https://store.steampowered.com/app/4217410/Oeuvre_Oeuf_Soundtrack/) if you want to listen to it casually.
-
 <img height="300" alt="image" src="./map-editor-images/music_property_panel.png" />
+- Any time in the map editor you click on a music trigger you'll hear a preview of its music.
+- You can't add your own music files, but in addition to the main OST there are several hours of bonus tracks included for use in custom maps.
+- The OST is [here](https://store.steampowered.com/app/4217410/Oeuvre_Oeuf_Soundtrack/) if you want to listen to it outside the game.
+
 
 #### 5.2.2 <img src="./map-editor-images/trigger_2_arealabel.png" /> arealabel
 
 <img height="300" alt="image" src="./map-editor-images/arealabel_props.png" />
 
-Area Label trigger boxes display a message on screen when the player enters, independently of checkpoints.  If the `area_name` matches a built-in location name (case-sensitive), the game localises it - e.g. entering `FOREST` displays "Forest of Branching Paths" in English.  Otherwise it just displays your text verbatim, so entering `Hello, world!` displays "Hello, World!".
+Arealabel trigger boxes display a message on screen when the player enters, independently of checkpoints.  If the `area_name` matches a built-in location name (case-sensitive), the game localises it - e.g. entering `FOREST` displays "Forest of Branching Paths" in English.  Otherwise it just displays your text verbatim, so entering `Hello, world!` displays "Hello, World!".
 
 <img height="300" alt="image" src="./map-editor-images/arealabel2.png" />
 
@@ -337,7 +337,7 @@ Area Label trigger boxes display a message on screen when the player enters, ind
 
 <img height="300" alt="image" src="./map-editor-images/killbox.png" />
 
-- If you enter a Killbox, you are internally marked as *doomed*, and will oof the next time you touch horizontal-ish level geometry (ramps included).
+- If you enter a killbox, you are internally marked as *doomed*, and will oof the next time you touch horizontal-ish map geometry (ramps included).
 - Drawn in red in the map view for easy identification.
 - While *doomed*, you cannot trigger checkpoints until you restart.
 
@@ -349,7 +349,7 @@ While inside this trigger box, the player emits light.  Handy for subtly brighte
 
 #### 5.2.5 <img src="./map-editor-images/trigger_5_advanced.png" /> Generic Trigger-Boxes
 
-There are a few other really finicky trigger-box types - what they do is specified by their meta tags.  I don't think they're appropriate for general use, so I won't document them.  If you're modding the main game map it's fine to leave them in place - but pls don't use them in new custom levels, as they may behave unexpectedly.
+There are a few other really finicky trigger-box types - what they do is specified by their meta tags.  I don't think they're appropriate for general use, so I won't document them.  If you're modding the main game map it's fine to leave them in place - but pls don't use them in new custom maps, as they may behave unexpectedly.
 
 ---
 
@@ -431,11 +431,11 @@ Creates a new empty layer.
 
 ## 8. <img src="./map-editor-images/upload_icon.png" /> Upload to Steam Workshop
 
-Uploading to Steam Workshop is a pretty easy affair - when you're happy with your level, just click the steam button in the toolbar :
+Uploading to Steam Workshop is a pretty easy affair - when you're happy with your map, just click the steam button in the toolbar :
 
 <img height="300" src="./map-editor-images/workshop_upload.png" />
 
-After a moment, you'll see a confirmation message and the Steam Workshop page for your level will open automatically.
+After a moment, you'll see a confirmation message and the Steam Workshop page for your map will open automatically.
 
 <img height="300" src="./map-editor-images/workshop_success.png" />
 
@@ -443,7 +443,7 @@ The thumbnail is generated from a screenshot of the current view when you save.
 
 <img height="300" src="./map-editor-images/workshop_page_appearance.png" />
 
-If you'd like to customise the listing further, you can do so from that page.  The mod is associated with the file name of the map - if you resave the file it will update your level on the Steam Workshop.
+If you'd like to customise the listing further, you can do so from that page.  The mod is associated with the file name of the map - if you resave the file it will update your map on the Steam Workshop.
 
 ---
 

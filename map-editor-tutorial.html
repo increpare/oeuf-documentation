@@ -383,7 +383,7 @@
 <p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/settings_menu.png" /></p>
 <ol start="2">
 <li>Enable <strong>Map-Editor</strong>.</li>
-<li>Load into a level (custom levels are easiest to work with - the main game level has hard-coded stuff).</li>
+<li>Load into a map (custom maps are easiest to work with - the main game map has hard-coded stuff).</li>
 <li>Press <strong>Tab</strong> to open the map editor.</li>
 </ol>
 <p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/map_editor_opened.png" /></p>
@@ -416,7 +416,7 @@
 </ul>
 <p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/file_dropdown.png" /></p>
 <ul>
-<li>The button to open the levels folder (shortcut : <strong>Ctrl+L</strong>).</li>
+<li>The button to open the maps folder (shortcut : <strong>Ctrl+L</strong>).</li>
 </ul>
 <hr class="my-5 opacity-0">
 <h2 class="mt-5 mb-3 pb-2 border-bottom" id="section-3-camera-and-movement-in-the-map-editor">3. Camera and Movement (in the Map Editor)</h2>
@@ -556,10 +556,10 @@
 </ul>
 <h4 class="mt-3 mb-2 opacity-75" id="section-511-img-srcmap-editor-imagesobject_1_bonfire_startpng--start-checkpoint">5.1.1 <img class="img-fluid rounded shadow-sm d-block my-3" src="./map-editor-images/object_1_Bonfire_Start.png" /> Start Checkpoint</h4>
 <ul>
-<li>Every level <em>must</em> include a <strong>Start Checkpoint</strong>.</li>
-<li>This is where the player spawns in custom levels; it looks just like a normal checkpoint.</li>
-<li>The <code>area_name</code> tag controls the text shown when the player spawns into the level.  The default value is <code>"CUSTOM_LEVEL_LETS_GO"</code>, a localisation tag that amounts to "Let's go!" in English, but you can change it to whatever message you like.</li>
-<li>(The <code>Nest.tscn</code> asset can also function as a start checkpoint, but its behaviour is heavily hard-coded - I don't recommend using it in your own levels unless you're modding the main game, and even then, test carefully and avoid modifying the geometry around the starting area.)</li>
+<li>Every map <em>must</em> include a <strong>Start Checkpoint</strong>.</li>
+<li>This is where the player spawns in custom maps; it looks just like a normal checkpoint.</li>
+<li>The <code>area_name</code> tag controls the text shown when the player starts a new game on your map.  The default value is <code>"CUSTOM_LEVEL_LETS_GO"</code>, a localisation tag that amounts to "Let's go!" in English, but you can change it to whatever message you like.</li>
+<li>(The <code>Nest.tscn</code> asset can also function as a start checkpoint, but its behaviour is heavily hard-coded - I don't recommend using it in your own maps unless you're modding the main game, and even then, test carefully and avoid modifying the geometry around the starting area.)</li>
 </ul>
 <p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/start_checkpoint.png" /></p>
 <h4 class="mt-3 mb-2 opacity-75" id="section-512-img-srcmap-editor-imagesobject_2_bonfirepng--normal-checkpoint">5.1.2 <img class="img-fluid rounded shadow-sm d-block my-3" src="./map-editor-images/object_2_Bonfire.png" /> Normal Checkpoint</h4>
@@ -570,7 +570,7 @@
 </ul>
 <h4 class="mt-3 mb-2 opacity-75" id="section-513-img-srcmap-editor-imagesobject_3_bonfire_endpng--end-checkpoint">5.1.3 <img class="img-fluid rounded shadow-sm d-block my-3" src="./map-editor-images/object_3_Bonfire_End.png" /> End Checkpoint</h4>
 <ul>
-<li>Custom levels don't have a dedicated final checkpoint (unless using the nest).  This behaves like a normal checkpoint.</li>
+<li>Custom maps don't have a dedicated final checkpoint (unless using the nest).  This behaves like a normal checkpoint.</li>
 <li>The default <code>area_name</code> tag value is <code>"CUSTOM_LEVEL_YOU_MADE_IT"</code>, which localises to "You made it!" in English - but you can put whatever you like in there.</li>
 </ul>
 <h4 class="mt-3 mb-2 opacity-75" id="section-514-img-srcmap-editor-imagesobject_4_torchpng--torch">5.1.4 <img class="img-fluid rounded shadow-sm d-block my-3" src="./map-editor-images/object_4_Torch.png" /> Torch</h4>
@@ -580,7 +580,7 @@
 <p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/star_shot.png" /></p>
 <p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/star_collect.png" /></p>
 <ul>
-<li>Makes a satisfying sound when collected, and displays a running count of stars collected vs. the level total.</li>
+<li>Makes a satisfying sound when collected, and displays a running count of stars collected vs. the total number of starts on the map.</li>
 <li>Entirely optional and inconsequential. (I added these thinking I might use them in the main game, but decided against it in the end.)</li>
 </ul>
 <h4 class="mt-3 mb-2 opacity-75" id="section-516-img-srcmap-editor-imagesobject_6_chairpng--chair">5.1.6 <img class="img-fluid rounded shadow-sm d-block my-3" src="./map-editor-images/object_6_Chair.png" /> Chair</h4>
@@ -590,7 +590,7 @@
 <p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/object_table_example.png" /></p>
 <p>Purely decorative geometry.  Not used in the main game.</p>
 <h4 class="mt-3 mb-2 opacity-75" id="section-518-other-objects">5.1.8 Other Objects</h4>
-<p>There are other objects accessible via the <code>asset_name</code> dropdown in the properties panel, but they have unusual or hard-coded behaviour tied to the main game, so I don't recommend using them in custom levels. (The <code>Nest.tscn</code> object, for instance, has a great deal of specific hard-coded logic and spawns invisible collision geometry during cutscenes.) It's fine to leave them in place if you're modding the main game map, just be careful to not modify these objects or their surrounding geometry.</p>
+<p>There are other objects accessible via the <code>asset_name</code> dropdown in the properties panel, but they have unusual or hard-coded behaviour tied to the main game, so I don't recommend using them in custom maps. (The <code>Nest.tscn</code> object, for instance, has a great deal of specific hard-coded logic and spawns invisible collision geometry during cutscenes.) It's fine to leave them in place if you're modding the main game map, just be careful to not modify these objects or their surrounding geometry.</p>
 <h3 class="mt-4 mb-3" id="section-52-img-srcmap-editor-imagesentity_tool_triggerpng--trigger-box-tool">5.2 <img class="img-fluid rounded shadow-sm d-block my-3" src="./map-editor-images/entity_tool_trigger.png" /> Trigger-Box Tool</h3>
 <ul>
 <li>Trigger boxes are big invisible areas that do something when the player enters them.</li>
@@ -611,20 +611,20 @@
 <ul>
 <li>Starts playing a music track when the player enters.</li>
 <li>Usually you want to have a music trigger at each checkpoint so that the correct music plays when a player resumes a saved game.</li>
-<li>Choose the track from the dropdown in the properties panel.</li>
+<li>Choose the track from the dropdown in the properties panel.
+<img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/music_property_panel.png" /></li>
 <li>Any time in the map editor you click on a music trigger you'll hear a preview of its music.</li>
-<li>You can't add your own music files, but in addition to the main OST there are several hours of bonus tracks included for use in custom levels.</li>
-<li>The OST is <a href="https://store.steampowered.com/app/4217410/Oeuvre_Oeuf_Soundtrack/">here</a> if you want to listen to it casually.</li>
+<li>You can't add your own music files, but in addition to the main OST there are several hours of bonus tracks included for use in custom maps.</li>
+<li>The OST is <a href="https://store.steampowered.com/app/4217410/Oeuvre_Oeuf_Soundtrack/">here</a> if you want to listen to it outside the game.</li>
 </ul>
-<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/music_property_panel.png" /></p>
 <h4 class="mt-3 mb-2 opacity-75" id="section-522-img-srcmap-editor-imagestrigger_2_arealabelpng--arealabel">5.2.2 <img class="img-fluid rounded shadow-sm d-block my-3" src="./map-editor-images/trigger_2_arealabel.png" /> arealabel</h4>
 <p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/arealabel_props.png" /></p>
-<p>Area Label trigger boxes display a message on screen when the player enters, independently of checkpoints.  If the <code>area_name</code> matches a built-in location name (case-sensitive), the game localises it - e.g. entering <code>FOREST</code> displays "Forest of Branching Paths" in English.  Otherwise it just displays your text verbatim, so entering <code>Hello, world!</code> displays "Hello, World!".</p>
+<p>Arealabel trigger boxes display a message on screen when the player enters, independently of checkpoints.  If the <code>area_name</code> matches a built-in location name (case-sensitive), the game localises it - e.g. entering <code>FOREST</code> displays "Forest of Branching Paths" in English.  Otherwise it just displays your text verbatim, so entering <code>Hello, world!</code> displays "Hello, World!".</p>
 <p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/arealabel2.png" /></p>
 <h4 class="mt-3 mb-2 opacity-75" id="section-523-img-srcmap-editor-imagestrigger_3_killboxpng--killbox">5.2.3 <img class="img-fluid rounded shadow-sm d-block my-3" src="./map-editor-images/trigger_3_killbox.png" /> KILLBOX</h4>
 <p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/killbox.png" /></p>
 <ul>
-<li>If you enter a Killbox, you are internally marked as <em>doomed</em>, and will oof the next time you touch horizontal-ish level geometry (ramps included).</li>
+<li>If you enter a killbox, you are internally marked as <em>doomed</em>, and will oof the next time you touch horizontal-ish map geometry (ramps included).</li>
 <li>Drawn in red in the map view for easy identification.</li>
 <li>While <em>doomed</em>, you cannot trigger checkpoints until you restart.</li>
 </ul>
@@ -632,7 +632,7 @@
 <p>While inside this trigger box, the player emits light.  Handy for subtly brightening dark areas without placing lots of torch props (which can be expensive to render and visually distracting).</p>
 <p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/torchbox.png" /></p>
 <h4 class="mt-3 mb-2 opacity-75" id="section-525-img-srcmap-editor-imagestrigger_5_advancedpng--generic-trigger-boxes">5.2.5 <img class="img-fluid rounded shadow-sm d-block my-3" src="./map-editor-images/trigger_5_advanced.png" /> Generic Trigger-Boxes</h4>
-<p>There are a few other really finicky trigger-box types - what they do is specified by their meta tags.  I don't think they're appropriate for general use, so I won't document them.  If you're modding the main game map it's fine to leave them in place - but pls don't use them in new custom levels, as they may behave unexpectedly.</p>
+<p>There are a few other really finicky trigger-box types - what they do is specified by their meta tags.  I don't think they're appropriate for general use, so I won't document them.  If you're modding the main game map it's fine to leave them in place - but pls don't use them in new custom maps, as they may behave unexpectedly.</p>
 <hr class="my-5 opacity-0">
 <h2 class="mt-5 mb-3 pb-2 border-bottom" id="section-6-layer-mode">6. Layer Mode</h2>
 <p>Cycle to Layer Mode with <strong>Backtick</strong> (<strong>`</strong>).</p>
@@ -687,13 +687,13 @@
 <p>Creates a new empty layer.</p>
 <hr class="my-5 opacity-0">
 <h2 class="mt-5 mb-3 pb-2 border-bottom" id="section-8-img-srcmap-editor-imagesupload_iconpng--upload-to-steam-workshop">8. <img class="img-fluid rounded shadow-sm d-block my-3" src="./map-editor-images/upload_icon.png" /> Upload to Steam Workshop</h2>
-<p>Uploading to Steam Workshop is a pretty easy affair - when you're happy with your level, just click the steam button in the toolbar :</p>
+<p>Uploading to Steam Workshop is a pretty easy affair - when you're happy with your map, just click the steam button in the toolbar :</p>
 <p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" src="./map-editor-images/workshop_upload.png" /></p>
-<p>After a moment, you'll see a confirmation message and the Steam Workshop page for your level will open automatically.</p>
+<p>After a moment, you'll see a confirmation message and the Steam Workshop page for your map will open automatically.</p>
 <p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" src="./map-editor-images/workshop_success.png" /></p>
 <p>The thumbnail is generated from a screenshot of the current view when you save.</p>
 <p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" src="./map-editor-images/workshop_page_appearance.png" /></p>
-<p>If you'd like to customise the listing further, you can do so from that page.  The mod is associated with the file name of the map - if you resave the file it will update your level on the Steam Workshop.</p>
+<p>If you'd like to customise the listing further, you can do so from that page.  The mod is associated with the file name of the map - if you resave the file it will update your map on the Steam Workshop.</p>
 <hr class="my-5 opacity-0">
 <h2 class="mt-5 mb-3 pb-2 border-bottom" id="section-9-feedback-and-bug-reports">9. Feedback and Bug Reports</h2>
 <p>Does this make sense? I hope so! Feedback and bug reports are always welcome - e-mail me at <a href="mailto:analytic@gmail.com">analytic@gmail.com</a>.</p></main>
