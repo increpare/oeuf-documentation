@@ -29,18 +29,18 @@ If you have a map file, you can add it like this (doesn't work on Steam Deck!) :
 
 <img height="300" alt="image" src="./map-editor-images/workshop_subscribed.png" />
 
-4. Once subscribed, maps will appear in the map list and are ready to play.
+4. Once subscribed, maps will appear in the map list and are ready to play :
 
 <img height="300" alt="image" src="./map-editor-images/map_in_list.png" />
 
 ## 1. Enabling the Map Editor
 
-1. Open **Settings** :
+1. Go to **Settings** :
 
 <img height="300" alt="image" src="./map-editor-images/settings_menu.png" />
 
 2. Enable **Map Editor**.
-3. Load into a map (custom maps are easiest to work with - the main game map has hard-coded stuff).
+3. Load into a map (custom maps are easiest to work with - the main-game map has some hacky stuff in it).
 4. Press **Tab** to open the map editor.
 
 <img height="300" alt="image" src="./map-editor-images/map_editor_opened.png" />
@@ -53,13 +53,13 @@ If you have a map file, you can add it like this (doesn't work on Steam Deck!) :
 ### 2.1 Map-Editor Modes
 
 - **Tab**
-  - In-game : Open the Map Editor.
-  - In the Map Editor : Toggle mouse control between camera-look and cursor-pointing.
-- **Space** : Exit edit mode and spawn at the point you're aiming at.
-- **Backtick** (**`**, likely the key to the left of **1**) : cycle between :
-  - **Block Mode** : Edit terrain.
-  - **Entity Mode** : Checkpoints, props, trigger boxes.
-  - **Layer Mode** : Move large sections of terrain.
+    - In-game : Open the Map Editor.
+    - In the Map Editor : Toggle mouse control between camera-look and cursor-pointing.
+- **Space** : Exit edit mode back into the game, spawning at the point you're aiming at.
+- **Backtick** (**`**, likely the key to the left of **1**) : cycle between
+    - **Block Mode** : Edit terrain.
+    - **Entity Mode** : Checkpoints, props, trigger boxes.
+    - **Layer Mode** : Move large sections of terrain.
 
 ### 2.2 General Shortcuts
 
@@ -68,17 +68,19 @@ If you have a map file, you can add it like this (doesn't work on Steam Deck!) :
 - **Ctrl+Z** : Undo
 - **Ctrl+Y** : Redo
 - **Ctrl+R** : Randomly rotate all *cube-shaped blocks* with the currently selected texture in the currently selected layer.
+- **Ctrl+L** : Open the maps folder with your file manager.
+
+### 2.3 Loading and Saving
 
 <img width="322" height="142" alt="image" src="./map-editor-images/editor_ui_top_left.png" />
 
 To the top left of the screen you can see :
 
 - The current map name (edit it and press **Enter** to save as a new file).
-- The file dropdown - lists all **built-in maps** (e.g. `minimal`, `eggworld`), **Steam Workshop maps**, and **user maps** (saved in your maps folder).  Note : built-in and Steam Workshop maps are *read-only*, but you can save them under new filenames.
+- The file dropdown. This lists all **built-in maps** (e.g. `minimal`, `eggworld`), **Steam Workshop maps**, and **user maps** (saved in your maps folder).  
+- Note : built-in and Steam Workshop maps are *read-only*, but you can save them under new filenames.
 
 <img height="300" alt="image" src="./map-editor-images/file_dropdown.png" />
-
-- The button to open the maps folder (shortcut : **Ctrl+L**).
 
 ---
 
@@ -86,8 +88,8 @@ To the top left of the screen you can see :
 
 - **WASD** : Move camera
 - **Shift** : Faster movement
-- **Q / E** : Up / Down
-- **Z / C** : Rotate Left / Right
+- **Q / E** : Move up / pown
+- **Z / C** : Rotate left / right
 
 (Don't forget : **Tab** toggles between camera-look and cursor-pointing modes.)
 
@@ -123,7 +125,7 @@ To the top left of the screen you can see :
 
 - **Click+Drag** : Draw a planar sheet (floor or wall).
 
-- **Shift while dragging** : Push the plane one block into the highlighted surface for a flush fit :
+- **Shift while clicking** : Push the plane one block into the highlighted surface for a flush fit :
 
 <img height="300" alt="image" src="./map-editor-images/plane_drag_shift_flush.png" />
 
@@ -135,7 +137,7 @@ To the top left of the screen you can see :
 
 <img height="300" alt="image" src="./map-editor-images/plane_drag_alt_centered.png" />
 
-- When drawing a plane with the 45° slope selected, you drag the plane along the slope :
+- When using the tool with the 45° slope-shape selected, you drag the plane along the slope :
 
 <img height="300" alt="image" src="./map-editor-images/slope_plane_drag.png" />
 
@@ -172,13 +174,13 @@ To the top left of the screen you can see :
 
 ### 4.6 <img src="./map-editor-images/tool_6.png" /> Hill-Dropper Tool
 
+<img height="300" alt="image" src="./map-editor-images/hill_dropper_example.png" />
+
 - **Click** : Drop blocks from above to form organic hills.
 - **Right-Click** : Subtract hill-shape from terrain.
-- **Scroll Wheel** : Hill height.
-- **Shift+Scroll Wheel** : Hill width.
+- **Scroll Wheel** : Adjust hill height.
+- **Shift+Scroll Wheel** : Adjust hill width.
 - Useful for mountains and natural terrain; can be used to create 'geological'-looking layers.
-
-<img height="300" alt="image" src="./map-editor-images/hill_dropper_example.png" />
 
 ---
 
@@ -186,12 +188,12 @@ To the top left of the screen you can see :
 
 <img height="300" alt="image" src="./map-editor-images/sculpt_tool_example.png" />
 
-Grow/shrink your terrain within a sphere.
+Grow or shrink your terrain within a sphere.
 
 - **Scroll Wheel** : Control intensity.
-  - **Low** : Shrink/erase terrain inside the sphere.
-  - **High** : Grow/extrude terrain inside the sphere.
-  - **Mid** : Tends to square off shapes.
+    - **Low** : Shrink or erase terrain inside the sphere.
+    - **Mid** : Tends to square-off terrain.
+    - **High** : Grow existing terrain inside the sphere.
 - **Shift+Scroll Wheel** : Adjust brush radius.
 
 ---
@@ -200,13 +202,11 @@ Grow/shrink your terrain within a sphere.
 
 <img height="300" alt="image" src="./map-editor-images/sphere_tool_example.png" />
 
-Adds or removes a sphere.
-
+- **Click** : Add a sphere.
+- **Right-Click** : Subtract a sphere (good for caves).
+- **Shift** : Centre sphere on the point you're highlight.
 - **Scroll Wheel** : Choose texture.
 - **Shift+Scroll Wheel** : Change sphere size.
-- **Click** : Add a sphere.
-- **Shift+Click** : Centre sphere on cursor point.
-- **Right-Click** : Subtract a sphere (good for caves).
 
 ---
 
@@ -215,7 +215,7 @@ Adds or removes a sphere.
 <img height="300" alt="image" src="./map-editor-images/grout_tool_smoothing.png" />
 
 - **Click** : Smooth terrain by filling in edge voxels using intermediate block shapes.
-- **Ctrl+Click** : Smooth using the currently selected toolbar texture.
+- **Ctrl+Click** : Smooth terrain, but all blocks added use the currently selected texture.
 - **Right-Click** : Remove non-cube blocks.
 - **Shift+Scroll Wheel** : Change brush size.
 
@@ -284,13 +284,15 @@ Provides a point of light.  Handy when things are getting a bit dark - but don't
 
 <img height="300" alt="image" src="./map-editor-images/object_chair_example.png" />
 
-Purely decorative geometry.  Not used in the main game.
+- Inert geometric object.  
+- Not used in the main game.
 
 #### 5.1.7 <img src="./map-editor-images/object_7_Table.png" /> Table
 
 <img height="300" alt="image" src="./map-editor-images/object_table_example.png" />
 
-Purely decorative geometry.  Not used in the main game.
+- Inert geometric object.  
+- Not used in the main game.
 
 #### 5.1.8 Other Objects
 
@@ -327,7 +329,7 @@ There are other objects accessible via the `asset_name` dropdown in the properti
 
 <img height="300" alt="image" src="./map-editor-images/arealabel_props.png" />
 
-Arealabel trigger boxes display a message on screen when the player enters, independently of checkpoints.  If the `area_name` matches a built-in location name (case-sensitive), the game localises it - e.g. entering `FOREST` displays "Forest of Branching Paths" in English.  Otherwise it just displays your text verbatim, so entering `Hello, world!` displays "Hello, World!".
+'arealabel' trigger boxes display a message on screen when the player enters, independently of checkpoints.  If the `area_name` matches a built-in location name (case-sensitive), the game localises it - e.g. entering `FOREST` displays "Forest of Branching Paths" in English.  Otherwise it just displays your text verbatim, so entering `Hello, world!` displays "Hello, World!".
 
 <img height="300" alt="image" src="./map-editor-images/arealabel2.png" />
 

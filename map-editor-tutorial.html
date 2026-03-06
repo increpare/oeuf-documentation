@@ -244,6 +244,7 @@
 <a class="nav-link py-1 fw-semibold" href="#section-2-basic-workflow-in-the-map-editor">2. Basic Workflow in the Map Editor</a>
 <a class="nav-link py-1 ms-3 small" href="#section-21-map-editor-modes">2.1 Map-Editor Modes</a>
 <a class="nav-link py-1 ms-3 small" href="#section-22-general-shortcuts">2.2 General Shortcuts</a>
+<a class="nav-link py-1 ms-3 small" href="#section-23-loading-and-saving">2.3 Loading and Saving</a>
 <a class="nav-link py-1 fw-semibold" href="#section-3-camera-and-movement-in-the-map-editor">3. Camera and Movement (in the Map Editor)</a>
 <a class="nav-link py-1 fw-semibold" href="#section-4-block-tools">4. Block Tools</a>
 <a class="nav-link py-1 ms-3 small" href="#section-41-img-srcmap-editor-imagestool_1png--basic-block-placer">4.1 <img src="./map-editor-images/tool_1.png" /> Basic Block-Placer</a>
@@ -302,6 +303,7 @@
 <a class="nav-link py-1 fw-semibold" href="#section-2-basic-workflow-in-the-map-editor">2. Basic Workflow in the Map Editor</a>
 <a class="nav-link py-1 ms-3 small" href="#section-21-map-editor-modes">2.1 Map-Editor Modes</a>
 <a class="nav-link py-1 ms-3 small" href="#section-22-general-shortcuts">2.2 General Shortcuts</a>
+<a class="nav-link py-1 ms-3 small" href="#section-23-loading-and-saving">2.3 Loading and Saving</a>
 <a class="nav-link py-1 fw-semibold" href="#section-3-camera-and-movement-in-the-map-editor">3. Camera and Movement (in the Map Editor)</a>
 <a class="nav-link py-1 fw-semibold" href="#section-4-block-tools">4. Block Tools</a>
 <a class="nav-link py-1 ms-3 small" href="#section-41-img-srcmap-editor-imagestool_1png--basic-block-placer">4.1 <img src="./map-editor-images/tool_1.png" /> Basic Block-Placer</a>
@@ -373,17 +375,17 @@
 </ol>
 <p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/workshop_subscribed.png" /></p>
 <ol start="4">
-<li>Once subscribed, maps will appear in the map list and are ready to play.</li>
+<li>Once subscribed, maps will appear in the map list and are ready to play :</li>
 </ol>
 <p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/map_in_list.png" /></p>
 <h2 class="mt-5 mb-3 pb-2 border-bottom" id="section-1-enabling-the-map-editor">1. Enabling the Map Editor</h2>
 <ol>
-<li>Open <strong>Settings</strong> :</li>
+<li>Go to <strong>Settings</strong> :</li>
 </ol>
 <p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/settings_menu.png" /></p>
 <ol start="2">
 <li>Enable <strong>Map Editor</strong>.</li>
-<li>Load into a map (custom maps are easiest to work with - the main game map has hard-coded stuff).</li>
+<li>Load into a map (custom maps are easiest to work with - the main-game map has some hacky stuff in it).</li>
 <li>Press <strong>Tab</strong> to open the map editor.</li>
 </ol>
 <p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/map_editor_opened.png" /></p>
@@ -391,14 +393,14 @@
 <h2 class="mt-5 mb-3 pb-2 border-bottom" id="section-2-basic-workflow-in-the-map-editor">2. Basic Workflow in the Map Editor</h2>
 <h3 class="mt-4 mb-3" id="section-21-map-editor-modes">2.1 Map-Editor Modes</h3>
 <ul>
-<li><strong>Tab</strong></li>
+<li><strong>Tab</strong><ul>
 <li>In-game : Open the Map Editor.</li>
-<li>In the Map Editor : Toggle mouse control between camera-look and cursor-pointing.</li>
-<li><strong>Space</strong> : Exit edit mode and spawn at the point you're aiming at.</li>
-<li><strong>Backtick</strong> (<strong>`</strong>, likely the key to the left of <strong>1</strong>) : cycle between :</li>
+<li>In the Map Editor : Toggle mouse control between camera-look and cursor-pointing.</li></ul></li>
+<li><strong>Space</strong> : Exit edit mode back into the game, spawning at the point you're aiming at.</li>
+<li><strong>Backtick</strong> (<strong>`</strong>, likely the key to the left of <strong>1</strong>) : cycle between<ul>
 <li><strong>Block Mode</strong> : Edit terrain.</li>
 <li><strong>Entity Mode</strong> : Checkpoints, props, trigger boxes.</li>
-<li><strong>Layer Mode</strong> : Move large sections of terrain.</li>
+<li><strong>Layer Mode</strong> : Move large sections of terrain.</li></ul></li>
 </ul>
 <h3 class="mt-4 mb-3" id="section-22-general-shortcuts">2.2 General Shortcuts</h3>
 <ul>
@@ -407,24 +409,24 @@
 <li><strong>Ctrl+Z</strong> : Undo</li>
 <li><strong>Ctrl+Y</strong> : Redo</li>
 <li><strong>Ctrl+R</strong> : Randomly rotate all <em>cube-shaped blocks</em> with the currently selected texture in the currently selected layer.</li>
+<li><strong>Ctrl+L</strong> : Open the maps folder with your file manager.</li>
 </ul>
+<h3 class="mt-4 mb-3" id="section-23-loading-and-saving">2.3 Loading and Saving</h3>
 <p><img class="img-fluid rounded shadow-sm d-block my-3" width="322" height="142" alt="image" src="./map-editor-images/editor_ui_top_left.png" /></p>
 <p>To the top left of the screen you can see :</p>
 <ul>
 <li>The current map name (edit it and press <strong>Enter</strong> to save as a new file).</li>
-<li>The file dropdown - lists all <strong>built-in maps</strong> (e.g. <code>minimal</code>, <code>eggworld</code>), <strong>Steam Workshop maps</strong>, and <strong>user maps</strong> (saved in your maps folder).  Note : built-in and Steam Workshop maps are <em>read-only</em>, but you can save them under new filenames.</li>
+<li>The file dropdown. This lists all <strong>built-in maps</strong> (e.g. <code>minimal</code>, <code>eggworld</code>), <strong>Steam Workshop maps</strong>, and <strong>user maps</strong> (saved in your maps folder).  </li>
+<li>Note : built-in and Steam Workshop maps are <em>read-only</em>, but you can save them under new filenames.</li>
 </ul>
 <p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/file_dropdown.png" /></p>
-<ul>
-<li>The button to open the maps folder (shortcut : <strong>Ctrl+L</strong>).</li>
-</ul>
 <hr class="my-5 opacity-0">
 <h2 class="mt-5 mb-3 pb-2 border-bottom" id="section-3-camera-and-movement-in-the-map-editor">3. Camera and Movement (in the Map Editor)</h2>
 <ul>
 <li><strong>WASD</strong> : Move camera</li>
 <li><strong>Shift</strong> : Faster movement</li>
-<li><strong>Q / E</strong> : Up / Down</li>
-<li><strong>Z / C</strong> : Rotate Left / Right</li>
+<li><strong>Q / E</strong> : Move up / pown</li>
+<li><strong>Z / C</strong> : Rotate left / right</li>
 </ul>
 <p>(Don't forget : <strong>Tab</strong> toggles between camera-look and cursor-pointing modes.)</p>
 <hr class="my-5 opacity-0">
@@ -453,7 +455,7 @@
 <p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/plane_drag_basic.png" /></p>
 <ul>
 <li><p><strong>Click+Drag</strong> : Draw a planar sheet (floor or wall).</p></li>
-<li><p><strong>Shift while dragging</strong> : Push the plane one block into the highlighted surface for a flush fit :</p></li>
+<li><p><strong>Shift while clicking</strong> : Push the plane one block into the highlighted surface for a flush fit :</p></li>
 </ul>
 <p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/plane_drag_shift_flush.png" /></p>
 <ul>
@@ -465,7 +467,7 @@
 </ul>
 <p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/plane_drag_alt_centered.png" /></p>
 <ul>
-<li>When drawing a plane with the 45° slope selected, you drag the plane along the slope :</li>
+<li>When using the tool with the 45° slope-shape selected, you drag the plane along the slope :</li>
 </ul>
 <p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/slope_plane_drag.png" /></p>
 <hr class="my-5 opacity-0">
@@ -495,42 +497,41 @@
 </ul>
 <hr class="my-5 opacity-0">
 <h3 class="mt-4 mb-3" id="section-46-img-srcmap-editor-imagestool_6png--hill-dropper-tool">4.6 <img class="img-fluid rounded shadow-sm d-block my-3" src="./map-editor-images/tool_6.png" /> Hill-Dropper Tool</h3>
+<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/hill_dropper_example.png" /></p>
 <ul>
 <li><strong>Click</strong> : Drop blocks from above to form organic hills.</li>
 <li><strong>Right-Click</strong> : Subtract hill-shape from terrain.</li>
-<li><strong>Scroll Wheel</strong> : Hill height.</li>
-<li><strong>Shift+Scroll Wheel</strong> : Hill width.</li>
+<li><strong>Scroll Wheel</strong> : Adjust hill height.</li>
+<li><strong>Shift+Scroll Wheel</strong> : Adjust hill width.</li>
 <li>Useful for mountains and natural terrain; can be used to create 'geological'-looking layers.</li>
 </ul>
-<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/hill_dropper_example.png" /></p>
 <hr class="my-5 opacity-0">
 <h3 class="mt-4 mb-3" id="section-47-img-srcmap-editor-imagestool_7png--sculpt-tool">4.7 <img class="img-fluid rounded shadow-sm d-block my-3" src="./map-editor-images/tool_7.png" /> Sculpt Tool</h3>
 <p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/sculpt_tool_example.png" /></p>
-<p>Grow/shrink your terrain within a sphere.</p>
+<p>Grow or shrink your terrain within a sphere.</p>
 <ul>
-<li><strong>Scroll Wheel</strong> : Control intensity.</li>
-<li><strong>Low</strong> : Shrink/erase terrain inside the sphere.</li>
-<li><strong>High</strong> : Grow/extrude terrain inside the sphere.</li>
-<li><strong>Mid</strong> : Tends to square off shapes.</li>
+<li><strong>Scroll Wheel</strong> : Control intensity.<ul>
+<li><strong>Low</strong> : Shrink or erase terrain inside the sphere.</li>
+<li><strong>Mid</strong> : Tends to square-off terrain.</li>
+<li><strong>High</strong> : Grow existing terrain inside the sphere.</li></ul></li>
 <li><strong>Shift+Scroll Wheel</strong> : Adjust brush radius.</li>
 </ul>
 <hr class="my-5 opacity-0">
 <h3 class="mt-4 mb-3" id="section-48-img-srcmap-editor-imagestool_8png--sphere-tool">4.8 <img class="img-fluid rounded shadow-sm d-block my-3" src="./map-editor-images/tool_8.png" /> Sphere Tool</h3>
 <p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/sphere_tool_example.png" /></p>
-<p>Adds or removes a sphere.</p>
 <ul>
+<li><strong>Click</strong> : Add a sphere.</li>
+<li><strong>Right-Click</strong> : Subtract a sphere (good for caves).</li>
+<li><strong>Shift</strong> : Centre sphere on the point you're highlight.</li>
 <li><strong>Scroll Wheel</strong> : Choose texture.</li>
 <li><strong>Shift+Scroll Wheel</strong> : Change sphere size.</li>
-<li><strong>Click</strong> : Add a sphere.</li>
-<li><strong>Shift+Click</strong> : Centre sphere on cursor point.</li>
-<li><strong>Right-Click</strong> : Subtract a sphere (good for caves).</li>
 </ul>
 <hr class="my-5 opacity-0">
 <h3 class="mt-4 mb-3" id="section-49-img-srcmap-editor-imagestool_9png--grout-tool">4.9 <img class="img-fluid rounded shadow-sm d-block my-3" src="./map-editor-images/tool_9.png" /> Grout Tool</h3>
 <p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/grout_tool_smoothing.png" /></p>
 <ul>
 <li><strong>Click</strong> : Smooth terrain by filling in edge voxels using intermediate block shapes.</li>
-<li><strong>Ctrl+Click</strong> : Smooth using the currently selected toolbar texture.</li>
+<li><strong>Ctrl+Click</strong> : Smooth terrain, but all blocks added use the currently selected texture.</li>
 <li><strong>Right-Click</strong> : Remove non-cube blocks.</li>
 <li><strong>Shift+Scroll Wheel</strong> : Change brush size.</li>
 </ul>
@@ -583,10 +584,16 @@
 </ul>
 <h4 class="mt-3 mb-2 opacity-75" id="section-516-img-srcmap-editor-imagesobject_6_chairpng--chair">5.1.6 <img class="img-fluid rounded shadow-sm d-block my-3" src="./map-editor-images/object_6_Chair.png" /> Chair</h4>
 <p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/object_chair_example.png" /></p>
-<p>Purely decorative geometry.  Not used in the main game.</p>
+<ul>
+<li>Inert geometric object.  </li>
+<li>Not used in the main game.</li>
+</ul>
 <h4 class="mt-3 mb-2 opacity-75" id="section-517-img-srcmap-editor-imagesobject_7_tablepng--table">5.1.7 <img class="img-fluid rounded shadow-sm d-block my-3" src="./map-editor-images/object_7_Table.png" /> Table</h4>
 <p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/object_table_example.png" /></p>
-<p>Purely decorative geometry.  Not used in the main game.</p>
+<ul>
+<li>Inert geometric object.  </li>
+<li>Not used in the main game.</li>
+</ul>
 <h4 class="mt-3 mb-2 opacity-75" id="section-518-other-objects">5.1.8 Other Objects</h4>
 <p>There are other objects accessible via the <code>asset_name</code> dropdown in the properties panel, but they have unusual or hard-coded behaviour tied to the main game, so I don't recommend using them in custom maps. (The <code>Nest.tscn</code> object, for instance, has a great deal of specific hard-coded logic and spawns invisible collision geometry during cutscenes.) It's fine to leave them in place if you're modding the main game map, just be careful to not modify these objects or their surrounding geometry.</p>
 <h3 class="mt-4 mb-3" id="section-52-img-srcmap-editor-imagesentity_tool_triggerpng--trigger-box-tool">5.2 <img class="img-fluid rounded shadow-sm d-block my-3" src="./map-editor-images/entity_tool_trigger.png" /> Trigger-Box Tool</h3>
@@ -617,7 +624,7 @@
 </ul>
 <h4 class="mt-3 mb-2 opacity-75" id="section-522-img-srcmap-editor-imagestrigger_2_arealabelpng--arealabel">5.2.2 <img class="img-fluid rounded shadow-sm d-block my-3" src="./map-editor-images/trigger_2_arealabel.png" /> arealabel</h4>
 <p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/arealabel_props.png" /></p>
-<p>Arealabel trigger boxes display a message on screen when the player enters, independently of checkpoints.  If the <code>area_name</code> matches a built-in location name (case-sensitive), the game localises it - e.g. entering <code>FOREST</code> displays "Forest of Branching Paths" in English.  Otherwise it just displays your text verbatim, so entering <code>Hello, world!</code> displays "Hello, World!".</p>
+<p>'arealabel' trigger boxes display a message on screen when the player enters, independently of checkpoints.  If the <code>area_name</code> matches a built-in location name (case-sensitive), the game localises it - e.g. entering <code>FOREST</code> displays "Forest of Branching Paths" in English.  Otherwise it just displays your text verbatim, so entering <code>Hello, world!</code> displays "Hello, World!".</p>
 <p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/arealabel2.png" /></p>
 <h4 class="mt-3 mb-2 opacity-75" id="section-523-img-srcmap-editor-imagestrigger_3_killboxpng--killbox">5.2.3 <img class="img-fluid rounded shadow-sm d-block my-3" src="./map-editor-images/trigger_3_killbox.png" /> KILLBOX</h4>
 <p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/killbox.png" /></p>
