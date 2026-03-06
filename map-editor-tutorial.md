@@ -4,7 +4,7 @@
 
 ## 0. Adding Player-Made Maps
 
-There are two ways to add maps by other people - if you already have the file you can add it manually, or you can download them from Steam Workshop.
+You can add maps manually (if you already have the file) or download them from the Steam Workshop.
 
 ### 0.1 Adding Maps Manually
 
@@ -39,7 +39,7 @@ If you have a map file, you can add it like this (doesn't work on Steam Deck!) :
 
 <img height="300" alt="image" src="./map-editor-images/settings_menu.png" />
 
-2. Enable **Map-Editor**.
+2. Enable **Map Editor**.
 3. Load into a map (custom maps are easiest to work with - the main game map has hard-coded stuff).
 4. Press **Tab** to open the map editor.
 
@@ -102,7 +102,7 @@ To the top left of the screen you can see :
 - **Right-Click** : Delete block.
 - **Shift+Click (hold)** : Rapid placement.
 - **Shift+Right-Click (hold)** : Rapid deletion.
-- **Ctrl+Click** : Place a block offset one step from the face you're targeting.
+- **Ctrl+Click** : Place a block offset one step removed from the face you're highlighting.
 - **Alt+Click** : Sample an existing block (eyedropper).
 - **Scroll Wheel** or **Shift+Number Key** : Change the selected block texture in the left toolbar.
 - **Ctrl+Scroll Wheel** or **- / =** : Change texture page in the left toolbar.
@@ -115,7 +115,6 @@ To the top left of the screen you can see :
 - The top-right toolbar includes ramps and other shapes.
 - **R** : Rotate selected shape.
 - **V** : Flip vertically.
-- Shortcuts are as listed in the toolbar (an underscore **_** means hold **Shift** while pressing the named key).
 - Do *not* use the staircase block anywhere the player might roll across it - it doesn't play well with egg physics.
 
 ### 4.2 <img src="./map-editor-images/tool_2.png" /> Plane Tool
@@ -124,7 +123,7 @@ To the top left of the screen you can see :
 
 - **Click+Drag** : Draw a planar sheet (floor or wall).
 
-- **Shift while dragging** : Push the plane one block into the target surface for a flush fit :
+- **Shift while dragging** : Push the plane one block into the highlighted surface for a flush fit :
 
 <img height="300" alt="image" src="./map-editor-images/plane_drag_shift_flush.png" />
 
@@ -150,7 +149,7 @@ To the top left of the screen you can see :
 
 <img height="300" alt="image" src="./map-editor-images/extrude_irregular_shape.png" />
 
-- **Right-Click** : Nothing to do with extrude, really, more a "delete everything inside this box" tool.
+- **Right-Click+Drag** : Nothing to do with extrude, really, more a "delete everything inside this box" tool.
 
 ### 4.4 <img src="./map-editor-images/tool_4.png" /> Box Tool
 
@@ -247,12 +246,11 @@ In Entity Mode there are two tools - the **Object Tool** and the **Trigger-Box T
 - **Click** : Place or select an object.
 - **Right-Click** : Delete an object.
 
-#### 5.1.1 <img src="./map-editor-images/object_1_Bonfire_Start.png" /> Start Checkpoint
+#### 5.1.1 <img src="./map-editor-images/object_1_Bonfire_Start.png" /> Start-Checkpoint
 
-- Every map *must* include a **Start Checkpoint**.
+- Every map *must* include a **Start-Checkpoint**.
 - This is where the player spawns in custom maps; it looks just like a normal checkpoint.
 - The `area_name` tag controls the text shown when the player starts a new game on your map.  The default value is `"CUSTOM_LEVEL_LETS_GO"`, a localisation tag that amounts to "Let's go!" in English, but you can change it to whatever message you like.
-- (The `Nest.tscn` asset can also function as a start checkpoint, but its behaviour is heavily hard-coded - I don't recommend using it in your own maps unless you're modding the main game, and even then, test carefully and avoid modifying the geometry around the starting area.)
 
 <img height="300" alt="image" src="./map-editor-images/start_checkpoint.png" />
 
@@ -260,9 +258,9 @@ In Entity Mode there are two tools - the **Object Tool** and the **Trigger-Box T
 
 - Totally normal checkpoint.
 - Set the `area_name` tag to control the text shown when the player activates it.
-- You will often want to put checkpoints inside **Music** trigger boxes so that if a player resumes a saved game, the correct music will play.
+- You will often want to put checkpoints inside **music** trigger-boxes so that if a player resumes a saved game, the correct music will play.
 
-#### 5.1.3 <img src="./map-editor-images/object_3_Bonfire_End.png" /> End Checkpoint
+#### 5.1.3 <img src="./map-editor-images/object_3_Bonfire_End.png" /> End-Checkpoint
 
 - Custom maps don't have a dedicated final checkpoint (unless using the nest).  This behaves like a normal checkpoint.
 - The default `area_name` tag value is `"CUSTOM_LEVEL_YOU_MADE_IT"`, which localises to "You made it!" in English - but you can put whatever you like in there.
@@ -280,7 +278,7 @@ Provides a point of light.  Handy when things are getting a bit dark - but don't
 <img height="300" alt="image" src="./map-editor-images/star_collect.png" />
 
 - Makes a satisfying sound when collected, and displays a running count of stars collected vs. the total number of starts on the map.
-- Entirely optional and inconsequential. (I added these thinking I might use them in the main game, but decided against it in the end.)
+- Not used in the main game.
 
 #### 5.1.6 <img src="./map-editor-images/object_6_Chair.png" /> Chair
 
@@ -300,11 +298,11 @@ There are other objects accessible via the `asset_name` dropdown in the properti
 
 ### 5.2 <img src="./map-editor-images/entity_tool_trigger.png" /> Trigger-Box Tool
 
-- Trigger boxes are big invisible areas that do something when the player enters them.
+- Trigger boxes are big invisible areas that do something (e.g. playing music or displaying a message) when the player enters them.
 
 <img height="300" alt="image" src="./map-editor-images/triggerbox.png" />
 
-- In the properties panel you can edit various properties, including position and dimensions (WUN = West/Up/North, EDS = East/Down/South) :
+- In the properties panel you can edit various values, including position and dimensions (WUN = West/Up/North, EDS = East/Down/South) :
 
 <img height="300" alt="image" src="./map-editor-images/trigger_intro.png" />
 
@@ -357,7 +355,7 @@ There are a few other really finicky trigger-box types - what they do is specifi
 
 Cycle to Layer Mode with **Backtick** (**`**).
 
-- It can be useful to divide large maps into layers
+- It can be useful to divide large maps into layers.
 - Empty layers are shown with a red tint in the layer list so you can spot them easily.
 
 ### 6.1 Layer Visibility
@@ -431,7 +429,7 @@ Creates a new empty layer.
 
 ## 8. <img src="./map-editor-images/upload_icon.png" /> Upload to Steam Workshop
 
-Uploading to Steam Workshop is a pretty easy affair - when you're happy with your map, just click the steam button in the toolbar :
+When you're happy with your map and want to share it on the Steam Workshop, click the Steam button in the toolbar:
 
 <img height="300" src="./map-editor-images/workshop_upload.png" />
 
