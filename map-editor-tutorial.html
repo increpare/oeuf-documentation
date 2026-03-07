@@ -425,7 +425,7 @@
 <ul>
 <li><strong>WASD</strong> : Move camera</li>
 <li><strong>Shift</strong> : Faster movement</li>
-<li><strong>Q / E</strong> : Move up / pown</li>
+<li><strong>Q / E</strong> : Move up / down</li>
 <li><strong>Z / C</strong> : Rotate left / right</li>
 </ul>
 <p>(Don't forget : <strong>Tab</strong> toggles between camera-look and cursor-pointing modes.)</p>
@@ -438,7 +438,7 @@
 <li><strong>Right-Click</strong> : Delete block.</li>
 <li><strong>Shift+Click (hold)</strong> : Rapid placement.</li>
 <li><strong>Shift+Right-Click (hold)</strong> : Rapid deletion.</li>
-<li><strong>Ctrl+Click</strong> : Place a block offset one step removed from the face you're highlighting.</li>
+<li><strong>Ctrl+Click</strong> : Place a block offset one step back from the face you're highlighting.</li>
 <li><strong>Alt+Click</strong> : Sample an existing block (eyedropper).</li>
 <li><strong>Scroll Wheel</strong> or <strong>Shift+Number Key</strong> : Change the selected block texture in the left toolbar.</li>
 <li><strong>Ctrl+Scroll Wheel</strong> or <strong>- / =</strong> : Change texture page in the left toolbar.</li>
@@ -480,6 +480,7 @@
 <ul>
 <li><strong>Right-Click+Drag</strong> : Nothing to do with extrude, really, more a "delete everything inside this box" tool.</li>
 </ul>
+<hr class="my-5 opacity-0">
 <h3 class="mt-4 mb-3" id="section-44-img-srcmap-editor-imagestool_4png--box-tool">4.4 <img class="img-fluid rounded shadow-sm d-block my-3" src="./map-editor-images/tool_4.png" /> Box Tool</h3>
 <p><img class="img-fluid rounded shadow-sm d-block my-3" height="300"  alt="image" src="./map-editor-images/box_tool_hollow_box.png" /></p>
 <ul>
@@ -488,6 +489,7 @@
 <li><strong>Right-Click</strong> : Carve out a room.</li>
 </ul>
 <p><img class="img-fluid rounded shadow-sm d-block my-3" height="300"  alt="image" src="./map-editor-images/box_tool_no_end_caps.png" /></p>
+<hr class="my-5 opacity-0">
 <h3 class="mt-4 mb-3" id="section-45-img-srcmap-editor-imagestool_5png--paint-tool">4.5 <img class="img-fluid rounded shadow-sm d-block my-3" src="./map-editor-images/tool_5.png" /> Paint Tool</h3>
 <ul>
 <li><strong>Click</strong> : Apply texture to highlighted block.</li>
@@ -522,7 +524,7 @@
 <ul>
 <li><strong>Click</strong> : Add a sphere.</li>
 <li><strong>Right-Click</strong> : Subtract a sphere (good for caves).</li>
-<li><strong>Shift</strong> : Centre sphere on the point you're highlight.</li>
+<li><strong>Shift</strong> : Centre sphere on the point you're highlighting.</li>
 <li><strong>Scroll Wheel</strong> : Choose texture.</li>
 <li><strong>Shift+Scroll Wheel</strong> : Change sphere size.</li>
 </ul>
@@ -569,7 +571,7 @@
 </ul>
 <h4 class="mt-3 mb-2 opacity-75" id="section-513-img-srcmap-editor-imagesobject_3_bonfire_endpng--end-checkpoint">5.1.3 <img class="img-fluid rounded shadow-sm d-block my-3" src="./map-editor-images/object_3_Bonfire_End.png" /> End-Checkpoint</h4>
 <ul>
-<li>Custom maps don't have a dedicated final checkpoint (unless using the nest).  This behaves like a normal checkpoint.</li>
+<li>This behaves like a normal checkpoint (only the Nest object can trigger the start/end cutscenes).</li>
 <li>The default <code>area_name</code> tag value is <code>"CUSTOM_LEVEL_YOU_MADE_IT"</code>, which localises to "You made it!" in English - but you can put whatever you like in there.</li>
 </ul>
 <h4 class="mt-3 mb-2 opacity-75" id="section-514-img-srcmap-editor-imagesobject_4_torchpng--torch">5.1.4 <img class="img-fluid rounded shadow-sm d-block my-3" src="./map-editor-images/object_4_Torch.png" /> Torch</h4>
@@ -618,7 +620,7 @@
 <li>Usually you want to have a music trigger at each checkpoint so that the correct music plays when a player resumes a saved game.</li>
 <li>Choose the track from the dropdown in the properties panel.
 <img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/music_property_panel.png" /></li>
-<li>Any time in the map editor you click on a music trigger you'll hear a preview of its music.</li>
+<li>Any time you select a music trigger-box, you'll hear a preview of its music.</li>
 <li>You can't add your own music files, but in addition to the main OST there are several hours of bonus tracks included for use in custom maps.</li>
 <li>The OST is <a href="https://store.steampowered.com/app/4217410/Oeuvre_Oeuf_Soundtrack/">here</a> if you want to listen to it outside the game.</li>
 </ul>
@@ -637,7 +639,7 @@
 <p>While inside this trigger box, the player emits light.  Handy for subtly brightening dark areas without placing lots of torch props (which can be expensive to render and visually distracting).</p>
 <p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/torchbox.png" /></p>
 <h4 class="mt-3 mb-2 opacity-75" id="section-525-img-srcmap-editor-imagestrigger_5_advancedpng--generic-trigger-boxes">5.2.5 <img class="img-fluid rounded shadow-sm d-block my-3" src="./map-editor-images/trigger_5_advanced.png" /> Generic Trigger-Boxes</h4>
-<p>There are a few other really finicky trigger-box types - what they do is specified by their meta tags.  I don't think they're appropriate for general use, so I won't document them.  If you're modding the main game map it's fine to leave them in place - but pls don't use them in new custom maps, as they may behave unexpectedly.</p>
+<p>There are a few other really finicky trigger-box types - what they do is specified by their meta tags.  I don't think they're appropriate for general use, so I won't document them.  If you're modding the main game map it's fine to leave them in place - but pls don't use them in maps you're making from scratch, as they may behave unexpectedly.</p>
 <hr class="my-5 opacity-0">
 <h2 class="mt-5 mb-3 pb-2 border-bottom" id="section-6-layer-mode">6. Layer Mode</h2>
 <p>Cycle to Layer Mode with <strong>Backtick</strong> (<strong>`</strong>).</p>
