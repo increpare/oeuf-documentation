@@ -225,9 +225,14 @@ Grow or shrink your terrain within a sphere.
 
 ### 4.10 <img src="./map-editor-images/tool_0.png" /> Planar Drawing Tool
 
-- **Click+Drag** : Draw on the current horizontal plane.
-- **Right-Click** : Remove blocks.
-- **Shift+Scroll Wheel** : Raise or lower the drawing plane.
+- **Click** : Add a block where you're clicking.
+- **Shift+Click** : Add a block on the far side of the plane.
+- **Right-Click** : Remove blocks on the plane where you're clicking.
+- **Shift+Right-Click** : Remove blocks on far side of the plane where you're clicking.
+- **Scroll Wheel+Shift** : Move the plane further/closer to you.
+- **Alt+Click** : Sample highlighted block
+- **Alt+Right-Click** : Align plane to highlighted face
+
 
 <img height="300" alt="image" src="./map-editor-images/planar_draw_example.png" />
 
