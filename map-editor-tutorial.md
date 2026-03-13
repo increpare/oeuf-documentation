@@ -88,7 +88,7 @@ To the top left of the screen you can see :
 
 - **WASD** : Move camera
 - **Shift** : Faster movement
-- **Q / E** : Move up / pown
+- **Q / E** : Move down / up
 - **Z / C** : Rotate left / right
 
 (Don't forget : **Tab** toggles between camera-look and cursor-pointing modes.)
