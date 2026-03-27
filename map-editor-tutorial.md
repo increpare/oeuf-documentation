@@ -68,6 +68,7 @@ If you have a map file, you can add it like this (doesn't work on Steam Deck!) :
 - **Ctrl+Z** : Undo
 - **Ctrl+Y** : Redo
 - **Ctrl+R** : Randomly rotate all *cube-shaped blocks* with the currently selected texture in the currently selected layer.
+- **Ctrl+Shift+R** : Unrandomizes the rotation of all *cube-shaped blocks* to a single direction. Cycles direction each time it's pressed.
 - **Ctrl+L** : Open the maps folder with your file manager.
 
 ### 2.3 Loading and Saving
