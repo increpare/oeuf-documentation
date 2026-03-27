@@ -105,7 +105,7 @@ To the top left of the screen you can see :
 - **Right-Click** : Delete block.
 - **Shift+Click (hold)** : Rapid placement.
 - **Shift+Right-Click (hold)** : Rapid deletion.
-- **Ctrl+Click** : Place a block offset one step removed from the face you're highlighting.
+- **Ctrl+Click** : Place a block offset one step back from the face you're highlighting.
 - **Alt+Click** : Sample an existing block (eyedropper).
 - **Scroll Wheel** or **Shift+Number Key** : Change the selected block texture in the left toolbar.
 - **Ctrl+Scroll Wheel** or **- / =** : Change texture page in the left toolbar.
@@ -154,6 +154,8 @@ To the top left of the screen you can see :
 
 - **Right-Click+Drag** : Nothing to do with extrude, really, more a "delete everything inside this box" tool.
 
+---
+
 ### 4.4 <img src="./map-editor-images/tool_4.png" /> Box Tool
 
 <img height="300"  alt="image" src="./map-editor-images/box_tool_hollow_box.png" />
@@ -163,6 +165,8 @@ To the top left of the screen you can see :
 - **Right-Click** : Carve out a room.
 
 <img height="300"  alt="image" src="./map-editor-images/box_tool_no_end_caps.png" />
+
+---
 
 ### 4.5 <img src="./map-editor-images/tool_5.png" /> Paint Tool
 
@@ -205,7 +209,7 @@ Grow or shrink your terrain within a sphere.
 
 - **Click** : Add a sphere.
 - **Right-Click** : Subtract a sphere (good for caves).
-- **Shift** : Centre sphere on the point you're highlight.
+- **Shift** : Centre sphere on the point you're highlighting.
 - **Scroll Wheel** : Choose texture.
 - **Shift+Scroll Wheel** : Change sphere size.
 
@@ -268,7 +272,7 @@ In Entity Mode there are two tools - the **Object Tool** and the **Trigger-Box T
 
 #### 5.1.3 <img src="./map-editor-images/object_3_Bonfire_End.png" /> End-Checkpoint
 
-- Custom maps don't have a dedicated final checkpoint (unless using the nest).  This behaves like a normal checkpoint.
+- This behaves like a normal checkpoint (only the Nest object can trigger the start/end cutscenes).
 - The default `area_name` tag value is `"CUSTOM_LEVEL_YOU_MADE_IT"`, which localises to "You made it!" in English - but you can put whatever you like in there.
 
 #### 5.1.4 <img src="./map-editor-images/object_4_Torch.png" /> Torch
@@ -326,7 +330,7 @@ There are other objects accessible via the `asset_name` dropdown in the properti
 - Usually you want to have a music trigger at each checkpoint so that the correct music plays when a player resumes a saved game.
 - Choose the track from the dropdown in the properties panel.
 <img height="300" alt="image" src="./map-editor-images/music_property_panel.png" />
-- Any time in the map editor you click on a music trigger you'll hear a preview of its music.
+- Any time you select a music trigger-box, you'll hear a preview of its music.
 - You can't add your own music files, but in addition to the main OST there are several hours of bonus tracks included for use in custom maps.
 - The OST is [here](https://store.steampowered.com/app/4217410/Oeuvre_Oeuf_Soundtrack/) if you want to listen to it outside the game.
 
@@ -355,7 +359,7 @@ While inside this trigger box, the player emits light.  Handy for subtly brighte
 
 #### 5.2.5 <img src="./map-editor-images/trigger_5_advanced.png" /> Generic Trigger-Boxes
 
-There are a few other really finicky trigger-box types - what they do is specified by their meta tags.  I don't think they're appropriate for general use, so I won't document them.  If you're modding the main game map it's fine to leave them in place - but pls don't use them in new custom maps, as they may behave unexpectedly.
+There are a few other really finicky trigger-box types - what they do is specified by their meta tags.  I don't think they're appropriate for general use, so I won't document them.  If you're modding the main game map it's fine to leave them in place - but pls don't use them in maps you're making from scratch, as they may behave unexpectedly.
 
 ---
 
