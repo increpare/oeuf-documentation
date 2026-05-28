@@ -457,9 +457,30 @@ The thumbnail is generated from a screenshot of the current view when you save.
 
 If you'd like to customise the listing further, you can do so from that page.  The mod is associated with the file name of the map - if you resave the file it will update your map on the Steam Workshop.
 
+<img height="300" src="./map-editor-images/custom_level_list.png" />
+
+I have recently added a bunch of *tags* to steam workshop, which are displayed in the in-game browser.  They indicate difficulty, and also if I've given it my personal stamp of approval.  This is a bit dictatorial, but it's genuinely important to me that new players can have fun browsing the workshop and easily find things they might like. They are set by me right now.  I try to play all games and rate them as easy/medium/hard if I can complete them.  If you think I've overlooked your game, drop me a line at [analytic@gmail.com](mailto:analytic@gmail.com) - I love playing Oeuf levels!
+
 ---
 
-## 8. Level file format specs
+## 8.<img src="./map-editor-images/mp_mapediting_icon.png" /> Multiplayer Level Editor
+
+You can edit levels with your friends by turning on co-op editing when you are hosting a game.
+
+<img height="300" src="./map-editor-images/coop_editing.png" />
+
+In the multiplayer lobby list games that have co-op editing enabled have a <img src="./map-editor-images/mp_mapediting.png" class="img-inline" /> icon next to them.
+
+
+<img height="300" src="./map-editor-images/mp_editor_permissions_list.png" />
+
+You can set whether new players have permission to edit the level by default on this menu, and you can change it from the pause menu in-game.  You can also toggle editing permission on and off for specific players there.
+
+Certain operations are restricted in co-op editing mode.  These are operations that would potentially modify large chunks of the map.  So layer operations, flood-fill etc. If you need to do these, ask the host to do them for you. 🙃
+
+---
+
+## 9. Level file format specs
 
 Oeuf stores its levels as plaintext, with space-separated values.  Each line starts with a token which indicates the type of data stored, and then information about it.  This is not a comperhensive spec, the idea is to give you enough to get started parsing/generating if you want to.  Happy to explain more if you want to know more.  Just drop me an email.
 
@@ -500,6 +521,6 @@ Oeuf stores its levels as plaintext, with space-separated values.  Each line sta
 
 ---
 
-## 9. Feedback and Bug Reports
+## 10. Feedback and Bug Reports
 
 Does this make sense? I hope so! Feedback and bug reports are always welcome - e-mail me at [analytic@gmail.com](mailto:analytic@gmail.com).
