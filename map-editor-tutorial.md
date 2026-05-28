@@ -68,6 +68,7 @@ If you have a map file, you can add it like this (doesn't work on Steam Deck!) :
 - **Ctrl+Z** : Undo
 - **Ctrl+Y** : Redo
 - **Ctrl+R** : Randomly rotate all *cube-shaped blocks* with the currently selected texture in the currently selected layer.
+- **Ctrl+Shift+R** : Unrandomizes the rotation of all *cube-shaped blocks* (with the currently-selected texture in the currently-selected layer) to face a single direction. Cycles direction each time it's pressed.
 - **Ctrl+L** : Open the maps folder with your file manager.
 - **Ctrk+K** : Export current level as 3D mesh (for importing into other software/games). This also exports the game tilemap/textures to the same directory.
 
@@ -89,7 +90,7 @@ To the top left of the screen you can see :
 
 - **WASD** : Move camera
 - **Shift** : Faster movement
-- **Q / E** : Move up / down
+- **Q / E** : Move down / up
 - **Z / C** : Rotate left / right
 
 (Don't forget : **Tab** toggles between camera-look and cursor-pointing modes.)
@@ -230,9 +231,14 @@ Grow or shrink your terrain within a sphere.
 
 ### 4.10 <img src="./map-editor-images/tool_0.png" /> Planar Drawing Tool
 
-- **Click+Drag** : Draw on the current horizontal plane.
-- **Right-Click** : Remove blocks.
-- **Shift+Scroll Wheel** : Raise or lower the drawing plane.
+- **Click** : Add a block where you're clicking.
+- **Shift+Click** : Add a block on the far side of the plane.
+- **Right-Click** : Remove blocks on the plane where you're clicking.
+- **Shift+Right-Click** : Remove blocks on far side of the plane where you're clicking.
+- **Scroll Wheel+Shift** : Move the plane further/closer to you.
+- **Alt+Click** : Sample highlighted block
+- **Alt+Right-Click** : Align plane to highlighted face
+
 
 <img height="300" alt="image" src="./map-editor-images/planar_draw_example.png" />
 
