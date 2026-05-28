@@ -16,7 +16,7 @@ If you have a map file, you can add it like this (doesn't work on Steam Deck!) :
 
 <img height="300" alt="image" src="./map-editor-images/open_maps_folder_button.png" />
 
-2. Click **Open Maps Folder** to open the maps folder in your file manager. You can add map files from other people here.
+2. Click **Open Maps Folder** to open the maps folder in your file manager.  You can add map files from other people here.
 
 ### 0.2 Adding Maps from Steam Workshop
 
@@ -68,9 +68,9 @@ If you have a map file, you can add it like this (doesn't work on Steam Deck!) :
 - **Ctrl+Z** : Undo
 - **Ctrl+Y** : Redo
 - **Ctrl+R** : Randomly rotate all *cube-shaped blocks* with the currently selected texture in the currently selected layer.
-- **Ctrl+Shift+R** : Unrandomizes the rotation of all *cube-shaped blocks* (with the currently-selected texture in the currently-selected layer) to face a single direction. Cycles direction each time it's pressed.
+- **Ctrl+Shift+R** : Unrandomizes the rotation of all *cube-shaped blocks* (with the currently-selected texture in the currently-selected layer) to face a single direction.  Cycles direction each time it's pressed.
 - **Ctrl+L** : Open the maps folder with your file manager.
-- **Ctrl+K** : Export current level as a 3D mesh (for importing into other software/games). This also exports the game tilemap/textures to the same directory.
+- **Ctrl+K** : Export current level as a 3D mesh (for importing into other software/games).  This also exports the game tilemap/textures to the same directory.
 
 ### 2.3 Loading and Saving
 
@@ -79,7 +79,7 @@ If you have a map file, you can add it like this (doesn't work on Steam Deck!) :
 To the top left of the screen you can see :
 
 - The current map name (edit it and press **Enter** to save as a new file).
-- The file dropdown. This lists all **built-in maps** (e.g. `minimal`, `eggworld`), **Steam Workshop maps**, and **user maps** (saved in your maps folder).  
+- The file dropdown.  This lists all **built-in maps** (e.g. `minimal`, `eggworld`), **Steam Workshop maps**, and **user maps** (saved in your maps folder).  
 - Note : built-in and Steam Workshop maps are *read-only*, but you can save them under new filenames.
 
 <img height="300" alt="image" src="./map-editor-images/file_dropdown.png" />
@@ -340,7 +340,7 @@ There are other objects accessible via the `asset_name` dropdown in the properti
 
 <img height="300" alt="image" src="./map-editor-images/arealabel_props.png" />
 
-'arealabel' trigger boxes display a message on screen when the player enters, independently of checkpoints.  If the `area_name` matches a built-in location name (case-sensitive), the game localises it - e.g. entering `FOREST` displays "Forest of Branching Paths" in English.  Otherwise it just displays your text verbatim, so entering `Hello, world!` displays "Hello, World!".
+'arealabel' trigger boxes display a message on screen when the player enters, independently of checkpoints.  If the `area_name` matches a built-in location name (case-sensitive), the game localises it - e.g. entering `FOREST` displays "Forest of Branching Paths" in English.  Otherwise it just displays your text verbatim, so entering `Hello, world!` displays "Hello, world!".
 
 <img height="300" alt="image" src="./map-editor-images/arealabel2.png" />
 
@@ -351,7 +351,7 @@ There are other objects accessible via the `asset_name` dropdown in the properti
 - If you enter a killbox, you are internally marked as *doomed*, and will oof the next time you touch horizontal-ish map geometry (ramps included).
 - Drawn in red in the map view for easy identification.
 - While *doomed*, you cannot trigger checkpoints until you restart.
-- For want of a better place to put this information: there's a global killplane below y=-51. Also, because the fog gets thicker when you go down, *nothing* below this level will be visible. There's no reason to have any geometry below y=-51.
+- For want of a better place to put this information: there's a global killplane below y=-51.  Also, because the fog gets thicker when you go down, *nothing* below this level will be visible.  There's no reason to have any geometry below y=-51.
 
 #### 5.2.4 <img src="./map-editor-images/trigger_4_torch.png" /> TORCH
 
@@ -459,7 +459,7 @@ If you'd like to customise the listing further, you can do so from that page.  T
 
 <img height="300" src="./map-editor-images/custom_level_list.png" />
 
-I have recently added a bunch of *tags* to steam workshop, which are displayed in the in-game browser.  They indicate difficulty, and also if I've given it my personal stamp of approval.  This is a bit dictatorial, but it's genuinely important to me that new players can have fun browsing the workshop and easily find things they might like. They are set by me right now.  I try to play all games and rate them as easy/medium/hard if I can complete them.  If you think I've overlooked your game, drop me a line at [analytic@gmail.com](mailto:analytic@gmail.com) - I love playing Oeuf levels!
+I have recently added a bunch of *tags* to steam workshop, which are displayed in the in-game browser.  They indicate difficulty, and also if I've given it my personal stamp of approval.  This is a bit dictatorial, but it's genuinely important to me that new players can have fun browsing the workshop and easily find things they might like.  They are set by me right now.  I try to play all games and rate them as easy/medium/hard if I can complete them.  If you think I've overlooked your game, drop me a line at [analytic@gmail.com](mailto:analytic@gmail.com) - I love playing Oeuf levels!
 
 ---
 
@@ -476,7 +476,7 @@ In the multiplayer lobby list, games that have co-op editing enabled have a <img
 
 You can set whether new players have permission to edit the level by default on this menu, and you can change it from the pause menu in-game.  You can also toggle editing permission on and off for specific players there.
 
-Certain operations are restricted in co-op editing mode.  These are operations that would potentially modify large chunks of the map.  So layer operations, flood-fill etc. If you need to do these, ask the host to do them for you. 🙃
+Certain operations are restricted in co-op editing mode.  These are operations that would potentially modify large chunks of the map.  So layer operations, flood-fill etc.  If you need to do these, ask the host to do them for you. 🙃
 
 ---
 
