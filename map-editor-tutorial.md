@@ -458,6 +458,47 @@ If you'd like to customise the listing further, you can do so from that page.  T
 
 ---
 
+## 8. Level file format specs
+
+Oeuf stores its levels as plaintext, with space-separated values.  Each line starts with a token which indicates the type of data stored, and then information about it.  This is not a comperhensive spec, the idea is to give you enough to get started parsing/generating if you want to.  Happy to explain more if you want to know more.  Just drop me an email.
+
+- **version** VERSION_NUMBER
+    - **VERSION_NUMBER** : the version number of the level file format. 
+- **voxels** voxelcount : how many voxels are in the level.
+- **vx** A B C D E F G H I
+    - **vx** : "this is a voxel"
+    - **A** : 1 if what follows is an absolute coordinate, or 0 if given relative to the last-specified coordinate (saves file size a lot!)
+    - **BCD** : (x,y,z) coordiante of voxel (either absolute or relative depending on above)
+    - **E** : block shape index
+    - **FG** : tilemap coordinates
+    - **H** : rotation encoded as (rot + vflip * 4) (vflip = if vertically flipped)
+    - **I** : layer index
+- **layers** layercount : how many layers are in the level.
+- **l** LAYER_NAME VISIBILITY
+- **selected** SELECTED_LAYER_INDEX
+- **cp** X Y Z : editor camera position
+- **cbr** X Y Z : editor camera base rotation
+- **crr** X Y Z : editor camera rot rotation (cbr and crr just encode rotations of the camera dn its parents, can't be bothered to check up what exactly they are)
+- **entities_version** ENTITY_VERSION_NUMBER : version number of the entity section.
+- **entities** entitycount : number of entities
+- **e** ENTITY_NAME ENTITY_TYPE X Y Z LAYER FLAGS [...FLAG-DEPENDENT FIELDS]
+    - **e** : "this is an entity"
+    - **ENTITY_NAME** : entity name, surrounded by double-quotes
+    - **ENTITY_TYPE** : entity type (integer).  `3` means a trigger-box (see below)
+    - **X Y Z** : entity position (x y z)
+    - **LAYER** : entity layer (present in `entities_version >= 3`)
+    - **FLAGS** : bitfield controlling which optional fields follow (immediately after **FLAGS**)
+        - If **bit0** (value **1**) is set : include **DIR_PLUS_ONE** (stores **dir+1**)
+        - If **bit1** (value **2**) is set : include **"META"**
+        - If **bit2** (value **4**) is set : include **"ASSET_NAME"** (e.g. **"Bonfire.tscn"**)
+        - If **bit3** (value **8**) is set : include **COLOUR** (unsigned byte)
+    - If **ENTITY_TYPE** is **3** (trigger-box), the line also includes two extra vectors at the end:
+        - **size_EDS** : east/down/south extents (x y z)
+        - **size_WUN** : west/up/north extents (x y z)
+
+
+---
+
 ## 9. Feedback and Bug Reports
 
 Does this make sense? I hope so! Feedback and bug reports are always welcome - e-mail me at [analytic@gmail.com](mailto:analytic@gmail.com).
