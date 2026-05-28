@@ -69,6 +69,7 @@ If you have a map file, you can add it like this (doesn't work on Steam Deck!) :
 - **Ctrl+Y** : Redo
 - **Ctrl+R** : Randomly rotate all *cube-shaped blocks* with the currently selected texture in the currently selected layer.
 - **Ctrl+L** : Open the maps folder with your file manager.
+- **Ctrk+K** : Export current level as 3D mesh (for importing into other software/games). This also exports the game tilemap/textures to the same directory.
 
 ### 2.3 Loading and Saving
 
