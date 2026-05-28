@@ -70,7 +70,7 @@ If you have a map file, you can add it like this (doesn't work on Steam Deck!) :
 - **Ctrl+R** : Randomly rotate all *cube-shaped blocks* with the currently selected texture in the currently selected layer.
 - **Ctrl+Shift+R** : Unrandomizes the rotation of all *cube-shaped blocks* (with the currently-selected texture in the currently-selected layer) to face a single direction. Cycles direction each time it's pressed.
 - **Ctrl+L** : Open the maps folder with your file manager.
-- **Ctrk+K** : Export current level as 3D mesh (for importing into other software/games). This also exports the game tilemap/textures to the same directory.
+- **Ctrl+K** : Export current level as a 3D mesh (for importing into other software/games). This also exports the game tilemap/textures to the same directory.
 
 ### 2.3 Loading and Saving
 
@@ -463,13 +463,13 @@ I have recently added a bunch of *tags* to steam workshop, which are displayed i
 
 ---
 
-## 8.<img src="./map-editor-images/mp_mapediting_icon.png" /> Multiplayer Level Editor
+## 9. <img src="./map-editor-images/mp_mapediting_icon.png" /> Multiplayer Level Editor
 
 You can edit levels with your friends by turning on co-op editing when you are hosting a game.
 
 <img height="300" src="./map-editor-images/coop_editing.png" />
 
-In the multiplayer lobby list games that have co-op editing enabled have a <img src="./map-editor-images/mp_mapediting.png" class="img-inline" /> icon next to them.
+In the multiplayer lobby list, games that have co-op editing enabled have a <img src="./map-editor-images/mp_mapediting.png" class="img-inline" /> icon next to them.
 
 
 <img height="300" src="./map-editor-images/mp_editor_permissions_list.png" />
@@ -480,17 +480,17 @@ Certain operations are restricted in co-op editing mode.  These are operations t
 
 ---
 
-## 9. Level file format specs
+## 10. Level file format specs
 
-Oeuf stores its levels as plaintext, with space-separated values.  Each line starts with a token which indicates the type of data stored, and then information about it.  This is not a comperhensive spec, the idea is to give you enough to get started parsing/generating if you want to.  Happy to explain more if you want to know more.  Just drop me an email.
+Oeuf stores its levels as plaintext, with space-separated values.  Each line starts with a token which indicates the type of data stored, and then information about it.  This is not a comprehensive spec, the idea is to give you enough to get started parsing/generating if you want to.  Happy to explain more if you want to know more.  Just drop me an email.
 
 - **version** VERSION_NUMBER
-    - **VERSION_NUMBER** : the version number of the level file format. 
+    - **VERSION_NUMBER** : the version number of the level file format.
 - **voxels** voxelcount : how many voxels are in the level.
 - **vx** A B C D E F G H I
     - **vx** : "this is a voxel"
     - **A** : 1 if what follows is an absolute coordinate, or 0 if given relative to the last-specified coordinate (saves file size a lot!)
-    - **BCD** : (x,y,z) coordiante of voxel (either absolute or relative depending on above)
+    - **BCD** : (x,y,z) coordinates of voxel (either absolute or relative depending on above)
     - **E** : block shape index
     - **FG** : tilemap coordinates
     - **H** : rotation encoded as (rot + vflip * 4) (vflip = if vertically flipped)
@@ -500,7 +500,7 @@ Oeuf stores its levels as plaintext, with space-separated values.  Each line sta
 - **selected** SELECTED_LAYER_INDEX
 - **cp** X Y Z : editor camera position
 - **cbr** X Y Z : editor camera base rotation
-- **crr** X Y Z : editor camera rot rotation (cbr and crr just encode rotations of the camera dn its parents, can't be bothered to check up what exactly they are)
+- **crr** X Y Z : editor camera rot rotation (cbr and crr just encode rotations of the camera and its parents, can't be bothered to check what exactly they are)
 - **entities_version** ENTITY_VERSION_NUMBER : version number of the entity section.
 - **entities** entitycount : number of entities
 - **e** ENTITY_NAME ENTITY_TYPE X Y Z LAYER FLAGS [...FLAG-DEPENDENT FIELDS]
@@ -521,6 +521,6 @@ Oeuf stores its levels as plaintext, with space-separated values.  Each line sta
 
 ---
 
-## 10. Feedback and Bug Reports
+## 11. Feedback and Bug Reports
 
 Does this make sense? I hope so! Feedback and bug reports are always welcome - e-mail me at [analytic@gmail.com](mailto:analytic@gmail.com).
