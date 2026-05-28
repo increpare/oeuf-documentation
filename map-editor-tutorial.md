@@ -351,6 +351,7 @@ There are other objects accessible via the `asset_name` dropdown in the properti
 - If you enter a killbox, you are internally marked as *doomed*, and will oof the next time you touch horizontal-ish map geometry (ramps included).
 - Drawn in red in the map view for easy identification.
 - While *doomed*, you cannot trigger checkpoints until you restart.
+- For want of a better place to put this information: there's a global killplane below y=-51. Also, because the fog gets thicker when you go down, *nothing* below this level will be visible. There's no reason to have any geometry below y=-51.
 
 #### 5.2.4 <img src="./map-editor-images/trigger_4_torch.png" /> TORCH
 
