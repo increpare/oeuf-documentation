@@ -284,12 +284,15 @@ Provides a point of light.  Handy when things are getting a bit dark - but don't
 
 #### 5.1.5 <img src="./map-editor-images/object_5_Star.png" /> Star
 
-<img height="300" alt="image" src="./map-editor-images/star_shot.png" />
+<img height="300" alt="image" src="./map-editor-images/star_props.png" />
 
-<img height="300" alt="image" src="./map-editor-images/star_collect.png" />
+- Makes a nice sound when collected, and displays a running count of stars collected vs. the total number of stars on the map.
 
-- Makes a satisfying sound when collected, and displays a running count of stars collected vs. the total number of stars on the map.
+- The pause menu will have a stars submenu, showing a list of all the stars, along with hints for how to find them if you've specified them.
+
 - Not used in the main game.
+
+<img height="300" alt="image" src="./map-editor-images/star_menu.png" />
 
 #### 5.1.6 <img src="./map-editor-images/object_6_Chair.png" /> Chair
 
