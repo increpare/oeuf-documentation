@@ -287,9 +287,12 @@
 <a class="nav-link py-1 ms-3 small" href="#section-74-img-srcmap-editor-imageslayer_item_merge_uppng--merge-up">7.4 <img src="./map-editor-images/layer_item_merge_up.png" /> Merge Up</a>
 <a class="nav-link py-1 ms-3 small" href="#section-75-img-srcmap-editor-imageslayer_item_newpng--new-layer">7.5 <img src="./map-editor-images/layer_item_new.png" /> New Layer</a>
 <a class="nav-link py-1 fw-semibold" href="#section-8-img-srcmap-editor-imagesupload_iconpng--upload-to-steam-workshop">8. <img src="./map-editor-images/upload_icon.png" /> Upload to Steam Workshop</a>
-<a class="nav-link py-1 fw-semibold" href="#section-9-img-srcmap-editor-imagesmp_mapediting_iconpng--multiplayer-level-editor">9. <img src="./map-editor-images/mp_mapediting_icon.png" /> Multiplayer Level Editor</a>
-<a class="nav-link py-1 fw-semibold" href="#section-10-level-file-format-specs">10. Level file format specs</a>
-<a class="nav-link py-1 fw-semibold" href="#section-11-feedback-and-bug-reports">11. Feedback and Bug Reports</a></nav>
+<a class="nav-link py-1 fw-semibold" href="#section-9-img-srcmap-editor-imagesmp_mapediting_iconpng--multiplayer-map-editor">9. <img src="./map-editor-images/mp_mapediting_icon.png" /> Multiplayer Map Editor</a>
+<a class="nav-link py-1 ms-3 small" href="#section-91-setting-up-a-co-op-editing-session">9.1 Setting up a Co-op Editing Session</a>
+<a class="nav-link py-1 ms-3 small" href="#section-92-banning-users-from-editing">9.2 Banning Users from Editing</a>
+<a class="nav-link py-1 fw-semibold" href="#section-10-comparing-different-versions-of-a-map">10. Comparing different versions of a map</a>
+<a class="nav-link py-1 fw-semibold" href="#section-11-map-file-format-specs">11. Map file format specs</a>
+<a class="nav-link py-1 fw-semibold" href="#section-12-feedback-and-bug-reports">12. Feedback and Bug Reports</a></nav>
     </div>
   </div>
 
@@ -348,9 +351,12 @@
 <a class="nav-link py-1 ms-3 small" href="#section-74-img-srcmap-editor-imageslayer_item_merge_uppng--merge-up">7.4 <img src="./map-editor-images/layer_item_merge_up.png" /> Merge Up</a>
 <a class="nav-link py-1 ms-3 small" href="#section-75-img-srcmap-editor-imageslayer_item_newpng--new-layer">7.5 <img src="./map-editor-images/layer_item_new.png" /> New Layer</a>
 <a class="nav-link py-1 fw-semibold" href="#section-8-img-srcmap-editor-imagesupload_iconpng--upload-to-steam-workshop">8. <img src="./map-editor-images/upload_icon.png" /> Upload to Steam Workshop</a>
-<a class="nav-link py-1 fw-semibold" href="#section-9-img-srcmap-editor-imagesmp_mapediting_iconpng--multiplayer-level-editor">9. <img src="./map-editor-images/mp_mapediting_icon.png" /> Multiplayer Level Editor</a>
-<a class="nav-link py-1 fw-semibold" href="#section-10-level-file-format-specs">10. Level file format specs</a>
-<a class="nav-link py-1 fw-semibold" href="#section-11-feedback-and-bug-reports">11. Feedback and Bug Reports</a></nav>
+<a class="nav-link py-1 fw-semibold" href="#section-9-img-srcmap-editor-imagesmp_mapediting_iconpng--multiplayer-map-editor">9. <img src="./map-editor-images/mp_mapediting_icon.png" /> Multiplayer Map Editor</a>
+<a class="nav-link py-1 ms-3 small" href="#section-91-setting-up-a-co-op-editing-session">9.1 Setting up a Co-op Editing Session</a>
+<a class="nav-link py-1 ms-3 small" href="#section-92-banning-users-from-editing">9.2 Banning Users from Editing</a>
+<a class="nav-link py-1 fw-semibold" href="#section-10-comparing-different-versions-of-a-map">10. Comparing different versions of a map</a>
+<a class="nav-link py-1 fw-semibold" href="#section-11-map-file-format-specs">11. Map file format specs</a>
+<a class="nav-link py-1 fw-semibold" href="#section-12-feedback-and-bug-reports">12. Feedback and Bug Reports</a></nav>
         </div>
       </aside>
       <main class="col-lg-9 py-4 px-4 px-lg-5"><blockquote class="blockquote border-start border-3 ps-3 py-1 my-3 video-callout">
@@ -415,7 +421,7 @@
 <li><strong>Ctrl+R</strong> : Randomly rotate all <em>cube-shaped blocks</em> with the currently selected texture in the currently selected layer.</li>
 <li><strong>Ctrl+Shift+R</strong> : Unrandomizes the rotation of all <em>cube-shaped blocks</em> (with the currently-selected texture in the currently-selected layer) to face a single direction.  Cycles direction each time it's pressed.</li>
 <li><strong>Ctrl+L</strong> : Open the maps folder with your file manager.</li>
-<li><strong>Ctrl+K</strong> : Export current level as a 3D mesh (for importing into other software/games).  This also exports the game tilemap/textures to the same directory.</li>
+<li><strong>Ctrl+K</strong> : Export current map as a 3D mesh (for importing into other software/games).  This also exports the game tilemap/textures to the same directory.</li>
 </ul>
 <h3 class="mt-4 mb-3" id="section-23-loading-and-saving">2.3 Loading and Saving</h3>
 <p><img class="img-fluid rounded shadow-sm d-block my-3" width="322" height="142" alt="image" src="./map-editor-images/editor_ui_top_left.png" /></p>
@@ -697,7 +703,7 @@
 <h3 class="mt-4 mb-3" id="section-71-img-srcmap-editor-imageslayer_item_up_downpng--move-layer-up--down">7.1 <img class="img-fluid rounded shadow-sm d-block my-3" src="./map-editor-images/layer_item_up_down.png" /> Move Layer Up / Down</h3>
 <p>Rearranges layers.</p>
 <h3 class="mt-4 mb-3" id="section-72-img-srcmap-editor-imageslayer_item_visiblepng--visibility">7.2 <img class="img-fluid rounded shadow-sm d-block my-3" src="./map-editor-images/layer_item_visible.png" /> Visibility</h3>
-<p>Toggles the visibility of the layer (visible : <img class="img-inline img-fluid rounded shadow-sm d-block my-3" src="./map-editor-images/layer_item_visible_black.png" />, hidden : <img class="img-inline img-fluid rounded shadow-sm d-block my-3" src="./map-editor-images/layer_item_invisible_black.png" />).</p>
+<p>Toggles the visibility of the layer (visible : <img class="img-inline" src="./map-editor-images/layer_item_visible_black.png" />, hidden : <img class="img-inline" src="./map-editor-images/layer_item_invisible_black.png" />).</p>
 <h3 class="mt-4 mb-3" id="section-73-img-srcmap-editor-imageslayer_item_deletepng--delete">7.3 <img class="img-fluid rounded shadow-sm d-block my-3" src="./map-editor-images/layer_item_delete.png" /> Delete</h3>
 <p>Deletes the layer.</p>
 <h3 class="mt-4 mb-3" id="section-74-img-srcmap-editor-imageslayer_item_merge_uppng--merge-up">7.4 <img class="img-fluid rounded shadow-sm d-block my-3" src="./map-editor-images/layer_item_merge_up.png" /> Merge Up</h3>
@@ -714,22 +720,33 @@
 <p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" src="./map-editor-images/workshop_page_appearance.png" /></p>
 <p>If you'd like to customise the listing further, you can do so from that page.  The mod is associated with the file name of the map - if you resave the file it will update your map on the Steam Workshop.</p>
 <p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" src="./map-editor-images/custom_level_list.png" /></p>
-<p>I have recently added a bunch of <em>tags</em> to steam workshop, which are displayed in the in-game browser.  They indicate difficulty, and also if I've given it my personal stamp of approval.  This is a bit dictatorial, but it's genuinely important to me that new players can have fun browsing the workshop and easily find things they might like.  They are set by me right now.  I try to play all games and rate them as easy/medium/hard if I can complete them.  If you think I've overlooked your game, drop me a line at <a href="mailto:analytic@gmail.com">analytic@gmail.com</a> - I love playing Oeuf levels!</p>
+<p>I have recently added a bunch of <em>tags</em> to Steam Workshop, which are displayed in the in-game browser.  They indicate difficulty, and also if I've given it my personal stamp of approval.  This is a bit dictatorial, but it's genuinely important to me that new players can have fun browsing the workshop and easily find things they might like.  They are set by me right now.  I try to play all games and rate them as easy/medium/hard if I can complete them.  If you think I've overlooked your game, drop me a line at <a href="mailto:analytic@gmail.com">analytic@gmail.com</a> - I love playing Oeuf maps!</p>
 <hr class="my-5 opacity-0">
-<h2 class="mt-5 mb-3 pb-2 border-bottom" id="section-9-img-srcmap-editor-imagesmp_mapediting_iconpng--multiplayer-level-editor">9. <img class="img-fluid rounded shadow-sm d-block my-3" src="./map-editor-images/mp_mapediting_icon.png" /> Multiplayer Level Editor</h2>
-<p>You can edit levels with your friends by turning on co-op editing when you are hosting a game.</p>
+<h2 class="mt-5 mb-3 pb-2 border-bottom" id="section-9-img-srcmap-editor-imagesmp_mapediting_iconpng--multiplayer-map-editor">9. <img class="img-fluid rounded shadow-sm d-block my-3" src="./map-editor-images/mp_mapediting_icon.png" /> Multiplayer Map Editor</h2>
+<h3 class="mt-4 mb-3" id="section-91-setting-up-a-co-op-editing-session">9.1 Setting up a Co-op Editing Session</h3>
+<p>You can edit maps with your friends by turning on co-op editing when you are setting up to host a game.</p>
 <p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" src="./map-editor-images/coop_editing.png" /></p>
-<p>In the multiplayer lobby list, games that have co-op editing enabled have a <img src="./map-editor-images/mp_mapediting.png" class="img-inline img-fluid rounded shadow-sm d-block my-3" /> icon next to them.</p>
+<p>In the multiplayer lobby list, games that have co-op editing enabled have a <img src="./map-editor-images/mp_mapediting.png" class="img-inline" /> icon next to them.</p>
 <p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" src="./map-editor-images/mp_editor_permissions_list.png" /></p>
-<p>You can set whether new players have permission to edit the level by default on this menu, and you can change it from the pause menu in-game.  You can also toggle editing permission on and off for specific players there.</p>
-<p>Certain operations are restricted in co-op editing mode.  These are operations that would potentially modify large chunks of the map.  So layer operations, flood-fill etc.  If you need to do these, ask the host to do them for you. 🙃</p>
+<p>You can set whether new players have permission to edit the map by default on this menu, and you can change it from the pause menu in-game.  You can also toggle editing permission on and off for specific players there.</p>
+<p>Note: Certain operations are restricted in co-op editing mode.  These are operations that would potentially modify large chunks of the map.  So layer operations, flood-fill etc.  If you need to do these, ask the host to do them for you. 🙃</p>
+<h3 class="mt-4 mb-3" id="section-92-banning-users-from-editing">9.2 Banning Users from Editing</h3>
+<p>You can also block Steam users from editing the map based on their Steam IDs - this will not prevent them from joining/playing the map, but they won't be able to edit it.  To find a user's Steam ID, look at the log files  (open the maps folder, go up, then go into the logs folder).  You'll see some text like <em>"[Network] Player STEAM_ID has username USERNAME"</em>.  Then, in the directory above logs, there'll be a file called <code>banned_steam_users.txt</code> where you can add a line <strong>STEAM_ID|REASON</strong> - banned users will be told the reason if they try to edit a map.</p>
 <hr class="my-5 opacity-0">
-<h2 class="mt-5 mb-3 pb-2 border-bottom" id="section-10-level-file-format-specs">10. Level file format specs</h2>
-<p>Oeuf stores its levels as plaintext, with space-separated values.  Each line starts with a token which indicates the type of data stored, and then information about it.  This is not a comprehensive spec, the idea is to give you enough to get started parsing/generating if you want to.  Happy to explain more if you want to know more.  Just drop me an email.</p>
+<h2 class="mt-5 mb-3 pb-2 border-bottom" id="section-10-comparing-different-versions-of-a-map">10. Comparing different versions of a map</h2>
+<p>In the map editor, if you press <strong>Ctrl+Shift+D</strong>, a lovely little menu will pop up:</p>
+<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" src="./map-editor-images/diff.png" /></p>
+<p>This looks at what things (blocks or entities) are different between the two maps, and separates them into layers so you can easily see what changed:</p>
+<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" src="./map-editor-images/diff_layers.png" /></p>
+<p>By hiding/showing layers you can get a pretty great overview of what the differences are.</p>
+<p>This is a <em>very</em> useful tool when you've left a multiplayer editing server open overnight and want to know what happened while you were away.</p>
+<hr class="my-5 opacity-0">
+<h2 class="mt-5 mb-3 pb-2 border-bottom" id="section-11-map-file-format-specs">11. Map file format specs</h2>
+<p>Oeuf stores its maps as plaintext, with space-separated values.  Each line starts with a token which indicates the type of data stored, and then information about it.  This is not a comprehensive spec, the idea is to give you enough to get started parsing/generating if you want to.  Happy to explain more if you want to know more.  Just drop me an email.</p>
 <ul>
 <li><strong>version</strong> VERSION_NUMBER<ul>
-<li><strong>VERSION_NUMBER</strong> : the version number of the level file format.</li></ul></li>
-<li><strong>voxels</strong> voxelcount : how many voxels are in the level.</li>
+<li><strong>VERSION_NUMBER</strong> : the version number of the map file format.</li></ul></li>
+<li><strong>voxels</strong> voxelcount : how many voxels are in the map.</li>
 <li><strong>vx</strong> A B C D E F G H I<ul>
 <li><strong>vx</strong> : "this is a voxel"</li>
 <li><strong>A</strong> : 1 if what follows is an absolute coordinate, or 0 if given relative to the last-specified coordinate (saves file size a lot!)</li>
@@ -738,7 +755,7 @@
 <li><strong>FG</strong> : tilemap coordinates</li>
 <li><strong>H</strong> : rotation encoded as (rot + vflip * 4) (vflip = if vertically flipped)</li>
 <li><strong>I</strong> : layer index</li></ul></li>
-<li><strong>layers</strong> layercount : how many layers are in the level.</li>
+<li><strong>layers</strong> layercount : how many layers are in the map.</li>
 <li><strong>l</strong> LAYER_NAME VISIBILITY</li>
 <li><strong>selected</strong> SELECTED_LAYER_INDEX</li>
 <li><strong>cp</strong> X Y Z : editor camera position</li>
@@ -762,7 +779,7 @@
 <li><strong>size_WUN</strong> : west/up/north extents (x y z)</li></ul></li></ul></li>
 </ul>
 <hr class="my-5 opacity-0">
-<h2 class="mt-5 mb-3 pb-2 border-bottom" id="section-11-feedback-and-bug-reports">11. Feedback and Bug Reports</h2>
+<h2 class="mt-5 mb-3 pb-2 border-bottom" id="section-12-feedback-and-bug-reports">12. Feedback and Bug Reports</h2>
 <p>Does this make sense? I hope so! Feedback and bug reports are always welcome - e-mail me at <a href="mailto:analytic@gmail.com">analytic@gmail.com</a>.</p></main>
     </div>
   </div>

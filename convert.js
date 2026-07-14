@@ -56,7 +56,10 @@ const mergeClasses = (attrText, classesToAdd) => {
 
 body = body
   .replace(/<table(?=[>\s])/g,  '<table class="table table-striped table-bordered"')
-  .replace(/<img\b([^>]*)>/g,   (_, attrs) => `<img${mergeClasses(attrs, defaultImgClasses)}>`)
+  .replace(/<img\b([^>]*)>/g,   (_, attrs) => {
+    const isInline = /\bclass=(["'])[^"']*\bimg-inline\b/i.test(attrs);
+    return `<img${isInline ? attrs : mergeClasses(attrs, defaultImgClasses)}>`;
+  })
   .replace(/<blockquote>/g,     '<blockquote class="blockquote border-start border-3 ps-3 py-1 my-3">')
   .replace(/<blockquote class="blockquote border-start border-3 ps-3 py-1 my-3">/, '<blockquote class="blockquote border-start border-3 ps-3 py-1 my-3 video-callout">')
   .replace(/<pre>/g,            '<pre class="rounded p-3 border">')

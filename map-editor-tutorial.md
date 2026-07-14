@@ -70,7 +70,7 @@ If you have a map file, you can add it like this (doesn't work on Steam Deck!) :
 - **Ctrl+R** : Randomly rotate all *cube-shaped blocks* with the currently selected texture in the currently selected layer.
 - **Ctrl+Shift+R** : Unrandomizes the rotation of all *cube-shaped blocks* (with the currently-selected texture in the currently-selected layer) to face a single direction.  Cycles direction each time it's pressed.
 - **Ctrl+L** : Open the maps folder with your file manager.
-- **Ctrl+K** : Export current level as a 3D mesh (for importing into other software/games).  This also exports the game tilemap/textures to the same directory.
+- **Ctrl+K** : Export current map as a 3D mesh (for importing into other software/games).  This also exports the game tilemap/textures to the same directory.
 
 ### 2.3 Loading and Saving
 
@@ -462,34 +462,55 @@ If you'd like to customise the listing further, you can do so from that page.  T
 
 <img height="300" src="./map-editor-images/custom_level_list.png" />
 
-I have recently added a bunch of *tags* to steam workshop, which are displayed in the in-game browser.  They indicate difficulty, and also if I've given it my personal stamp of approval.  This is a bit dictatorial, but it's genuinely important to me that new players can have fun browsing the workshop and easily find things they might like.  They are set by me right now.  I try to play all games and rate them as easy/medium/hard if I can complete them.  If you think I've overlooked your game, drop me a line at [analytic@gmail.com](mailto:analytic@gmail.com) - I love playing Oeuf levels!
+I have recently added a bunch of *tags* to Steam Workshop, which are displayed in the in-game browser.  They indicate difficulty, and also if I've given it my personal stamp of approval.  This is a bit dictatorial, but it's genuinely important to me that new players can have fun browsing the workshop and easily find things they might like.  They are set by me right now.  I try to play all games and rate them as easy/medium/hard if I can complete them.  If you think I've overlooked your game, drop me a line at [analytic@gmail.com](mailto:analytic@gmail.com) - I love playing Oeuf maps!
 
 ---
 
-## 9. <img src="./map-editor-images/mp_mapediting_icon.png" /> Multiplayer Level Editor
+## 9. <img src="./map-editor-images/mp_mapediting_icon.png" /> Multiplayer Map Editor
 
-You can edit levels with your friends by turning on co-op editing when you are hosting a game.
+### 9.1 Setting up a Co-op Editing Session
+
+You can edit maps with your friends by turning on co-op editing when you are setting up to host a game.
 
 <img height="300" src="./map-editor-images/coop_editing.png" />
 
 In the multiplayer lobby list, games that have co-op editing enabled have a <img src="./map-editor-images/mp_mapediting.png" class="img-inline" /> icon next to them.
 
-
 <img height="300" src="./map-editor-images/mp_editor_permissions_list.png" />
 
-You can set whether new players have permission to edit the level by default on this menu, and you can change it from the pause menu in-game.  You can also toggle editing permission on and off for specific players there.
+You can set whether new players have permission to edit the map by default on this menu, and you can change it from the pause menu in-game.  You can also toggle editing permission on and off for specific players there.
 
-Certain operations are restricted in co-op editing mode.  These are operations that would potentially modify large chunks of the map.  So layer operations, flood-fill etc.  If you need to do these, ask the host to do them for you. 🙃
+Note: Certain operations are restricted in co-op editing mode.  These are operations that would potentially modify large chunks of the map.  So layer operations, flood-fill etc.  If you need to do these, ask the host to do them for you. 🙃
+
+### 9.2 Banning Users from Editing
+
+You can also block Steam users from editing the map based on their Steam IDs - this will not prevent them from joining/playing the map, but they won't be able to edit it.  To find a user's Steam ID, look at the log files  (open the maps folder, go up, then go into the logs folder).  You'll see some text like *"[Network] Player STEAM_ID has username USERNAME"*.  Then, in the directory above logs, there'll be a file called `banned_steam_users.txt` where you can add a line **STEAM_ID|REASON** - banned users will be told the reason if they try to edit a map.
 
 ---
 
-## 10. Level file format specs
+## 10. Comparing different versions of a map
 
-Oeuf stores its levels as plaintext, with space-separated values.  Each line starts with a token which indicates the type of data stored, and then information about it.  This is not a comprehensive spec, the idea is to give you enough to get started parsing/generating if you want to.  Happy to explain more if you want to know more.  Just drop me an email.
+In the map editor, if you press **Ctrl+Shift+D**, a lovely little menu will pop up:
+
+<img height="300" src="./map-editor-images/diff.png" />
+
+This looks at what things (blocks or entities) are different between the two maps, and separates them into layers so you can easily see what changed:
+
+<img height="300" src="./map-editor-images/diff_layers.png" />
+
+By hiding/showing layers you can get a pretty great overview of what the differences are.
+
+This is a *very* useful tool when you've left a multiplayer editing server open overnight and want to know what happened while you were away.
+
+---
+
+## 11. Map file format specs
+
+Oeuf stores its maps as plaintext, with space-separated values.  Each line starts with a token which indicates the type of data stored, and then information about it.  This is not a comprehensive spec, the idea is to give you enough to get started parsing/generating if you want to.  Happy to explain more if you want to know more.  Just drop me an email.
 
 - **version** VERSION_NUMBER
-    - **VERSION_NUMBER** : the version number of the level file format.
-- **voxels** voxelcount : how many voxels are in the level.
+    - **VERSION_NUMBER** : the version number of the map file format.
+- **voxels** voxelcount : how many voxels are in the map.
 - **vx** A B C D E F G H I
     - **vx** : "this is a voxel"
     - **A** : 1 if what follows is an absolute coordinate, or 0 if given relative to the last-specified coordinate (saves file size a lot!)
@@ -498,7 +519,7 @@ Oeuf stores its levels as plaintext, with space-separated values.  Each line sta
     - **FG** : tilemap coordinates
     - **H** : rotation encoded as (rot + vflip * 4) (vflip = if vertically flipped)
     - **I** : layer index
-- **layers** layercount : how many layers are in the level.
+- **layers** layercount : how many layers are in the map.
 - **l** LAYER_NAME VISIBILITY
 - **selected** SELECTED_LAYER_INDEX
 - **cp** X Y Z : editor camera position
@@ -524,6 +545,6 @@ Oeuf stores its levels as plaintext, with space-separated values.  Each line sta
 
 ---
 
-## 11. Feedback and Bug Reports
+## 12. Feedback and Bug Reports
 
 Does this make sense? I hope so! Feedback and bug reports are always welcome - e-mail me at [analytic@gmail.com](mailto:analytic@gmail.com).
