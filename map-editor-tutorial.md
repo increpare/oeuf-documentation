@@ -484,7 +484,7 @@ Note: Certain operations are restricted in co-op editing mode.  These are operat
 
 ### 9.2 Banning Users from Editing
 
-You can also block Steam users from editing the map based on their Steam IDs - this will not prevent them from joining/playing the map, but they won't be able to edit it.  To find a user's Steam ID, look at the log files  (open the maps folder, go up, then go into the logs folder).  You'll see some text like *"[Network] Player STEAM_ID has username USERNAME"*.  Then, in the directory above logs, there'll be a file called `banned_steam_users.txt` where you can add a line **STEAM_ID|REASON** - banned users will be told the reason if they try to edit a map.
+You can also block Steam users from editing the map based on their Steam IDs - this will not prevent them from joining/playing the map, but they won't be able to edit it.  To find a user's Steam ID, look at the log files  (open the maps folder, go up, then go into the logs folder).  You'll see some text like *"[Network] Player STEAM_ID has username USERNAME"*.  Then, in the directory above logs, there'll be a file called `banned_steam_users.txt` where you can add a line **STEAM_ID|REASON** - banned users will be told the reason if they try to edit a map.  You need to restart the game after this to reload the ban list.
 
 ---
 
