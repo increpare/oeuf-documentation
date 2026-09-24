@@ -100,7 +100,7 @@ To the top left of the screen you can see :
 ## 4. Block Tools
 
 <!--nearest neighbour upscaling-->
-### 4.1 <img src="./map-editor-images/tool_1.png" /> Basic Block-Placer
+### 4.1 <img src="./map-editor-images/tool_1.png" /> Basic Tool
 
 - **Click** : Place block.
 - **Right-Click** : Delete block.
@@ -121,7 +121,7 @@ To the top left of the screen you can see :
 - **V** : Flip vertically.
 - Do *not* use the staircase block anywhere the player might roll across it - it doesn't play well with egg physics.
 
-### 4.2 <img src="./map-editor-images/tool_2.png" /> Plane Tool
+### 4.2 <img src="./map-editor-images/tool_2.png" /> Plane
 
 <img height="300" alt="image" src="./map-editor-images/plane_drag_basic.png" />
 
@@ -146,7 +146,7 @@ To the top left of the screen you can see :
 
 ---
 
-### 4.3 <img src="./map-editor-images/tool_3.png" /> Extrude Tool
+### 4.3 <img src="./map-editor-images/tool_3.png" /> Extrude
 
 - **Click+Drag** to define a 2D area, then move your mouse and **Click** to extrude to that depth.  Very useful!
 - Works on irregular shapes :
@@ -157,19 +157,7 @@ To the top left of the screen you can see :
 
 ---
 
-### 4.4 <img src="./map-editor-images/tool_4.png" /> Box Tool
-
-<img height="300"  alt="image" src="./map-editor-images/box_tool_hollow_box.png" />
-
-- **Click+Drag** : Create a hollow box.
-- **Shift while dragging** : Remove end caps (for tunnels or open boxes).
-- **Right-Click** : Carve out a room.
-
-<img height="300"  alt="image" src="./map-editor-images/box_tool_no_end_caps.png" />
-
----
-
-### 4.5 <img src="./map-editor-images/tool_5.png" /> Paint Tool
+### 4.5 <img src="./map-editor-images/tool_5.png" /> Paint
 
 - **Click** : Apply texture to highlighted block.
 - **Right-Click** or **Alt+Click** : Sample block texture and shape.
@@ -178,7 +166,26 @@ To the top left of the screen you can see :
 
 ---
 
-### 4.6 <img src="./map-editor-images/tool_6.png" /> Hill-Dropper Tool
+### 4.9 <img src="./map-editor-images/tool_9.png" /> Grout
+
+<img height="300" alt="image" src="./map-editor-images/grout_tool_smoothing.png" />
+
+- **Click** : Smooth terrain by filling in edge voxels using intermediate block shapes.
+- **Ctrl+Click** : Smooth terrain, but all blocks added use the currently selected texture.
+- **Right-Click** : Remove non-cube blocks.
+- **Shift+Scroll Wheel** : Change brush size.
+
+<img height="300" alt="image" src="./map-editor-images/grout_tool_cleanup.png" />
+
+---
+
+### 4.9 <img src="./map-editor-images/tool_9.png" /> Hollow
+
+PLACEHOLDER
+
+---
+
+### 4.6 <img src="./map-editor-images/tool_6.png" /> Hill
 
 <img height="300" alt="image" src="./map-editor-images/hill_dropper_example.png" />
 
@@ -190,7 +197,7 @@ To the top left of the screen you can see :
 
 ---
 
-### 4.7 <img src="./map-editor-images/tool_7.png" /> Sculpt Tool
+### 4.7 <img src="./map-editor-images/tool_7.png" /> Sculpt
 
 <img height="300" alt="image" src="./map-editor-images/sculpt_tool_example.png" />
 
@@ -204,7 +211,7 @@ Grow or shrink your terrain within a sphere.
 
 ---
 
-### 4.8 <img src="./map-editor-images/tool_8.png" /> Sphere Tool
+### 4.8 <img src="./map-editor-images/tool_8.png" /> Sphere
 
 <img height="300" alt="image" src="./map-editor-images/sphere_tool_example.png" />
 
@@ -216,20 +223,7 @@ Grow or shrink your terrain within a sphere.
 
 ---
 
-### 4.9 <img src="./map-editor-images/tool_9.png" /> Grout Tool
-
-<img height="300" alt="image" src="./map-editor-images/grout_tool_smoothing.png" />
-
-- **Click** : Smooth terrain by filling in edge voxels using intermediate block shapes.
-- **Ctrl+Click** : Smooth terrain, but all blocks added use the currently selected texture.
-- **Right-Click** : Remove non-cube blocks.
-- **Shift+Scroll Wheel** : Change brush size.
-
-<img height="300" alt="image" src="./map-editor-images/grout_tool_cleanup.png" />
-
----
-
-### 4.10 <img src="./map-editor-images/tool_0.png" /> Planar Drawing Tool
+### 4.10 <img src="./map-editor-images/tool_0.png" /> 2D Draw
 
 - **Click** : Add a block where you're clicking.
 - **Shift+Click** : Add a block on the far side of the plane.
@@ -412,13 +406,13 @@ Cycle to Layer Mode with **Backtick** (**`**).
 - **Ctrl+C** : Copy the currently selected layer to the clipboard.
 - You can copy and paste between different map files!
 
-<img height="300" src="./map-editor-images/layer_copy_paste_example.png" />
+<img height="300" alt="Layer copy and paste example" src="./map-editor-images/layer_copy_paste_example.png" />
 
 ---
 
 ## 7. Layer List
 
-<img height="300" src="./map-editor-images/layer_list_view.png" />
+<img height="300" alt="Layer list" src="./map-editor-images/layer_list_view.png" />
 
 To the right-hand side of the screen you have the layer list, with the following buttons :
 
@@ -448,19 +442,19 @@ Creates a new empty layer.
 
 When you're happy with your map and want to share it on the Steam Workshop, click the Steam button in the toolbar :
 
-<img height="300" src="./map-editor-images/workshop_upload.png" />
+<img height="300" alt="Steam Workshop upload form" src="./map-editor-images/workshop_upload.png" />
 
 After a moment, you'll see a confirmation message and the Steam Workshop page for your map will open automatically.
 
-<img height="300" src="./map-editor-images/workshop_success.png" />
+<img height="300" alt="Steam Workshop upload confirmation" src="./map-editor-images/workshop_success.png" />
 
 The thumbnail is generated from a screenshot of the current view when you save.
 
-<img height="300" src="./map-editor-images/workshop_page_appearance.png" />
+<img height="300" alt="Map page on Steam Workshop" src="./map-editor-images/workshop_page_appearance.png" />
 
 If you'd like to customise the listing further, you can do so from that page.  The mod is associated with the file name of the map - if you resave the file it will update your map on the Steam Workshop.
 
-<img height="300" src="./map-editor-images/custom_level_list.png" />
+<img height="300" alt="Custom Maps list" src="./map-editor-images/custom_level_list.png" />
 
 I have recently added a bunch of *tags* to Steam Workshop, which are displayed in the in-game browser.  They indicate difficulty, and also if I've given it my personal stamp of approval.  This is a bit dictatorial, but it's genuinely important to me that new players can have fun browsing the workshop and easily find things they might like.  They are set by me right now.  I try to play all games and rate them as easy/medium/hard if I can complete them.  If you think I've overlooked your game, drop me a line at [analytic@gmail.com](mailto:analytic@gmail.com) - I love playing Oeuf maps!
 
@@ -472,11 +466,11 @@ I have recently added a bunch of *tags* to Steam Workshop, which are displayed i
 
 You can edit maps with your friends by turning on co-op editing when you are setting up to host a game.
 
-<img height="300" src="./map-editor-images/coop_editing.png" />
+<img height="300" alt="Co-op editing settings" src="./map-editor-images/coop_editing.png" />
 
 In the multiplayer lobby list, games that have co-op editing enabled have a <img src="./map-editor-images/mp_mapediting.png" class="img-inline" /> icon next to them.
 
-<img height="300" src="./map-editor-images/mp_editor_permissions_list.png" />
+<img height="300" alt="Multiplayer editor permissions" src="./map-editor-images/mp_editor_permissions_list.png" />
 
 You can set whether new players have permission to edit the map by default on this menu, and you can change it from the pause menu in-game.  You can also toggle editing permission on and off for specific players there.
 
@@ -492,11 +486,11 @@ You can also block Steam users from editing the map based on their Steam IDs - t
 
 In the map editor, if you press **Ctrl+Shift+D**, a lovely little menu will pop up:
 
-<img height="300" src="./map-editor-images/diff.png" />
+<img height="300" alt="Map comparison" src="./map-editor-images/diff.png" />
 
 This looks at what things (blocks or entities) are different between the two maps, and separates them into layers so you can easily see what changed:
 
-<img height="300" src="./map-editor-images/diff_layers.png" />
+<img height="300" alt="Map comparison layers" src="./map-editor-images/diff_layers.png" />
 
 By hiding/showing layers you can get a pretty great overview of what the differences are.
 

@@ -1,10 +1,16 @@
 {
   "scripts": {
-    "build": "node convert.js"
+    "build": "node convert.js",
+    "lint": "html-validate map-editor-tutorial.html",
+    "test": "npm run build && npm run lint && node --test tests/*.test.js"
   },
   "dependencies": {
     "bootstrap": "^5.3.8",
     "bootstrap-icons": "^1.11.3",
     "showdown": "^2.1.0"
+  },
+  "devDependencies": {
+    "html-validate": "^10.9.0",
+    "jsdom": "^26.1.0"
   }
 }

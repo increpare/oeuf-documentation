@@ -7,9 +7,12 @@
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="vendor/bootstrap-icons/font/bootstrap-icons.min.css" rel="stylesheet">
   <style>
-    html { scroll-behavior: smooth; }
     :root {
-
+      /* Override Bootstrap: URL fragments must jump immediately on load.
+         Only explicit in-page navigation requests smooth scrolling. */
+      scroll-behavior: auto;
+      --nav-height: 4.5rem;
+      --anchor-offset: calc(var(--nav-height) + 1rem);
       --page-bg:       white;
       --surface:       #56d5eb;
       --border:        #f0dfc0;
@@ -43,27 +46,32 @@
     }
     /* ── Navbar ── */
     .navbar { background: var(--chrome) !important; }
+    .skip-link { z-index: 1040; }
+    .navbar > .container-fluid { flex-wrap: nowrap; gap: 1rem; }
+    .navbar-actions { flex-shrink: 0; }
 
     /* ── Sidebar ── */
     @media (min-width: 992px) {
       .sidebar {
         position: sticky;
-        top: 4.5rem;
-        height: calc(100vh - 5rem);
+        top: var(--anchor-offset);
+        height: calc(100vh - var(--anchor-offset) - .5rem);
+        height: calc(100dvh - var(--anchor-offset) - .5rem);
         overflow-y: auto;
+        overscroll-behavior: contain;
         scrollbar-width: thin;
       }
     }
-    #sidebar-nav .nav-link {
+    #sidebar-nav .nav-link, #toc-nav .nav-link {
       color: var(--nav-link-color);
       border-radius: .375rem;
       transition: background .15s, color .15s;
     }
-    #sidebar-nav .nav-link.active {
+    #sidebar-nav .nav-link.active, #toc-nav .nav-link.active {
       background: var(--chrome);
-      color: #fff;
+      color: var(--heading);
     }
-    #sidebar-nav .nav-link:hover:not(.active) {
+    #sidebar-nav .nav-link:hover:not(.active), #toc-nav .nav-link:hover:not(.active) {
       background: var(--surface);
     }
     #sidebar-nav .nav-link img,
@@ -85,25 +93,33 @@
     }
     #sidebar-nav .nav-link.active img,
     #tocOffcanvas .nav-link.active img {
-      filter: brightness(0) invert(1);
+      filter: grayscale(1) brightness(0) saturate(100%);
       opacity: 1;
     }
 
     /* ── Content ── */
     .navbar-brand { 
       color: var(--heading-text-color);
-      font-size: 2rem;
+      font-size: clamp(1rem, 3vw, 2rem);
+      white-space: normal;
+      overflow-wrap: anywhere;
+      min-width: 0;
+      flex: 1;
+      margin: 0;
+      line-height: 1.25;
       font-weight: bold;
       text-shadow: 1px 1px 0 var(--heading-outline-color), -1px -1px 0 var(--heading-outline-color), 1px -1px 0 var(--heading-outline-color), -1px 1px 0 var(--heading-outline-color);
     }    
     .navbar-brand:hover { 
       color: var(--heading-text-color);
    }
+    .navbar-brand a { color: inherit; text-decoration: none; }
 
     .navbar  {
       /*drop shadow*/
     }
       
+    main { min-width: 0; overflow-wrap: anywhere; }
     main h2 { color: var(--heading); border-color: var(--border) !important; }
     main h3 { color: var(--heading-sub); }
     main h4 { color: var(--heading-minor); }
@@ -144,7 +160,7 @@
     main blockquote.video-callout p:last-child { margin-bottom: 0; }
     main hr { border-color: var(--border); }
 
-    main img { max-height: 380px; }
+    main img { max-height: 380px; object-fit: contain; object-position: left; }
     main img.img-inline {
       display: inline !important;
       margin: 0 !important;
@@ -159,15 +175,19 @@
 
     /* ── Offcanvas ── */
     .offcanvas { --bs-offcanvas-width: 280px; }
+    .offcanvas-body { overscroll-behavior: contain; }
 
     /* ── Back-to-top ── */
     .btn-top {
       position: fixed; bottom: 2rem; right: 2rem; z-index: 1030;
-      opacity: 0; transition: opacity .3s; pointer-events: none;
-      background: var(--accent); border: none; color: #fff;
+      opacity: 0; visibility: hidden; transition: opacity .3s; pointer-events: none;
+      background: var(--accent); border: none; color: var(--heading);
     }
     .btn-top:hover { background: var(--chrome); color: #fff; }
-    .btn-top.show  { opacity: 1; pointer-events: auto; }
+    .btn-top.show  { opacity: 1; visibility: visible; pointer-events: auto; }
+    @media (prefers-reduced-motion: reduce) {
+      .btn-top, #sidebar-nav .nav-link, #toc-nav .nav-link { transition: none; }
+    }
 
     /* ── Footer ── */
     footer { background: var(--chrome); font-size: 1.5rem; font-weight: bold; 
@@ -179,6 +199,7 @@
     
     h2 > img.d-block {
       display: inline !important;
+      width: auto;
       height: 50px !important;
       box-shadow: none !important;
       border-radius: 5px !important;
@@ -188,6 +209,7 @@
     } 
     h3 > img.d-block {
       display: inline !important;
+      width: auto;
       height: 50px !important;
       box-shadow: none !important;
       border-radius: 5px !important;
@@ -198,6 +220,7 @@
     
     h4 > img.d-block {
       display: inline !important;
+      width: auto;
       height: 50px !important;
       box-shadow: none !important;
       border-radius: 5px !important;
@@ -207,29 +230,30 @@
     } 
 
     /* Targets of anchor links: keep them below the fixed navbar */
-    main [id] {
-      scroll-margin-top: 5rem;   /* match navbar height (e.g. 4.5rem–5rem) */
+    main[id], main [id] {
+      scroll-margin-top: var(--anchor-offset);
     }
   </style>
 </head>
 <body>
 
-  <nav class="navbar sticky-top shadow-sm">
+  <a class="skip-link visually-hidden-focusable position-absolute top-0 start-0 p-2 bg-white" href="#main-content">Skip to content</a>
+  <header class="navbar sticky-top shadow-sm">
     <div class="container-fluid px-3">
-      <a class="navbar-brand" href="https://store.steampowered.com/app/3831080/Oeuf/" target="_blank" rel="noopener">
+      <h1 class="navbar-brand"><a href="https://store.steampowered.com/app/3831080/Oeuf/" target="_blank" rel="noopener">
         OEUF MAP-EGGITOR TUTORIAL
-      </a>
-      <div class="d-flex gap-2">
+      </a></h1>
+      <div class="navbar-actions d-flex gap-2">
         <a href="https://youtu.be/brkR8vVeSMg" class="btn btn-sm btn-outline-light d-none d-md-inline-flex align-items-center gap-1" target="_blank" rel="noopener">
           <i class="bi bi-youtube"></i> Video Tutorial
         </a>
         <button class="btn btn-sm btn-outline-light d-lg-none" type="button"
-                data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Table of contents">
+                data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-label="Table of contents">
           <i class="bi bi-list"></i>
         </button>
       </div>
     </div>
-  </nav>
+  </header>
 
   <div class="offcanvas offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocLabel">
     <div class="offcanvas-header">
@@ -237,7 +261,7 @@
       <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body">
-      <nav id="toc-nav" class="nav flex-column"><a class="nav-link py-1 fw-semibold" href="#section-0-adding-player-made-maps">0. Adding Player-Made Maps</a>
+      <nav id="toc-nav" aria-label="Mobile table of contents" class="nav flex-column"><a class="nav-link py-1 fw-semibold" href="#section-0-adding-player-made-maps">0. Adding Player-Made Maps</a>
 <a class="nav-link py-1 ms-3 small" href="#section-01-adding-maps-manually">0.1 Adding Maps Manually</a>
 <a class="nav-link py-1 ms-3 small" href="#section-02-adding-maps-from-steam-workshop">0.2 Adding Maps from Steam Workshop</a>
 <a class="nav-link py-1 fw-semibold" href="#section-1-enabling-the-map-editor">1. Enabling the Map Editor</a>
@@ -247,47 +271,47 @@
 <a class="nav-link py-1 ms-3 small" href="#section-23-loading-and-saving">2.3 Loading and Saving</a>
 <a class="nav-link py-1 fw-semibold" href="#section-3-camera-and-movement-in-the-map-editor">3. Camera and Movement (in the Map Editor)</a>
 <a class="nav-link py-1 fw-semibold" href="#section-4-block-tools">4. Block Tools</a>
-<a class="nav-link py-1 ms-3 small" href="#section-41-img-srcmap-editor-imagestool_1png--basic-block-placer">4.1 <img src="./map-editor-images/tool_1.png" /> Basic Block-Placer</a>
+<a class="nav-link py-1 ms-3 small" href="#section-41-img-srcmap-editor-imagestool_1png--basic-tool">4.1 <img alt="" src="./map-editor-images/tool_1.png"> Basic Tool</a>
 <a class="nav-link py-1 ms-5 small" href="#section-41b-block-shapes">4.1b Block Shapes</a>
-<a class="nav-link py-1 ms-3 small" href="#section-42-img-srcmap-editor-imagestool_2png--plane-tool">4.2 <img src="./map-editor-images/tool_2.png" /> Plane Tool</a>
-<a class="nav-link py-1 ms-3 small" href="#section-43-img-srcmap-editor-imagestool_3png--extrude-tool">4.3 <img src="./map-editor-images/tool_3.png" /> Extrude Tool</a>
-<a class="nav-link py-1 ms-3 small" href="#section-44-img-srcmap-editor-imagestool_4png--box-tool">4.4 <img src="./map-editor-images/tool_4.png" /> Box Tool</a>
-<a class="nav-link py-1 ms-3 small" href="#section-45-img-srcmap-editor-imagestool_5png--paint-tool">4.5 <img src="./map-editor-images/tool_5.png" /> Paint Tool</a>
-<a class="nav-link py-1 ms-3 small" href="#section-46-img-srcmap-editor-imagestool_6png--hill-dropper-tool">4.6 <img src="./map-editor-images/tool_6.png" /> Hill-Dropper Tool</a>
-<a class="nav-link py-1 ms-3 small" href="#section-47-img-srcmap-editor-imagestool_7png--sculpt-tool">4.7 <img src="./map-editor-images/tool_7.png" /> Sculpt Tool</a>
-<a class="nav-link py-1 ms-3 small" href="#section-48-img-srcmap-editor-imagestool_8png--sphere-tool">4.8 <img src="./map-editor-images/tool_8.png" /> Sphere Tool</a>
-<a class="nav-link py-1 ms-3 small" href="#section-49-img-srcmap-editor-imagestool_9png--grout-tool">4.9 <img src="./map-editor-images/tool_9.png" /> Grout Tool</a>
-<a class="nav-link py-1 ms-3 small" href="#section-410-img-srcmap-editor-imagestool_0png--planar-drawing-tool">4.10 <img src="./map-editor-images/tool_0.png" /> Planar Drawing Tool</a>
+<a class="nav-link py-1 ms-3 small" href="#section-42-img-srcmap-editor-imagestool_2png--plane">4.2 <img alt="" src="./map-editor-images/tool_2.png"> Plane</a>
+<a class="nav-link py-1 ms-3 small" href="#section-43-img-srcmap-editor-imagestool_3png--extrude">4.3 <img alt="" src="./map-editor-images/tool_3.png"> Extrude</a>
+<a class="nav-link py-1 ms-3 small" href="#section-45-img-srcmap-editor-imagestool_5png--paint">4.5 <img alt="" src="./map-editor-images/tool_5.png"> Paint</a>
+<a class="nav-link py-1 ms-3 small" href="#section-49-img-srcmap-editor-imagestool_9png--grout">4.9 <img alt="" src="./map-editor-images/tool_9.png"> Grout</a>
+<a class="nav-link py-1 ms-3 small" href="#section-49-img-srcmap-editor-imagestool_9png--hollow">4.9 <img alt="" src="./map-editor-images/tool_9.png"> Hollow</a>
+<a class="nav-link py-1 ms-3 small" href="#section-46-img-srcmap-editor-imagestool_6png--hill">4.6 <img alt="" src="./map-editor-images/tool_6.png"> Hill</a>
+<a class="nav-link py-1 ms-3 small" href="#section-47-img-srcmap-editor-imagestool_7png--sculpt">4.7 <img alt="" src="./map-editor-images/tool_7.png"> Sculpt</a>
+<a class="nav-link py-1 ms-3 small" href="#section-48-img-srcmap-editor-imagestool_8png--sphere">4.8 <img alt="" src="./map-editor-images/tool_8.png"> Sphere</a>
+<a class="nav-link py-1 ms-3 small" href="#section-410-img-srcmap-editor-imagestool_0png--2d-draw">4.10 <img alt="" src="./map-editor-images/tool_0.png"> 2D Draw</a>
 <a class="nav-link py-1 fw-semibold" href="#section-5-entity-mode">5. Entity Mode</a>
-<a class="nav-link py-1 ms-3 small" href="#section-51-img-srcmap-editor-imagesentity_tool_objectpng--object-tool">5.1 <img src="./map-editor-images/entity_tool_object.png" /> Object Tool</a>
-<a class="nav-link py-1 ms-5 small" href="#section-511-img-srcmap-editor-imagesobject_1_bonfire_startpng--start-checkpoint">5.1.1 <img src="./map-editor-images/object_1_Bonfire_Start.png" /> Start-Checkpoint</a>
-<a class="nav-link py-1 ms-5 small" href="#section-512-img-srcmap-editor-imagesobject_2_bonfirepng--normal-checkpoint">5.1.2 <img src="./map-editor-images/object_2_Bonfire.png" /> Normal Checkpoint</a>
-<a class="nav-link py-1 ms-5 small" href="#section-513-img-srcmap-editor-imagesobject_3_bonfire_endpng--end-checkpoint">5.1.3 <img src="./map-editor-images/object_3_Bonfire_End.png" /> End-Checkpoint</a>
-<a class="nav-link py-1 ms-5 small" href="#section-514-img-srcmap-editor-imagesobject_4_torchpng--torch">5.1.4 <img src="./map-editor-images/object_4_Torch.png" /> Torch</a>
-<a class="nav-link py-1 ms-5 small" href="#section-515-img-srcmap-editor-imagesobject_5_starpng--star">5.1.5 <img src="./map-editor-images/object_5_Star.png" /> Star</a>
-<a class="nav-link py-1 ms-5 small" href="#section-516-img-srcmap-editor-imagesobject_6_chairpng--chair">5.1.6 <img src="./map-editor-images/object_6_Chair.png" /> Chair</a>
-<a class="nav-link py-1 ms-5 small" href="#section-517-img-srcmap-editor-imagesobject_7_tablepng--table">5.1.7 <img src="./map-editor-images/object_7_Table.png" /> Table</a>
+<a class="nav-link py-1 ms-3 small" href="#section-51-img-srcmap-editor-imagesentity_tool_objectpng--object-tool">5.1 <img alt="" src="./map-editor-images/entity_tool_object.png"> Object Tool</a>
+<a class="nav-link py-1 ms-5 small" href="#section-511-img-srcmap-editor-imagesobject_1_bonfire_startpng--start-checkpoint">5.1.1 <img alt="" src="./map-editor-images/object_1_Bonfire_Start.png"> Start-Checkpoint</a>
+<a class="nav-link py-1 ms-5 small" href="#section-512-img-srcmap-editor-imagesobject_2_bonfirepng--normal-checkpoint">5.1.2 <img alt="" src="./map-editor-images/object_2_Bonfire.png"> Normal Checkpoint</a>
+<a class="nav-link py-1 ms-5 small" href="#section-513-img-srcmap-editor-imagesobject_3_bonfire_endpng--end-checkpoint">5.1.3 <img alt="" src="./map-editor-images/object_3_Bonfire_End.png"> End-Checkpoint</a>
+<a class="nav-link py-1 ms-5 small" href="#section-514-img-srcmap-editor-imagesobject_4_torchpng--torch">5.1.4 <img alt="" src="./map-editor-images/object_4_Torch.png"> Torch</a>
+<a class="nav-link py-1 ms-5 small" href="#section-515-img-srcmap-editor-imagesobject_5_starpng--star">5.1.5 <img alt="" src="./map-editor-images/object_5_Star.png"> Star</a>
+<a class="nav-link py-1 ms-5 small" href="#section-516-img-srcmap-editor-imagesobject_6_chairpng--chair">5.1.6 <img alt="" src="./map-editor-images/object_6_Chair.png"> Chair</a>
+<a class="nav-link py-1 ms-5 small" href="#section-517-img-srcmap-editor-imagesobject_7_tablepng--table">5.1.7 <img alt="" src="./map-editor-images/object_7_Table.png"> Table</a>
 <a class="nav-link py-1 ms-5 small" href="#section-518-other-objects">5.1.8 Other Objects</a>
-<a class="nav-link py-1 ms-3 small" href="#section-52-img-srcmap-editor-imagesentity_tool_triggerpng--trigger-box-tool">5.2 <img src="./map-editor-images/entity_tool_trigger.png" /> Trigger-Box Tool</a>
-<a class="nav-link py-1 ms-5 small" href="#section-521-img-srcmap-editor-imagestrigger_1_musicpng--music">5.2.1 <img src="./map-editor-images/trigger_1_music.png" /> music</a>
-<a class="nav-link py-1 ms-5 small" href="#section-522-img-srcmap-editor-imagestrigger_2_arealabelpng--arealabel">5.2.2 <img src="./map-editor-images/trigger_2_arealabel.png" /> arealabel</a>
-<a class="nav-link py-1 ms-5 small" href="#section-523-img-srcmap-editor-imagestrigger_3_killboxpng--killbox">5.2.3 <img src="./map-editor-images/trigger_3_killbox.png" /> KILLBOX</a>
-<a class="nav-link py-1 ms-5 small" href="#section-524-img-srcmap-editor-imagestrigger_4_torchpng--torch">5.2.4 <img src="./map-editor-images/trigger_4_torch.png" /> TORCH</a>
-<a class="nav-link py-1 ms-5 small" href="#section-525-img-srcmap-editor-imagestrigger_5_advancedpng--generic-trigger-boxes">5.2.5 <img src="./map-editor-images/trigger_5_advanced.png" /> Generic Trigger-Boxes</a>
+<a class="nav-link py-1 ms-3 small" href="#section-52-img-srcmap-editor-imagesentity_tool_triggerpng--trigger-box-tool">5.2 <img alt="" src="./map-editor-images/entity_tool_trigger.png"> Trigger-Box Tool</a>
+<a class="nav-link py-1 ms-5 small" href="#section-521-img-srcmap-editor-imagestrigger_1_musicpng--music">5.2.1 <img alt="" src="./map-editor-images/trigger_1_music.png"> music</a>
+<a class="nav-link py-1 ms-5 small" href="#section-522-img-srcmap-editor-imagestrigger_2_arealabelpng--arealabel">5.2.2 <img alt="" src="./map-editor-images/trigger_2_arealabel.png"> arealabel</a>
+<a class="nav-link py-1 ms-5 small" href="#section-523-img-srcmap-editor-imagestrigger_3_killboxpng--killbox">5.2.3 <img alt="" src="./map-editor-images/trigger_3_killbox.png"> KILLBOX</a>
+<a class="nav-link py-1 ms-5 small" href="#section-524-img-srcmap-editor-imagestrigger_4_torchpng--torch">5.2.4 <img alt="" src="./map-editor-images/trigger_4_torch.png"> TORCH</a>
+<a class="nav-link py-1 ms-5 small" href="#section-525-img-srcmap-editor-imagestrigger_5_advancedpng--generic-trigger-boxes">5.2.5 <img alt="" src="./map-editor-images/trigger_5_advanced.png"> Generic Trigger-Boxes</a>
 <a class="nav-link py-1 fw-semibold" href="#section-6-layer-mode">6. Layer Mode</a>
 <a class="nav-link py-1 ms-3 small" href="#section-61-layer-visibility">6.1 Layer Visibility</a>
 <a class="nav-link py-1 ms-3 small" href="#section-62-layer-tools">6.2 Layer Tools</a>
-<a class="nav-link py-1 ms-5 small" href="#section-621-img-srcmap-editor-imageslayer_transform_tool_iconpng--layer-transform-tool">6.2.1 <img src="./map-editor-images/layer_transform_tool_icon.png" /> Layer Transform Tool</a>
-<a class="nav-link py-1 ms-5 small" href="#section-622-img-srcmap-editor-imageslayer_assignment_tool_iconpng--layer-assignment-tool">6.2.2 <img src="./map-editor-images/layer_assignment_tool_icon.png" /> Layer Assignment Tool</a>
-<a class="nav-link py-1 ms-3 small" href="#section-63-img-srcmap-editor-imageslayer_clipboardpng--clipboard">6.3 <img src="./map-editor-images/layer_clipboard.png" /> Clipboard</a>
+<a class="nav-link py-1 ms-5 small" href="#section-621-img-srcmap-editor-imageslayer_transform_tool_iconpng--layer-transform-tool">6.2.1 <img alt="" src="./map-editor-images/layer_transform_tool_icon.png"> Layer Transform Tool</a>
+<a class="nav-link py-1 ms-5 small" href="#section-622-img-srcmap-editor-imageslayer_assignment_tool_iconpng--layer-assignment-tool">6.2.2 <img alt="" src="./map-editor-images/layer_assignment_tool_icon.png"> Layer Assignment Tool</a>
+<a class="nav-link py-1 ms-3 small" href="#section-63-img-srcmap-editor-imageslayer_clipboardpng--clipboard">6.3 <img alt="" src="./map-editor-images/layer_clipboard.png"> Clipboard</a>
 <a class="nav-link py-1 fw-semibold" href="#section-7-layer-list">7. Layer List</a>
-<a class="nav-link py-1 ms-3 small" href="#section-71-img-srcmap-editor-imageslayer_item_up_downpng--move-layer-up--down">7.1 <img src="./map-editor-images/layer_item_up_down.png" /> Move Layer Up / Down</a>
-<a class="nav-link py-1 ms-3 small" href="#section-72-img-srcmap-editor-imageslayer_item_visiblepng--visibility">7.2 <img src="./map-editor-images/layer_item_visible.png" /> Visibility</a>
-<a class="nav-link py-1 ms-3 small" href="#section-73-img-srcmap-editor-imageslayer_item_deletepng--delete">7.3 <img src="./map-editor-images/layer_item_delete.png" /> Delete</a>
-<a class="nav-link py-1 ms-3 small" href="#section-74-img-srcmap-editor-imageslayer_item_merge_uppng--merge-up">7.4 <img src="./map-editor-images/layer_item_merge_up.png" /> Merge Up</a>
-<a class="nav-link py-1 ms-3 small" href="#section-75-img-srcmap-editor-imageslayer_item_newpng--new-layer">7.5 <img src="./map-editor-images/layer_item_new.png" /> New Layer</a>
-<a class="nav-link py-1 fw-semibold" href="#section-8-img-srcmap-editor-imagesupload_iconpng--upload-to-steam-workshop">8. <img src="./map-editor-images/upload_icon.png" /> Upload to Steam Workshop</a>
-<a class="nav-link py-1 fw-semibold" href="#section-9-img-srcmap-editor-imagesmp_mapediting_iconpng--multiplayer-map-editor">9. <img src="./map-editor-images/mp_mapediting_icon.png" /> Multiplayer Map Editor</a>
+<a class="nav-link py-1 ms-3 small" href="#section-71-img-srcmap-editor-imageslayer_item_up_downpng--move-layer-up--down">7.1 <img alt="" src="./map-editor-images/layer_item_up_down.png"> Move Layer Up / Down</a>
+<a class="nav-link py-1 ms-3 small" href="#section-72-img-srcmap-editor-imageslayer_item_visiblepng--visibility">7.2 <img alt="" src="./map-editor-images/layer_item_visible.png"> Visibility</a>
+<a class="nav-link py-1 ms-3 small" href="#section-73-img-srcmap-editor-imageslayer_item_deletepng--delete">7.3 <img alt="" src="./map-editor-images/layer_item_delete.png"> Delete</a>
+<a class="nav-link py-1 ms-3 small" href="#section-74-img-srcmap-editor-imageslayer_item_merge_uppng--merge-up">7.4 <img alt="" src="./map-editor-images/layer_item_merge_up.png"> Merge Up</a>
+<a class="nav-link py-1 ms-3 small" href="#section-75-img-srcmap-editor-imageslayer_item_newpng--new-layer">7.5 <img alt="" src="./map-editor-images/layer_item_new.png"> New Layer</a>
+<a class="nav-link py-1 fw-semibold" href="#section-8-img-srcmap-editor-imagesupload_iconpng--upload-to-steam-workshop">8. <img alt="" src="./map-editor-images/upload_icon.png"> Upload to Steam Workshop</a>
+<a class="nav-link py-1 fw-semibold" href="#section-9-img-srcmap-editor-imagesmp_mapediting_iconpng--multiplayer-map-editor">9. <img alt="" src="./map-editor-images/mp_mapediting_icon.png"> Multiplayer Map Editor</a>
 <a class="nav-link py-1 ms-3 small" href="#section-91-setting-up-a-co-op-editing-session">9.1 Setting up a Co-op Editing Session</a>
 <a class="nav-link py-1 ms-3 small" href="#section-92-banning-users-from-editing">9.2 Banning Users from Editing</a>
 <a class="nav-link py-1 fw-semibold" href="#section-10-comparing-different-versions-of-a-map">10. Comparing different versions of a map</a>
@@ -301,7 +325,7 @@
       <aside class="col-lg-3 d-none d-lg-block">
         <div class="sidebar py-4 pe-3">
           <h6 class="text-uppercase text-body-secondary mb-3 fw-bold small">Contents</h6>
-          <nav id="sidebar-nav" class="nav flex-column"><a class="nav-link py-1 fw-semibold" href="#section-0-adding-player-made-maps">0. Adding Player-Made Maps</a>
+          <nav id="sidebar-nav" aria-label="Table of contents" class="nav flex-column"><a class="nav-link py-1 fw-semibold" href="#section-0-adding-player-made-maps">0. Adding Player-Made Maps</a>
 <a class="nav-link py-1 ms-3 small" href="#section-01-adding-maps-manually">0.1 Adding Maps Manually</a>
 <a class="nav-link py-1 ms-3 small" href="#section-02-adding-maps-from-steam-workshop">0.2 Adding Maps from Steam Workshop</a>
 <a class="nav-link py-1 fw-semibold" href="#section-1-enabling-the-map-editor">1. Enabling the Map Editor</a>
@@ -311,47 +335,47 @@
 <a class="nav-link py-1 ms-3 small" href="#section-23-loading-and-saving">2.3 Loading and Saving</a>
 <a class="nav-link py-1 fw-semibold" href="#section-3-camera-and-movement-in-the-map-editor">3. Camera and Movement (in the Map Editor)</a>
 <a class="nav-link py-1 fw-semibold" href="#section-4-block-tools">4. Block Tools</a>
-<a class="nav-link py-1 ms-3 small" href="#section-41-img-srcmap-editor-imagestool_1png--basic-block-placer">4.1 <img src="./map-editor-images/tool_1.png" /> Basic Block-Placer</a>
+<a class="nav-link py-1 ms-3 small" href="#section-41-img-srcmap-editor-imagestool_1png--basic-tool">4.1 <img alt="" src="./map-editor-images/tool_1.png"> Basic Tool</a>
 <a class="nav-link py-1 ms-5 small" href="#section-41b-block-shapes">4.1b Block Shapes</a>
-<a class="nav-link py-1 ms-3 small" href="#section-42-img-srcmap-editor-imagestool_2png--plane-tool">4.2 <img src="./map-editor-images/tool_2.png" /> Plane Tool</a>
-<a class="nav-link py-1 ms-3 small" href="#section-43-img-srcmap-editor-imagestool_3png--extrude-tool">4.3 <img src="./map-editor-images/tool_3.png" /> Extrude Tool</a>
-<a class="nav-link py-1 ms-3 small" href="#section-44-img-srcmap-editor-imagestool_4png--box-tool">4.4 <img src="./map-editor-images/tool_4.png" /> Box Tool</a>
-<a class="nav-link py-1 ms-3 small" href="#section-45-img-srcmap-editor-imagestool_5png--paint-tool">4.5 <img src="./map-editor-images/tool_5.png" /> Paint Tool</a>
-<a class="nav-link py-1 ms-3 small" href="#section-46-img-srcmap-editor-imagestool_6png--hill-dropper-tool">4.6 <img src="./map-editor-images/tool_6.png" /> Hill-Dropper Tool</a>
-<a class="nav-link py-1 ms-3 small" href="#section-47-img-srcmap-editor-imagestool_7png--sculpt-tool">4.7 <img src="./map-editor-images/tool_7.png" /> Sculpt Tool</a>
-<a class="nav-link py-1 ms-3 small" href="#section-48-img-srcmap-editor-imagestool_8png--sphere-tool">4.8 <img src="./map-editor-images/tool_8.png" /> Sphere Tool</a>
-<a class="nav-link py-1 ms-3 small" href="#section-49-img-srcmap-editor-imagestool_9png--grout-tool">4.9 <img src="./map-editor-images/tool_9.png" /> Grout Tool</a>
-<a class="nav-link py-1 ms-3 small" href="#section-410-img-srcmap-editor-imagestool_0png--planar-drawing-tool">4.10 <img src="./map-editor-images/tool_0.png" /> Planar Drawing Tool</a>
+<a class="nav-link py-1 ms-3 small" href="#section-42-img-srcmap-editor-imagestool_2png--plane">4.2 <img alt="" src="./map-editor-images/tool_2.png"> Plane</a>
+<a class="nav-link py-1 ms-3 small" href="#section-43-img-srcmap-editor-imagestool_3png--extrude">4.3 <img alt="" src="./map-editor-images/tool_3.png"> Extrude</a>
+<a class="nav-link py-1 ms-3 small" href="#section-45-img-srcmap-editor-imagestool_5png--paint">4.5 <img alt="" src="./map-editor-images/tool_5.png"> Paint</a>
+<a class="nav-link py-1 ms-3 small" href="#section-49-img-srcmap-editor-imagestool_9png--grout">4.9 <img alt="" src="./map-editor-images/tool_9.png"> Grout</a>
+<a class="nav-link py-1 ms-3 small" href="#section-49-img-srcmap-editor-imagestool_9png--hollow">4.9 <img alt="" src="./map-editor-images/tool_9.png"> Hollow</a>
+<a class="nav-link py-1 ms-3 small" href="#section-46-img-srcmap-editor-imagestool_6png--hill">4.6 <img alt="" src="./map-editor-images/tool_6.png"> Hill</a>
+<a class="nav-link py-1 ms-3 small" href="#section-47-img-srcmap-editor-imagestool_7png--sculpt">4.7 <img alt="" src="./map-editor-images/tool_7.png"> Sculpt</a>
+<a class="nav-link py-1 ms-3 small" href="#section-48-img-srcmap-editor-imagestool_8png--sphere">4.8 <img alt="" src="./map-editor-images/tool_8.png"> Sphere</a>
+<a class="nav-link py-1 ms-3 small" href="#section-410-img-srcmap-editor-imagestool_0png--2d-draw">4.10 <img alt="" src="./map-editor-images/tool_0.png"> 2D Draw</a>
 <a class="nav-link py-1 fw-semibold" href="#section-5-entity-mode">5. Entity Mode</a>
-<a class="nav-link py-1 ms-3 small" href="#section-51-img-srcmap-editor-imagesentity_tool_objectpng--object-tool">5.1 <img src="./map-editor-images/entity_tool_object.png" /> Object Tool</a>
-<a class="nav-link py-1 ms-5 small" href="#section-511-img-srcmap-editor-imagesobject_1_bonfire_startpng--start-checkpoint">5.1.1 <img src="./map-editor-images/object_1_Bonfire_Start.png" /> Start-Checkpoint</a>
-<a class="nav-link py-1 ms-5 small" href="#section-512-img-srcmap-editor-imagesobject_2_bonfirepng--normal-checkpoint">5.1.2 <img src="./map-editor-images/object_2_Bonfire.png" /> Normal Checkpoint</a>
-<a class="nav-link py-1 ms-5 small" href="#section-513-img-srcmap-editor-imagesobject_3_bonfire_endpng--end-checkpoint">5.1.3 <img src="./map-editor-images/object_3_Bonfire_End.png" /> End-Checkpoint</a>
-<a class="nav-link py-1 ms-5 small" href="#section-514-img-srcmap-editor-imagesobject_4_torchpng--torch">5.1.4 <img src="./map-editor-images/object_4_Torch.png" /> Torch</a>
-<a class="nav-link py-1 ms-5 small" href="#section-515-img-srcmap-editor-imagesobject_5_starpng--star">5.1.5 <img src="./map-editor-images/object_5_Star.png" /> Star</a>
-<a class="nav-link py-1 ms-5 small" href="#section-516-img-srcmap-editor-imagesobject_6_chairpng--chair">5.1.6 <img src="./map-editor-images/object_6_Chair.png" /> Chair</a>
-<a class="nav-link py-1 ms-5 small" href="#section-517-img-srcmap-editor-imagesobject_7_tablepng--table">5.1.7 <img src="./map-editor-images/object_7_Table.png" /> Table</a>
+<a class="nav-link py-1 ms-3 small" href="#section-51-img-srcmap-editor-imagesentity_tool_objectpng--object-tool">5.1 <img alt="" src="./map-editor-images/entity_tool_object.png"> Object Tool</a>
+<a class="nav-link py-1 ms-5 small" href="#section-511-img-srcmap-editor-imagesobject_1_bonfire_startpng--start-checkpoint">5.1.1 <img alt="" src="./map-editor-images/object_1_Bonfire_Start.png"> Start-Checkpoint</a>
+<a class="nav-link py-1 ms-5 small" href="#section-512-img-srcmap-editor-imagesobject_2_bonfirepng--normal-checkpoint">5.1.2 <img alt="" src="./map-editor-images/object_2_Bonfire.png"> Normal Checkpoint</a>
+<a class="nav-link py-1 ms-5 small" href="#section-513-img-srcmap-editor-imagesobject_3_bonfire_endpng--end-checkpoint">5.1.3 <img alt="" src="./map-editor-images/object_3_Bonfire_End.png"> End-Checkpoint</a>
+<a class="nav-link py-1 ms-5 small" href="#section-514-img-srcmap-editor-imagesobject_4_torchpng--torch">5.1.4 <img alt="" src="./map-editor-images/object_4_Torch.png"> Torch</a>
+<a class="nav-link py-1 ms-5 small" href="#section-515-img-srcmap-editor-imagesobject_5_starpng--star">5.1.5 <img alt="" src="./map-editor-images/object_5_Star.png"> Star</a>
+<a class="nav-link py-1 ms-5 small" href="#section-516-img-srcmap-editor-imagesobject_6_chairpng--chair">5.1.6 <img alt="" src="./map-editor-images/object_6_Chair.png"> Chair</a>
+<a class="nav-link py-1 ms-5 small" href="#section-517-img-srcmap-editor-imagesobject_7_tablepng--table">5.1.7 <img alt="" src="./map-editor-images/object_7_Table.png"> Table</a>
 <a class="nav-link py-1 ms-5 small" href="#section-518-other-objects">5.1.8 Other Objects</a>
-<a class="nav-link py-1 ms-3 small" href="#section-52-img-srcmap-editor-imagesentity_tool_triggerpng--trigger-box-tool">5.2 <img src="./map-editor-images/entity_tool_trigger.png" /> Trigger-Box Tool</a>
-<a class="nav-link py-1 ms-5 small" href="#section-521-img-srcmap-editor-imagestrigger_1_musicpng--music">5.2.1 <img src="./map-editor-images/trigger_1_music.png" /> music</a>
-<a class="nav-link py-1 ms-5 small" href="#section-522-img-srcmap-editor-imagestrigger_2_arealabelpng--arealabel">5.2.2 <img src="./map-editor-images/trigger_2_arealabel.png" /> arealabel</a>
-<a class="nav-link py-1 ms-5 small" href="#section-523-img-srcmap-editor-imagestrigger_3_killboxpng--killbox">5.2.3 <img src="./map-editor-images/trigger_3_killbox.png" /> KILLBOX</a>
-<a class="nav-link py-1 ms-5 small" href="#section-524-img-srcmap-editor-imagestrigger_4_torchpng--torch">5.2.4 <img src="./map-editor-images/trigger_4_torch.png" /> TORCH</a>
-<a class="nav-link py-1 ms-5 small" href="#section-525-img-srcmap-editor-imagestrigger_5_advancedpng--generic-trigger-boxes">5.2.5 <img src="./map-editor-images/trigger_5_advanced.png" /> Generic Trigger-Boxes</a>
+<a class="nav-link py-1 ms-3 small" href="#section-52-img-srcmap-editor-imagesentity_tool_triggerpng--trigger-box-tool">5.2 <img alt="" src="./map-editor-images/entity_tool_trigger.png"> Trigger-Box Tool</a>
+<a class="nav-link py-1 ms-5 small" href="#section-521-img-srcmap-editor-imagestrigger_1_musicpng--music">5.2.1 <img alt="" src="./map-editor-images/trigger_1_music.png"> music</a>
+<a class="nav-link py-1 ms-5 small" href="#section-522-img-srcmap-editor-imagestrigger_2_arealabelpng--arealabel">5.2.2 <img alt="" src="./map-editor-images/trigger_2_arealabel.png"> arealabel</a>
+<a class="nav-link py-1 ms-5 small" href="#section-523-img-srcmap-editor-imagestrigger_3_killboxpng--killbox">5.2.3 <img alt="" src="./map-editor-images/trigger_3_killbox.png"> KILLBOX</a>
+<a class="nav-link py-1 ms-5 small" href="#section-524-img-srcmap-editor-imagestrigger_4_torchpng--torch">5.2.4 <img alt="" src="./map-editor-images/trigger_4_torch.png"> TORCH</a>
+<a class="nav-link py-1 ms-5 small" href="#section-525-img-srcmap-editor-imagestrigger_5_advancedpng--generic-trigger-boxes">5.2.5 <img alt="" src="./map-editor-images/trigger_5_advanced.png"> Generic Trigger-Boxes</a>
 <a class="nav-link py-1 fw-semibold" href="#section-6-layer-mode">6. Layer Mode</a>
 <a class="nav-link py-1 ms-3 small" href="#section-61-layer-visibility">6.1 Layer Visibility</a>
 <a class="nav-link py-1 ms-3 small" href="#section-62-layer-tools">6.2 Layer Tools</a>
-<a class="nav-link py-1 ms-5 small" href="#section-621-img-srcmap-editor-imageslayer_transform_tool_iconpng--layer-transform-tool">6.2.1 <img src="./map-editor-images/layer_transform_tool_icon.png" /> Layer Transform Tool</a>
-<a class="nav-link py-1 ms-5 small" href="#section-622-img-srcmap-editor-imageslayer_assignment_tool_iconpng--layer-assignment-tool">6.2.2 <img src="./map-editor-images/layer_assignment_tool_icon.png" /> Layer Assignment Tool</a>
-<a class="nav-link py-1 ms-3 small" href="#section-63-img-srcmap-editor-imageslayer_clipboardpng--clipboard">6.3 <img src="./map-editor-images/layer_clipboard.png" /> Clipboard</a>
+<a class="nav-link py-1 ms-5 small" href="#section-621-img-srcmap-editor-imageslayer_transform_tool_iconpng--layer-transform-tool">6.2.1 <img alt="" src="./map-editor-images/layer_transform_tool_icon.png"> Layer Transform Tool</a>
+<a class="nav-link py-1 ms-5 small" href="#section-622-img-srcmap-editor-imageslayer_assignment_tool_iconpng--layer-assignment-tool">6.2.2 <img alt="" src="./map-editor-images/layer_assignment_tool_icon.png"> Layer Assignment Tool</a>
+<a class="nav-link py-1 ms-3 small" href="#section-63-img-srcmap-editor-imageslayer_clipboardpng--clipboard">6.3 <img alt="" src="./map-editor-images/layer_clipboard.png"> Clipboard</a>
 <a class="nav-link py-1 fw-semibold" href="#section-7-layer-list">7. Layer List</a>
-<a class="nav-link py-1 ms-3 small" href="#section-71-img-srcmap-editor-imageslayer_item_up_downpng--move-layer-up--down">7.1 <img src="./map-editor-images/layer_item_up_down.png" /> Move Layer Up / Down</a>
-<a class="nav-link py-1 ms-3 small" href="#section-72-img-srcmap-editor-imageslayer_item_visiblepng--visibility">7.2 <img src="./map-editor-images/layer_item_visible.png" /> Visibility</a>
-<a class="nav-link py-1 ms-3 small" href="#section-73-img-srcmap-editor-imageslayer_item_deletepng--delete">7.3 <img src="./map-editor-images/layer_item_delete.png" /> Delete</a>
-<a class="nav-link py-1 ms-3 small" href="#section-74-img-srcmap-editor-imageslayer_item_merge_uppng--merge-up">7.4 <img src="./map-editor-images/layer_item_merge_up.png" /> Merge Up</a>
-<a class="nav-link py-1 ms-3 small" href="#section-75-img-srcmap-editor-imageslayer_item_newpng--new-layer">7.5 <img src="./map-editor-images/layer_item_new.png" /> New Layer</a>
-<a class="nav-link py-1 fw-semibold" href="#section-8-img-srcmap-editor-imagesupload_iconpng--upload-to-steam-workshop">8. <img src="./map-editor-images/upload_icon.png" /> Upload to Steam Workshop</a>
-<a class="nav-link py-1 fw-semibold" href="#section-9-img-srcmap-editor-imagesmp_mapediting_iconpng--multiplayer-map-editor">9. <img src="./map-editor-images/mp_mapediting_icon.png" /> Multiplayer Map Editor</a>
+<a class="nav-link py-1 ms-3 small" href="#section-71-img-srcmap-editor-imageslayer_item_up_downpng--move-layer-up--down">7.1 <img alt="" src="./map-editor-images/layer_item_up_down.png"> Move Layer Up / Down</a>
+<a class="nav-link py-1 ms-3 small" href="#section-72-img-srcmap-editor-imageslayer_item_visiblepng--visibility">7.2 <img alt="" src="./map-editor-images/layer_item_visible.png"> Visibility</a>
+<a class="nav-link py-1 ms-3 small" href="#section-73-img-srcmap-editor-imageslayer_item_deletepng--delete">7.3 <img alt="" src="./map-editor-images/layer_item_delete.png"> Delete</a>
+<a class="nav-link py-1 ms-3 small" href="#section-74-img-srcmap-editor-imageslayer_item_merge_uppng--merge-up">7.4 <img alt="" src="./map-editor-images/layer_item_merge_up.png"> Merge Up</a>
+<a class="nav-link py-1 ms-3 small" href="#section-75-img-srcmap-editor-imageslayer_item_newpng--new-layer">7.5 <img alt="" src="./map-editor-images/layer_item_new.png"> New Layer</a>
+<a class="nav-link py-1 fw-semibold" href="#section-8-img-srcmap-editor-imagesupload_iconpng--upload-to-steam-workshop">8. <img alt="" src="./map-editor-images/upload_icon.png"> Upload to Steam Workshop</a>
+<a class="nav-link py-1 fw-semibold" href="#section-9-img-srcmap-editor-imagesmp_mapediting_iconpng--multiplayer-map-editor">9. <img alt="" src="./map-editor-images/mp_mapediting_icon.png"> Multiplayer Map Editor</a>
 <a class="nav-link py-1 ms-3 small" href="#section-91-setting-up-a-co-op-editing-session">9.1 Setting up a Co-op Editing Session</a>
 <a class="nav-link py-1 ms-3 small" href="#section-92-banning-users-from-editing">9.2 Banning Users from Editing</a>
 <a class="nav-link py-1 fw-semibold" href="#section-10-comparing-different-versions-of-a-map">10. Comparing different versions of a map</a>
@@ -359,49 +383,49 @@
 <a class="nav-link py-1 fw-semibold" href="#section-12-feedback-and-bug-reports">12. Feedback and Bug Reports</a></nav>
         </div>
       </aside>
-      <main class="col-lg-9 py-4 px-4 px-lg-5"><blockquote class="blockquote border-start border-3 ps-3 py-1 my-3 video-callout">
+      <main id="main-content" tabindex="-1" class="col-lg-9 py-4 px-4 px-lg-5"><blockquote class="blockquote border-start border-3 ps-3 py-1 my-3 video-callout">
   <p><strong>If you prefer a video tutorial, click here : <a href="https://youtu.be/brkR8vVeSMg">https://youtu.be/brkR8vVeSMg</a></strong></p>
 </blockquote>
-<h2 class="mt-5 mb-3 pb-2 border-bottom" id="section-0-adding-player-made-maps">0. Adding Player-Made Maps</h2>
+<h2 tabindex="-1" class="mt-5 mb-3 pb-2 border-bottom" id="section-0-adding-player-made-maps">0. Adding Player-Made Maps</h2>
 <p>You can add maps manually (if you already have the file) or download them from the Steam Workshop.</p>
-<h3 class="mt-4 mb-3" id="section-01-adding-maps-manually">0.1 Adding Maps Manually</h3>
+<h3 tabindex="-1" class="mt-4 mb-3" id="section-01-adding-maps-manually">0.1 Adding Maps Manually</h3>
 <p>If you have a map file, you can add it like this (doesn't work on Steam Deck!) :</p>
-<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/custom_maps_menu.png" /></p>
+<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/custom_maps_menu.png" width="271"></p>
 <ol>
 <li>Go to <strong>Custom Maps</strong> on the title screen.</li>
 </ol>
-<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/open_maps_folder_button.png" /></p>
+<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/open_maps_folder_button.png" width="524"></p>
 <ol start="2">
 <li>Click <strong>Open Maps Folder</strong> to open the maps folder in your file manager.  You can add map files from other people here.</li>
 </ol>
-<h3 class="mt-4 mb-3" id="section-02-adding-maps-from-steam-workshop">0.2 Adding Maps from Steam Workshop</h3>
+<h3 tabindex="-1" class="mt-4 mb-3" id="section-02-adding-maps-from-steam-workshop">0.2 Adding Maps from Steam Workshop</h3>
 <ol>
 <li>Go to <strong>Custom Maps</strong> on the title screen.</li>
 <li>Click <strong>Steam Workshop</strong>.</li>
 </ol>
-<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/workshop_download.png" /></p>
+<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/workshop_download.png" width="549"></p>
 <ol start="3">
 <li>On Steam Workshop, you 'subscribe' to things to download them.</li>
 </ol>
-<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/workshop_subscribed.png" /></p>
+<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/workshop_subscribed.png" width="753"></p>
 <ol start="4">
 <li>Once subscribed, maps will appear in the map list and are ready to play :</li>
 </ol>
-<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/map_in_list.png" /></p>
-<h2 class="mt-5 mb-3 pb-2 border-bottom" id="section-1-enabling-the-map-editor">1. Enabling the Map Editor</h2>
+<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/map_in_list.png" width="735"></p>
+<h2 tabindex="-1" class="mt-5 mb-3 pb-2 border-bottom" id="section-1-enabling-the-map-editor">1. Enabling the Map Editor</h2>
 <ol>
 <li>Go to <strong>Settings</strong> :</li>
 </ol>
-<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/settings_menu.png" /></p>
+<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/settings_menu.png" width="460"></p>
 <ol start="2">
 <li>Enable <strong>Map Editor</strong>.</li>
 <li>Load into a map (custom maps are easiest to work with - the main-game map has some hacky stuff in it).</li>
 <li>Press <strong>Tab</strong> to open the map editor.</li>
 </ol>
-<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/map_editor_opened.png" /></p>
+<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/map_editor_opened.png" width="533"></p>
 <hr class="my-5 opacity-0">
-<h2 class="mt-5 mb-3 pb-2 border-bottom" id="section-2-basic-workflow-in-the-map-editor">2. Basic Workflow in the Map Editor</h2>
-<h3 class="mt-4 mb-3" id="section-21-map-editor-modes">2.1 Map-Editor Modes</h3>
+<h2 tabindex="-1" class="mt-5 mb-3 pb-2 border-bottom" id="section-2-basic-workflow-in-the-map-editor">2. Basic Workflow in the Map Editor</h2>
+<h3 tabindex="-1" class="mt-4 mb-3" id="section-21-map-editor-modes">2.1 Map-Editor Modes</h3>
 <ul>
 <li><strong>Tab</strong><ul>
 <li>In-game : Open the Map Editor.</li>
@@ -412,7 +436,7 @@
 <li><strong>Entity Mode</strong> : Checkpoints, props, trigger boxes.</li>
 <li><strong>Layer Mode</strong> : Move large sections of terrain.</li></ul></li>
 </ul>
-<h3 class="mt-4 mb-3" id="section-22-general-shortcuts">2.2 General Shortcuts</h3>
+<h3 tabindex="-1" class="mt-4 mb-3" id="section-22-general-shortcuts">2.2 General Shortcuts</h3>
 <ul>
 <li><strong>Ctrl+S</strong> : Save</li>
 <li><strong>F5</strong> : Reload</li>
@@ -423,17 +447,17 @@
 <li><strong>Ctrl+L</strong> : Open the maps folder with your file manager.</li>
 <li><strong>Ctrl+K</strong> : Export current map as a 3D mesh (for importing into other software/games).  This also exports the game tilemap/textures to the same directory.</li>
 </ul>
-<h3 class="mt-4 mb-3" id="section-23-loading-and-saving">2.3 Loading and Saving</h3>
-<p><img class="img-fluid rounded shadow-sm d-block my-3" width="322" height="142" alt="image" src="./map-editor-images/editor_ui_top_left.png" /></p>
+<h3 tabindex="-1" class="mt-4 mb-3" id="section-23-loading-and-saving">2.3 Loading and Saving</h3>
+<p><img class="img-fluid rounded shadow-sm d-block my-3" width="322" height="142" alt="image" src="./map-editor-images/editor_ui_top_left.png"></p>
 <p>To the top left of the screen you can see :</p>
 <ul>
 <li>The current map name (edit it and press <strong>Enter</strong> to save as a new file).</li>
 <li>The file dropdown.  This lists all <strong>built-in maps</strong> (e.g. <code>minimal</code>, <code>eggworld</code>), <strong>Steam Workshop maps</strong>, and <strong>user maps</strong> (saved in your maps folder).  </li>
 <li>Note : built-in and Steam Workshop maps are <em>read-only</em>, but you can save them under new filenames.</li>
 </ul>
-<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/file_dropdown.png" /></p>
+<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/file_dropdown.png" width="602"></p>
 <hr class="my-5 opacity-0">
-<h2 class="mt-5 mb-3 pb-2 border-bottom" id="section-3-camera-and-movement-in-the-map-editor">3. Camera and Movement (in the Map Editor)</h2>
+<h2 tabindex="-1" class="mt-5 mb-3 pb-2 border-bottom" id="section-3-camera-and-movement-in-the-map-editor">3. Camera and Movement (in the Map Editor)</h2>
 <ul>
 <li><strong>WASD</strong> : Move camera</li>
 <li><strong>Shift</strong> : Faster movement</li>
@@ -442,9 +466,9 @@
 </ul>
 <p>(Don't forget : <strong>Tab</strong> toggles between camera-look and cursor-pointing modes.)</p>
 <hr class="my-5 opacity-0">
-<h2 class="mt-5 mb-3 pb-2 border-bottom" id="section-4-block-tools">4. Block Tools</h2>
+<h2 tabindex="-1" class="mt-5 mb-3 pb-2 border-bottom" id="section-4-block-tools">4. Block Tools</h2>
 <!--nearest neighbour upscaling-->
-<h3 class="mt-4 mb-3" id="section-41-img-srcmap-editor-imagestool_1png--basic-block-placer">4.1 <img class="img-fluid rounded shadow-sm d-block my-3" src="./map-editor-images/tool_1.png" /> Basic Block-Placer</h3>
+<h3 tabindex="-1" class="mt-4 mb-3" id="section-41-img-srcmap-editor-imagestool_1png--basic-tool">4.1 <img class="img-fluid rounded shadow-sm d-block my-3" alt="" src="./map-editor-images/tool_1.png" width="10" height="10"> Basic Tool</h3>
 <ul>
 <li><strong>Click</strong> : Place block.</li>
 <li><strong>Right-Click</strong> : Delete block.</li>
@@ -455,54 +479,45 @@
 <li><strong>Scroll Wheel</strong> or <strong>Shift+Number Key</strong> : Change the selected block texture in the left toolbar.</li>
 <li><strong>Ctrl+Scroll Wheel</strong> or <strong>- / =</strong> : Change texture page in the left toolbar.</li>
 </ul>
-<h4 class="mt-3 mb-2 opacity-75" id="section-41b-block-shapes">4.1b Block Shapes</h4>
-<p><img class="img-fluid rounded shadow-sm d-block my-3" height="91" alt="image" src="./map-editor-images/shape_toolbar.png" /></p>
+<h4 tabindex="-1" class="mt-3 mb-2 opacity-75" id="section-41b-block-shapes">4.1b Block Shapes</h4>
+<p><img class="img-fluid rounded shadow-sm d-block my-3" height="91" alt="image" src="./map-editor-images/shape_toolbar.png" width="858"></p>
 <ul>
 <li>The top-right toolbar includes ramps and other shapes.</li>
 <li><strong>R</strong> : Rotate selected shape.</li>
 <li><strong>V</strong> : Flip vertically.</li>
 <li>Do <em>not</em> use the staircase block anywhere the player might roll across it - it doesn't play well with egg physics.</li>
 </ul>
-<h3 class="mt-4 mb-3" id="section-42-img-srcmap-editor-imagestool_2png--plane-tool">4.2 <img class="img-fluid rounded shadow-sm d-block my-3" src="./map-editor-images/tool_2.png" /> Plane Tool</h3>
-<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/plane_drag_basic.png" /></p>
+<h3 tabindex="-1" class="mt-4 mb-3" id="section-42-img-srcmap-editor-imagestool_2png--plane">4.2 <img class="img-fluid rounded shadow-sm d-block my-3" alt="" src="./map-editor-images/tool_2.png" width="16" height="16"> Plane</h3>
+<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/plane_drag_basic.png" width="473"></p>
 <ul>
 <li><p><strong>Click+Drag</strong> : Draw a planar sheet (floor or wall).</p></li>
 <li><p><strong>Shift while clicking</strong> : Push the plane one block into the highlighted surface for a flush fit :</p></li>
 </ul>
-<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/plane_drag_shift_flush.png" /></p>
+<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/plane_drag_shift_flush.png" width="369"></p>
 <ul>
 <li><strong>Right-Click+Drag</strong> : Delete a planar region (useful for doors and openings).</li>
 </ul>
-<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/plane_drag_delete_region.png" /></p>
+<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/plane_drag_delete_region.png" width="472"></p>
 <ul>
 <li><strong>Alt while dragging</strong> : Use the initial click point as the <em>centre</em> of the plane rather than a corner.</li>
 </ul>
-<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/plane_drag_alt_centered.png" /></p>
+<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/plane_drag_alt_centered.png" width="344"></p>
 <ul>
 <li>When using the tool with the 45° slope-shape selected, you drag the plane along the slope :</li>
 </ul>
-<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/slope_plane_drag.png" /></p>
+<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/slope_plane_drag.png" width="321"></p>
 <hr class="my-5 opacity-0">
-<h3 class="mt-4 mb-3" id="section-43-img-srcmap-editor-imagestool_3png--extrude-tool">4.3 <img class="img-fluid rounded shadow-sm d-block my-3" src="./map-editor-images/tool_3.png" /> Extrude Tool</h3>
+<h3 tabindex="-1" class="mt-4 mb-3" id="section-43-img-srcmap-editor-imagestool_3png--extrude">4.3 <img class="img-fluid rounded shadow-sm d-block my-3" alt="" src="./map-editor-images/tool_3.png" width="16" height="15"> Extrude</h3>
 <ul>
 <li><strong>Click+Drag</strong> to define a 2D area, then move your mouse and <strong>Click</strong> to extrude to that depth.  Very useful!</li>
 <li>Works on irregular shapes :</li>
 </ul>
-<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/extrude_irregular_shape.png" /></p>
+<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/extrude_irregular_shape.png" width="340"></p>
 <ul>
 <li><strong>Right-Click+Drag</strong> : Nothing to do with extrude, really, more a "delete everything inside this box" tool.</li>
 </ul>
 <hr class="my-5 opacity-0">
-<h3 class="mt-4 mb-3" id="section-44-img-srcmap-editor-imagestool_4png--box-tool">4.4 <img class="img-fluid rounded shadow-sm d-block my-3" src="./map-editor-images/tool_4.png" /> Box Tool</h3>
-<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300"  alt="image" src="./map-editor-images/box_tool_hollow_box.png" /></p>
-<ul>
-<li><strong>Click+Drag</strong> : Create a hollow box.</li>
-<li><strong>Shift while dragging</strong> : Remove end caps (for tunnels or open boxes).</li>
-<li><strong>Right-Click</strong> : Carve out a room.</li>
-</ul>
-<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300"  alt="image" src="./map-editor-images/box_tool_no_end_caps.png" /></p>
-<hr class="my-5 opacity-0">
-<h3 class="mt-4 mb-3" id="section-45-img-srcmap-editor-imagestool_5png--paint-tool">4.5 <img class="img-fluid rounded shadow-sm d-block my-3" src="./map-editor-images/tool_5.png" /> Paint Tool</h3>
+<h3 tabindex="-1" class="mt-4 mb-3" id="section-45-img-srcmap-editor-imagestool_5png--paint">4.5 <img class="img-fluid rounded shadow-sm d-block my-3" alt="" src="./map-editor-images/tool_5.png" width="9" height="13"> Paint</h3>
 <ul>
 <li><strong>Click</strong> : Apply texture to highlighted block.</li>
 <li><strong>Right-Click</strong> or <strong>Alt+Click</strong> : Sample block texture and shape.</li>
@@ -510,8 +525,21 @@
 <li><strong>Shift+Click</strong> : Replace all blocks of the pointed-at texture in the current layer with the selected texture (undoable - but be careful).</li>
 </ul>
 <hr class="my-5 opacity-0">
-<h3 class="mt-4 mb-3" id="section-46-img-srcmap-editor-imagestool_6png--hill-dropper-tool">4.6 <img class="img-fluid rounded shadow-sm d-block my-3" src="./map-editor-images/tool_6.png" /> Hill-Dropper Tool</h3>
-<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/hill_dropper_example.png" /></p>
+<h3 tabindex="-1" class="mt-4 mb-3" id="section-49-img-srcmap-editor-imagestool_9png--grout">4.9 <img class="img-fluid rounded shadow-sm d-block my-3" alt="" src="./map-editor-images/tool_9.png" width="13" height="13"> Grout</h3>
+<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/grout_tool_smoothing.png" width="410"></p>
+<ul>
+<li><strong>Click</strong> : Smooth terrain by filling in edge voxels using intermediate block shapes.</li>
+<li><strong>Ctrl+Click</strong> : Smooth terrain, but all blocks added use the currently selected texture.</li>
+<li><strong>Right-Click</strong> : Remove non-cube blocks.</li>
+<li><strong>Shift+Scroll Wheel</strong> : Change brush size.</li>
+</ul>
+<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/grout_tool_cleanup.png" width="319"></p>
+<hr class="my-5 opacity-0">
+<h3 tabindex="-1" class="mt-4 mb-3" id="section-49-img-srcmap-editor-imagestool_9png--hollow">4.9 <img class="img-fluid rounded shadow-sm d-block my-3" alt="" src="./map-editor-images/tool_9.png" width="13" height="13"> Hollow</h3>
+<p>PLACEHOLDER</p>
+<hr class="my-5 opacity-0">
+<h3 tabindex="-1" class="mt-4 mb-3" id="section-46-img-srcmap-editor-imagestool_6png--hill">4.6 <img class="img-fluid rounded shadow-sm d-block my-3" alt="" src="./map-editor-images/tool_6.png" width="14" height="9"> Hill</h3>
+<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/hill_dropper_example.png" width="350"></p>
 <ul>
 <li><strong>Click</strong> : Drop blocks from above to form organic hills.</li>
 <li><strong>Right-Click</strong> : Subtract hill-shape from terrain.</li>
@@ -520,8 +548,8 @@
 <li>Useful for mountains and natural terrain; can be used to create 'geological'-looking layers.</li>
 </ul>
 <hr class="my-5 opacity-0">
-<h3 class="mt-4 mb-3" id="section-47-img-srcmap-editor-imagestool_7png--sculpt-tool">4.7 <img class="img-fluid rounded shadow-sm d-block my-3" src="./map-editor-images/tool_7.png" /> Sculpt Tool</h3>
-<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/sculpt_tool_example.png" /></p>
+<h3 tabindex="-1" class="mt-4 mb-3" id="section-47-img-srcmap-editor-imagestool_7png--sculpt">4.7 <img class="img-fluid rounded shadow-sm d-block my-3" alt="" src="./map-editor-images/tool_7.png" width="10" height="13"> Sculpt</h3>
+<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/sculpt_tool_example.png" width="373"></p>
 <p>Grow or shrink your terrain within a sphere.</p>
 <ul>
 <li><strong>Scroll Wheel</strong> : Control intensity.<ul>
@@ -531,8 +559,8 @@
 <li><strong>Shift+Scroll Wheel</strong> : Adjust brush radius.</li>
 </ul>
 <hr class="my-5 opacity-0">
-<h3 class="mt-4 mb-3" id="section-48-img-srcmap-editor-imagestool_8png--sphere-tool">4.8 <img class="img-fluid rounded shadow-sm d-block my-3" src="./map-editor-images/tool_8.png" /> Sphere Tool</h3>
-<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/sphere_tool_example.png" /></p>
+<h3 tabindex="-1" class="mt-4 mb-3" id="section-48-img-srcmap-editor-imagestool_8png--sphere">4.8 <img class="img-fluid rounded shadow-sm d-block my-3" alt="" src="./map-editor-images/tool_8.png" width="14" height="14"> Sphere</h3>
+<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/sphere_tool_example.png" width="316"></p>
 <ul>
 <li><strong>Click</strong> : Add a sphere.</li>
 <li><strong>Right-Click</strong> : Subtract a sphere (good for caves).</li>
@@ -541,17 +569,7 @@
 <li><strong>Shift+Scroll Wheel</strong> : Change sphere size.</li>
 </ul>
 <hr class="my-5 opacity-0">
-<h3 class="mt-4 mb-3" id="section-49-img-srcmap-editor-imagestool_9png--grout-tool">4.9 <img class="img-fluid rounded shadow-sm d-block my-3" src="./map-editor-images/tool_9.png" /> Grout Tool</h3>
-<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/grout_tool_smoothing.png" /></p>
-<ul>
-<li><strong>Click</strong> : Smooth terrain by filling in edge voxels using intermediate block shapes.</li>
-<li><strong>Ctrl+Click</strong> : Smooth terrain, but all blocks added use the currently selected texture.</li>
-<li><strong>Right-Click</strong> : Remove non-cube blocks.</li>
-<li><strong>Shift+Scroll Wheel</strong> : Change brush size.</li>
-</ul>
-<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/grout_tool_cleanup.png" /></p>
-<hr class="my-5 opacity-0">
-<h3 class="mt-4 mb-3" id="section-410-img-srcmap-editor-imagestool_0png--planar-drawing-tool">4.10 <img class="img-fluid rounded shadow-sm d-block my-3" src="./map-editor-images/tool_0.png" /> Planar Drawing Tool</h3>
+<h3 tabindex="-1" class="mt-4 mb-3" id="section-410-img-srcmap-editor-imagestool_0png--2d-draw">4.10 <img class="img-fluid rounded shadow-sm d-block my-3" alt="" src="./map-editor-images/tool_0.png" width="16" height="16"> 2D Draw</h3>
 <ul>
 <li><strong>Click</strong> : Add a block where you're clicking.</li>
 <li><strong>Shift+Click</strong> : Add a block on the far side of the plane.</li>
@@ -561,187 +579,187 @@
 <li><strong>Alt+Click</strong> : Sample highlighted block</li>
 <li><strong>Alt+Right-Click</strong> : Align plane to highlighted face</li>
 </ul>
-<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/planar_draw_example.png" /></p>
+<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/planar_draw_example.png" width="444"></p>
 <hr class="my-5 opacity-0">
-<h2 class="mt-5 mb-3 pb-2 border-bottom" id="section-5-entity-mode">5. Entity Mode</h2>
+<h2 tabindex="-1" class="mt-5 mb-3 pb-2 border-bottom" id="section-5-entity-mode">5. Entity Mode</h2>
 <p>Enter Entity Mode by pressing <strong>Backtick</strong> (<strong>`</strong>) until the Entity Mode UI appears.</p>
-<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/entity_mode.png" /></p>
+<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/entity_mode.png" width="308"></p>
 <p>In Entity Mode there are two tools - the <strong>Object Tool</strong> and the <strong>Trigger-Box Tool</strong>.  Objects are things placed at a single point in the world that you can see, like checkpoints and torches.  Trigger boxes are larger invisible areas that trigger an effect when the player enters them, such as playing a music track or displaying a message.</p>
-<h3 class="mt-4 mb-3" id="section-51-img-srcmap-editor-imagesentity_tool_objectpng--object-tool">5.1 <img class="img-fluid rounded shadow-sm d-block my-3" src="./map-editor-images/entity_tool_object.png" /> Object Tool</h3>
+<h3 tabindex="-1" class="mt-4 mb-3" id="section-51-img-srcmap-editor-imagesentity_tool_objectpng--object-tool">5.1 <img class="img-fluid rounded shadow-sm d-block my-3" alt="" src="./map-editor-images/entity_tool_object.png" width="16" height="16"> Object Tool</h3>
 <ul>
 <li><strong>Click</strong> : Place or select an object.</li>
 <li><strong>Right-Click</strong> : Delete an object.</li>
 </ul>
-<h4 class="mt-3 mb-2 opacity-75" id="section-511-img-srcmap-editor-imagesobject_1_bonfire_startpng--start-checkpoint">5.1.1 <img class="img-fluid rounded shadow-sm d-block my-3" src="./map-editor-images/object_1_Bonfire_Start.png" /> Start-Checkpoint</h4>
+<h4 tabindex="-1" class="mt-3 mb-2 opacity-75" id="section-511-img-srcmap-editor-imagesobject_1_bonfire_startpng--start-checkpoint">5.1.1 <img class="img-fluid rounded shadow-sm d-block my-3" alt="" src="./map-editor-images/object_1_Bonfire_Start.png" width="64" height="64"> Start-Checkpoint</h4>
 <ul>
 <li>Every map <em>must</em> include a <strong>Start-Checkpoint</strong>.</li>
 <li>This is where the player spawns in custom maps; it looks just like a normal checkpoint.</li>
 <li>The <code>area_name</code> tag controls the text shown when the player starts a new game on your map.  The default value is <code>"CUSTOM_LEVEL_LETS_GO"</code>, a localisation tag that amounts to "Let's go!" in English, but you can change it to whatever message you like.</li>
 </ul>
-<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/start_checkpoint.png" /></p>
-<h4 class="mt-3 mb-2 opacity-75" id="section-512-img-srcmap-editor-imagesobject_2_bonfirepng--normal-checkpoint">5.1.2 <img class="img-fluid rounded shadow-sm d-block my-3" src="./map-editor-images/object_2_Bonfire.png" /> Normal Checkpoint</h4>
+<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/start_checkpoint.png" width="423"></p>
+<h4 tabindex="-1" class="mt-3 mb-2 opacity-75" id="section-512-img-srcmap-editor-imagesobject_2_bonfirepng--normal-checkpoint">5.1.2 <img class="img-fluid rounded shadow-sm d-block my-3" alt="" src="./map-editor-images/object_2_Bonfire.png" width="64" height="64"> Normal Checkpoint</h4>
 <ul>
 <li>Totally normal checkpoint.</li>
 <li>Set the <code>area_name</code> tag to control the text shown when the player activates it.</li>
 <li>You will often want to put checkpoints inside music trigger-boxes so that if a player resumes a saved game, the correct music will play.</li>
 </ul>
-<h4 class="mt-3 mb-2 opacity-75" id="section-513-img-srcmap-editor-imagesobject_3_bonfire_endpng--end-checkpoint">5.1.3 <img class="img-fluid rounded shadow-sm d-block my-3" src="./map-editor-images/object_3_Bonfire_End.png" /> End-Checkpoint</h4>
+<h4 tabindex="-1" class="mt-3 mb-2 opacity-75" id="section-513-img-srcmap-editor-imagesobject_3_bonfire_endpng--end-checkpoint">5.1.3 <img class="img-fluid rounded shadow-sm d-block my-3" alt="" src="./map-editor-images/object_3_Bonfire_End.png" width="64" height="64"> End-Checkpoint</h4>
 <ul>
 <li>This behaves like a normal checkpoint (only the Nest object can trigger the start/end cutscenes).</li>
 <li>The default <code>area_name</code> tag value is <code>"CUSTOM_LEVEL_YOU_MADE_IT"</code>, which localises to "You made it!" in English - but you can put whatever you like in there.</li>
 </ul>
-<h4 class="mt-3 mb-2 opacity-75" id="section-514-img-srcmap-editor-imagesobject_4_torchpng--torch">5.1.4 <img class="img-fluid rounded shadow-sm d-block my-3" src="./map-editor-images/object_4_Torch.png" /> Torch</h4>
-<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/object_torch_example.png" /></p>
+<h4 tabindex="-1" class="mt-3 mb-2 opacity-75" id="section-514-img-srcmap-editor-imagesobject_4_torchpng--torch">5.1.4 <img class="img-fluid rounded shadow-sm d-block my-3" alt="" src="./map-editor-images/object_4_Torch.png" width="64" height="64"> Torch</h4>
+<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/object_torch_example.png" width="376"></p>
 <p>Provides a point of light.  Handy when things are getting a bit dark - but don't overdo it, as each torch adds a light source and the performance cost can add up.</p>
-<h4 class="mt-3 mb-2 opacity-75" id="section-515-img-srcmap-editor-imagesobject_5_starpng--star">5.1.5 <img class="img-fluid rounded shadow-sm d-block my-3" src="./map-editor-images/object_5_Star.png" /> Star</h4>
-<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/star_props.png" /></p>
+<h4 tabindex="-1" class="mt-3 mb-2 opacity-75" id="section-515-img-srcmap-editor-imagesobject_5_starpng--star">5.1.5 <img class="img-fluid rounded shadow-sm d-block my-3" alt="" src="./map-editor-images/object_5_Star.png" width="64" height="64"> Star</h4>
+<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/star_props.png" width="644"></p>
 <ul>
 <li><p>Makes a nice sound when collected, and displays a running count of stars collected vs. the total number of stars on the map.</p></li>
 <li><p>The pause menu will have a stars submenu, showing a list of all the stars, along with hints for how to find them if you've specified them.</p></li>
 <li><p>Not used in the main game.</p></li>
 </ul>
-<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/star_menu.png" /></p>
-<h4 class="mt-3 mb-2 opacity-75" id="section-516-img-srcmap-editor-imagesobject_6_chairpng--chair">5.1.6 <img class="img-fluid rounded shadow-sm d-block my-3" src="./map-editor-images/object_6_Chair.png" /> Chair</h4>
-<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/object_chair_example.png" /></p>
+<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/star_menu.png" width="329"></p>
+<h4 tabindex="-1" class="mt-3 mb-2 opacity-75" id="section-516-img-srcmap-editor-imagesobject_6_chairpng--chair">5.1.6 <img class="img-fluid rounded shadow-sm d-block my-3" alt="" src="./map-editor-images/object_6_Chair.png" width="64" height="64"> Chair</h4>
+<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/object_chair_example.png" width="380"></p>
 <ul>
 <li>Inert geometric object.  </li>
 <li>Not used in the main game.</li>
 </ul>
-<h4 class="mt-3 mb-2 opacity-75" id="section-517-img-srcmap-editor-imagesobject_7_tablepng--table">5.1.7 <img class="img-fluid rounded shadow-sm d-block my-3" src="./map-editor-images/object_7_Table.png" /> Table</h4>
-<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/object_table_example.png" /></p>
+<h4 tabindex="-1" class="mt-3 mb-2 opacity-75" id="section-517-img-srcmap-editor-imagesobject_7_tablepng--table">5.1.7 <img class="img-fluid rounded shadow-sm d-block my-3" alt="" src="./map-editor-images/object_7_Table.png" width="64" height="64"> Table</h4>
+<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/object_table_example.png" width="400"></p>
 <ul>
 <li>Inert geometric object.  </li>
 <li>Not used in the main game.</li>
 </ul>
-<h4 class="mt-3 mb-2 opacity-75" id="section-518-other-objects">5.1.8 Other Objects</h4>
+<h4 tabindex="-1" class="mt-3 mb-2 opacity-75" id="section-518-other-objects">5.1.8 Other Objects</h4>
 <p>There are other objects accessible via the <code>asset_name</code> dropdown in the properties panel, but they have unusual or hard-coded behaviour tied to the main game, so I don't recommend using them in custom maps. (The <code>Nest.tscn</code> object, for instance, has a great deal of specific hard-coded logic and spawns invisible collision geometry during cutscenes.) It's fine to leave them in place if you're modding the main game map, just be careful to not modify these objects or their surrounding geometry.</p>
-<h3 class="mt-4 mb-3" id="section-52-img-srcmap-editor-imagesentity_tool_triggerpng--trigger-box-tool">5.2 <img class="img-fluid rounded shadow-sm d-block my-3" src="./map-editor-images/entity_tool_trigger.png" /> Trigger-Box Tool</h3>
+<h3 tabindex="-1" class="mt-4 mb-3" id="section-52-img-srcmap-editor-imagesentity_tool_triggerpng--trigger-box-tool">5.2 <img class="img-fluid rounded shadow-sm d-block my-3" alt="" src="./map-editor-images/entity_tool_trigger.png" width="16" height="16"> Trigger-Box Tool</h3>
 <ul>
 <li>Trigger boxes are big invisible areas that do something (e.g. playing music or displaying a message) when the player enters them.</li>
 </ul>
-<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/triggerbox.png" /></p>
+<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/triggerbox.png" width="347"></p>
 <ul>
 <li>In the properties panel you can edit various values, including position and dimensions (WUN = West/Up/North, EDS = East/Down/South) :</li>
 </ul>
-<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/trigger_intro.png" /></p>
+<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/trigger_intro.png" width="483"></p>
 <ul>
 <li>You can also <strong>move</strong> and <strong>resize</strong> trigger boxes in the viewport using the <strong>move gizmo</strong> and <strong>face resize handles</strong> (drag the coloured handles on each face of the box).</li>
 </ul>
-<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/resize_trigger.gif" /></p>
+<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/resize_trigger.gif" width="461"></p>
 <ul>
 <li>Note that each trigger box has a 1×1×1 'core' that you click to select it. (Technically this core doesn't need to be inside the trigger area, but…why would you do that?)</li>
 </ul>
-<h4 class="mt-3 mb-2 opacity-75" id="section-521-img-srcmap-editor-imagestrigger_1_musicpng--music">5.2.1 <img class="img-fluid rounded shadow-sm d-block my-3" src="./map-editor-images/trigger_1_music.png" /> music</h4>
+<h4 tabindex="-1" class="mt-3 mb-2 opacity-75" id="section-521-img-srcmap-editor-imagestrigger_1_musicpng--music">5.2.1 <img class="img-fluid rounded shadow-sm d-block my-3" alt="" src="./map-editor-images/trigger_1_music.png" width="64" height="64"> music</h4>
 <ul>
 <li>Starts playing a music track when the player enters.</li>
 <li>Usually you want to have a music trigger at each checkpoint so that the correct music plays when a player resumes a saved game.</li>
 <li>Choose the track from the dropdown in the properties panel.
-<img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/music_property_panel.png" /></li>
+<img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/music_property_panel.png" width="270"></li>
 <li>Any time you select a music trigger-box, you'll hear a preview of its music.</li>
 <li>You can't add your own music files, but in addition to the main OST there are several hours of bonus tracks included for use in custom maps.</li>
 <li>The OST is <a href="https://store.steampowered.com/app/4217410/Oeuvre_Oeuf_Soundtrack/">here</a> if you want to listen to it outside the game.</li>
 </ul>
-<h4 class="mt-3 mb-2 opacity-75" id="section-522-img-srcmap-editor-imagestrigger_2_arealabelpng--arealabel">5.2.2 <img class="img-fluid rounded shadow-sm d-block my-3" src="./map-editor-images/trigger_2_arealabel.png" /> arealabel</h4>
-<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/arealabel_props.png" /></p>
+<h4 tabindex="-1" class="mt-3 mb-2 opacity-75" id="section-522-img-srcmap-editor-imagestrigger_2_arealabelpng--arealabel">5.2.2 <img class="img-fluid rounded shadow-sm d-block my-3" alt="" src="./map-editor-images/trigger_2_arealabel.png" width="64" height="64"> arealabel</h4>
+<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/arealabel_props.png" width="270"></p>
 <p>'arealabel' trigger boxes display a message on screen when the player enters, independently of checkpoints.  If the <code>area_name</code> matches a built-in location name (case-sensitive), the game localises it - e.g. entering <code>FOREST</code> displays "Forest of Branching Paths" in English.  Otherwise it just displays your text verbatim, so entering <code>Hello, world!</code> displays "Hello, world!".</p>
-<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/arealabel2.png" /></p>
-<h4 class="mt-3 mb-2 opacity-75" id="section-523-img-srcmap-editor-imagestrigger_3_killboxpng--killbox">5.2.3 <img class="img-fluid rounded shadow-sm d-block my-3" src="./map-editor-images/trigger_3_killbox.png" /> KILLBOX</h4>
-<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/killbox.png" /></p>
+<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/arealabel2.png" width="476"></p>
+<h4 tabindex="-1" class="mt-3 mb-2 opacity-75" id="section-523-img-srcmap-editor-imagestrigger_3_killboxpng--killbox">5.2.3 <img class="img-fluid rounded shadow-sm d-block my-3" alt="" src="./map-editor-images/trigger_3_killbox.png" width="64" height="64"> KILLBOX</h4>
+<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/killbox.png" width="648"></p>
 <ul>
 <li>If you enter a killbox, you are internally marked as <em>doomed</em>, and will oof the next time you touch horizontal-ish map geometry (ramps included).</li>
 <li>Drawn in red in the map view for easy identification.</li>
 <li>While <em>doomed</em>, you cannot trigger checkpoints until you restart.</li>
 <li>For want of a better place to put this information: there's a global killplane below y=-51.  Also, because the fog gets thicker when you go down, <em>nothing</em> below this level will be visible.  There's no reason to have any geometry below y=-51.</li>
 </ul>
-<h4 class="mt-3 mb-2 opacity-75" id="section-524-img-srcmap-editor-imagestrigger_4_torchpng--torch">5.2.4 <img class="img-fluid rounded shadow-sm d-block my-3" src="./map-editor-images/trigger_4_torch.png" /> TORCH</h4>
+<h4 tabindex="-1" class="mt-3 mb-2 opacity-75" id="section-524-img-srcmap-editor-imagestrigger_4_torchpng--torch">5.2.4 <img class="img-fluid rounded shadow-sm d-block my-3" alt="" src="./map-editor-images/trigger_4_torch.png" width="64" height="64"> TORCH</h4>
 <p>While inside this trigger box, the player emits light.  Handy for subtly brightening dark areas without placing lots of torch props (which can be expensive to render and visually distracting).</p>
-<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/torchbox.png" /></p>
-<h4 class="mt-3 mb-2 opacity-75" id="section-525-img-srcmap-editor-imagestrigger_5_advancedpng--generic-trigger-boxes">5.2.5 <img class="img-fluid rounded shadow-sm d-block my-3" src="./map-editor-images/trigger_5_advanced.png" /> Generic Trigger-Boxes</h4>
+<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/torchbox.png" width="418"></p>
+<h4 tabindex="-1" class="mt-3 mb-2 opacity-75" id="section-525-img-srcmap-editor-imagestrigger_5_advancedpng--generic-trigger-boxes">5.2.5 <img class="img-fluid rounded shadow-sm d-block my-3" alt="" src="./map-editor-images/trigger_5_advanced.png" width="64" height="64"> Generic Trigger-Boxes</h4>
 <p>There are a few other really finicky trigger-box types - what they do is specified by their meta tags.  I don't think they're appropriate for general use, so I won't document them.  If you're modding the main game map it's fine to leave them in place - but pls don't use them in maps you're making from scratch, as they may behave unexpectedly.</p>
 <hr class="my-5 opacity-0">
-<h2 class="mt-5 mb-3 pb-2 border-bottom" id="section-6-layer-mode">6. Layer Mode</h2>
+<h2 tabindex="-1" class="mt-5 mb-3 pb-2 border-bottom" id="section-6-layer-mode">6. Layer Mode</h2>
 <p>Cycle to Layer Mode with <strong>Backtick</strong> (<strong>`</strong>).</p>
 <ul>
 <li>It can be useful to divide large maps into layers.</li>
 <li>Empty layers are shown with a red tint in the layer list so you can spot them easily.</li>
 </ul>
-<h3 class="mt-4 mb-3" id="section-61-layer-visibility">6.1 Layer Visibility</h3>
+<h3 tabindex="-1" class="mt-4 mb-3" id="section-61-layer-visibility">6.1 Layer Visibility</h3>
 <ul>
 <li><strong>Shift+Click</strong> a layer to hide all other layers; <strong>Shift+Click</strong> again to restore them.</li>
 </ul>
-<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/layer_visibility_example.png" /></p>
+<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/layer_visibility_example.png" width="413"></p>
 <hr class="my-5 opacity-0">
-<h3 class="mt-4 mb-3" id="section-62-layer-tools">6.2 Layer Tools</h3>
-<h4 class="mt-3 mb-2 opacity-75" id="section-621-img-srcmap-editor-imageslayer_transform_tool_iconpng--layer-transform-tool">6.2.1 <img class="img-fluid rounded shadow-sm d-block my-3" src="./map-editor-images/layer_transform_tool_icon.png" /> Layer Transform Tool</h4>
-<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/layer_transform_example.png" /></p>
+<h3 tabindex="-1" class="mt-4 mb-3" id="section-62-layer-tools">6.2 Layer Tools</h3>
+<h4 tabindex="-1" class="mt-3 mb-2 opacity-75" id="section-621-img-srcmap-editor-imageslayer_transform_tool_iconpng--layer-transform-tool">6.2.1 <img class="img-fluid rounded shadow-sm d-block my-3" alt="" src="./map-editor-images/layer_transform_tool_icon.png" width="13" height="13"> Layer Transform Tool</h4>
+<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/layer_transform_example.png" width="195"></p>
 <ul>
 <li><strong>Click</strong> : Select a layer.</li>
 <li>You can then <strong>move</strong>, <strong>rotate</strong>, or <strong>mirror/flip</strong> the entire layer using the gizmo.</li>
 <li>Note : only one block can occupy a given position - if you drag one layer to overlap another, blocks are going to get deleted from one of the layers!</li>
 </ul>
 <hr class="my-5 opacity-0">
-<h4 class="mt-3 mb-2 opacity-75" id="section-622-img-srcmap-editor-imageslayer_assignment_tool_iconpng--layer-assignment-tool">6.2.2 <img class="img-fluid rounded shadow-sm d-block my-3" src="./map-editor-images/layer_assignment_tool_icon.png" /> Layer Assignment Tool</h4>
+<h4 tabindex="-1" class="mt-3 mb-2 opacity-75" id="section-622-img-srcmap-editor-imageslayer_assignment_tool_iconpng--layer-assignment-tool">6.2.2 <img class="img-fluid rounded shadow-sm d-block my-3" alt="" src="./map-editor-images/layer_assignment_tool_icon.png" width="14" height="15"> Layer Assignment Tool</h4>
 <ul>
 <li><strong>Click</strong> and drag out a box : All visible blocks and entities inside get assigned to the currently selected layer.</li>
 <li><strong>Alt+Click</strong> : Select the highlighted layer.</li>
 <li>Useful for correcting blocks assigned to the wrong layer.</li>
 </ul>
-<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/layer_assignment_example.png" /></p>
+<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/layer_assignment_example.png" width="308"></p>
 <hr class="my-5 opacity-0">
-<h3 class="mt-4 mb-3" id="section-63-img-srcmap-editor-imageslayer_clipboardpng--clipboard">6.3 <img class="img-fluid rounded shadow-sm d-block my-3" src="./map-editor-images/layer_clipboard.png" /> Clipboard</h3>
+<h3 tabindex="-1" class="mt-4 mb-3" id="section-63-img-srcmap-editor-imageslayer_clipboardpng--clipboard">6.3 <img class="img-fluid rounded shadow-sm d-block my-3" alt="" src="./map-editor-images/layer_clipboard.png" width="16" height="16"> Clipboard</h3>
 <ul>
 <li><strong>Click</strong> on a layer to copy it to the clipboard.</li>
 <li><strong>Right-Click</strong> : Paste the clipboard contents in the indicated position (shown as a purple box).</li>
 <li><strong>Ctrl+C</strong> : Copy the currently selected layer to the clipboard.</li>
 <li>You can copy and paste between different map files!</li>
 </ul>
-<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" src="./map-editor-images/layer_copy_paste_example.png" /></p>
+<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="Layer copy and paste example" src="./map-editor-images/layer_copy_paste_example.png" width="346"></p>
 <hr class="my-5 opacity-0">
-<h2 class="mt-5 mb-3 pb-2 border-bottom" id="section-7-layer-list">7. Layer List</h2>
-<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" src="./map-editor-images/layer_list_view.png" /></p>
+<h2 tabindex="-1" class="mt-5 mb-3 pb-2 border-bottom" id="section-7-layer-list">7. Layer List</h2>
+<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="Layer list" src="./map-editor-images/layer_list_view.png" width="208"></p>
 <p>To the right-hand side of the screen you have the layer list, with the following buttons :</p>
-<h3 class="mt-4 mb-3" id="section-71-img-srcmap-editor-imageslayer_item_up_downpng--move-layer-up--down">7.1 <img class="img-fluid rounded shadow-sm d-block my-3" src="./map-editor-images/layer_item_up_down.png" /> Move Layer Up / Down</h3>
+<h3 tabindex="-1" class="mt-4 mb-3" id="section-71-img-srcmap-editor-imageslayer_item_up_downpng--move-layer-up--down">7.1 <img class="img-fluid rounded shadow-sm d-block my-3" alt="" src="./map-editor-images/layer_item_up_down.png" width="15" height="16"> Move Layer Up / Down</h3>
 <p>Rearranges layers.</p>
-<h3 class="mt-4 mb-3" id="section-72-img-srcmap-editor-imageslayer_item_visiblepng--visibility">7.2 <img class="img-fluid rounded shadow-sm d-block my-3" src="./map-editor-images/layer_item_visible.png" /> Visibility</h3>
-<p>Toggles the visibility of the layer (visible : <img class="img-inline" src="./map-editor-images/layer_item_visible_black.png" />, hidden : <img class="img-inline" src="./map-editor-images/layer_item_invisible_black.png" />).</p>
-<h3 class="mt-4 mb-3" id="section-73-img-srcmap-editor-imageslayer_item_deletepng--delete">7.3 <img class="img-fluid rounded shadow-sm d-block my-3" src="./map-editor-images/layer_item_delete.png" /> Delete</h3>
+<h3 tabindex="-1" class="mt-4 mb-3" id="section-72-img-srcmap-editor-imageslayer_item_visiblepng--visibility">7.2 <img class="img-fluid rounded shadow-sm d-block my-3" alt="" src="./map-editor-images/layer_item_visible.png" width="15" height="15"> Visibility</h3>
+<p>Toggles the visibility of the layer (visible : <img alt="" class="img-inline" src="./map-editor-images/layer_item_visible_black.png" width="15" height="15">, hidden : <img alt="" class="img-inline" src="./map-editor-images/layer_item_invisible_black.png" width="15" height="15">).</p>
+<h3 tabindex="-1" class="mt-4 mb-3" id="section-73-img-srcmap-editor-imageslayer_item_deletepng--delete">7.3 <img class="img-fluid rounded shadow-sm d-block my-3" alt="" src="./map-editor-images/layer_item_delete.png" width="15" height="15"> Delete</h3>
 <p>Deletes the layer.</p>
-<h3 class="mt-4 mb-3" id="section-74-img-srcmap-editor-imageslayer_item_merge_uppng--merge-up">7.4 <img class="img-fluid rounded shadow-sm d-block my-3" src="./map-editor-images/layer_item_merge_up.png" /> Merge Up</h3>
+<h3 tabindex="-1" class="mt-4 mb-3" id="section-74-img-srcmap-editor-imageslayer_item_merge_uppng--merge-up">7.4 <img class="img-fluid rounded shadow-sm d-block my-3" alt="" src="./map-editor-images/layer_item_merge_up.png" width="15" height="15"> Merge Up</h3>
 <p>Merges the layer into the layer above it.</p>
-<h3 class="mt-4 mb-3" id="section-75-img-srcmap-editor-imageslayer_item_newpng--new-layer">7.5 <img class="img-fluid rounded shadow-sm d-block my-3" src="./map-editor-images/layer_item_new.png" /> New Layer</h3>
+<h3 tabindex="-1" class="mt-4 mb-3" id="section-75-img-srcmap-editor-imageslayer_item_newpng--new-layer">7.5 <img class="img-fluid rounded shadow-sm d-block my-3" alt="" src="./map-editor-images/layer_item_new.png" width="16" height="16"> New Layer</h3>
 <p>Creates a new empty layer.</p>
 <hr class="my-5 opacity-0">
-<h2 class="mt-5 mb-3 pb-2 border-bottom" id="section-8-img-srcmap-editor-imagesupload_iconpng--upload-to-steam-workshop">8. <img class="img-fluid rounded shadow-sm d-block my-3" src="./map-editor-images/upload_icon.png" /> Upload to Steam Workshop</h2>
+<h2 tabindex="-1" class="mt-5 mb-3 pb-2 border-bottom" id="section-8-img-srcmap-editor-imagesupload_iconpng--upload-to-steam-workshop">8. <img class="img-fluid rounded shadow-sm d-block my-3" alt="" src="./map-editor-images/upload_icon.png" width="358" height="379"> Upload to Steam Workshop</h2>
 <p>When you're happy with your map and want to share it on the Steam Workshop, click the Steam button in the toolbar :</p>
-<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" src="./map-editor-images/workshop_upload.png" /></p>
+<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="Steam Workshop upload form" src="./map-editor-images/workshop_upload.png" width="681"></p>
 <p>After a moment, you'll see a confirmation message and the Steam Workshop page for your map will open automatically.</p>
-<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" src="./map-editor-images/workshop_success.png" /></p>
+<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="Steam Workshop upload confirmation" src="./map-editor-images/workshop_success.png" width="699"></p>
 <p>The thumbnail is generated from a screenshot of the current view when you save.</p>
-<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" src="./map-editor-images/workshop_page_appearance.png" /></p>
+<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="Map page on Steam Workshop" src="./map-editor-images/workshop_page_appearance.png" width="548"></p>
 <p>If you'd like to customise the listing further, you can do so from that page.  The mod is associated with the file name of the map - if you resave the file it will update your map on the Steam Workshop.</p>
-<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" src="./map-editor-images/custom_level_list.png" /></p>
+<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="Custom Maps list" src="./map-editor-images/custom_level_list.png" width="482"></p>
 <p>I have recently added a bunch of <em>tags</em> to Steam Workshop, which are displayed in the in-game browser.  They indicate difficulty, and also if I've given it my personal stamp of approval.  This is a bit dictatorial, but it's genuinely important to me that new players can have fun browsing the workshop and easily find things they might like.  They are set by me right now.  I try to play all games and rate them as easy/medium/hard if I can complete them.  If you think I've overlooked your game, drop me a line at <a href="mailto:analytic@gmail.com">analytic@gmail.com</a> - I love playing Oeuf maps!</p>
 <hr class="my-5 opacity-0">
-<h2 class="mt-5 mb-3 pb-2 border-bottom" id="section-9-img-srcmap-editor-imagesmp_mapediting_iconpng--multiplayer-map-editor">9. <img class="img-fluid rounded shadow-sm d-block my-3" src="./map-editor-images/mp_mapediting_icon.png" /> Multiplayer Map Editor</h2>
-<h3 class="mt-4 mb-3" id="section-91-setting-up-a-co-op-editing-session">9.1 Setting up a Co-op Editing Session</h3>
+<h2 tabindex="-1" class="mt-5 mb-3 pb-2 border-bottom" id="section-9-img-srcmap-editor-imagesmp_mapediting_iconpng--multiplayer-map-editor">9. <img class="img-fluid rounded shadow-sm d-block my-3" alt="" src="./map-editor-images/mp_mapediting_icon.png" width="15" height="13"> Multiplayer Map Editor</h2>
+<h3 tabindex="-1" class="mt-4 mb-3" id="section-91-setting-up-a-co-op-editing-session">9.1 Setting up a Co-op Editing Session</h3>
 <p>You can edit maps with your friends by turning on co-op editing when you are setting up to host a game.</p>
-<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" src="./map-editor-images/coop_editing.png" /></p>
-<p>In the multiplayer lobby list, games that have co-op editing enabled have a <img src="./map-editor-images/mp_mapediting.png" class="img-inline" /> icon next to them.</p>
-<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" src="./map-editor-images/mp_editor_permissions_list.png" /></p>
+<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="Co-op editing settings" src="./map-editor-images/coop_editing.png" width="851"></p>
+<p>In the multiplayer lobby list, games that have co-op editing enabled have a <img alt="" src="./map-editor-images/mp_mapediting.png" class="img-inline" width="29" height="26"> icon next to them.</p>
+<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="Multiplayer editor permissions" src="./map-editor-images/mp_editor_permissions_list.png" width="241"></p>
 <p>You can set whether new players have permission to edit the map by default on this menu, and you can change it from the pause menu in-game.  You can also toggle editing permission on and off for specific players there.</p>
 <p>Note: Certain operations are restricted in co-op editing mode.  These are operations that would potentially modify large chunks of the map.  So layer operations, flood-fill etc.  If you need to do these, ask the host to do them for you. 🙃</p>
-<h3 class="mt-4 mb-3" id="section-92-banning-users-from-editing">9.2 Banning Users from Editing</h3>
+<h3 tabindex="-1" class="mt-4 mb-3" id="section-92-banning-users-from-editing">9.2 Banning Users from Editing</h3>
 <p>You can also block Steam users from editing the map based on their Steam IDs - this will not prevent them from joining/playing the map, but they won't be able to edit it.  To find a user's Steam ID, look at the log files  (open the maps folder, go up, then go into the logs folder).  You'll see some text like <em>"[Network] Player STEAM_ID has username USERNAME"</em>.  Then, in the directory above logs, there'll be a file called <code>banned_steam_users.txt</code> where you can add a line <strong>STEAM_ID|REASON</strong> - banned users will be told the reason if they try to edit a map.  You need to restart the game after this to reload the ban list.</p>
 <hr class="my-5 opacity-0">
-<h2 class="mt-5 mb-3 pb-2 border-bottom" id="section-10-comparing-different-versions-of-a-map">10. Comparing different versions of a map</h2>
+<h2 tabindex="-1" class="mt-5 mb-3 pb-2 border-bottom" id="section-10-comparing-different-versions-of-a-map">10. Comparing different versions of a map</h2>
 <p>In the map editor, if you press <strong>Ctrl+Shift+D</strong>, a lovely little menu will pop up:</p>
-<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" src="./map-editor-images/diff.png" /></p>
+<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="Map comparison" src="./map-editor-images/diff.png" width="254"></p>
 <p>This looks at what things (blocks or entities) are different between the two maps, and separates them into layers so you can easily see what changed:</p>
-<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" src="./map-editor-images/diff_layers.png" /></p>
+<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="Map comparison layers" src="./map-editor-images/diff_layers.png" width="489"></p>
 <p>By hiding/showing layers you can get a pretty great overview of what the differences are.</p>
 <p>This is a <em>very</em> useful tool when you've left a multiplayer editing server open overnight and want to know what happened while you were away.</p>
 <hr class="my-5 opacity-0">
-<h2 class="mt-5 mb-3 pb-2 border-bottom" id="section-11-map-file-format-specs">11. Map file format specs</h2>
+<h2 tabindex="-1" class="mt-5 mb-3 pb-2 border-bottom" id="section-11-map-file-format-specs">11. Map file format specs</h2>
 <p>Oeuf stores its maps as plaintext, with space-separated values.  Each line starts with a token which indicates the type of data stored, and then information about it.  This is not a comprehensive spec, the idea is to give you enough to get started parsing/generating if you want to.  Happy to explain more if you want to know more.  Just drop me an email.</p>
 <ul>
 <li><strong>version</strong> VERSION_NUMBER<ul>
@@ -779,7 +797,7 @@
 <li><strong>size_WUN</strong> : west/up/north extents (x y z)</li></ul></li></ul></li>
 </ul>
 <hr class="my-5 opacity-0">
-<h2 class="mt-5 mb-3 pb-2 border-bottom" id="section-12-feedback-and-bug-reports">12. Feedback and Bug Reports</h2>
+<h2 tabindex="-1" class="mt-5 mb-3 pb-2 border-bottom" id="section-12-feedback-and-bug-reports">12. Feedback and Bug Reports</h2>
 <p>Does this make sense? I hope so! Feedback and bug reports are always welcome - e-mail me at <a href="mailto:analytic@gmail.com">analytic@gmail.com</a>.</p></main>
     </div>
   </div>
@@ -797,70 +815,150 @@
     </div>
   </footer>
 
-  <button class="btn btn-top rounded-circle shadow" onclick="window.scrollTo({top:0})" aria-label="Back to top" id="btnTop">
+  <button type="button" class="btn btn-top rounded-circle shadow" aria-label="Back to top" id="btnTop" disabled>
     <i class="bi bi-arrow-up"></i>
   </button>
 
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script>
-    const btnTop = document.getElementById('btnTop');
-    addEventListener('scroll', () => btnTop.classList.toggle('show', scrollY > 400));
+// Embedded by convert.js so the generated tutorial remains self-contained.
+(() => {
+  const root = document.documentElement;
+  const navbar = document.querySelector('.navbar');
+  const sidebar = document.querySelector('.sidebar');
+  const offcanvas = document.getElementById('tocOffcanvas');
+  const btnTop = document.getElementById('btnTop');
+  const desktop = matchMedia('(min-width: 992px)');
+  const headings = Array.from(document.querySelectorAll('main h2[id], main h3[id], main h4[id]'));
+  const links = Array.from(document.querySelectorAll('#sidebar-nav .nav-link, #toc-nav .nav-link'));
+  const linksById = new Map();
+  let activeId;
 
-    // Keep the latest passed section active in nav (no "empty" state between headings).
-    const headingEls = Array.from(document.querySelectorAll('main h2[id], main h3[id], main h4[id]'));
-    const navLinks = Array.from(document.querySelectorAll('#sidebar-nav .nav-link, #toc-nav .nav-link'));
-    const linksById = new Map();
+  for (const link of links) {
+    const id = decodeURIComponent(link.hash.slice(1));
+    if (!linksById.has(id)) linksById.set(id, []);
+    linksById.get(id).push(link);
+  }
 
-    navLinks.forEach(link => {
-      const id = decodeURIComponent(link.getAttribute('href')?.slice(1) || '');
-      if (!id) return;
-      if (!linksById.has(id)) linksById.set(id, []);
-      linksById.get(id).push(link);
+  const measureNavbar = () => {
+    root.style.setProperty('--nav-height', navbar.getBoundingClientRect().height + 'px');
+  };
+
+  // Only move this menu's own scrollbar. scrollIntoView on a nav link can
+  // also move the document and interrupt an anchor jump or manual scrolling.
+  const revealLink = (container, link) => {
+    if (!link || !container.clientHeight) return;
+    const bounds = container.getBoundingClientRect();
+    const item = link.getBoundingClientRect();
+    const top = bounds.top + container.clientTop + 8;
+    const bottom = bounds.top + container.clientTop + container.clientHeight - 8;
+    if (item.top < top) container.scrollTop += item.top - top;
+    else if (item.bottom > bottom) container.scrollTop += item.bottom - bottom;
+  };
+
+  const revealSidebar = () => {
+    // Let readers browse the TOC without fighting the auto-follow behavior.
+    if (!desktop.matches || sidebar.matches(':hover') || sidebar.contains(document.activeElement)) return;
+    revealLink(sidebar, linksById.get(activeId)?.find(link => sidebar.contains(link)));
+  };
+
+  const update = (reveal = false) => {
+    const awayFromTop = scrollY > 400;
+    btnTop.classList.toggle('show', awayFromTop);
+    btnTop.disabled = !awayFromTop;
+    if (!headings.length) return;
+    // Use the same offset as anchor links, including zoom/wrapped headers.
+    const offset = parseFloat(getComputedStyle(headings[0]).scrollMarginTop) || navbar.getBoundingClientRect().height + 16;
+    let nextId = headings[0].id;
+    for (const heading of headings) {
+      if (heading.getBoundingClientRect().top > offset + 1) break;
+      nextId = heading.id;
+    }
+    // The final section can be too short to reach the activation line.
+    if (scrollY > 0 && scrollY + innerHeight >= root.scrollHeight - 2) nextId = headings.at(-1).id;
+    if (nextId === activeId) {
+      if (reveal) revealSidebar();
+      return;
+    }
+    activeId = nextId;
+    for (const link of links) {
+      const active = linksById.get(activeId).includes(link);
+      link.classList.toggle('active', active);
+      if (active) link.setAttribute('aria-current', 'location');
+      else link.removeAttribute('aria-current');
+    }
+    revealSidebar();
+  };
+
+  let ticking = false;
+  const scheduleUpdate = () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+      ticking = false;
+      update();
     });
+  };
+  const refreshLayout = () => {
+    measureNavbar();
+    update(true);
+  };
+  addEventListener('scroll', scheduleUpdate, { passive: true });
+  addEventListener('resize', refreshLayout);
+  addEventListener('load', refreshLayout);
+  addEventListener('pageshow', refreshLayout);
+  if (typeof ResizeObserver !== 'undefined') new ResizeObserver(refreshLayout).observe(navbar);
 
-    const setActiveById = (id) => {
-      navLinks.forEach(link => link.classList.remove('active'));
-      const activeLinks = linksById.get(id);
-      activeLinks?.forEach(link => link.classList.add('active'));
-      // Scroll sidebar (and offcanvas TOC) so the active link stays in view
-      activeLinks?.forEach(link => link.scrollIntoView({ block: 'nearest', behavior: 'smooth' }));
-    };
+  const navigationBehavior = () => matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth';
+  const navigateTo = (link, target) => {
+    // Update the URL without triggering the browser's (instant) fragment jump.
+    // Loading/pasting a URL and history navigation keep their native behavior.
+    if (location.hash !== link.hash) history.pushState(null, '', link.hash);
+    target.focus({ preventScroll: true });
+    target.scrollIntoView({ block: 'start', behavior: navigationBehavior() });
+  };
 
-    const updateActiveSection = () => {
-      if (!headingEls.length) return;
-      const activationOffset = 96; // fixed navbar height + breathing room
-      let activeId = headingEls[0].id;
+  btnTop.addEventListener('click', () => {
+    navbar.querySelector('a').focus({ preventScroll: true });
+    window.scrollTo({ top: 0, behavior: navigationBehavior() });
+  });
 
-      for (const heading of headingEls) {
-        if (heading.getBoundingClientRect().top <= activationOffset) {
-          activeId = heading.id;
-        } else {
-          break;
-        }
+  // Align the mobile TOC once on opening; never drag it around while browsing.
+  offcanvas.addEventListener('shown.bs.offcanvas', () => {
+    const container = offcanvas.querySelector('.offcanvas-body');
+    revealLink(container, linksById.get(activeId)?.find(link => offcanvas.contains(link)));
+  });
+
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener('click', event => {
+      if (event.defaultPrevented || event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+      const target = document.getElementById(decodeURIComponent(link.hash.slice(1)));
+      if (!target) return;
+      event.preventDefault();
+      const instance = offcanvas.contains(link) && window.bootstrap?.Offcanvas.getInstance(offcanvas);
+      if (!instance || !offcanvas.classList.contains('show')) {
+        navigateTo(link, target);
+        return;
       }
+      // Bootstrap restores body scrolling and trigger focus after the closing
+      // transition. Navigate afterwards, so neither can undo the user's jump.
+      offcanvas.addEventListener('hidden.bs.offcanvas', () => {
+        requestAnimationFrame(() => {
+          measureNavbar();
+          navigateTo(link, target);
+        });
+      }, { once: true });
+      instance.hide();
+    });
+  });
 
-      setActiveById(activeId);
-    };
+  desktop.addEventListener('change', () => {
+    if (desktop.matches) window.bootstrap?.Offcanvas.getInstance(offcanvas)?.hide();
+    refreshLayout();
+  });
+  refreshLayout();
+})();
 
-    let ticking = false;
-    const onScrollUpdateActive = () => {
-      if (ticking) return;
-      ticking = true;
-      requestAnimationFrame(() => {
-        updateActiveSection();
-        ticking = false;
-      });
-    };
-
-    addEventListener('scroll', onScrollUpdateActive, { passive: true });
-    addEventListener('resize', onScrollUpdateActive);
-    addEventListener('load', updateActiveSection);
-    updateActiveSection();
-
-    const oc = document.getElementById('tocOffcanvas');
-    oc?.querySelectorAll('.nav-link').forEach(a =>
-      a.addEventListener('click', () => bootstrap.Offcanvas.getInstance(oc)?.hide())
-    );
   </script>
 </body>
 </html>

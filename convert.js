@@ -20,6 +20,13 @@ let body = converter.makeHtml(md);
 // CSS selectors can't start with a digit, so prefix bare-numeric IDs
 body = body.replace(/(<h[2-4]\s+id=")(\d)/g, '$1section-$2');
 
+// Heading/inline icons repeat their adjacent labels. Do this after Showdown
+// creates IDs so existing bookmarks keep working.
+const decorativeImage = tag => /\balt=/.test(tag) ? tag : tag.replace('<img', '<img alt=""');
+body = body.replace(/<h[2-4]\b[^>]*>[\s\S]*?<\/h[2-4]>/g,
+  heading => heading.replace(/<img\b[^>]*>/g, decorativeImage));
+body = body.replace(/<img\b[^>]*\bclass=["'][^"']*\bimg-inline\b[^>]*>/g, decorativeImage);
+
 // --- Extract heading IDs + text for the sidebar (before adding classes) ---
 const headings = [];
 const headingRe = /<h([2-4])\s+id="([^"]+)"[^>]*>([\s\S]*?)<\/h\1>/g;
@@ -31,14 +38,6 @@ while ((m = headingRe.exec(body)) !== null) {
   const text = html.replace(/<[^>]+>/g, '').trim();
   headings.push({ level, id, text, html });
 }
-
-// --- Expand [[_TOC_]] into a generated table of contents ---
-const minLevel = Math.min(...headings.map(h => h.level));
-const tocListHtml = headings.map(h => {
-  const indent = '  '.repeat(h.level - minLevel);
-  return `${indent}<li><a href="#${h.id}">${h.text}</a></li>`;
-}).join('\n');
-
 
 // --- Light post-processing: just add Bootstrap utility classes to bare tags ---
 const defaultImgClasses = ['img-fluid', 'rounded', 'shadow-sm', 'd-block', 'my-3'];
@@ -54,9 +53,28 @@ const mergeClasses = (attrText, classesToAdd) => {
   return attrText.replace(classRe, `class="${merged.join(' ')}"`);
 };
 
+// Reserve the image's aspect ratio before it loads, including screenshots
+// whose Markdown only specifies a height. Assets here are PNGs and GIFs.
+const reserveImageSize = attrs => {
+  const src = attrs.match(/\bsrc=["']([^"']+)["']/)?.[1];
+  if (!src || !/^\.\/map-editor-images\/[^/]+\.(png|gif)$/i.test(src)) return attrs;
+  const bytes = fs.readFileSync(src);
+  const png = bytes.subarray(0, 8).equals(Buffer.from([137, 80, 78, 71, 13, 10, 26, 10]));
+  const gif = /^GIF8[79]a$/.test(bytes.toString('ascii', 0, 6));
+  if (!png && !gif) throw new Error(`Unsupported image: ${src}`);
+  const width = png ? bytes.readUInt32BE(16) : bytes.readUInt16LE(6);
+  const height = png ? bytes.readUInt32BE(20) : bytes.readUInt16LE(8);
+  const declaredWidth = Number(attrs.match(/\bwidth=["'](\d+)["']/)?.[1]);
+  const declaredHeight = Number(attrs.match(/\bheight=["'](\d+)["']/)?.[1]);
+  if (!declaredWidth) attrs += ` width="${declaredHeight ? Math.round(width * declaredHeight / height) : width}"`;
+  if (!declaredHeight) attrs += ` height="${declaredWidth ? Math.round(height * declaredWidth / width) : height}"`;
+  return attrs;
+};
+
 body = body
   .replace(/<table(?=[>\s])/g,  '<table class="table table-striped table-bordered"')
   .replace(/<img\b([^>]*)>/g,   (_, attrs) => {
+    attrs = reserveImageSize(attrs.replace(/\s*\/\s*$/, ''));
     const isInline = /\bclass=(["'])[^"']*\bimg-inline\b/i.test(attrs);
     return `<img${isInline ? attrs : mergeClasses(attrs, defaultImgClasses)}>`;
   })
@@ -64,9 +82,9 @@ body = body
   .replace(/<blockquote class="blockquote border-start border-3 ps-3 py-1 my-3">/, '<blockquote class="blockquote border-start border-3 ps-3 py-1 my-3 video-callout">')
   .replace(/<pre>/g,            '<pre class="rounded p-3 border">')
   .replace(/<hr\s*\/?>/g,       '<hr class="my-5 opacity-0">')
-  .replace(/<h2 /g,             '<h2 class="mt-5 mb-3 pb-2 border-bottom" ')
-  .replace(/<h3 /g,             '<h3 class="mt-4 mb-3" ')
-  .replace(/<h4 /g,             '<h4 class="mt-3 mb-2 opacity-75" ');
+  .replace(/<h2 /g,             '<h2 tabindex="-1" class="mt-5 mb-3 pb-2 border-bottom" ')
+  .replace(/<h3 /g,             '<h3 tabindex="-1" class="mt-4 mb-3" ')
+  .replace(/<h4 /g,             '<h4 tabindex="-1" class="mt-3 mb-2 opacity-75" ');
 
 // --- Build sidebar nav links (h2 + h3 + h4) ---
 const sidebarHtml = headings
@@ -75,7 +93,7 @@ const sidebarHtml = headings
     const cls = h.level === 2 ? 'fw-semibold'
               : h.level === 3 ? 'ms-3 small'
               : 'ms-5 small';
-    return `<a class="nav-link py-1 ${cls}" href="#${h.id}">${h.html}</a>`;
+    return `<a class="nav-link py-1 ${cls}" href="#${h.id}">${h.html.replace(/\s*\/>/g, '>')}</a>`;
   }).join('\n');
 
 // --- Assemble page ---
@@ -88,9 +106,12 @@ const page = `<!DOCTYPE html>
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="vendor/bootstrap-icons/font/bootstrap-icons.min.css" rel="stylesheet">
   <style>
-    html { scroll-behavior: smooth; }
     :root {
-
+      /* Override Bootstrap: URL fragments must jump immediately on load.
+         Only explicit in-page navigation requests smooth scrolling. */
+      scroll-behavior: auto;
+      --nav-height: 4.5rem;
+      --anchor-offset: calc(var(--nav-height) + 1rem);
       --page-bg:       white;
       --surface:       #56d5eb;
       --border:        #f0dfc0;
@@ -124,27 +145,32 @@ const page = `<!DOCTYPE html>
     }
     /* ── Navbar ── */
     .navbar { background: var(--chrome) !important; }
+    .skip-link { z-index: 1040; }
+    .navbar > .container-fluid { flex-wrap: nowrap; gap: 1rem; }
+    .navbar-actions { flex-shrink: 0; }
 
     /* ── Sidebar ── */
     @media (min-width: 992px) {
       .sidebar {
         position: sticky;
-        top: 4.5rem;
-        height: calc(100vh - 5rem);
+        top: var(--anchor-offset);
+        height: calc(100vh - var(--anchor-offset) - .5rem);
+        height: calc(100dvh - var(--anchor-offset) - .5rem);
         overflow-y: auto;
+        overscroll-behavior: contain;
         scrollbar-width: thin;
       }
     }
-    #sidebar-nav .nav-link {
+    #sidebar-nav .nav-link, #toc-nav .nav-link {
       color: var(--nav-link-color);
       border-radius: .375rem;
       transition: background .15s, color .15s;
     }
-    #sidebar-nav .nav-link.active {
+    #sidebar-nav .nav-link.active, #toc-nav .nav-link.active {
       background: var(--chrome);
-      color: #fff;
+      color: var(--heading);
     }
-    #sidebar-nav .nav-link:hover:not(.active) {
+    #sidebar-nav .nav-link:hover:not(.active), #toc-nav .nav-link:hover:not(.active) {
       background: var(--surface);
     }
     #sidebar-nav .nav-link img,
@@ -166,25 +192,33 @@ const page = `<!DOCTYPE html>
     }
     #sidebar-nav .nav-link.active img,
     #tocOffcanvas .nav-link.active img {
-      filter: brightness(0) invert(1);
+      filter: grayscale(1) brightness(0) saturate(100%);
       opacity: 1;
     }
 
     /* ── Content ── */
     .navbar-brand { 
       color: var(--heading-text-color);
-      font-size: 2rem;
+      font-size: clamp(1rem, 3vw, 2rem);
+      white-space: normal;
+      overflow-wrap: anywhere;
+      min-width: 0;
+      flex: 1;
+      margin: 0;
+      line-height: 1.25;
       font-weight: bold;
       text-shadow: 1px 1px 0 var(--heading-outline-color), -1px -1px 0 var(--heading-outline-color), 1px -1px 0 var(--heading-outline-color), -1px 1px 0 var(--heading-outline-color);
     }    
     .navbar-brand:hover { 
       color: var(--heading-text-color);
    }
+    .navbar-brand a { color: inherit; text-decoration: none; }
 
     .navbar  {
       /*drop shadow*/
     }
       
+    main { min-width: 0; overflow-wrap: anywhere; }
     main h2 { color: var(--heading); border-color: var(--border) !important; }
     main h3 { color: var(--heading-sub); }
     main h4 { color: var(--heading-minor); }
@@ -225,7 +259,7 @@ const page = `<!DOCTYPE html>
     main blockquote.video-callout p:last-child { margin-bottom: 0; }
     main hr { border-color: var(--border); }
 
-    main img { max-height: 380px; }
+    main img { max-height: 380px; object-fit: contain; object-position: left; }
     main img.img-inline {
       display: inline !important;
       margin: 0 !important;
@@ -240,15 +274,19 @@ const page = `<!DOCTYPE html>
 
     /* ── Offcanvas ── */
     .offcanvas { --bs-offcanvas-width: 280px; }
+    .offcanvas-body { overscroll-behavior: contain; }
 
     /* ── Back-to-top ── */
     .btn-top {
       position: fixed; bottom: 2rem; right: 2rem; z-index: 1030;
-      opacity: 0; transition: opacity .3s; pointer-events: none;
-      background: var(--accent); border: none; color: #fff;
+      opacity: 0; visibility: hidden; transition: opacity .3s; pointer-events: none;
+      background: var(--accent); border: none; color: var(--heading);
     }
     .btn-top:hover { background: var(--chrome); color: #fff; }
-    .btn-top.show  { opacity: 1; pointer-events: auto; }
+    .btn-top.show  { opacity: 1; visibility: visible; pointer-events: auto; }
+    @media (prefers-reduced-motion: reduce) {
+      .btn-top, #sidebar-nav .nav-link, #toc-nav .nav-link { transition: none; }
+    }
 
     /* ── Footer ── */
     footer { background: var(--chrome); font-size: 1.5rem; font-weight: bold; 
@@ -260,6 +298,7 @@ const page = `<!DOCTYPE html>
     
     h2 > img.d-block {
       display: inline !important;
+      width: auto;
       height: 50px !important;
       box-shadow: none !important;
       border-radius: 5px !important;
@@ -269,6 +308,7 @@ const page = `<!DOCTYPE html>
     } 
     h3 > img.d-block {
       display: inline !important;
+      width: auto;
       height: 50px !important;
       box-shadow: none !important;
       border-radius: 5px !important;
@@ -279,6 +319,7 @@ const page = `<!DOCTYPE html>
     
     h4 > img.d-block {
       display: inline !important;
+      width: auto;
       height: 50px !important;
       box-shadow: none !important;
       border-radius: 5px !important;
@@ -288,29 +329,30 @@ const page = `<!DOCTYPE html>
     } 
 
     /* Targets of anchor links: keep them below the fixed navbar */
-    main [id] {
-      scroll-margin-top: 5rem;   /* match navbar height (e.g. 4.5rem–5rem) */
+    main[id], main [id] {
+      scroll-margin-top: var(--anchor-offset);
     }
   </style>
 </head>
 <body>
 
-  <nav class="navbar sticky-top shadow-sm">
+  <a class="skip-link visually-hidden-focusable position-absolute top-0 start-0 p-2 bg-white" href="#main-content">Skip to content</a>
+  <header class="navbar sticky-top shadow-sm">
     <div class="container-fluid px-3">
-      <a class="navbar-brand" href="https://store.steampowered.com/app/3831080/Oeuf/" target="_blank" rel="noopener">
+      <h1 class="navbar-brand"><a href="https://store.steampowered.com/app/3831080/Oeuf/" target="_blank" rel="noopener">
         OEUF MAP-EGGITOR TUTORIAL
-      </a>
-      <div class="d-flex gap-2">
+      </a></h1>
+      <div class="navbar-actions d-flex gap-2">
         <a href="https://youtu.be/brkR8vVeSMg" class="btn btn-sm btn-outline-light d-none d-md-inline-flex align-items-center gap-1" target="_blank" rel="noopener">
           <i class="bi bi-youtube"></i> Video Tutorial
         </a>
         <button class="btn btn-sm btn-outline-light d-lg-none" type="button"
-                data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Table of contents">
+                data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-label="Table of contents">
           <i class="bi bi-list"></i>
         </button>
       </div>
     </div>
-  </nav>
+  </header>
 
   <div class="offcanvas offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocLabel">
     <div class="offcanvas-header">
@@ -318,7 +360,7 @@ const page = `<!DOCTYPE html>
       <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body">
-      <nav id="toc-nav" class="nav flex-column">${sidebarHtml}</nav>
+      <nav id="toc-nav" aria-label="Mobile table of contents" class="nav flex-column">${sidebarHtml}</nav>
     </div>
   </div>
 
@@ -327,10 +369,10 @@ const page = `<!DOCTYPE html>
       <aside class="col-lg-3 d-none d-lg-block">
         <div class="sidebar py-4 pe-3">
           <h6 class="text-uppercase text-body-secondary mb-3 fw-bold small">Contents</h6>
-          <nav id="sidebar-nav" class="nav flex-column">${sidebarHtml}</nav>
+          <nav id="sidebar-nav" aria-label="Table of contents" class="nav flex-column">${sidebarHtml}</nav>
         </div>
       </aside>
-      <main class="col-lg-9 py-4 px-4 px-lg-5">${body}</main>
+      <main id="main-content" tabindex="-1" class="col-lg-9 py-4 px-4 px-lg-5">${body}</main>
     </div>
   </div>
 
@@ -347,70 +389,13 @@ const page = `<!DOCTYPE html>
     </div>
   </footer>
 
-  <button class="btn btn-top rounded-circle shadow" onclick="window.scrollTo({top:0})" aria-label="Back to top" id="btnTop">
+  <button type="button" class="btn btn-top rounded-circle shadow" aria-label="Back to top" id="btnTop" disabled>
     <i class="bi bi-arrow-up"></i>
   </button>
 
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script>
-    const btnTop = document.getElementById('btnTop');
-    addEventListener('scroll', () => btnTop.classList.toggle('show', scrollY > 400));
-
-    // Keep the latest passed section active in nav (no "empty" state between headings).
-    const headingEls = Array.from(document.querySelectorAll('main h2[id], main h3[id], main h4[id]'));
-    const navLinks = Array.from(document.querySelectorAll('#sidebar-nav .nav-link, #toc-nav .nav-link'));
-    const linksById = new Map();
-
-    navLinks.forEach(link => {
-      const id = decodeURIComponent(link.getAttribute('href')?.slice(1) || '');
-      if (!id) return;
-      if (!linksById.has(id)) linksById.set(id, []);
-      linksById.get(id).push(link);
-    });
-
-    const setActiveById = (id) => {
-      navLinks.forEach(link => link.classList.remove('active'));
-      const activeLinks = linksById.get(id);
-      activeLinks?.forEach(link => link.classList.add('active'));
-      // Scroll sidebar (and offcanvas TOC) so the active link stays in view
-      activeLinks?.forEach(link => link.scrollIntoView({ block: 'nearest', behavior: 'smooth' }));
-    };
-
-    const updateActiveSection = () => {
-      if (!headingEls.length) return;
-      const activationOffset = 96; // fixed navbar height + breathing room
-      let activeId = headingEls[0].id;
-
-      for (const heading of headingEls) {
-        if (heading.getBoundingClientRect().top <= activationOffset) {
-          activeId = heading.id;
-        } else {
-          break;
-        }
-      }
-
-      setActiveById(activeId);
-    };
-
-    let ticking = false;
-    const onScrollUpdateActive = () => {
-      if (ticking) return;
-      ticking = true;
-      requestAnimationFrame(() => {
-        updateActiveSection();
-        ticking = false;
-      });
-    };
-
-    addEventListener('scroll', onScrollUpdateActive, { passive: true });
-    addEventListener('resize', onScrollUpdateActive);
-    addEventListener('load', updateActiveSection);
-    updateActiveSection();
-
-    const oc = document.getElementById('tocOffcanvas');
-    oc?.querySelectorAll('.nav-link').forEach(a =>
-      a.addEventListener('click', () => bootstrap.Offcanvas.getInstance(oc)?.hide())
-    );
+${fs.readFileSync('navigation.js', 'utf8')}
   </script>
 </body>
 </html>`;
