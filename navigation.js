@@ -95,9 +95,15 @@
     target.scrollIntoView({ block: 'start', behavior: navigationBehavior() });
   };
 
-  btnTop.addEventListener('click', () => {
+  const scrollToTop = () => {
     navbar.querySelector('a').focus({ preventScroll: true });
     window.scrollTo({ top: 0, behavior: navigationBehavior() });
+  };
+  btnTop.addEventListener('click', scrollToTop);
+  navbar.querySelector('.navbar-brand a').addEventListener('click', event => {
+    if (event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+    event.preventDefault();
+    scrollToTop();
   });
 
   // Align the mobile TOC once on opening; never drag it around while browsing.

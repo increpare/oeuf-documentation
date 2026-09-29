@@ -600,7 +600,7 @@ const page = `<!DOCTYPE html>
   <a class="skip-link visually-hidden-focusable position-absolute top-0 start-0 p-2 bg-white" href="#main-content">Skip to content</a>
   <header class="navbar sticky-top shadow-sm">
     <div class="container-fluid px-3">
-      <h1 class="navbar-brand"><a href="https://store.steampowered.com/app/3831080/Oeuf/" target="_blank" rel="noopener">
+      <h1 class="navbar-brand"><a href="#top">
         OEUF MAP-EGGITOR TUTORIAL
       </a></h1>
       <div class="navbar-actions d-flex gap-2">

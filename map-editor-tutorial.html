@@ -405,7 +405,7 @@
   <a class="skip-link visually-hidden-focusable position-absolute top-0 start-0 p-2 bg-white" href="#main-content">Skip to content</a>
   <header class="navbar sticky-top shadow-sm">
     <div class="container-fluid px-3">
-      <h1 class="navbar-brand"><a href="https://store.steampowered.com/app/3831080/Oeuf/" target="_blank" rel="noopener">
+      <h1 class="navbar-brand"><a href="#top">
         OEUF MAP-EGGITOR TUTORIAL
       </a></h1>
       <div class="navbar-actions d-flex gap-2">
@@ -1127,9 +1127,15 @@
     target.scrollIntoView({ block: 'start', behavior: navigationBehavior() });
   };
 
-  btnTop.addEventListener('click', () => {
+  const scrollToTop = () => {
     navbar.querySelector('a').focus({ preventScroll: true });
     window.scrollTo({ top: 0, behavior: navigationBehavior() });
+  };
+  btnTop.addEventListener('click', scrollToTop);
+  navbar.querySelector('.navbar-brand a').addEventListener('click', event => {
+    if (event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+    event.preventDefault();
+    scrollToTop();
   });
 
   // Align the mobile TOC once on opening; never drag it around while browsing.
