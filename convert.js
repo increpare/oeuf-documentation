@@ -17,6 +17,32 @@ const converter = new showdown.Converter({
 
 let body = converter.makeHtml(md);
 
+// Bold shortcuts such as **Ctrl+S** or **Shift+Click (hold)** become keycaps.
+// Keyboard keys get <kbd>; mouse actions stay bold. Bold text that isn't
+// entirely made of shortcut tokens is left alone, and so is the file format
+// section, whose bold single letters are field names rather than keys.
+// A shortcut that opens a list item (a line of controls) also gets the editor's
+// mouse icons, as in its own hints; shortcuts inside sentences don't.
+const KEY = String.raw`Ctrl|Cmd|Shift|Alt|Tab|Space|Enter|Backtick|Number Key|WASD|F1[0-2]|F[1-9]|[A-Z0-9]|\x60|-|=`;
+const MOUSE = String.raw`Right-Click|Click|Drag|Scroll Wheel|Wheel`;
+const TOKEN = `(?:${KEY}|${MOUSE})`;
+const SEP = String.raw`\+| / |, `;
+const SUFFIX = String.raw`(?: \(hold\)| while clicking| while dragging| during drag)?`;
+const shortcutRe = new RegExp(`^${TOKEN}(?:(?:${SEP})${TOKEN})*${SUFFIX}$`);
+const MOUSE_ICONS = { 'Click': 'mouse_left', 'Right-Click': 'mouse_right', 'Wheel': 'mouse_wheel', 'Scroll Wheel': 'mouse_wheel' };
+const mouseIcon = name => `<img class="img-inline mouse-icon" src="./map-editor-images/${name}.svg" alt="">`;
+const keycap = (text, icons) => text.replace(new RegExp(`(${MOUSE})|(${KEY})`, 'g'), (_, mouse, key) => {
+  if (mouse) return (icons && MOUSE_ICONS[mouse] ? mouseIcon(MOUSE_ICONS[mouse]) : '') + `<strong>${mouse}</strong>`;
+  if (key === 'WASD') return [...key].map(k => `<kbd>${k}</kbd>`).join('');
+  return `<kbd>${key}</kbd>`;
+});
+const keycaps = html => html.replace(/(<li>\s*)?<strong>([^<]+)<\/strong>/g,
+  (whole, li, text) => shortcutRe.test(text) ? `${li || ''}<span class="shortcut">${keycap(text, !!li)}</span>` : whole);
+{
+  const spec = body.search(/<h2 id="11-/);
+  body = spec < 0 ? keycaps(body) : keycaps(body.slice(0, spec)) + body.slice(spec);
+}
+
 // CSS selectors can't start with a digit, so prefix bare-numeric IDs
 body = body.replace(/(<h[2-4]\s+id=")(\d)/g, '$1section-$2');
 
@@ -57,8 +83,18 @@ const mergeClasses = (attrText, classesToAdd) => {
 // whose Markdown only specifies a height. Assets here are PNGs and GIFs.
 const reserveImageSize = attrs => {
   const src = attrs.match(/\bsrc=["']([^"']+)["']/)?.[1];
-  if (!src || !/^\.\/map-editor-images\/[^/]+\.(png|gif)$/i.test(src)) return attrs;
+  if (!src || !/^\.\/map-editor-images\/[^/]+\.(png|gif|svg)$/i.test(src)) return attrs;
   const bytes = fs.readFileSync(src);
+  if (src.endsWith('.svg')) {
+    // The game's icons declare width and height on the root element.
+    const root = bytes.toString('utf8').match(/<svg\b[^>]*>/)[0];
+    const w = Number(root.match(/\bwidth="([\d.]+)"/)?.[1]);
+    const h = Number(root.match(/\bheight="([\d.]+)"/)?.[1]);
+    if (!w || !h) throw new Error(`SVG without width/height: ${src}`);
+    if (!/\bwidth=/.test(attrs)) attrs += ` width="${Math.round(w)}"`;
+    if (!/\bheight=/.test(attrs)) attrs += ` height="${Math.round(h)}"`;
+    return attrs;
+  }
   const png = bytes.subarray(0, 8).equals(Buffer.from([137, 80, 78, 71, 13, 10, 26, 10]));
   const gif = /^GIF8[79]a$/.test(bytes.toString('ascii', 0, 6));
   if (!png && !gif) throw new Error(`Unsupported image: ${src}`);
@@ -176,24 +212,17 @@ const page = `<!DOCTYPE html>
     #sidebar-nav .nav-link img,
     #tocOffcanvas .nav-link img {
       display: inline-block !important;
-      width: 1.15em;
-      height: 1.15em !important;
-      max-height: 1.15em !important;
+      width: auto;
+      height: 1.5em !important;
+      max-height: 1.5em !important;
       margin-right: .35em;
-      vertical-align: -0.15em;
+      vertical-align: -0.4em;
       object-fit: contain;
       box-shadow: none !important;
-      border-radius: 0 !important;
+      border-radius: 3px !important;
       padding: 0 !important;
       background: transparent !important;
-      filter: grayscale(1) brightness(0) saturate(100%);
-      opacity: .85;
       image-rendering: auto !important;
-    }
-    #sidebar-nav .nav-link.active img,
-    #tocOffcanvas .nav-link.active img {
-      filter: grayscale(1) brightness(0) saturate(100%);
-      opacity: 1;
     }
 
     /* ── Content ── */
@@ -224,8 +253,36 @@ const page = `<!DOCTYPE html>
     main h4 { color: var(--heading-minor); }
     main a   { color: var(--link); }
     main a:hover { color: var(--heading-text-color); }
-    main strong { 
-      color: var(--strong-text-color); 
+    main strong {
+      color: var(--strong-text-color);
+    }
+    /* Day-mode keycaps, tinted like the header chrome. */
+    main .shortcut { white-space: nowrap; }
+    main kbd {
+      display: inline-block;
+      min-width: 1.6em;
+      padding: .05em .4em;
+      margin: 0 .05em;
+      font: bold .82em/1.35 inherit;
+      font-family: inherit;
+      text-align: center;
+      color: #5a3c56;
+      background: #fbf1f8;
+      border: 1px solid #dcbcd3;
+      border-bottom: 2px solid var(--chrome);
+      border-radius: 4px;
+      box-shadow: none;
+      vertical-align: .08em;
+    }
+    /* The editor's mouse icons, recoloured for a light page, on lines of controls. */
+    main img.mouse-icon {
+      display: inline !important;
+      width: auto !important;
+      height: 1.15em !important;
+      margin: 0 .2em 0 0 !important;
+      vertical-align: -0.18em;
+      box-shadow: none !important;
+      border-radius: 0 !important;
     }
     main blockquote strong {
       color: var(--heading);
@@ -306,26 +363,17 @@ const page = `<!DOCTYPE html>
       padding: 5px !important;
       /*image-rendering : pixelated !important; don't pixelate this one*/
     } 
-    h3 > img.d-block {
+    /* Tool, object and trigger headings carry the editor's own SVG icons,
+       drawn bare beside the title (tools/icons/render_icons.sh). */
+    h3 > img.d-block, h4 > img.d-block {
       display: inline !important;
       width: auto;
-      height: 50px !important;
+      height: 42px !important;
       box-shadow: none !important;
       border-radius: 5px !important;
-      background-color: var(--chrome) !important;
-      padding: 5px !important;
-      image-rendering : pixelated !important;
-    } 
-    
-    h4 > img.d-block {
-      display: inline !important;
-      width: auto;
-      height: 50px !important;
-      box-shadow: none !important;
-      border-radius: 5px !important;
-      background-color: var(--selected-icon-color) !important;
-      padding: 5px !important;
-      image-rendering : pixelated !important;
+      background: transparent !important;
+      padding: 0 !important;
+      vertical-align: middle;
     } 
 
     /* Targets of anchor links: keep them below the fixed navbar */

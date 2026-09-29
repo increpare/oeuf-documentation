@@ -16,12 +16,12 @@ If you have a map file, you can add it like this (doesn't work on Steam Deck!) :
 
 <img height="300" alt="image" src="./map-editor-images/open_maps_folder_button.png" />
 
-2. Click **Open Maps Folder** to open the maps folder in your file manager.  You can add map files from other people here.
+2. In the **Local** tab, click **Open Maps Folder** to open the maps folder in your file manager.  You can add map files from other people here.
 
 ### 0.2 Adding Maps from Steam Workshop
 
 1. Go to **Custom Maps** on the title screen.
-2. Click **Steam Workshop**.
+2. In the **Workshop** tab, click **Steam Workshop**.  (You can also download maps straight from the list in that tab.)
 
 <img height="300" alt="image" src="./map-editor-images/workshop_download.png" />
 
@@ -60,9 +60,13 @@ If you have a map file, you can add it like this (doesn't work on Steam Deck!) :
     - **Block Mode** : Edit terrain.
     - **Entity Mode** : Checkpoints, props, trigger boxes.
     - **Layer Mode** : Move large sections of terrain.
+- You can also switch modes with the **Blocks** / **Entities** / **Layers** buttons in the top-right corner.
 
 ### 2.2 General Shortcuts
 
+(On a Mac, use **Cmd** wherever it says **Ctrl**.)
+
+- **Ctrl+N** : New map
 - **Ctrl+S** : Save
 - **F5** : Reload
 - **Ctrl+Z** : Undo
@@ -71,6 +75,8 @@ If you have a map file, you can add it like this (doesn't work on Steam Deck!) :
 - **Ctrl+Shift+R** : Unrandomizes the rotation of all *cube-shaped blocks* (with the currently-selected texture in the currently-selected layer) to face a single direction.  Cycles direction each time it's pressed.
 - **Ctrl+L** : Open the maps folder with your file manager.
 - **Ctrl+K** : Export current map as a 3D mesh (for importing into other software/games).  This also exports the game tilemap/textures to the same directory.
+- **F1** : Open this tutorial.
+- **F12** : Take a screenshot.
 
 ### 2.3 Loading and Saving
 
@@ -81,6 +87,7 @@ To the top left of the screen you can see :
 - The current map name (edit it and press **Enter** to save as a new file).
 - The file dropdown.  This lists all **built-in maps** (e.g. `minimal`, `eggworld`), **Steam Workshop maps**, and **user maps** (saved in your maps folder).  
 - Note : built-in and Steam Workshop maps are *read-only*, but you can save them under new filenames.
+- An asterisk after the map name means you have unsaved changes.  The editor also keeps recovery autosaves (in the `autosave` folder inside your maps folder), but these don't replace saving.
 
 <img height="300" alt="image" src="./map-editor-images/file_dropdown.png" />
 
@@ -99,8 +106,10 @@ To the top left of the screen you can see :
 
 ## 4. Block Tools
 
+The block tools are laid out in the top toolbar in the order below; **1**–**0** select them.
+
 <!--nearest neighbour upscaling-->
-### 4.1 <img src="./map-editor-images/tool_1.png" /> Basic Tool
+### 4.1 <img src="./map-editor-images/tool_1.svg" /> Basic Tool
 
 - **Click** : Place block.
 - **Right-Click** : Delete block.
@@ -108,28 +117,30 @@ To the top left of the screen you can see :
 - **Shift+Right-Click (hold)** : Rapid deletion.
 - **Ctrl+Click** : Place a block offset one step back from the face you're highlighting.
 - **Alt+Click** : Sample an existing block (eyedropper).
-- **Scroll Wheel** or **Shift+Number Key** : Change the selected block texture in the left toolbar.
-- **Ctrl+Scroll Wheel** or **- / =** : Change texture page in the left toolbar.
+- **Wheel** or **Shift+Number Key** : Change the selected block texture in the left toolbar.
+- **Ctrl+Wheel** or **- / =** : Change texture page in the left toolbar.
 
 
 #### 4.1b Block Shapes
 
 <img height="91" alt="image" src="./map-editor-images/shape_toolbar.png" />
 
-- The top-right toolbar includes ramps and other shapes.
+- The shape toolbar, to the right of the tools, includes ramps and other shapes.
+- **F**, **G**, **H**... and **Shift+F**, **Shift+G**, **Shift+H**... : Select a shape (each shape's key is shown on its button).
+- **Ctrl+Shift+Wheel** : Cycle through the shapes (with the Basic, Plane and 2D Draw tools).
 - **R** : Rotate selected shape.
 - **V** : Flip vertically.
 - Do *not* use the staircase block anywhere the player might roll across it - it doesn't play well with egg physics.
 
-### 4.2 <img src="./map-editor-images/tool_2.png" /> Plane
+### 4.2 <img src="./map-editor-images/tool_2.svg" /> Plane
 
 <img height="300" alt="image" src="./map-editor-images/plane_drag_basic.png" />
 
 - **Click+Drag** : Draw a planar sheet (floor or wall).
 
-- **Shift while clicking** : Push the plane one block into the highlighted surface for a flush fit :
+- **Ctrl while clicking** : Push the plane one block into the highlighted surface for a flush fit :
 
-<img height="300" alt="image" src="./map-editor-images/plane_drag_shift_flush.png" />
+<img height="300" alt="image" src="./map-editor-images/plane_drag_ctrl_flush.png" />
 
 - **Right-Click+Drag** : Delete a planar region (useful for doors and openings).
 
@@ -146,90 +157,99 @@ To the top left of the screen you can see :
 
 ---
 
-### 4.3 <img src="./map-editor-images/tool_3.png" /> Extrude
+### 4.3 <img src="./map-editor-images/tool_3.svg" /> Extrude
 
 - **Click+Drag** to define a 2D area, then move your mouse and **Click** to extrude to that depth.  Very useful!
 - Works on irregular shapes :
 
 <img height="300" alt="image" src="./map-editor-images/extrude_irregular_shape.png" />
 
-- **Right-Click+Drag** : Nothing to do with extrude, really, more a "delete everything inside this box" tool.
+- **Shift+Click** : Extrude using the currently selected texture.
+- **Alt while dragging** : Use the initial click point as the *centre* of the area rather than a corner.
+- **Right-Click+Drag** (then **Click** to set the depth) : Nothing to do with extrude, really, more a "delete everything inside this box" tool.
 
 ---
 
-### 4.5 <img src="./map-editor-images/tool_5.png" /> Paint
+### 4.4 <img src="./map-editor-images/tool_4.svg" /> Paint
 
-- **Click** : Apply texture to highlighted block.
+- **Click (hold)** : Apply texture to highlighted block.
 - **Right-Click** or **Alt+Click** : Sample block texture and shape.
-- **Shift+Scroll Wheel** : Adjust brush radius.
+- **Shift+Wheel** : Adjust brush radius.
 - **Shift+Click** : Replace all blocks of the pointed-at texture in the current layer with the selected texture (undoable - but be careful).
 
 ---
 
-### 4.9 <img src="./map-editor-images/tool_9.png" /> Grout
+### 4.5 <img src="./map-editor-images/tool_5.svg" /> Grout
 
 <img height="300" alt="image" src="./map-editor-images/grout_tool_smoothing.png" />
 
-- **Click** : Smooth terrain by filling in edge voxels using intermediate block shapes.
-- **Ctrl+Click** : Smooth terrain, but all blocks added use the currently selected texture.
-- **Right-Click** : Remove non-cube blocks.
-- **Shift+Scroll Wheel** : Change brush size.
+- **Click+Drag** to define an area, then move your mouse and **Click** to set the depth : Smooth the terrain inside that box by filling in edge voxels using intermediate block shapes.
+- **Shift+Click** : Smooth terrain, but all blocks added use the currently selected texture.
+- **Right-Click+Drag** (then **Click** to set the depth) : Remove non-cube blocks.
+- **Alt while dragging** : Use the initial click point as the *centre* of the area rather than a corner.
 
 <img height="300" alt="image" src="./map-editor-images/grout_tool_cleanup.png" />
 
 ---
 
-### 4.9 <img src="./map-editor-images/tool_9.png" /> Hollow
+### 4.6 <img src="./map-editor-images/tool_6.svg" /> Hollow
 
-PLACEHOLDER
+<img height="300" alt="image" src="./map-editor-images/hollow_tool_example.png" />
+
+- **Click+Drag** to define an area, then move your mouse and **Click** to set the depth : Remove the enclosed cube blocks inside that box, keeping a shell one block thick around the outside.
+- Blocks outside the box count as walls, so a box sunk into solid terrain carves out a sealed cave.
+- **Alt while dragging** : Use the initial click point as the *centre* of the area rather than a corner.
+- **Right-Click** : Cancel.
 
 ---
 
-### 4.6 <img src="./map-editor-images/tool_6.png" /> Hill
+### 4.7 <img src="./map-editor-images/tool_7.svg" /> Hill
 
 <img height="300" alt="image" src="./map-editor-images/hill_dropper_example.png" />
 
 - **Click** : Drop blocks from above to form organic hills.
 - **Right-Click** : Subtract hill-shape from terrain.
-- **Scroll Wheel** : Adjust hill height.
-- **Shift+Scroll Wheel** : Adjust hill width.
+- **Shift (hold)** : Keep raising (or subtracting) as you move the cursor.
+- **Ctrl+Shift+Wheel** : Adjust hill height.
+- **Shift+Wheel** : Adjust hill width.
 - Useful for mountains and natural terrain; can be used to create 'geological'-looking layers.
 
 ---
 
-### 4.7 <img src="./map-editor-images/tool_7.png" /> Sculpt
+### 4.8 <img src="./map-editor-images/tool_8.svg" /> Sculpt
 
 <img height="300" alt="image" src="./map-editor-images/sculpt_tool_example.png" />
 
 Grow or shrink your terrain within a sphere.
 
-- **Scroll Wheel** : Control intensity.
-    - **Low** : Shrink or erase terrain inside the sphere.
-    - **Mid** : Tends to square-off terrain.
-    - **High** : Grow existing terrain inside the sphere.
-- **Shift+Scroll Wheel** : Adjust brush radius.
+- **Click** (and drag) : Grow existing terrain inside the sphere.
+- **Right-Click** (and drag) : Shrink or erase terrain inside the sphere.
+- **Ctrl** : Keep it blocky (tends to square-off terrain).
+- **Shift+Click** : Grow terrain using the currently selected texture.
+- **Shift+Wheel** : Adjust brush radius.
 
 ---
 
-### 4.8 <img src="./map-editor-images/tool_8.png" /> Sphere
+### 4.9 <img src="./map-editor-images/tool_9.svg" /> Sphere
 
 <img height="300" alt="image" src="./map-editor-images/sphere_tool_example.png" />
 
 - **Click** : Add a sphere.
 - **Right-Click** : Subtract a sphere (good for caves).
-- **Shift** : Centre sphere on the point you're highlighting.
-- **Scroll Wheel** : Choose texture.
-- **Shift+Scroll Wheel** : Change sphere size.
+- **Shift (hold)** : Keep adding (or subtracting) spheres as you move the cursor.
+- **Ctrl** : Centre sphere on the block you're highlighting.
+- **Wheel** : Choose texture.
+- **Shift+Wheel** : Change sphere size.
 
 ---
 
-### 4.10 <img src="./map-editor-images/tool_0.png" /> 2D Draw
+### 4.10 <img src="./map-editor-images/tool_0.svg" /> 2D Draw
 
 - **Click** : Add a block where you're clicking.
-- **Shift+Click** : Add a block on the far side of the plane.
+- **Ctrl+Click** : Add a block on the far side of the plane.
 - **Right-Click** : Remove blocks on the plane where you're clicking.
-- **Shift+Right-Click** : Remove blocks on far side of the plane where you're clicking.
-- **Scroll Wheel+Shift** : Move the plane further/closer to you.
+- **Ctrl+Right-Click** : Remove blocks on far side of the plane where you're clicking.
+- **Shift+Wheel** : Move the plane further/closer to you.
 - **Alt+Click** : Sample highlighted block
 - **Alt+Right-Click** : Align plane to highlighted face
 
@@ -244,39 +264,41 @@ Enter Entity Mode by pressing **Backtick** (**`**) until the Entity Mode UI appe
 
 <img height="300" alt="image" src="./map-editor-images/entity_mode.png" />
 
-In Entity Mode there are two tools - the **Object Tool** and the **Trigger-Box Tool**.  Objects are things placed at a single point in the world that you can see, like checkpoints and torches.  Trigger boxes are larger invisible areas that trigger an effect when the player enters them, such as playing a music track or displaying a message.
+In Entity Mode there are two tools - the **Object Tool** and the **Trigger-Box Tool**.  Objects are things placed at a single point in the world that you can see, like checkpoints and torches.  Trigger boxes are larger invisible areas that trigger an effect when the player enters them, such as playing a music track or displaying a message.  **1** and **2** select them.
 
-### 5.1 <img src="./map-editor-images/entity_tool_object.png" /> Object Tool
+### 5.1 <img src="./map-editor-images/entity_tool_object.svg" /> Object Tool
 
 - **Click** : Place or select an object.
 - **Right-Click** : Delete an object.
+- **Alt+Click** : Sample an object (pick it as the kind of object to place next).
+- **Wheel** or **Shift+Number Key** : Choose which object to place.
 
-#### 5.1.1 <img src="./map-editor-images/object_1_Bonfire_Start.png" /> Start-Checkpoint
+#### 5.1.1 <img src="./map-editor-images/object_1_Bonfire.svg" /> Normal Checkpoint
+
+- Totally normal checkpoint.
+- Set the **Name** field (the `area_name` tag) to control the text shown when the player activates it.
+- You will often want to put checkpoints inside music trigger-boxes so that if a player resumes a saved game, the correct music will play.
+
+#### 5.1.2 <img src="./map-editor-images/object_2_Bonfire_Start.svg" /> Start-Checkpoint
 
 - Every map *must* include a **Start-Checkpoint**.
 - This is where the player spawns in custom maps; it looks just like a normal checkpoint.
-- The `area_name` tag controls the text shown when the player starts a new game on your map.  The default value is `"CUSTOM_LEVEL_LETS_GO"`, a localisation tag that amounts to "Let's go!" in English, but you can change it to whatever message you like.
+- The **Name** field (the `area_name` tag) controls the text shown when the player starts a new game on your map.  The default value is `"CUSTOM_LEVEL_LETS_GO"`, a localisation tag that amounts to "Let's go!" in English, but you can change it to whatever message you like.
 
 <img height="300" alt="image" src="./map-editor-images/start_checkpoint.png" />
 
-#### 5.1.2 <img src="./map-editor-images/object_2_Bonfire.png" /> Normal Checkpoint
+#### 5.1.3 <img src="./map-editor-images/object_3_Bonfire_End.svg" /> End-Checkpoint
 
-- Totally normal checkpoint.
-- Set the `area_name` tag to control the text shown when the player activates it.
-- You will often want to put checkpoints inside music trigger-boxes so that if a player resumes a saved game, the correct music will play.
-
-#### 5.1.3 <img src="./map-editor-images/object_3_Bonfire_End.png" /> End-Checkpoint
-
-- This behaves like a normal checkpoint (only the Nest object can trigger the start/end cutscenes).
+- This behaves like a normal checkpoint (only the main game's Nest can trigger the start/end cutscenes).
 - The default `area_name` tag value is `"CUSTOM_LEVEL_YOU_MADE_IT"`, which localises to "You made it!" in English - but you can put whatever you like in there.
 
-#### 5.1.4 <img src="./map-editor-images/object_4_Torch.png" /> Torch
+#### 5.1.4 <img src="./map-editor-images/object_4_Torch.svg" /> Torch
 
 <img height="300" alt="image" src="./map-editor-images/object_torch_example.png" />
 
 Provides a point of light.  Handy when things are getting a bit dark - but don't overdo it, as each torch adds a light source and the performance cost can add up.
 
-#### 5.1.5 <img src="./map-editor-images/object_5_Star.png" /> Star
+#### 5.1.5 <img src="./map-editor-images/object_5_Star.svg" /> Star
 
 <img height="300" alt="image" src="./map-editor-images/star_props.png" />
 
@@ -288,31 +310,46 @@ Provides a point of light.  Handy when things are getting a bit dark - but don't
 
 <img height="300" alt="image" src="./map-editor-images/star_menu.png" />
 
-#### 5.1.6 <img src="./map-editor-images/object_6_Chair.png" /> Chair
+#### 5.1.6 <img src="./map-editor-images/object_6_Chair.svg" /> Chair
 
 <img height="300" alt="image" src="./map-editor-images/object_chair_example.png" />
 
 - Inert geometric object.  
 - Not used in the main game.
 
-#### 5.1.7 <img src="./map-editor-images/object_7_Table.png" /> Table
+#### 5.1.7 <img src="./map-editor-images/object_7_Table.svg" /> Table
 
 <img height="300" alt="image" src="./map-editor-images/object_table_example.png" />
 
 - Inert geometric object.  
 - Not used in the main game.
 
-#### 5.1.8 Other Objects
+#### 5.1.8 <img src="./map-editor-images/object_8_Banana.svg" /> Banana
 
-There are other objects accessible via the `asset_name` dropdown in the properties panel, but they have unusual or hard-coded behaviour tied to the main game, so I don't recommend using them in custom maps. (The `Nest.tscn` object, for instance, has a great deal of specific hard-coded logic and spawns invisible collision geometry during cutscenes.) It's fine to leave them in place if you're modding the main game map, just be careful to not modify these objects or their surrounding geometry.
+<img height="300" alt="image" src="./map-editor-images/object_banana_example.png" />
 
-### 5.2 <img src="./map-editor-images/entity_tool_trigger.png" /> Trigger-Box Tool
+- Inert geometric object.  
+- Not used in the main game.
+
+#### 5.1.9 <img src="./map-editor-images/object_9_Nest.svg" /> Nest
+
+<img height="300" alt="image" src="./map-editor-images/object_nest_example.png" />
+
+- The nest from the main game.
+- In custom maps it's plain scenery - all its cutscene logic (and the invisible collision geometry it spawns during cutscenes) only happens in the main game.
+
+#### 5.1.10 Other Objects
+
+There are a few other objects in the main game map (such as the spawn-only checkpoint), but they have unusual or hard-coded behaviour tied to the main game, so they aren't in the palette. It's fine to leave them in place if you're modding the main game map, just be careful to not modify these objects or their surrounding geometry.
+
+### 5.2 <img src="./map-editor-images/entity_tool_trigger.svg" /> Trigger-Box Tool
 
 - Trigger boxes are big invisible areas that do something (e.g. playing music or displaying a message) when the player enters them.
+- The controls are the same as for the Object Tool; **Wheel** or **Shift+Number Key** choose which kind of trigger box to place.
 
 <img height="300" alt="image" src="./map-editor-images/triggerbox.png" />
 
-- In the properties panel you can edit various values, including position and dimensions (WUN = West/Up/North, EDS = East/Down/South) :
+- In the properties panel you can edit various values, including position and bounds (how far the box extends west, up, north, east, down and south of its core) :
 
 <img height="300" alt="image" src="./map-editor-images/trigger_intro.png" />
 
@@ -322,7 +359,7 @@ There are other objects accessible via the `asset_name` dropdown in the properti
 
 - Note that each trigger box has a 1×1×1 'core' that you click to select it. (Technically this core doesn't need to be inside the trigger area, but...why would you do that?)
 
-#### 5.2.1 <img src="./map-editor-images/trigger_1_music.png" /> music
+#### 5.2.1 <img src="./map-editor-images/trigger_1_music.svg" /> music
 
 - Starts playing a music track when the player enters.
 - Usually you want to have a music trigger at each checkpoint so that the correct music plays when a player resumes a saved game.
@@ -333,15 +370,15 @@ There are other objects accessible via the `asset_name` dropdown in the properti
 - The OST is [here](https://store.steampowered.com/app/4217410/Oeuvre_Oeuf_Soundtrack/) if you want to listen to it outside the game.
 
 
-#### 5.2.2 <img src="./map-editor-images/trigger_2_arealabel.png" /> arealabel
+#### 5.2.2 <img src="./map-editor-images/trigger_2_arealabel.svg" /> arealabel
 
 <img height="300" alt="image" src="./map-editor-images/arealabel_props.png" />
 
-'arealabel' trigger boxes display a message on screen when the player enters, independently of checkpoints.  If the `area_name` matches a built-in location name (case-sensitive), the game localises it - e.g. entering `FOREST` displays "Forest of Branching Paths" in English.  Otherwise it just displays your text verbatim, so entering `Hello, world!` displays "Hello, world!".
+'arealabel' trigger boxes display a message on screen when the player enters, independently of checkpoints.  If its **Name** (`area_name`) matches a built-in location name (case-sensitive), the game localises it - e.g. entering `FOREST` displays "Forest of Branching Paths" in English.  Otherwise it just displays your text verbatim, so entering `Hello, world!` displays "Hello, world!".
 
 <img height="300" alt="image" src="./map-editor-images/arealabel2.png" />
 
-#### 5.2.3 <img src="./map-editor-images/trigger_3_killbox.png" /> KILLBOX
+#### 5.2.3 <img src="./map-editor-images/trigger_3_killbox.svg" /> KILLBOX
 
 <img height="300" alt="image" src="./map-editor-images/killbox.png" />
 
@@ -350,13 +387,13 @@ There are other objects accessible via the `asset_name` dropdown in the properti
 - While *doomed*, you cannot trigger checkpoints until you restart.
 - For want of a better place to put this information: there's a global killplane below y=-51.  Also, because the fog gets thicker when you go down, *nothing* below this level will be visible.  There's no reason to have any geometry below y=-51.
 
-#### 5.2.4 <img src="./map-editor-images/trigger_4_torch.png" /> TORCH
+#### 5.2.4 <img src="./map-editor-images/trigger_4_torch.svg" /> TORCH
 
 While inside this trigger box, the player emits light.  Handy for subtly brightening dark areas without placing lots of torch props (which can be expensive to render and visually distracting).
 
 <img height="300" alt="image" src="./map-editor-images/torchbox.png" />
 
-#### 5.2.5 <img src="./map-editor-images/trigger_5_advanced.png" /> Generic Trigger-Boxes
+#### 5.2.5 <img src="./map-editor-images/trigger_5_advanced.svg" /> Generic Trigger-Boxes
 
 There are a few other really finicky trigger-box types - what they do is specified by their meta tags.  I don't think they're appropriate for general use, so I won't document them.  If you're modding the main game map it's fine to leave them in place - but pls don't use them in maps you're making from scratch, as they may behave unexpectedly.
 
@@ -367,11 +404,12 @@ There are a few other really finicky trigger-box types - what they do is specifi
 Cycle to Layer Mode with **Backtick** (**`**).
 
 - It can be useful to divide large maps into layers.
+- There are three layer tools; **1**, **2** and **3** select them.
 - Empty layers are shown with a red tint in the layer list so you can spot them easily.
 
 ### 6.1 Layer Visibility
 
-- **Shift+Click** a layer to hide all other layers; **Shift+Click** again to restore them.
+- **Shift+Click** a layer's visibility button to hide all other layers; **Shift+Click** again to restore them.
 
 <img height="300" alt="image" src="./map-editor-images/layer_visibility_example.png" />
 
@@ -379,7 +417,7 @@ Cycle to Layer Mode with **Backtick** (**`**).
 
 ### 6.2 Layer Tools
 
-#### 6.2.1 <img src="./map-editor-images/layer_transform_tool_icon.png" /> Layer Transform Tool
+#### 6.2.1 <img src="./map-editor-images/layer_transform_tool_icon.svg" /> Layer Transform Tool
 
 <img height="300" alt="image" src="./map-editor-images/layer_transform_example.png" />
 
@@ -389,21 +427,22 @@ Cycle to Layer Mode with **Backtick** (**`**).
 
 ---
 
-#### 6.2.2 <img src="./map-editor-images/layer_assignment_tool_icon.png" /> Layer Assignment Tool
+#### 6.2.2 <img src="./map-editor-images/layer_assignment_tool_icon.svg" /> Layer Assignment Tool
 
-- **Click** and drag out a box : All visible blocks and entities inside get assigned to the currently selected layer.
+- **Click+Drag** to define an area, then move your mouse and **Click** to set the depth : All visible blocks and entities inside get assigned to the currently selected layer.
+- **Click** an entity : Assign it to the currently selected layer.
 - **Alt+Click** : Select the highlighted layer.
+- **Alt while dragging** : Use the initial click point as the *centre* of the area rather than a corner.
 - Useful for correcting blocks assigned to the wrong layer.
 
 <img height="300" alt="image" src="./map-editor-images/layer_assignment_example.png" />
 
 ---
 
-### 6.3 <img src="./map-editor-images/layer_clipboard.png" /> Clipboard
+### 6.3 <img src="./map-editor-images/layer_clipboard.svg" /> Clipboard
 
 - **Click** on a layer to copy it to the clipboard.
 - **Right-Click** : Paste the clipboard contents in the indicated position (shown as a purple box).
-- **Ctrl+C** : Copy the currently selected layer to the clipboard.
 - You can copy and paste between different map files!
 
 <img height="300" alt="Layer copy and paste example" src="./map-editor-images/layer_copy_paste_example.png" />
@@ -416,29 +455,29 @@ Cycle to Layer Mode with **Backtick** (**`**).
 
 To the right-hand side of the screen you have the layer list, with the following buttons :
 
-### 7.1 <img src="./map-editor-images/layer_item_up_down.png" /> Move Layer Up / Down
+### 7.1 <img src="./map-editor-images/layer_item_grip.svg" /> Drag Handle
 
-Rearranges layers.
+Drag a layer by its handle to rearrange layers.
 
-### 7.2 <img src="./map-editor-images/layer_item_visible.png" /> Visibility
+### 7.2 <img src="./map-editor-images/layer_item_visible.svg" /> Visibility
 
-Toggles the visibility of the layer (visible : <img class="img-inline" src="./map-editor-images/layer_item_visible_black.png" />, hidden : <img class="img-inline" src="./map-editor-images/layer_item_invisible_black.png" />).
+Toggles the visibility of the layer (visible : <img class="img-inline" src="./map-editor-images/layer_item_visible_black.svg" />, hidden : <img class="img-inline" src="./map-editor-images/layer_item_invisible_black.svg" />).
 
-### 7.3 <img src="./map-editor-images/layer_item_delete.png" /> Delete
-
-Deletes the layer.
-
-### 7.4 <img src="./map-editor-images/layer_item_merge_up.png" /> Merge Up
+### 7.3 <img src="./map-editor-images/layer_item_merge_up.svg" /> Merge Up
 
 Merges the layer into the layer above it.
 
-### 7.5 <img src="./map-editor-images/layer_item_new.png" /> New Layer
+### 7.4 <img src="./map-editor-images/layer_item_delete.svg" /> Delete
+
+Deletes the layer.
+
+### 7.5 <img src="./map-editor-images/layer_item_new.svg" /> New Layer
 
 Creates a new empty layer.
 
 ---
 
-## 8. <img src="./map-editor-images/upload_icon.png" /> Upload to Steam Workshop
+## 8. <img src="./map-editor-images/upload_icon.svg" /> Upload to Steam Workshop
 
 When you're happy with your map and want to share it on the Steam Workshop, click the Steam button in the toolbar :
 

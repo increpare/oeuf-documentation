@@ -2,7 +2,9 @@
   "scripts": {
     "build": "node convert.js",
     "lint": "html-validate map-editor-tutorial.html",
-    "test": "npm run build && npm run lint && node --test tests/*.test.js"
+    "test": "npm run build && npm run lint && node --test tests/*.test.js",
+    "screenshots": "tools/screenshots/capture.sh",
+    "icons": "tools/icons/render_icons.sh"
   },
   "dependencies": {
     "bootstrap": "^5.3.8",
