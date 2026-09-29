@@ -268,16 +268,13 @@ const page = `<!DOCTYPE html>
       text-shadow: 1px 1px 0 var(--plum-dark), 0 0 6px rgba(90, 40, 80, .5);
     }
     .navbar-brand a { color: inherit; text-decoration: none; display: inline-flex; align-items: center; gap: .6rem; }
-    /* The brand mark: a glossy egg, lit from the top left like an XP icon. */
+    /* The brand mark: the Oeuf egg, with a soft plum drop shadow. */
     .navbar-brand a::before {
       content: "";
       flex: none;
-      width: 1.45rem; height: 1.85rem;
-      border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-      border: 1px solid var(--plum-dark);
-      background: radial-gradient(ellipse 30% 22% at 36% 26%, #fff 0 55%, rgba(255, 255, 255, 0) 100%),
-                  radial-gradient(ellipse at 42% 38%, #fff 0%, #f4fcfe 35%, #c9f1f8 75%, #7fdcee 100%);
-      box-shadow: inset -2px -3px 4px rgba(31, 142, 164, .35), 1px 2px 3px rgba(60, 30, 55, .45);
+      width: 1.75rem; height: 2.2rem;
+      background: url("./map-editor-images/logo_egg.png") center / contain no-repeat;
+      filter: drop-shadow(1px 2px 2px rgba(60, 30, 55, .35));
     }
     .navbar-brand:hover, .navbar-brand a:hover { color: #fff; }
 
