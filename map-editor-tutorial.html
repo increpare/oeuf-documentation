@@ -165,9 +165,9 @@
       padding: 0 !important;
       background: transparent !important;
     }
-    #sidebar-nav .nav-link.active img, #toc-nav .nav-link.active img {
-      background: #fff !important;
-      border-radius: 3px !important;
+    /* The line icons are single-colour, so on the selected row flatten them to white strokes. */
+    #sidebar-nav .nav-link.active img[src$=".svg"], #toc-nav .nav-link.active img[src$=".svg"] {
+      filter: brightness(0) invert(1) drop-shadow(0 1px 0 rgba(60, 30, 55, .4));
     }
 
     /* ── Offcanvas (mobile contents) ── */
