@@ -14,43 +14,97 @@
       --nav-height: 4.5rem;
       --anchor-offset: calc(var(--nav-height) + 1rem);
       --page-bg:       white;
-      --surface:       #56d5eb;
-      --border:        #f0dfc0;
       --chrome:        #c79cba;
-      --selected-icon-color: #94c758;
-      --heading:       #0d2e5f;
-      --heading-outline-color: black;
-      --heading-outline-width: 1px;
-      --heading-text-color: #56d5eb;
-      --heading-sub:   #0d2e5f;
-      --heading-minor: #0d2e5f;
-      --link:          #0d2e5f;
-      --nav-link-color: #0d2e5f;
+      --chrome-light:  #e3c8da;
+      --chrome-dark:   #a8789c;
+      --plum:          #7d4f76;
+      --plum-dark:     #6a3f63;
+      --plum-border:   #8a5f80;
+      --rule:          #e6d3e1;
+      --pane:          #f8f2f9;
+      --pink:          #fce4ec;
       --accent:        #56d5eb;
-      --text-color:    black;
-      --strong-text-color:rgb(44, 167, 188);
+      --accent-light:  #eefbfd;
+      --accent-border: #6fb6c6;
+      --heading:       #0d2e5f;
+      --link:          #0d2e5f;
+      --text-color:    #1a1a1a;
+      --strong-text-color: rgb(44, 167, 188);
+      --font-ui:    Tahoma, Verdana, "Segoe UI", Geneva, sans-serif;
+      --font-title: "Trebuchet MS", Tahoma, "Segoe UI", sans-serif;
+      --font-mono:  "Lucida Console", Consolas, Monaco, monospace;
+      /* Luna gloss: bright top half, a hard midline, a darker lower half. */
+      --titlebar: linear-gradient(180deg, #f2dcec 0%, #d9b1cd 8%, #c79cba 45%, #b584a8 55%, #a8789c 100%);
+      --gloss-pink: linear-gradient(180deg, #fff 0%, #f6ecf3 48%, #e8d3e2 52%, #f3e6ef 100%);
+      --gloss-cyan: linear-gradient(180deg, #fff 0%, #eefbfd 48%, #d2f3f9 52%, #e9f9fc 100%);
+      --gloss-plum: linear-gradient(180deg, #c99bbd 0%, #b584a8 48%, #9a6b90 52%, #8e6085 100%);
+      --selection:  linear-gradient(180deg, #b584a8, #8e6085);
     }
 
-    body { 
-      background: var(--page-bg); 
-      color: var(--text-color); 
+    body {
+      background: var(--page-bg);
+      color: var(--text-color);
+      font-family: var(--font-ui);
+      font-size: .9375rem;
+      line-height: 1.6;
     }
+    ::selection { background: #d2f3f9; }
+    :focus-visible { outline: 2px dotted var(--plum); outline-offset: 2px; }
 
-    .object-icon {
-      display: inline-block;
-      width: 50px;
-      height: 50px;
-      background-color: var(--chrome);
-      border-radius: 5px;
-      padding: 5px;
+    /* ── Title bar ── */
+    .navbar {
+      background: var(--titlebar) !important;
+      border-bottom: 1px solid var(--plum);
+      box-shadow: 0 2px 4px rgba(60, 30, 55, .2) !important;
+      padding-top: .6rem; padding-bottom: .6rem;
     }
-    /* ── Navbar ── */
-    .navbar { background: var(--chrome) !important; }
     .skip-link { z-index: 1040; }
     .navbar > .container-fluid { flex-wrap: nowrap; gap: 1rem; }
     .navbar-actions { flex-shrink: 0; }
+    .navbar-brand {
+      font: 700 clamp(1rem, 2.4vw, 1.45rem)/1.25 var(--font-title);
+      color: #fff;
+      white-space: normal;
+      overflow-wrap: anywhere;
+      min-width: 0;
+      flex: 1;
+      margin: 0;
+      padding: 0;
+      text-shadow: 1px 1px 0 var(--plum-dark), 0 0 6px rgba(90, 40, 80, .5);
+    }
+    .navbar-brand a { color: inherit; text-decoration: none; display: inline-flex; align-items: center; gap: .6rem; }
+    /* The brand mark: a glossy egg, lit from the top left like an XP icon. */
+    .navbar-brand a::before {
+      content: "";
+      flex: none;
+      width: 1.45rem; height: 1.85rem;
+      border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+      border: 1px solid var(--plum-dark);
+      background: radial-gradient(ellipse 30% 22% at 36% 26%, #fff 0 55%, rgba(255, 255, 255, 0) 100%),
+                  radial-gradient(ellipse at 42% 38%, #fff 0%, #f4fcfe 35%, #c9f1f8 75%, #7fdcee 100%);
+      box-shadow: inset -2px -3px 4px rgba(31, 142, 164, .35), 1px 2px 3px rgba(60, 30, 55, .45);
+    }
+    .navbar-brand:hover, .navbar-brand a:hover { color: #fff; }
 
-    /* ── Sidebar ── */
+    /* XP push buttons */
+    .navbar .btn {
+      font: 12px/1.4 var(--font-ui);
+      color: #3a2236;
+      padding: .3rem .8rem;
+      border: 1px solid var(--plum-dark);
+      border-radius: 3px;
+      background: linear-gradient(180deg, #fff 0%, #f7eef4 50%, #ead7e4 100%);
+      box-shadow: inset 0 -2px 0 #dcbcd3;
+    }
+    .navbar .btn:hover { color: #3a2236; border-color: var(--plum-dark); background: linear-gradient(180deg, #fff 0%, #eefbfd 50%, #d2f3f9 100%); box-shadow: inset 0 -2px 0 #9fe6f3; }
+    .navbar .btn:active { background: #ead7e4; box-shadow: inset 0 2px 2px rgba(60, 30, 55, .25); }
+    .navbar .btn .bi-youtube { color: #c4302b; }
+
+    /* ── Task-pane sidebar ── */
+    aside.col-lg-3 {
+      background: linear-gradient(180deg, #eadcf0, #d9c6e3);
+      border-right: 1px solid #c7aed4;
+    }
     @media (min-width: 992px) {
       .sidebar {
         position: sticky;
@@ -60,85 +114,155 @@
         overflow-y: auto;
         overscroll-behavior: contain;
         scrollbar-width: thin;
+        scrollbar-color: var(--chrome) transparent;
+        padding: 1rem .25rem 1rem 0 !important;
       }
     }
+    .sidebar > h6 {
+      margin: 0 !important;
+      padding: .4rem .75rem;
+      font: 700 12px var(--font-ui) !important;
+      text-transform: none !important;
+      color: var(--plum-dark) !important;
+      background: linear-gradient(90deg, #fff 0%, #f0dfeb 100%);
+      border-radius: 5px 5px 0 0;
+      border-bottom: 1px solid #e0cbe0;
+    }
+    #sidebar-nav {
+      background: var(--pane);
+      padding: .35rem 0;
+      box-shadow: 0 1px 3px rgba(90, 60, 100, .25);
+    }
     #sidebar-nav .nav-link, #toc-nav .nav-link {
-      color: var(--nav-link-color);
-      border-radius: .375rem;
+      color: var(--link);
+      font-size: 12.5px;
+      line-height: 1.45;
+      padding: .2rem .75rem !important;
+      border-radius: 0;
       transition: background .15s, color .15s;
     }
+    #sidebar-nav .nav-link.ms-3, #toc-nav .nav-link.ms-3 { margin-left: 0 !important; padding-left: 1.4rem !important; }
+    #sidebar-nav .nav-link.ms-5, #toc-nav .nav-link.ms-5 { margin-left: 0 !important; padding-left: 2.2rem !important; }
+    #sidebar-nav .nav-link.fw-semibold, #toc-nav .nav-link.fw-semibold { font-weight: 700 !important; margin-top: .15rem; }
     #sidebar-nav .nav-link.active, #toc-nav .nav-link.active {
-      background: var(--chrome);
-      color: var(--heading);
+      background: var(--selection);
+      color: #fff;
+      text-shadow: 0 1px 0 rgba(60, 30, 55, .4);
     }
     #sidebar-nav .nav-link:hover:not(.active), #toc-nav .nav-link:hover:not(.active) {
-      background: var(--surface);
+      background: #dff7fc;
+      color: var(--heading);
     }
     #sidebar-nav .nav-link img,
     #tocOffcanvas .nav-link img {
       display: inline-block !important;
       width: auto;
-      height: 1.5em !important;
-      max-height: 1.5em !important;
-      margin-right: .35em;
+      height: 1.4em !important;
+      max-height: 1.4em !important;
+      margin-right: .3em;
       vertical-align: -0.4em;
       object-fit: contain;
       box-shadow: none !important;
-      border-radius: 3px !important;
+      border-radius: 0 !important;
       padding: 0 !important;
       background: transparent !important;
-      image-rendering: auto !important;
     }
+    #sidebar-nav .nav-link.active img, #toc-nav .nav-link.active img {
+      background: #fff !important;
+      border-radius: 3px !important;
+    }
+
+    /* ── Offcanvas (mobile contents) ── */
+    .offcanvas { --bs-offcanvas-width: 280px; background: linear-gradient(180deg, #eadcf0, #d9c6e3); }
+    .offcanvas-header { background: var(--titlebar); border-bottom: 1px solid var(--plum); padding: .6rem 1rem; }
+    .offcanvas-title { font: 700 1.1rem var(--font-title); color: #fff; text-shadow: 1px 1px 0 var(--plum-dark); }
+    .offcanvas-header .btn-close { background-color: #e0503a; border: 1px solid #fff; border-radius: 3px; opacity: 1; filter: invert(0); --bs-btn-close-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23fff'%3e%3cpath d='M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414z'/%3e%3c/svg%3e"); }
+    .offcanvas-body { overscroll-behavior: contain; }
+    #toc-nav { background: var(--pane); padding: .35rem 0; box-shadow: 0 1px 3px rgba(90, 60, 100, .25); }
 
     /* ── Content ── */
-    .navbar-brand { 
-      color: var(--heading-text-color);
-      font-size: clamp(1rem, 3vw, 2rem);
-      white-space: normal;
-      overflow-wrap: anywhere;
-      min-width: 0;
-      flex: 1;
-      margin: 0;
-      line-height: 1.25;
-      font-weight: bold;
-      text-shadow: 1px 1px 0 var(--heading-outline-color), -1px -1px 0 var(--heading-outline-color), 1px -1px 0 var(--heading-outline-color), -1px 1px 0 var(--heading-outline-color);
-    }    
-    .navbar-brand:hover { 
-      color: var(--heading-text-color);
-   }
-    .navbar-brand a { color: inherit; text-decoration: none; }
-
-    .navbar  {
-      /*drop shadow*/
-    }
-      
     main { min-width: 0; overflow-wrap: anywhere; }
-    main h2 { color: var(--heading); border-color: var(--border) !important; }
-    main h3 { color: var(--heading-sub); }
-    main h4 { color: var(--heading-minor); }
-    main a   { color: var(--link); }
-    main a:hover { color: var(--heading-text-color); }
-    main strong {
-      color: var(--strong-text-color);
+    /* Keep reading lines to about 75 characters; screenshots, tables and code may run wider. */
+    main > :not(p:has(> img.img-fluid)):not(table):not(pre) { max-width: 75ch; }
+    main a { color: var(--link); }
+    main a:hover { color: var(--plum); }
+    main strong { color: var(--strong-text-color); }
+    main ul { list-style: square; }
+    main li::marker { color: var(--chrome-dark); }
+
+    main h2, main h3, main h4 { display: flex; align-items: center; gap: .7rem; }
+    main h2 {
+      margin-top: 2.5rem !important;
+      padding: 4px 12px 4px 4px !important;
+      border: none !important;
+      border-radius: 6px;
+      background: linear-gradient(90deg, var(--chrome) 0%, #d6b3cb 60%, rgba(255, 255, 255, 0) 100%);
+      font: 700 1.5rem/1.2 var(--font-title);
+      color: #fff;
+      text-shadow: 1px 1px 0 var(--plum);
     }
-    /* Day-mode keycaps, tinted like the header chrome. */
+    main h3 {
+      padding-bottom: .4rem;
+      border-bottom: 1px solid var(--rule);
+      font: 700 1.2rem/1.25 var(--font-title);
+      color: var(--heading);
+    }
+    main h4, main h4.opacity-75 {
+      font: 700 1.02rem/1.25 var(--font-title);
+      color: var(--plum-dark);
+      opacity: 1 !important;
+    }
+
+    /* Glossy icon tiles in front of headings (convert.js moves the icon, or
+       the h2 section number, into .h-tile). */
+    .h-tile {
+      flex: none;
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 40px; height: 40px;
+      border-radius: 6px;
+      background: var(--gloss-pink);
+      border: 1px solid var(--plum-border);
+      box-shadow: inset 0 1px 0 #fff, 1px 1px 3px rgba(60, 30, 55, .35);
+      font: 700 1.25rem var(--font-title);
+      color: var(--plum);
+      text-shadow: none;
+    }
+    main h3 .h-tile, main h4 .h-tile {
+      width: 36px; height: 36px;
+      border-radius: 5px;
+      background: var(--gloss-cyan);
+      border-color: var(--accent-border);
+      box-shadow: inset 0 1px 0 #fff, 1px 1px 2px rgba(20, 60, 80, .3);
+    }
+    main .h-tile img, main .h-tile img.img-fluid {
+      display: block !important;
+      width: 28px !important; height: 28px !important;
+      margin: 0 !important; padding: 0 !important;
+      max-height: none;
+      object-fit: contain;
+      border: none !important; border-radius: 0 !important;
+      background: transparent !important; box-shadow: none !important;
+    }
+    main .h-tile img[src$=".png"] { width: 22px !important; height: 22px !important; image-rendering: pixelated; }
+
+    /* Keycaps: XP keyboard keys, tinted like the title bar. */
     main .shortcut { white-space: nowrap; }
     main kbd {
       display: inline-block;
-      min-width: 1.6em;
-      padding: .05em .4em;
+      min-width: 1.7em;
+      padding: 0 .45em;
       margin: 0 .05em;
-      font: bold .82em/1.35 inherit;
-      font-family: inherit;
+      font: 700 .8em/1.6 var(--font-ui);
       text-align: center;
-      color: #5a3c56;
-      background: #fbf1f8;
-      border: 1px solid #dcbcd3;
-      border-bottom: 2px solid var(--chrome);
-      border-radius: 4px;
-      box-shadow: none;
+      color: #4a2c46;
+      background: linear-gradient(180deg, #fff, #f1e4ee);
+      border: 1px solid #b894ae;
+      border-radius: 3px;
+      box-shadow: inset 0 -2px 0 #dcbcd3, 1px 1px 0 rgba(0, 0, 0, .08);
       vertical-align: .08em;
     }
+    /* Mouse actions stay words, joined to keys with "and" rather than "+". */
+    main .shortcut .join { color: #6a5a68; font-size: .92em; }
     /* The editor's mouse icons, recoloured for a light page, on lines of controls. */
     main img.mouse-icon {
       display: inline !important;
@@ -149,39 +273,87 @@
       box-shadow: none !important;
       border-radius: 0 !important;
     }
-    main blockquote strong {
-      color: var(--heading);
-    }
-    main blockquote strong a {
-      color: blue;   
-    }
 
     main code {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: .25rem;
-      padding: .1rem .35rem;
-      font-size: .875em;
+      font: .85em var(--font-mono);
+      background: var(--accent-light);
+      border: 1px solid #9fd9e5;
+      border-radius: 2px;
+      padding: .05rem .3rem;
       color: var(--heading);
     }
     main pre {
-      background: var(--surface) !important;
-      border-color: var(--border) !important;
+      background: var(--accent-light) !important;
+      border: 1px solid #9fd9e5 !important;
+      border-radius: 0 !important;
+      box-shadow: inset 1px 1px 2px rgba(20, 60, 80, .15);
     }
     main pre code { border: none; padding: 0; background: transparent; }
-    main blockquote { border-color: var(--accent) !important; }
-    main blockquote.video-callout {
-      background: #fce4ec;
-      border-radius: .5rem;
-      padding: 1rem 1.25rem !important;
-      margin: 1rem 0;
-      display: inline-block;
-      border: none !important;
-    }
-    main blockquote.video-callout p:last-child { margin-bottom: 0; }
-    main hr { border-color: var(--border); }
 
+    main blockquote { border-color: var(--chrome) !important; }
+    main blockquote strong { color: var(--heading); }
+    /* Message balloons: information, warning and critical, as in XP-era help. */
+    main blockquote.video-callout, main blockquote.callout {
+      display: flex;
+      align-items: flex-start;
+      gap: .7rem;
+      width: fit-content;
+      max-width: 100%;
+      background: #fff8fb;
+      border: 1px solid #e3a9c4 !important;
+      border-radius: 6px;
+      box-shadow: 2px 2px 0 #f3d6e4;
+      padding: .7rem 1rem !important;
+      margin: 1rem 0;
+      font-size: 1rem;
+    }
+    main blockquote.callout { width: auto; font-size: inherit; }
+    main blockquote.video-callout::before, main blockquote.callout::before {
+      content: "i";
+      flex: none;
+      width: 22px; height: 22px;
+      margin-top: .05rem;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 30%, #fff, #9fe6f3 40%, #2fb3cc);
+      border: 1px solid #1f8ea4;
+      color: #fff;
+      font: italic 700 14px/20px Georgia, serif;
+      text-align: center;
+      text-shadow: 0 1px 0 #1f8ea4;
+    }
+    main blockquote.callout-warning { background: #fffbea; border-color: #e2c45a !important; box-shadow: 2px 2px 0 #f5e6ad; }
+    main blockquote.callout-warning::before {
+      content: "!";
+      width: 24px; height: 22px;
+      border: none; border-radius: 0;
+      clip-path: polygon(50% 0, 100% 100%, 0 100%);
+      background: linear-gradient(180deg, #fff3a6, #f5c518 60%, #d9a400);
+      color: #3a2a00;
+      font: normal 700 14px/27px Tahoma, sans-serif;
+      text-shadow: none;
+    }
+    main blockquote.callout-critical { background: #fff4f2; border-color: #e3a39a !important; box-shadow: 2px 2px 0 #f6d5cf; }
+    main blockquote.callout-critical::before {
+      content: "\00d7";
+      background: radial-gradient(circle at 35% 30%, #ffb3a8, #e0503a 45%, #b3261e);
+      border-color: #8e1d17;
+      font: normal 700 17px/19px Tahoma, sans-serif;
+      text-shadow: 0 1px 0 #8e1d17;
+    }
+    main .callout-label { font: 700 1em var(--font-title); color: var(--heading); margin-right: .3em; }
+    main blockquote.video-callout p, main blockquote.callout p { margin: 0; flex: 1; min-width: 0; overflow-wrap: normal; }
+    main blockquote.video-callout a, main blockquote.callout a { color: var(--heading); }
+    main hr { border-color: var(--rule); }
+
+    /* Screenshots: a white mat with a hairline and a hard offset shadow. */
     main img { max-height: 380px; object-fit: contain; object-position: left; }
+    main img.img-fluid {
+      background: #fff;
+      padding: 3px;
+      border: 1px solid #b894ae;
+      border-radius: 0 !important;
+      box-shadow: 3px 3px 0 #ead7e4 !important;
+    }
     main img.img-inline {
       display: inline !important;
       margin: 0 !important;
@@ -194,52 +366,36 @@
       background: transparent !important;
     }
 
-    /* ── Offcanvas ── */
-    .offcanvas { --bs-offcanvas-width: 280px; }
-    .offcanvas-body { overscroll-behavior: contain; }
+    main .table { --bs-table-striped-bg: #fbf5f9; border-color: var(--rule); }
+    main .table thead th { background: var(--gloss-pink); color: var(--plum-dark); font-family: var(--font-title); }
 
-    /* ── Back-to-top ── */
+    /* ── Back-to-top: a round glossy button ── */
     .btn-top {
       position: fixed; bottom: 2rem; right: 2rem; z-index: 1030;
       opacity: 0; visibility: hidden; transition: opacity .3s; pointer-events: none;
-      background: var(--accent); border: none; color: var(--heading);
+      width: 2.75rem; height: 2.75rem;
+      background: radial-gradient(circle at 50% 25%, #fff 0%, #bff2fb 30%, var(--accent) 65%, #2fb3cc 100%);
+      border: 1px solid #1f8ea4;
+      color: var(--heading);
+      box-shadow: 1px 2px 4px rgba(20, 60, 80, .35) !important;
     }
-    .btn-top:hover { background: var(--chrome); color: #fff; }
+    .btn-top:hover { background: radial-gradient(circle at 50% 25%, #fff 0%, #f0dfeb 30%, var(--chrome) 65%, var(--plum) 100%); border-color: var(--plum-dark); color: var(--plum-dark); }
     .btn-top.show  { opacity: 1; visibility: visible; pointer-events: auto; }
     @media (prefers-reduced-motion: reduce) {
       .btn-top, #sidebar-nav .nav-link, #toc-nav .nav-link { transition: none; }
     }
 
-    /* ── Footer ── */
-    footer { background: var(--chrome); font-size: 1.5rem; font-weight: bold; 
-    text-shadow: 1px 1px 0 var(--heading-outline-color), -1px -1px 0 var(--heading-outline-color), 1px -1px 0 var(--heading-outline-color), -1px 1px 0 var(--heading-outline-color);
+    /* ── Status-bar footer ── */
+    footer {
+      background: linear-gradient(180deg, var(--chrome), var(--chrome-dark));
+      border-top: 1px solid var(--plum);
+      font-family: var(--font-title);
+      margin-top: 0 !important;
     }
-    footer a { color: var(--accent) !important; }
-    footer a:hover { color: #fff !important; }
-
-    
-    h2 > img.d-block {
-      display: inline !important;
-      width: auto;
-      height: 50px !important;
-      box-shadow: none !important;
-      border-radius: 5px !important;
-      background-color: var(--chrome) !important;
-      padding: 5px !important;
-      /*image-rendering : pixelated !important; don't pixelate this one*/
-    } 
-    /* Tool, object and trigger headings carry the editor's own SVG icons,
-       drawn bare beside the title (tools/icons/render_icons.sh). */
-    h3 > img.d-block, h4 > img.d-block {
-      display: inline !important;
-      width: auto;
-      height: 42px !important;
-      box-shadow: none !important;
-      border-radius: 5px !important;
-      background: transparent !important;
-      padding: 0 !important;
-      vertical-align: middle;
-    } 
+    footer p:first-child { font-size: 1.2rem; font-weight: 700; text-shadow: 1px 1px 0 var(--plum-dark); }
+    footer p.small { font-family: var(--font-ui); opacity: 1 !important; }
+    footer a { color: #fff !important; }
+    footer a:hover { color: #dff7fc !important; }
 
     /* Targets of anchor links: keep them below the fixed navbar */
     main[id], main [id] {
@@ -296,27 +452,27 @@
 <a class="nav-link py-1 ms-3 small" href="#section-410-img-srcmap-editor-imagestool_0svg--2d-draw">4.10 <img alt="" src="./map-editor-images/tool_0.svg"> 2D Draw</a>
 <a class="nav-link py-1 fw-semibold" href="#section-5-entity-mode">5. Entity Mode</a>
 <a class="nav-link py-1 ms-3 small" href="#section-51-img-srcmap-editor-imagesentity_tool_objectsvg--object-tool">5.1 <img alt="" src="./map-editor-images/entity_tool_object.svg"> Object Tool</a>
-<a class="nav-link py-1 ms-5 small" href="#section-511-img-srcmap-editor-imagesobject_1_bonfiresvg--normal-checkpoint">5.1.1 <img alt="" src="./map-editor-images/object_1_Bonfire.svg"> Normal Checkpoint</a>
-<a class="nav-link py-1 ms-5 small" href="#section-512-img-srcmap-editor-imagesobject_2_bonfire_startsvg--start-checkpoint">5.1.2 <img alt="" src="./map-editor-images/object_2_Bonfire_Start.svg"> Start-Checkpoint</a>
-<a class="nav-link py-1 ms-5 small" href="#section-513-img-srcmap-editor-imagesobject_3_bonfire_endsvg--end-checkpoint">5.1.3 <img alt="" src="./map-editor-images/object_3_Bonfire_End.svg"> End-Checkpoint</a>
-<a class="nav-link py-1 ms-5 small" href="#section-514-img-srcmap-editor-imagesobject_4_torchsvg--torch">5.1.4 <img alt="" src="./map-editor-images/object_4_Torch.svg"> Torch</a>
-<a class="nav-link py-1 ms-5 small" href="#section-515-img-srcmap-editor-imagesobject_5_starsvg--star">5.1.5 <img alt="" src="./map-editor-images/object_5_Star.svg"> Star</a>
-<a class="nav-link py-1 ms-5 small" href="#section-516-img-srcmap-editor-imagesobject_6_chairsvg--chair">5.1.6 <img alt="" src="./map-editor-images/object_6_Chair.svg"> Chair</a>
-<a class="nav-link py-1 ms-5 small" href="#section-517-img-srcmap-editor-imagesobject_7_tablesvg--table">5.1.7 <img alt="" src="./map-editor-images/object_7_Table.svg"> Table</a>
-<a class="nav-link py-1 ms-5 small" href="#section-518-img-srcmap-editor-imagesobject_8_bananasvg--banana">5.1.8 <img alt="" src="./map-editor-images/object_8_Banana.svg"> Banana</a>
-<a class="nav-link py-1 ms-5 small" href="#section-519-img-srcmap-editor-imagesobject_9_nestsvg--nest">5.1.9 <img alt="" src="./map-editor-images/object_9_Nest.svg"> Nest</a>
+<a class="nav-link py-1 ms-5 small" href="#section-511-img-srcmap-editor-imagesobject_1_bonfiresvg--normal-checkpoint">5.1.1 <img alt="" src="./map-editor-images/line/object_1_Bonfire.svg"> Normal Checkpoint</a>
+<a class="nav-link py-1 ms-5 small" href="#section-512-img-srcmap-editor-imagesobject_2_bonfire_startsvg--start-checkpoint">5.1.2 <img alt="" src="./map-editor-images/line/object_2_Bonfire_Start.svg"> Start-Checkpoint</a>
+<a class="nav-link py-1 ms-5 small" href="#section-513-img-srcmap-editor-imagesobject_3_bonfire_endsvg--end-checkpoint">5.1.3 <img alt="" src="./map-editor-images/line/object_3_Bonfire_End.svg"> End-Checkpoint</a>
+<a class="nav-link py-1 ms-5 small" href="#section-514-img-srcmap-editor-imagesobject_4_torchsvg--torch">5.1.4 <img alt="" src="./map-editor-images/line/object_4_Torch.svg"> Torch</a>
+<a class="nav-link py-1 ms-5 small" href="#section-515-img-srcmap-editor-imagesobject_5_starsvg--star">5.1.5 <img alt="" src="./map-editor-images/line/object_5_Star.svg"> Star</a>
+<a class="nav-link py-1 ms-5 small" href="#section-516-img-srcmap-editor-imagesobject_6_chairsvg--chair">5.1.6 <img alt="" src="./map-editor-images/line/object_6_Chair.svg"> Chair</a>
+<a class="nav-link py-1 ms-5 small" href="#section-517-img-srcmap-editor-imagesobject_7_tablesvg--table">5.1.7 <img alt="" src="./map-editor-images/line/object_7_Table.svg"> Table</a>
+<a class="nav-link py-1 ms-5 small" href="#section-518-img-srcmap-editor-imagesobject_8_bananasvg--banana">5.1.8 <img alt="" src="./map-editor-images/line/object_8_Banana.svg"> Banana</a>
+<a class="nav-link py-1 ms-5 small" href="#section-519-img-srcmap-editor-imagesobject_9_nestsvg--nest">5.1.9 <img alt="" src="./map-editor-images/line/object_9_Nest.svg"> Nest</a>
 <a class="nav-link py-1 ms-5 small" href="#section-5110-other-objects">5.1.10 Other Objects</a>
 <a class="nav-link py-1 ms-3 small" href="#section-52-img-srcmap-editor-imagesentity_tool_triggersvg--trigger-box-tool">5.2 <img alt="" src="./map-editor-images/entity_tool_trigger.svg"> Trigger-Box Tool</a>
-<a class="nav-link py-1 ms-5 small" href="#section-521-img-srcmap-editor-imagestrigger_1_musicsvg--music">5.2.1 <img alt="" src="./map-editor-images/trigger_1_music.svg"> music</a>
-<a class="nav-link py-1 ms-5 small" href="#section-522-img-srcmap-editor-imagestrigger_2_arealabelsvg--arealabel">5.2.2 <img alt="" src="./map-editor-images/trigger_2_arealabel.svg"> arealabel</a>
-<a class="nav-link py-1 ms-5 small" href="#section-523-img-srcmap-editor-imagestrigger_3_killboxsvg--killbox">5.2.3 <img alt="" src="./map-editor-images/trigger_3_killbox.svg"> KILLBOX</a>
-<a class="nav-link py-1 ms-5 small" href="#section-524-img-srcmap-editor-imagestrigger_4_torchsvg--torch">5.2.4 <img alt="" src="./map-editor-images/trigger_4_torch.svg"> TORCH</a>
-<a class="nav-link py-1 ms-5 small" href="#section-525-img-srcmap-editor-imagestrigger_5_advancedsvg--generic-trigger-boxes">5.2.5 <img alt="" src="./map-editor-images/trigger_5_advanced.svg"> Generic Trigger-Boxes</a>
+<a class="nav-link py-1 ms-5 small" href="#section-521-img-srcmap-editor-imagestrigger_1_musicsvg--music">5.2.1 <img alt="" src="./map-editor-images/line/trigger_1_music.svg"> music</a>
+<a class="nav-link py-1 ms-5 small" href="#section-522-img-srcmap-editor-imagestrigger_2_arealabelsvg--arealabel">5.2.2 <img alt="" src="./map-editor-images/line/trigger_2_arealabel.svg"> arealabel</a>
+<a class="nav-link py-1 ms-5 small" href="#section-523-img-srcmap-editor-imagestrigger_3_killboxsvg--killbox">5.2.3 <img alt="" src="./map-editor-images/line/trigger_3_killbox.svg"> KILLBOX</a>
+<a class="nav-link py-1 ms-5 small" href="#section-524-img-srcmap-editor-imagestrigger_4_torchsvg--torch">5.2.4 <img alt="" src="./map-editor-images/line/trigger_4_torch.svg"> TORCH</a>
+<a class="nav-link py-1 ms-5 small" href="#section-525-img-srcmap-editor-imagestrigger_5_advancedsvg--generic">5.2.5 <img alt="" src="./map-editor-images/line/trigger_5_advanced.svg"> Generic</a>
 <a class="nav-link py-1 fw-semibold" href="#section-6-layer-mode">6. Layer Mode</a>
 <a class="nav-link py-1 ms-3 small" href="#section-61-layer-visibility">6.1 Layer Visibility</a>
 <a class="nav-link py-1 ms-3 small" href="#section-62-layer-tools">6.2 Layer Tools</a>
-<a class="nav-link py-1 ms-5 small" href="#section-621-img-srcmap-editor-imageslayer_transform_tool_iconsvg--layer-transform-tool">6.2.1 <img alt="" src="./map-editor-images/layer_transform_tool_icon.svg"> Layer Transform Tool</a>
-<a class="nav-link py-1 ms-5 small" href="#section-622-img-srcmap-editor-imageslayer_assignment_tool_iconsvg--layer-assignment-tool">6.2.2 <img alt="" src="./map-editor-images/layer_assignment_tool_icon.svg"> Layer Assignment Tool</a>
+<a class="nav-link py-1 ms-5 small" href="#section-621-img-srcmap-editor-imageslayer_transform_tool_iconsvg--layer-transform">6.2.1 <img alt="" src="./map-editor-images/layer_transform_tool_icon.svg"> Layer Transform</a>
+<a class="nav-link py-1 ms-5 small" href="#section-622-img-srcmap-editor-imageslayer_assignment_tool_iconsvg--layer-assignment">6.2.2 <img alt="" src="./map-editor-images/layer_assignment_tool_icon.svg"> Layer Assignment</a>
 <a class="nav-link py-1 ms-3 small" href="#section-63-img-srcmap-editor-imageslayer_clipboardsvg--clipboard">6.3 <img alt="" src="./map-editor-images/layer_clipboard.svg"> Clipboard</a>
 <a class="nav-link py-1 fw-semibold" href="#section-7-layer-list">7. Layer List</a>
 <a class="nav-link py-1 ms-3 small" href="#section-71-img-srcmap-editor-imageslayer_item_gripsvg--drag-handle">7.1 <img alt="" src="./map-editor-images/layer_item_grip.svg"> Drag Handle</a>
@@ -362,27 +518,27 @@
 <a class="nav-link py-1 ms-3 small" href="#section-410-img-srcmap-editor-imagestool_0svg--2d-draw">4.10 <img alt="" src="./map-editor-images/tool_0.svg"> 2D Draw</a>
 <a class="nav-link py-1 fw-semibold" href="#section-5-entity-mode">5. Entity Mode</a>
 <a class="nav-link py-1 ms-3 small" href="#section-51-img-srcmap-editor-imagesentity_tool_objectsvg--object-tool">5.1 <img alt="" src="./map-editor-images/entity_tool_object.svg"> Object Tool</a>
-<a class="nav-link py-1 ms-5 small" href="#section-511-img-srcmap-editor-imagesobject_1_bonfiresvg--normal-checkpoint">5.1.1 <img alt="" src="./map-editor-images/object_1_Bonfire.svg"> Normal Checkpoint</a>
-<a class="nav-link py-1 ms-5 small" href="#section-512-img-srcmap-editor-imagesobject_2_bonfire_startsvg--start-checkpoint">5.1.2 <img alt="" src="./map-editor-images/object_2_Bonfire_Start.svg"> Start-Checkpoint</a>
-<a class="nav-link py-1 ms-5 small" href="#section-513-img-srcmap-editor-imagesobject_3_bonfire_endsvg--end-checkpoint">5.1.3 <img alt="" src="./map-editor-images/object_3_Bonfire_End.svg"> End-Checkpoint</a>
-<a class="nav-link py-1 ms-5 small" href="#section-514-img-srcmap-editor-imagesobject_4_torchsvg--torch">5.1.4 <img alt="" src="./map-editor-images/object_4_Torch.svg"> Torch</a>
-<a class="nav-link py-1 ms-5 small" href="#section-515-img-srcmap-editor-imagesobject_5_starsvg--star">5.1.5 <img alt="" src="./map-editor-images/object_5_Star.svg"> Star</a>
-<a class="nav-link py-1 ms-5 small" href="#section-516-img-srcmap-editor-imagesobject_6_chairsvg--chair">5.1.6 <img alt="" src="./map-editor-images/object_6_Chair.svg"> Chair</a>
-<a class="nav-link py-1 ms-5 small" href="#section-517-img-srcmap-editor-imagesobject_7_tablesvg--table">5.1.7 <img alt="" src="./map-editor-images/object_7_Table.svg"> Table</a>
-<a class="nav-link py-1 ms-5 small" href="#section-518-img-srcmap-editor-imagesobject_8_bananasvg--banana">5.1.8 <img alt="" src="./map-editor-images/object_8_Banana.svg"> Banana</a>
-<a class="nav-link py-1 ms-5 small" href="#section-519-img-srcmap-editor-imagesobject_9_nestsvg--nest">5.1.9 <img alt="" src="./map-editor-images/object_9_Nest.svg"> Nest</a>
+<a class="nav-link py-1 ms-5 small" href="#section-511-img-srcmap-editor-imagesobject_1_bonfiresvg--normal-checkpoint">5.1.1 <img alt="" src="./map-editor-images/line/object_1_Bonfire.svg"> Normal Checkpoint</a>
+<a class="nav-link py-1 ms-5 small" href="#section-512-img-srcmap-editor-imagesobject_2_bonfire_startsvg--start-checkpoint">5.1.2 <img alt="" src="./map-editor-images/line/object_2_Bonfire_Start.svg"> Start-Checkpoint</a>
+<a class="nav-link py-1 ms-5 small" href="#section-513-img-srcmap-editor-imagesobject_3_bonfire_endsvg--end-checkpoint">5.1.3 <img alt="" src="./map-editor-images/line/object_3_Bonfire_End.svg"> End-Checkpoint</a>
+<a class="nav-link py-1 ms-5 small" href="#section-514-img-srcmap-editor-imagesobject_4_torchsvg--torch">5.1.4 <img alt="" src="./map-editor-images/line/object_4_Torch.svg"> Torch</a>
+<a class="nav-link py-1 ms-5 small" href="#section-515-img-srcmap-editor-imagesobject_5_starsvg--star">5.1.5 <img alt="" src="./map-editor-images/line/object_5_Star.svg"> Star</a>
+<a class="nav-link py-1 ms-5 small" href="#section-516-img-srcmap-editor-imagesobject_6_chairsvg--chair">5.1.6 <img alt="" src="./map-editor-images/line/object_6_Chair.svg"> Chair</a>
+<a class="nav-link py-1 ms-5 small" href="#section-517-img-srcmap-editor-imagesobject_7_tablesvg--table">5.1.7 <img alt="" src="./map-editor-images/line/object_7_Table.svg"> Table</a>
+<a class="nav-link py-1 ms-5 small" href="#section-518-img-srcmap-editor-imagesobject_8_bananasvg--banana">5.1.8 <img alt="" src="./map-editor-images/line/object_8_Banana.svg"> Banana</a>
+<a class="nav-link py-1 ms-5 small" href="#section-519-img-srcmap-editor-imagesobject_9_nestsvg--nest">5.1.9 <img alt="" src="./map-editor-images/line/object_9_Nest.svg"> Nest</a>
 <a class="nav-link py-1 ms-5 small" href="#section-5110-other-objects">5.1.10 Other Objects</a>
 <a class="nav-link py-1 ms-3 small" href="#section-52-img-srcmap-editor-imagesentity_tool_triggersvg--trigger-box-tool">5.2 <img alt="" src="./map-editor-images/entity_tool_trigger.svg"> Trigger-Box Tool</a>
-<a class="nav-link py-1 ms-5 small" href="#section-521-img-srcmap-editor-imagestrigger_1_musicsvg--music">5.2.1 <img alt="" src="./map-editor-images/trigger_1_music.svg"> music</a>
-<a class="nav-link py-1 ms-5 small" href="#section-522-img-srcmap-editor-imagestrigger_2_arealabelsvg--arealabel">5.2.2 <img alt="" src="./map-editor-images/trigger_2_arealabel.svg"> arealabel</a>
-<a class="nav-link py-1 ms-5 small" href="#section-523-img-srcmap-editor-imagestrigger_3_killboxsvg--killbox">5.2.3 <img alt="" src="./map-editor-images/trigger_3_killbox.svg"> KILLBOX</a>
-<a class="nav-link py-1 ms-5 small" href="#section-524-img-srcmap-editor-imagestrigger_4_torchsvg--torch">5.2.4 <img alt="" src="./map-editor-images/trigger_4_torch.svg"> TORCH</a>
-<a class="nav-link py-1 ms-5 small" href="#section-525-img-srcmap-editor-imagestrigger_5_advancedsvg--generic-trigger-boxes">5.2.5 <img alt="" src="./map-editor-images/trigger_5_advanced.svg"> Generic Trigger-Boxes</a>
+<a class="nav-link py-1 ms-5 small" href="#section-521-img-srcmap-editor-imagestrigger_1_musicsvg--music">5.2.1 <img alt="" src="./map-editor-images/line/trigger_1_music.svg"> music</a>
+<a class="nav-link py-1 ms-5 small" href="#section-522-img-srcmap-editor-imagestrigger_2_arealabelsvg--arealabel">5.2.2 <img alt="" src="./map-editor-images/line/trigger_2_arealabel.svg"> arealabel</a>
+<a class="nav-link py-1 ms-5 small" href="#section-523-img-srcmap-editor-imagestrigger_3_killboxsvg--killbox">5.2.3 <img alt="" src="./map-editor-images/line/trigger_3_killbox.svg"> KILLBOX</a>
+<a class="nav-link py-1 ms-5 small" href="#section-524-img-srcmap-editor-imagestrigger_4_torchsvg--torch">5.2.4 <img alt="" src="./map-editor-images/line/trigger_4_torch.svg"> TORCH</a>
+<a class="nav-link py-1 ms-5 small" href="#section-525-img-srcmap-editor-imagestrigger_5_advancedsvg--generic">5.2.5 <img alt="" src="./map-editor-images/line/trigger_5_advanced.svg"> Generic</a>
 <a class="nav-link py-1 fw-semibold" href="#section-6-layer-mode">6. Layer Mode</a>
 <a class="nav-link py-1 ms-3 small" href="#section-61-layer-visibility">6.1 Layer Visibility</a>
 <a class="nav-link py-1 ms-3 small" href="#section-62-layer-tools">6.2 Layer Tools</a>
-<a class="nav-link py-1 ms-5 small" href="#section-621-img-srcmap-editor-imageslayer_transform_tool_iconsvg--layer-transform-tool">6.2.1 <img alt="" src="./map-editor-images/layer_transform_tool_icon.svg"> Layer Transform Tool</a>
-<a class="nav-link py-1 ms-5 small" href="#section-622-img-srcmap-editor-imageslayer_assignment_tool_iconsvg--layer-assignment-tool">6.2.2 <img alt="" src="./map-editor-images/layer_assignment_tool_icon.svg"> Layer Assignment Tool</a>
+<a class="nav-link py-1 ms-5 small" href="#section-621-img-srcmap-editor-imageslayer_transform_tool_iconsvg--layer-transform">6.2.1 <img alt="" src="./map-editor-images/layer_transform_tool_icon.svg"> Layer Transform</a>
+<a class="nav-link py-1 ms-5 small" href="#section-622-img-srcmap-editor-imageslayer_assignment_tool_iconsvg--layer-assignment">6.2.2 <img alt="" src="./map-editor-images/layer_assignment_tool_icon.svg"> Layer Assignment</a>
 <a class="nav-link py-1 ms-3 small" href="#section-63-img-srcmap-editor-imageslayer_clipboardsvg--clipboard">6.3 <img alt="" src="./map-editor-images/layer_clipboard.svg"> Clipboard</a>
 <a class="nav-link py-1 fw-semibold" href="#section-7-layer-list">7. Layer List</a>
 <a class="nav-link py-1 ms-3 small" href="#section-71-img-srcmap-editor-imageslayer_item_gripsvg--drag-handle">7.1 <img alt="" src="./map-editor-images/layer_item_grip.svg"> Drag Handle</a>
@@ -402,7 +558,7 @@
       <main id="main-content" tabindex="-1" class="col-lg-9 py-4 px-4 px-lg-5"><blockquote class="blockquote border-start border-3 ps-3 py-1 my-3 video-callout">
   <p><strong>If you prefer a video tutorial, click here : <a href="https://youtu.be/brkR8vVeSMg">https://youtu.be/brkR8vVeSMg</a></strong></p>
 </blockquote>
-<h2 tabindex="-1" class="mt-5 mb-3 pb-2 border-bottom" id="section-0-adding-player-made-maps">0. Adding Player-Made Maps</h2>
+<h2 tabindex="-1" class="mt-5 mb-3 pb-2 border-bottom" id="section-0-adding-player-made-maps"><span class="h-tile h-num" aria-hidden="true">0</span><span class="h-text"><span class="visually-hidden">0. </span>Adding Player-Made Maps</span></h2>
 <p>You can add maps manually (if you already have the file) or download them from the Steam Workshop.</p>
 <h3 tabindex="-1" class="mt-4 mb-3" id="section-01-adding-maps-manually">0.1 Adding Maps Manually</h3>
 <p>If you have a map file, you can add it like this (doesn't work on Steam Deck!) :</p>
@@ -428,7 +584,7 @@
 <li>Once subscribed, maps will appear in the map list and are ready to play :</li>
 </ol>
 <p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/map_in_list.png" width="478"></p>
-<h2 tabindex="-1" class="mt-5 mb-3 pb-2 border-bottom" id="section-1-enabling-the-map-editor">1. Enabling the Map Editor</h2>
+<h2 tabindex="-1" class="mt-5 mb-3 pb-2 border-bottom" id="section-1-enabling-the-map-editor"><span class="h-tile h-num" aria-hidden="true">1</span><span class="h-text"><span class="visually-hidden">1. </span>Enabling the Map Editor</span></h2>
 <ol>
 <li>Go to <strong>Settings</strong> :</li>
 </ol>
@@ -440,7 +596,7 @@
 </ol>
 <p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/map_editor_opened.png" width="478"></p>
 <hr class="my-5 opacity-0">
-<h2 tabindex="-1" class="mt-5 mb-3 pb-2 border-bottom" id="section-2-basic-workflow-in-the-map-editor">2. Basic Workflow in the Map Editor</h2>
+<h2 tabindex="-1" class="mt-5 mb-3 pb-2 border-bottom" id="section-2-basic-workflow-in-the-map-editor"><span class="h-tile h-num" aria-hidden="true">2</span><span class="h-text"><span class="visually-hidden">2. </span>Basic Workflow in the Map Editor</span></h2>
 <h3 tabindex="-1" class="mt-4 mb-3" id="section-21-map-editor-modes">2.1 Map-Editor Modes</h3>
 <ul>
 <li><span class="shortcut"><kbd>Tab</kbd></span><ul>
@@ -479,7 +635,7 @@
 </ul>
 <p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/file_dropdown.png" width="294"></p>
 <hr class="my-5 opacity-0">
-<h2 tabindex="-1" class="mt-5 mb-3 pb-2 border-bottom" id="section-3-camera-and-movement-in-the-map-editor">3. Camera and Movement (in the Map Editor)</h2>
+<h2 tabindex="-1" class="mt-5 mb-3 pb-2 border-bottom" id="section-3-camera-and-movement-in-the-map-editor"><span class="h-tile h-num" aria-hidden="true">3</span><span class="h-text"><span class="visually-hidden">3. </span>Camera and Movement (in the Map Editor)</span></h2>
 <ul>
 <li><span class="shortcut"><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd></span> : Move camera</li>
 <li><span class="shortcut"><kbd>Shift</kbd></span> : Faster movement</li>
@@ -488,39 +644,40 @@
 </ul>
 <p>(Don't forget : <span class="shortcut"><kbd>Tab</kbd></span> toggles between camera-look and cursor-pointing modes.)</p>
 <hr class="my-5 opacity-0">
-<h2 tabindex="-1" class="mt-5 mb-3 pb-2 border-bottom" id="section-4-block-tools">4. Block Tools</h2>
+<h2 tabindex="-1" class="mt-5 mb-3 pb-2 border-bottom" id="section-4-block-tools"><span class="h-tile h-num" aria-hidden="true">4</span><span class="h-text"><span class="visually-hidden">4. </span>Block Tools</span></h2>
 <p>The block tools are laid out in the top toolbar in the order below; <span class="shortcut"><kbd>1</kbd></span>–<span class="shortcut"><kbd>0</kbd></span> select them.</p>
 <!--nearest neighbour upscaling-->
-<h3 tabindex="-1" class="mt-4 mb-3" id="section-41-img-srcmap-editor-imagestool_1svg--basic-tool">4.1 <img class="img-fluid rounded shadow-sm d-block my-3" alt="" src="./map-editor-images/tool_1.svg" width="36" height="36"> Basic Tool</h3>
+<h3 tabindex="-1" class="mt-4 mb-3" id="section-41-img-srcmap-editor-imagestool_1svg--basic-tool"><span class="h-tile" aria-hidden="true"><img class="img-fluid rounded shadow-sm d-block my-3" alt="" src="./map-editor-images/tool_1.svg" width="36" height="36"></span><span class="h-text">4.1 Basic Tool</span></h3>
 <ul>
 <li><span class="shortcut"><img class="img-inline mouse-icon" src="./map-editor-images/mouse_left.svg" alt="" width="90" height="102"><strong>Click</strong></span> : Place block.</li>
 <li><span class="shortcut"><img class="img-inline mouse-icon" src="./map-editor-images/mouse_right.svg" alt="" width="90" height="102"><strong>Right-Click</strong></span> : Delete block.</li>
-<li><span class="shortcut"><kbd>Shift</kbd>+<img class="img-inline mouse-icon" src="./map-editor-images/mouse_left.svg" alt="" width="90" height="102"><strong>Click</strong> (hold)</span> : Rapid placement.</li>
-<li><span class="shortcut"><kbd>Shift</kbd>+<img class="img-inline mouse-icon" src="./map-editor-images/mouse_right.svg" alt="" width="90" height="102"><strong>Right-Click</strong> (hold)</span> : Rapid deletion.</li>
-<li><span class="shortcut"><kbd>Ctrl</kbd>+<img class="img-inline mouse-icon" src="./map-editor-images/mouse_left.svg" alt="" width="90" height="102"><strong>Click</strong></span> : Place a block offset one step back from the face you're highlighting.</li>
-<li><span class="shortcut"><kbd>Alt</kbd>+<img class="img-inline mouse-icon" src="./map-editor-images/mouse_left.svg" alt="" width="90" height="102"><strong>Click</strong></span> : Sample an existing block (eyedropper).</li>
+<li><span class="shortcut"><kbd>Shift</kbd><span class="join"> and </span><img class="img-inline mouse-icon" src="./map-editor-images/mouse_left.svg" alt="" width="90" height="102"><strong>Click</strong> (hold)</span> : Rapid placement.</li>
+<li><span class="shortcut"><kbd>Shift</kbd><span class="join"> and </span><img class="img-inline mouse-icon" src="./map-editor-images/mouse_right.svg" alt="" width="90" height="102"><strong>Right-Click</strong> (hold)</span> : Rapid deletion.</li>
+<li><span class="shortcut"><kbd>Ctrl</kbd><span class="join"> and </span><img class="img-inline mouse-icon" src="./map-editor-images/mouse_left.svg" alt="" width="90" height="102"><strong>Click</strong></span> : Place a block offset one step back from the face you're highlighting.</li>
+<li><span class="shortcut"><kbd>Alt</kbd><span class="join"> and </span><img class="img-inline mouse-icon" src="./map-editor-images/mouse_left.svg" alt="" width="90" height="102"><strong>Click</strong></span> : Sample an existing block (eyedropper).</li>
 <li><span class="shortcut"><img class="img-inline mouse-icon" src="./map-editor-images/mouse_wheel.svg" alt="" width="126" height="102"><strong>Wheel</strong></span> or <span class="shortcut"><kbd>Shift</kbd>+<kbd>Number Key</kbd></span> : Change the selected block texture in the left toolbar.</li>
-<li><span class="shortcut"><kbd>Ctrl</kbd>+<img class="img-inline mouse-icon" src="./map-editor-images/mouse_wheel.svg" alt="" width="126" height="102"><strong>Wheel</strong></span> or <span class="shortcut"><kbd>-</kbd> / <kbd>=</kbd></span> : Change texture page in the left toolbar.</li>
+<li><span class="shortcut"><kbd>Ctrl</kbd><span class="join"> and </span><img class="img-inline mouse-icon" src="./map-editor-images/mouse_wheel.svg" alt="" width="126" height="102"><strong>Wheel</strong></span> or <span class="shortcut"><kbd>-</kbd> / <kbd>=</kbd></span> : Change texture page in the left toolbar.</li>
 </ul>
 <h4 tabindex="-1" class="mt-3 mb-2 opacity-75" id="section-41b-block-shapes">4.1b Block Shapes</h4>
 <p><img class="img-fluid rounded shadow-sm d-block my-3" height="91" alt="image" src="./map-editor-images/shape_toolbar.png" width="483"></p>
 <ul>
 <li>The shape toolbar, to the right of the tools, includes ramps and other shapes.</li>
 <li><span class="shortcut"><kbd>F</kbd></span>, <span class="shortcut"><kbd>G</kbd></span>, <span class="shortcut"><kbd>H</kbd></span>… and <span class="shortcut"><kbd>Shift</kbd>+<kbd>F</kbd></span>, <span class="shortcut"><kbd>Shift</kbd>+<kbd>G</kbd></span>, <span class="shortcut"><kbd>Shift</kbd>+<kbd>H</kbd></span>… : Select a shape (each shape's key is shown on its button).</li>
-<li><span class="shortcut"><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<img class="img-inline mouse-icon" src="./map-editor-images/mouse_wheel.svg" alt="" width="126" height="102"><strong>Wheel</strong></span> : Cycle through the shapes (with the Basic, Plane and 2D Draw tools).</li>
+<li><span class="shortcut"><kbd>Ctrl</kbd>+<kbd>Shift</kbd><span class="join"> and </span><img class="img-inline mouse-icon" src="./map-editor-images/mouse_wheel.svg" alt="" width="126" height="102"><strong>Wheel</strong></span> : Cycle through the shapes (with the Basic, Plane and 2D Draw tools).</li>
 <li><span class="shortcut"><kbd>R</kbd></span> : Rotate selected shape.</li>
 <li><span class="shortcut"><kbd>V</kbd></span> : Flip vertically.</li>
-<li>Do <em>not</em> use the staircase block anywhere the player might roll across it - it doesn't play well with egg physics.</li>
 </ul>
-<h3 tabindex="-1" class="mt-4 mb-3" id="section-42-img-srcmap-editor-imagestool_2svg--plane">4.2 <img class="img-fluid rounded shadow-sm d-block my-3" alt="" src="./map-editor-images/tool_2.svg" width="36" height="36"> Plane</h3>
+<blockquote class="blockquote border-start border-3 ps-3 py-1 my-3 callout callout-info" role="note"><p><span class="callout-label">Note</span> Do <em>not</em> use the staircase block anywhere the player might roll across it - it doesn't play well with egg physics.</p>
+</blockquote>
+<h3 tabindex="-1" class="mt-4 mb-3" id="section-42-img-srcmap-editor-imagestool_2svg--plane"><span class="h-tile" aria-hidden="true"><img class="img-fluid rounded shadow-sm d-block my-3" alt="" src="./map-editor-images/tool_2.svg" width="36" height="36"></span><span class="h-text">4.2 Plane</span></h3>
 <p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/plane_drag_basic.png" width="553"></p>
 <ul>
-<li><p><span class="shortcut"><strong>Click</strong>+<strong>Drag</strong></span> : Draw a planar sheet (floor or wall).</p></li>
+<li><p><span class="shortcut"><strong>Click</strong><span class="join"> and </span><strong>Drag</strong></span> : Draw a planar sheet (floor or wall).</p></li>
 <li><p><span class="shortcut"><kbd>Ctrl</kbd> while clicking</span> : Push the plane one block into the highlighted surface for a flush fit :</p></li>
 </ul>
 <p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/plane_drag_ctrl_flush.png" width="553"></p>
 <ul>
-<li><span class="shortcut"><img class="img-inline mouse-icon" src="./map-editor-images/mouse_right.svg" alt="" width="90" height="102"><strong>Right-Click</strong>+<strong>Drag</strong></span> : Delete a planar region (useful for doors and openings).</li>
+<li><span class="shortcut"><img class="img-inline mouse-icon" src="./map-editor-images/mouse_right.svg" alt="" width="90" height="102"><strong>Right-Click</strong><span class="join"> and </span><strong>Drag</strong></span> : Delete a planar region (useful for doors and openings).</li>
 </ul>
 <p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/plane_drag_delete_region.png" width="553"></p>
 <ul>
@@ -532,68 +689,68 @@
 </ul>
 <p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/slope_plane_drag.png" width="553"></p>
 <hr class="my-5 opacity-0">
-<h3 tabindex="-1" class="mt-4 mb-3" id="section-43-img-srcmap-editor-imagestool_3svg--extrude">4.3 <img class="img-fluid rounded shadow-sm d-block my-3" alt="" src="./map-editor-images/tool_3.svg" width="36" height="36"> Extrude</h3>
+<h3 tabindex="-1" class="mt-4 mb-3" id="section-43-img-srcmap-editor-imagestool_3svg--extrude"><span class="h-tile" aria-hidden="true"><img class="img-fluid rounded shadow-sm d-block my-3" alt="" src="./map-editor-images/tool_3.svg" width="36" height="36"></span><span class="h-text">4.3 Extrude</span></h3>
 <ul>
-<li><span class="shortcut"><img class="img-inline mouse-icon" src="./map-editor-images/mouse_left.svg" alt="" width="90" height="102"><strong>Click</strong>+<strong>Drag</strong></span> to define a 2D area, then move your mouse and <span class="shortcut"><strong>Click</strong></span> to extrude to that depth.  Very useful!</li>
+<li><span class="shortcut"><img class="img-inline mouse-icon" src="./map-editor-images/mouse_left.svg" alt="" width="90" height="102"><strong>Click</strong><span class="join"> and </span><strong>Drag</strong></span> to define a 2D area, then move your mouse and <span class="shortcut"><strong>Click</strong></span> to extrude to that depth.  Very useful!</li>
 <li>Works on irregular shapes :</li>
 </ul>
 <p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/extrude_irregular_shape.png" width="553"></p>
 <ul>
-<li><span class="shortcut"><kbd>Shift</kbd>+<img class="img-inline mouse-icon" src="./map-editor-images/mouse_left.svg" alt="" width="90" height="102"><strong>Click</strong></span> : Extrude using the currently selected texture.</li>
+<li><span class="shortcut"><kbd>Shift</kbd><span class="join"> and </span><img class="img-inline mouse-icon" src="./map-editor-images/mouse_left.svg" alt="" width="90" height="102"><strong>Click</strong></span> : Extrude using the currently selected texture.</li>
 <li><span class="shortcut"><kbd>Alt</kbd> while dragging</span> : Use the initial click point as the <em>centre</em> of the area rather than a corner.</li>
-<li><span class="shortcut"><img class="img-inline mouse-icon" src="./map-editor-images/mouse_right.svg" alt="" width="90" height="102"><strong>Right-Click</strong>+<strong>Drag</strong></span> (then <span class="shortcut"><strong>Click</strong></span> to set the depth) : Nothing to do with extrude, really, more a "delete everything inside this box" tool.</li>
+<li><span class="shortcut"><img class="img-inline mouse-icon" src="./map-editor-images/mouse_right.svg" alt="" width="90" height="102"><strong>Right-Click</strong><span class="join"> and </span><strong>Drag</strong></span> (then <span class="shortcut"><strong>Click</strong></span> to set the depth) : Nothing to do with extrude, really, more a "delete everything inside this box" tool.</li>
 </ul>
 <hr class="my-5 opacity-0">
-<h3 tabindex="-1" class="mt-4 mb-3" id="section-44-img-srcmap-editor-imagestool_4svg--paint">4.4 <img class="img-fluid rounded shadow-sm d-block my-3" alt="" src="./map-editor-images/tool_4.svg" width="36" height="36"> Paint</h3>
+<h3 tabindex="-1" class="mt-4 mb-3" id="section-44-img-srcmap-editor-imagestool_4svg--paint"><span class="h-tile" aria-hidden="true"><img class="img-fluid rounded shadow-sm d-block my-3" alt="" src="./map-editor-images/tool_4.svg" width="36" height="36"></span><span class="h-text">4.4 Paint</span></h3>
 <ul>
 <li><span class="shortcut"><img class="img-inline mouse-icon" src="./map-editor-images/mouse_left.svg" alt="" width="90" height="102"><strong>Click</strong> (hold)</span> : Apply texture to highlighted block.</li>
-<li><span class="shortcut"><img class="img-inline mouse-icon" src="./map-editor-images/mouse_right.svg" alt="" width="90" height="102"><strong>Right-Click</strong></span> or <span class="shortcut"><kbd>Alt</kbd>+<strong>Click</strong></span> : Sample block texture and shape.</li>
-<li><span class="shortcut"><kbd>Shift</kbd>+<img class="img-inline mouse-icon" src="./map-editor-images/mouse_wheel.svg" alt="" width="126" height="102"><strong>Wheel</strong></span> : Adjust brush radius.</li>
-<li><span class="shortcut"><kbd>Shift</kbd>+<img class="img-inline mouse-icon" src="./map-editor-images/mouse_left.svg" alt="" width="90" height="102"><strong>Click</strong></span> : Replace all blocks of the pointed-at texture in the current layer with the selected texture (undoable - but be careful).</li>
+<li><span class="shortcut"><img class="img-inline mouse-icon" src="./map-editor-images/mouse_right.svg" alt="" width="90" height="102"><strong>Right-Click</strong></span> or <span class="shortcut"><kbd>Alt</kbd><span class="join"> and </span><strong>Click</strong></span> : Sample block texture and shape.</li>
+<li><span class="shortcut"><kbd>Shift</kbd><span class="join"> and </span><img class="img-inline mouse-icon" src="./map-editor-images/mouse_wheel.svg" alt="" width="126" height="102"><strong>Wheel</strong></span> : Adjust brush radius.</li>
+<li><span class="shortcut"><kbd>Shift</kbd><span class="join"> and </span><img class="img-inline mouse-icon" src="./map-editor-images/mouse_left.svg" alt="" width="90" height="102"><strong>Click</strong></span> : Replace all blocks of the pointed-at texture in the current layer with the selected texture (undoable - but be careful).</li>
 </ul>
 <hr class="my-5 opacity-0">
-<h3 tabindex="-1" class="mt-4 mb-3" id="section-45-img-srcmap-editor-imagestool_5svg--grout">4.5 <img class="img-fluid rounded shadow-sm d-block my-3" alt="" src="./map-editor-images/tool_5.svg" width="36" height="36"> Grout</h3>
+<h3 tabindex="-1" class="mt-4 mb-3" id="section-45-img-srcmap-editor-imagestool_5svg--grout"><span class="h-tile" aria-hidden="true"><img class="img-fluid rounded shadow-sm d-block my-3" alt="" src="./map-editor-images/tool_5.svg" width="36" height="36"></span><span class="h-text">4.5 Grout</span></h3>
 <p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/grout_tool_smoothing.png" width="553"></p>
 <ul>
-<li><span class="shortcut"><img class="img-inline mouse-icon" src="./map-editor-images/mouse_left.svg" alt="" width="90" height="102"><strong>Click</strong>+<strong>Drag</strong></span> to define an area, then move your mouse and <span class="shortcut"><strong>Click</strong></span> to set the depth : Smooth the terrain inside that box by filling in edge voxels using intermediate block shapes.</li>
-<li><span class="shortcut"><kbd>Shift</kbd>+<img class="img-inline mouse-icon" src="./map-editor-images/mouse_left.svg" alt="" width="90" height="102"><strong>Click</strong></span> : Smooth terrain, but all blocks added use the currently selected texture.</li>
-<li><span class="shortcut"><img class="img-inline mouse-icon" src="./map-editor-images/mouse_right.svg" alt="" width="90" height="102"><strong>Right-Click</strong>+<strong>Drag</strong></span> (then <span class="shortcut"><strong>Click</strong></span> to set the depth) : Remove non-cube blocks.</li>
+<li><span class="shortcut"><img class="img-inline mouse-icon" src="./map-editor-images/mouse_left.svg" alt="" width="90" height="102"><strong>Click</strong><span class="join"> and </span><strong>Drag</strong></span> to define an area, then move your mouse and <span class="shortcut"><strong>Click</strong></span> to set the depth : Smooth the terrain inside that box by filling in edge voxels using intermediate block shapes.</li>
+<li><span class="shortcut"><kbd>Shift</kbd><span class="join"> and </span><img class="img-inline mouse-icon" src="./map-editor-images/mouse_left.svg" alt="" width="90" height="102"><strong>Click</strong></span> : Smooth terrain, but all blocks added use the currently selected texture.</li>
+<li><span class="shortcut"><img class="img-inline mouse-icon" src="./map-editor-images/mouse_right.svg" alt="" width="90" height="102"><strong>Right-Click</strong><span class="join"> and </span><strong>Drag</strong></span> (then <span class="shortcut"><strong>Click</strong></span> to set the depth) : Remove non-cube blocks.</li>
 <li><span class="shortcut"><kbd>Alt</kbd> while dragging</span> : Use the initial click point as the <em>centre</em> of the area rather than a corner.</li>
 </ul>
 <p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/grout_tool_cleanup.png" width="553"></p>
 <hr class="my-5 opacity-0">
-<h3 tabindex="-1" class="mt-4 mb-3" id="section-46-img-srcmap-editor-imagestool_6svg--hollow">4.6 <img class="img-fluid rounded shadow-sm d-block my-3" alt="" src="./map-editor-images/tool_6.svg" width="36" height="36"> Hollow</h3>
+<h3 tabindex="-1" class="mt-4 mb-3" id="section-46-img-srcmap-editor-imagestool_6svg--hollow"><span class="h-tile" aria-hidden="true"><img class="img-fluid rounded shadow-sm d-block my-3" alt="" src="./map-editor-images/tool_6.svg" width="36" height="36"></span><span class="h-text">4.6 Hollow</span></h3>
 <p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/hollow_tool_example.png" width="553"></p>
 <ul>
-<li><span class="shortcut"><img class="img-inline mouse-icon" src="./map-editor-images/mouse_left.svg" alt="" width="90" height="102"><strong>Click</strong>+<strong>Drag</strong></span> to define an area, then move your mouse and <span class="shortcut"><strong>Click</strong></span> to set the depth : Remove the enclosed cube blocks inside that box, keeping a shell one block thick around the outside.</li>
+<li><span class="shortcut"><img class="img-inline mouse-icon" src="./map-editor-images/mouse_left.svg" alt="" width="90" height="102"><strong>Click</strong><span class="join"> and </span><strong>Drag</strong></span> to define an area, then move your mouse and <span class="shortcut"><strong>Click</strong></span> to set the depth : Remove the enclosed cube blocks inside that box, keeping a shell one block thick around the outside.</li>
 <li>Blocks outside the box count as walls, so a box sunk into solid terrain carves out a sealed cave.</li>
 <li><span class="shortcut"><kbd>Alt</kbd> while dragging</span> : Use the initial click point as the <em>centre</em> of the area rather than a corner.</li>
 <li><span class="shortcut"><img class="img-inline mouse-icon" src="./map-editor-images/mouse_right.svg" alt="" width="90" height="102"><strong>Right-Click</strong></span> : Cancel.</li>
 </ul>
 <hr class="my-5 opacity-0">
-<h3 tabindex="-1" class="mt-4 mb-3" id="section-47-img-srcmap-editor-imagestool_7svg--hill">4.7 <img class="img-fluid rounded shadow-sm d-block my-3" alt="" src="./map-editor-images/tool_7.svg" width="36" height="36"> Hill</h3>
+<h3 tabindex="-1" class="mt-4 mb-3" id="section-47-img-srcmap-editor-imagestool_7svg--hill"><span class="h-tile" aria-hidden="true"><img class="img-fluid rounded shadow-sm d-block my-3" alt="" src="./map-editor-images/tool_7.svg" width="36" height="36"></span><span class="h-text">4.7 Hill</span></h3>
 <p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/hill_dropper_example.png" width="553"></p>
 <ul>
 <li><span class="shortcut"><img class="img-inline mouse-icon" src="./map-editor-images/mouse_left.svg" alt="" width="90" height="102"><strong>Click</strong></span> : Drop blocks from above to form organic hills.</li>
 <li><span class="shortcut"><img class="img-inline mouse-icon" src="./map-editor-images/mouse_right.svg" alt="" width="90" height="102"><strong>Right-Click</strong></span> : Subtract hill-shape from terrain.</li>
 <li><span class="shortcut"><kbd>Shift</kbd> (hold)</span> : Keep raising (or subtracting) as you move the cursor.</li>
-<li><span class="shortcut"><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<img class="img-inline mouse-icon" src="./map-editor-images/mouse_wheel.svg" alt="" width="126" height="102"><strong>Wheel</strong></span> : Adjust hill height.</li>
-<li><span class="shortcut"><kbd>Shift</kbd>+<img class="img-inline mouse-icon" src="./map-editor-images/mouse_wheel.svg" alt="" width="126" height="102"><strong>Wheel</strong></span> : Adjust hill width.</li>
+<li><span class="shortcut"><kbd>Ctrl</kbd>+<kbd>Shift</kbd><span class="join"> and </span><img class="img-inline mouse-icon" src="./map-editor-images/mouse_wheel.svg" alt="" width="126" height="102"><strong>Wheel</strong></span> : Adjust hill height.</li>
+<li><span class="shortcut"><kbd>Shift</kbd><span class="join"> and </span><img class="img-inline mouse-icon" src="./map-editor-images/mouse_wheel.svg" alt="" width="126" height="102"><strong>Wheel</strong></span> : Adjust hill width.</li>
 <li>Useful for mountains and natural terrain; can be used to create 'geological'-looking layers.</li>
 </ul>
 <hr class="my-5 opacity-0">
-<h3 tabindex="-1" class="mt-4 mb-3" id="section-48-img-srcmap-editor-imagestool_8svg--sculpt">4.8 <img class="img-fluid rounded shadow-sm d-block my-3" alt="" src="./map-editor-images/tool_8.svg" width="36" height="36"> Sculpt</h3>
+<h3 tabindex="-1" class="mt-4 mb-3" id="section-48-img-srcmap-editor-imagestool_8svg--sculpt"><span class="h-tile" aria-hidden="true"><img class="img-fluid rounded shadow-sm d-block my-3" alt="" src="./map-editor-images/tool_8.svg" width="36" height="36"></span><span class="h-text">4.8 Sculpt</span></h3>
 <p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/sculpt_tool_example.png" width="553"></p>
 <p>Grow or shrink your terrain within a sphere.</p>
 <ul>
 <li><span class="shortcut"><img class="img-inline mouse-icon" src="./map-editor-images/mouse_left.svg" alt="" width="90" height="102"><strong>Click</strong></span> (and drag) : Grow existing terrain inside the sphere.</li>
 <li><span class="shortcut"><img class="img-inline mouse-icon" src="./map-editor-images/mouse_right.svg" alt="" width="90" height="102"><strong>Right-Click</strong></span> (and drag) : Shrink or erase terrain inside the sphere.</li>
 <li><span class="shortcut"><kbd>Ctrl</kbd></span> : Keep it blocky (tends to square-off terrain).</li>
-<li><span class="shortcut"><kbd>Shift</kbd>+<img class="img-inline mouse-icon" src="./map-editor-images/mouse_left.svg" alt="" width="90" height="102"><strong>Click</strong></span> : Grow terrain using the currently selected texture.</li>
-<li><span class="shortcut"><kbd>Shift</kbd>+<img class="img-inline mouse-icon" src="./map-editor-images/mouse_wheel.svg" alt="" width="126" height="102"><strong>Wheel</strong></span> : Adjust brush radius.</li>
+<li><span class="shortcut"><kbd>Shift</kbd><span class="join"> and </span><img class="img-inline mouse-icon" src="./map-editor-images/mouse_left.svg" alt="" width="90" height="102"><strong>Click</strong></span> : Grow terrain using the currently selected texture.</li>
+<li><span class="shortcut"><kbd>Shift</kbd><span class="join"> and </span><img class="img-inline mouse-icon" src="./map-editor-images/mouse_wheel.svg" alt="" width="126" height="102"><strong>Wheel</strong></span> : Adjust brush radius.</li>
 </ul>
 <hr class="my-5 opacity-0">
-<h3 tabindex="-1" class="mt-4 mb-3" id="section-49-img-srcmap-editor-imagestool_9svg--sphere">4.9 <img class="img-fluid rounded shadow-sm d-block my-3" alt="" src="./map-editor-images/tool_9.svg" width="36" height="36"> Sphere</h3>
+<h3 tabindex="-1" class="mt-4 mb-3" id="section-49-img-srcmap-editor-imagestool_9svg--sphere"><span class="h-tile" aria-hidden="true"><img class="img-fluid rounded shadow-sm d-block my-3" alt="" src="./map-editor-images/tool_9.svg" width="36" height="36"></span><span class="h-text">4.9 Sphere</span></h3>
 <p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/sphere_tool_example.png" width="553"></p>
 <ul>
 <li><span class="shortcut"><img class="img-inline mouse-icon" src="./map-editor-images/mouse_left.svg" alt="" width="90" height="102"><strong>Click</strong></span> : Add a sphere.</li>
@@ -601,54 +758,55 @@
 <li><span class="shortcut"><kbd>Shift</kbd> (hold)</span> : Keep adding (or subtracting) spheres as you move the cursor.</li>
 <li><span class="shortcut"><kbd>Ctrl</kbd></span> : Centre sphere on the block you're highlighting.</li>
 <li><span class="shortcut"><img class="img-inline mouse-icon" src="./map-editor-images/mouse_wheel.svg" alt="" width="126" height="102"><strong>Wheel</strong></span> : Choose texture.</li>
-<li><span class="shortcut"><kbd>Shift</kbd>+<img class="img-inline mouse-icon" src="./map-editor-images/mouse_wheel.svg" alt="" width="126" height="102"><strong>Wheel</strong></span> : Change sphere size.</li>
+<li><span class="shortcut"><kbd>Shift</kbd><span class="join"> and </span><img class="img-inline mouse-icon" src="./map-editor-images/mouse_wheel.svg" alt="" width="126" height="102"><strong>Wheel</strong></span> : Change sphere size.</li>
 </ul>
 <hr class="my-5 opacity-0">
-<h3 tabindex="-1" class="mt-4 mb-3" id="section-410-img-srcmap-editor-imagestool_0svg--2d-draw">4.10 <img class="img-fluid rounded shadow-sm d-block my-3" alt="" src="./map-editor-images/tool_0.svg" width="36" height="36"> 2D Draw</h3>
+<h3 tabindex="-1" class="mt-4 mb-3" id="section-410-img-srcmap-editor-imagestool_0svg--2d-draw"><span class="h-tile" aria-hidden="true"><img class="img-fluid rounded shadow-sm d-block my-3" alt="" src="./map-editor-images/tool_0.svg" width="36" height="36"></span><span class="h-text">4.10 2D Draw</span></h3>
 <ul>
 <li><span class="shortcut"><img class="img-inline mouse-icon" src="./map-editor-images/mouse_left.svg" alt="" width="90" height="102"><strong>Click</strong></span> : Add a block where you're clicking.</li>
-<li><span class="shortcut"><kbd>Ctrl</kbd>+<img class="img-inline mouse-icon" src="./map-editor-images/mouse_left.svg" alt="" width="90" height="102"><strong>Click</strong></span> : Add a block on the far side of the plane.</li>
+<li><span class="shortcut"><kbd>Ctrl</kbd><span class="join"> and </span><img class="img-inline mouse-icon" src="./map-editor-images/mouse_left.svg" alt="" width="90" height="102"><strong>Click</strong></span> : Add a block on the far side of the plane.</li>
 <li><span class="shortcut"><img class="img-inline mouse-icon" src="./map-editor-images/mouse_right.svg" alt="" width="90" height="102"><strong>Right-Click</strong></span> : Remove blocks on the plane where you're clicking.</li>
-<li><span class="shortcut"><kbd>Ctrl</kbd>+<img class="img-inline mouse-icon" src="./map-editor-images/mouse_right.svg" alt="" width="90" height="102"><strong>Right-Click</strong></span> : Remove blocks on far side of the plane where you're clicking.</li>
-<li><span class="shortcut"><kbd>Shift</kbd>+<img class="img-inline mouse-icon" src="./map-editor-images/mouse_wheel.svg" alt="" width="126" height="102"><strong>Wheel</strong></span> : Move the plane further/closer to you.</li>
-<li><span class="shortcut"><kbd>Alt</kbd>+<img class="img-inline mouse-icon" src="./map-editor-images/mouse_left.svg" alt="" width="90" height="102"><strong>Click</strong></span> : Sample highlighted block</li>
-<li><span class="shortcut"><kbd>Alt</kbd>+<img class="img-inline mouse-icon" src="./map-editor-images/mouse_right.svg" alt="" width="90" height="102"><strong>Right-Click</strong></span> : Align plane to highlighted face</li>
+<li><span class="shortcut"><kbd>Ctrl</kbd><span class="join"> and </span><img class="img-inline mouse-icon" src="./map-editor-images/mouse_right.svg" alt="" width="90" height="102"><strong>Right-Click</strong></span> : Remove blocks on far side of the plane where you're clicking.</li>
+<li><span class="shortcut"><kbd>Shift</kbd><span class="join"> and </span><img class="img-inline mouse-icon" src="./map-editor-images/mouse_wheel.svg" alt="" width="126" height="102"><strong>Wheel</strong></span> : Move the plane further/closer to you.</li>
+<li><span class="shortcut"><kbd>Alt</kbd><span class="join"> and </span><img class="img-inline mouse-icon" src="./map-editor-images/mouse_left.svg" alt="" width="90" height="102"><strong>Click</strong></span> : Sample highlighted block</li>
+<li><span class="shortcut"><kbd>Alt</kbd><span class="join"> and </span><img class="img-inline mouse-icon" src="./map-editor-images/mouse_right.svg" alt="" width="90" height="102"><strong>Right-Click</strong></span> : Align plane to highlighted face</li>
 </ul>
 <p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/planar_draw_example.png" width="553"></p>
 <hr class="my-5 opacity-0">
-<h2 tabindex="-1" class="mt-5 mb-3 pb-2 border-bottom" id="section-5-entity-mode">5. Entity Mode</h2>
+<h2 tabindex="-1" class="mt-5 mb-3 pb-2 border-bottom" id="section-5-entity-mode"><span class="h-tile h-num" aria-hidden="true">5</span><span class="h-text"><span class="visually-hidden">5. </span>Entity Mode</span></h2>
 <p>Enter Entity Mode by pressing <span class="shortcut"><kbd>Backtick</kbd></span> (<span class="shortcut"><kbd>`</kbd></span>) until the Entity Mode UI appears.</p>
 <p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/entity_mode.png" width="478"></p>
 <p>In Entity Mode there are two tools - the <strong>Object Tool</strong> and the <strong>Trigger-Box Tool</strong>.  Objects are things placed at a single point in the world that you can see, like checkpoints and torches.  Trigger boxes are larger invisible areas that trigger an effect when the player enters them, such as playing a music track or displaying a message.  <span class="shortcut"><kbd>1</kbd></span> and <span class="shortcut"><kbd>2</kbd></span> select them.</p>
-<h3 tabindex="-1" class="mt-4 mb-3" id="section-51-img-srcmap-editor-imagesentity_tool_objectsvg--object-tool">5.1 <img class="img-fluid rounded shadow-sm d-block my-3" alt="" src="./map-editor-images/entity_tool_object.svg" width="36" height="36"> Object Tool</h3>
+<h3 tabindex="-1" class="mt-4 mb-3" id="section-51-img-srcmap-editor-imagesentity_tool_objectsvg--object-tool"><span class="h-tile" aria-hidden="true"><img class="img-fluid rounded shadow-sm d-block my-3" alt="" src="./map-editor-images/entity_tool_object.svg" width="36" height="36"></span><span class="h-text">5.1 Object Tool</span></h3>
 <ul>
 <li><span class="shortcut"><img class="img-inline mouse-icon" src="./map-editor-images/mouse_left.svg" alt="" width="90" height="102"><strong>Click</strong></span> : Place or select an object.</li>
 <li><span class="shortcut"><img class="img-inline mouse-icon" src="./map-editor-images/mouse_right.svg" alt="" width="90" height="102"><strong>Right-Click</strong></span> : Delete an object.</li>
-<li><span class="shortcut"><kbd>Alt</kbd>+<img class="img-inline mouse-icon" src="./map-editor-images/mouse_left.svg" alt="" width="90" height="102"><strong>Click</strong></span> : Sample an object (pick it as the kind of object to place next).</li>
+<li><span class="shortcut"><kbd>Alt</kbd><span class="join"> and </span><img class="img-inline mouse-icon" src="./map-editor-images/mouse_left.svg" alt="" width="90" height="102"><strong>Click</strong></span> : Sample an object (pick it as the kind of object to place next).</li>
 <li><span class="shortcut"><img class="img-inline mouse-icon" src="./map-editor-images/mouse_wheel.svg" alt="" width="126" height="102"><strong>Wheel</strong></span> or <span class="shortcut"><kbd>Shift</kbd>+<kbd>Number Key</kbd></span> : Choose which object to place.</li>
 </ul>
-<h4 tabindex="-1" class="mt-3 mb-2 opacity-75" id="section-511-img-srcmap-editor-imagesobject_1_bonfiresvg--normal-checkpoint">5.1.1 <img class="img-fluid rounded shadow-sm d-block my-3" alt="" src="./map-editor-images/object_1_Bonfire.svg" width="128" height="128"> Normal Checkpoint</h4>
+<h4 tabindex="-1" class="mt-3 mb-2 opacity-75" id="section-511-img-srcmap-editor-imagesobject_1_bonfiresvg--normal-checkpoint"><span class="h-tile" aria-hidden="true"><img class="img-fluid rounded shadow-sm d-block my-3" alt="" src="./map-editor-images/line/object_1_Bonfire.svg" width="128" height="128"></span><span class="h-text">5.1.1 Normal Checkpoint</span></h4>
 <ul>
 <li>Totally normal checkpoint.</li>
 <li>Set the <strong>Name</strong> field (the <code>area_name</code> tag) to control the text shown when the player activates it.</li>
 <li>You will often want to put checkpoints inside music trigger-boxes so that if a player resumes a saved game, the correct music will play.</li>
 </ul>
-<h4 tabindex="-1" class="mt-3 mb-2 opacity-75" id="section-512-img-srcmap-editor-imagesobject_2_bonfire_startsvg--start-checkpoint">5.1.2 <img class="img-fluid rounded shadow-sm d-block my-3" alt="" src="./map-editor-images/object_2_Bonfire_Start.svg" width="128" height="128"> Start-Checkpoint</h4>
+<h4 tabindex="-1" class="mt-3 mb-2 opacity-75" id="section-512-img-srcmap-editor-imagesobject_2_bonfire_startsvg--start-checkpoint"><span class="h-tile" aria-hidden="true"><img class="img-fluid rounded shadow-sm d-block my-3" alt="" src="./map-editor-images/line/object_2_Bonfire_Start.svg" width="128" height="128"></span><span class="h-text">5.1.2 Start-Checkpoint</span></h4>
+<blockquote class="blockquote border-start border-3 ps-3 py-1 my-3 callout callout-info" role="note"><p><span class="callout-label">Note</span> Every map <em>must</em> include a <strong>Start-Checkpoint</strong>.</p>
+</blockquote>
 <ul>
-<li>Every map <em>must</em> include a <strong>Start-Checkpoint</strong>.</li>
 <li>This is where the player spawns in custom maps; it looks just like a normal checkpoint.</li>
 <li>The <strong>Name</strong> field (the <code>area_name</code> tag) controls the text shown when the player starts a new game on your map.  The default value is <code>"CUSTOM_LEVEL_LETS_GO"</code>, a localisation tag that amounts to "Let's go!" in English, but you can change it to whatever message you like.</li>
 </ul>
 <p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/start_checkpoint.png" width="475"></p>
-<h4 tabindex="-1" class="mt-3 mb-2 opacity-75" id="section-513-img-srcmap-editor-imagesobject_3_bonfire_endsvg--end-checkpoint">5.1.3 <img class="img-fluid rounded shadow-sm d-block my-3" alt="" src="./map-editor-images/object_3_Bonfire_End.svg" width="128" height="128"> End-Checkpoint</h4>
+<h4 tabindex="-1" class="mt-3 mb-2 opacity-75" id="section-513-img-srcmap-editor-imagesobject_3_bonfire_endsvg--end-checkpoint"><span class="h-tile" aria-hidden="true"><img class="img-fluid rounded shadow-sm d-block my-3" alt="" src="./map-editor-images/line/object_3_Bonfire_End.svg" width="128" height="128"></span><span class="h-text">5.1.3 End-Checkpoint</span></h4>
 <ul>
 <li>This behaves like a normal checkpoint (only the main game's Nest can trigger the start/end cutscenes).</li>
 <li>The default <code>area_name</code> tag value is <code>"CUSTOM_LEVEL_YOU_MADE_IT"</code>, which localises to "You made it!" in English - but you can put whatever you like in there.</li>
 </ul>
-<h4 tabindex="-1" class="mt-3 mb-2 opacity-75" id="section-514-img-srcmap-editor-imagesobject_4_torchsvg--torch">5.1.4 <img class="img-fluid rounded shadow-sm d-block my-3" alt="" src="./map-editor-images/object_4_Torch.svg" width="128" height="128"> Torch</h4>
+<h4 tabindex="-1" class="mt-3 mb-2 opacity-75" id="section-514-img-srcmap-editor-imagesobject_4_torchsvg--torch"><span class="h-tile" aria-hidden="true"><img class="img-fluid rounded shadow-sm d-block my-3" alt="" src="./map-editor-images/line/object_4_Torch.svg" width="128" height="128"></span><span class="h-text">5.1.4 Torch</span></h4>
 <p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/object_torch_example.png" width="375"></p>
 <p>Provides a point of light.  Handy when things are getting a bit dark - but don't overdo it, as each torch adds a light source and the performance cost can add up.</p>
-<h4 tabindex="-1" class="mt-3 mb-2 opacity-75" id="section-515-img-srcmap-editor-imagesobject_5_starsvg--star">5.1.5 <img class="img-fluid rounded shadow-sm d-block my-3" alt="" src="./map-editor-images/object_5_Star.svg" width="128" height="128"> Star</h4>
+<h4 tabindex="-1" class="mt-3 mb-2 opacity-75" id="section-515-img-srcmap-editor-imagesobject_5_starsvg--star"><span class="h-tile" aria-hidden="true"><img class="img-fluid rounded shadow-sm d-block my-3" alt="" src="./map-editor-images/line/object_5_Star.svg" width="128" height="128"></span><span class="h-text">5.1.5 Star</span></h4>
 <p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/star_props.png" width="475"></p>
 <ul>
 <li><p>Makes a nice sound when collected, and displays a running count of stars collected vs. the total number of stars on the map.</p></li>
@@ -656,25 +814,25 @@
 <li><p>Not used in the main game.</p></li>
 </ul>
 <p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/star_menu.png" width="329"></p>
-<h4 tabindex="-1" class="mt-3 mb-2 opacity-75" id="section-516-img-srcmap-editor-imagesobject_6_chairsvg--chair">5.1.6 <img class="img-fluid rounded shadow-sm d-block my-3" alt="" src="./map-editor-images/object_6_Chair.svg" width="128" height="128"> Chair</h4>
+<h4 tabindex="-1" class="mt-3 mb-2 opacity-75" id="section-516-img-srcmap-editor-imagesobject_6_chairsvg--chair"><span class="h-tile" aria-hidden="true"><img class="img-fluid rounded shadow-sm d-block my-3" alt="" src="./map-editor-images/line/object_6_Chair.svg" width="128" height="128"></span><span class="h-text">5.1.6 Chair</span></h4>
 <p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/object_chair_example.png" width="375"></p>
 <ul>
 <li>Inert geometric object.  </li>
 <li>Not used in the main game.</li>
 </ul>
-<h4 tabindex="-1" class="mt-3 mb-2 opacity-75" id="section-517-img-srcmap-editor-imagesobject_7_tablesvg--table">5.1.7 <img class="img-fluid rounded shadow-sm d-block my-3" alt="" src="./map-editor-images/object_7_Table.svg" width="128" height="128"> Table</h4>
+<h4 tabindex="-1" class="mt-3 mb-2 opacity-75" id="section-517-img-srcmap-editor-imagesobject_7_tablesvg--table"><span class="h-tile" aria-hidden="true"><img class="img-fluid rounded shadow-sm d-block my-3" alt="" src="./map-editor-images/line/object_7_Table.svg" width="128" height="128"></span><span class="h-text">5.1.7 Table</span></h4>
 <p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/object_table_example.png" width="375"></p>
 <ul>
 <li>Inert geometric object.  </li>
 <li>Not used in the main game.</li>
 </ul>
-<h4 tabindex="-1" class="mt-3 mb-2 opacity-75" id="section-518-img-srcmap-editor-imagesobject_8_bananasvg--banana">5.1.8 <img class="img-fluid rounded shadow-sm d-block my-3" alt="" src="./map-editor-images/object_8_Banana.svg" width="128" height="128"> Banana</h4>
+<h4 tabindex="-1" class="mt-3 mb-2 opacity-75" id="section-518-img-srcmap-editor-imagesobject_8_bananasvg--banana"><span class="h-tile" aria-hidden="true"><img class="img-fluid rounded shadow-sm d-block my-3" alt="" src="./map-editor-images/line/object_8_Banana.svg" width="128" height="128"></span><span class="h-text">5.1.8 Banana</span></h4>
 <p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/object_banana_example.png" width="375"></p>
 <ul>
 <li>Inert geometric object.  </li>
 <li>Not used in the main game.</li>
 </ul>
-<h4 tabindex="-1" class="mt-3 mb-2 opacity-75" id="section-519-img-srcmap-editor-imagesobject_9_nestsvg--nest">5.1.9 <img class="img-fluid rounded shadow-sm d-block my-3" alt="" src="./map-editor-images/object_9_Nest.svg" width="128" height="128"> Nest</h4>
+<h4 tabindex="-1" class="mt-3 mb-2 opacity-75" id="section-519-img-srcmap-editor-imagesobject_9_nestsvg--nest"><span class="h-tile" aria-hidden="true"><img class="img-fluid rounded shadow-sm d-block my-3" alt="" src="./map-editor-images/line/object_9_Nest.svg" width="128" height="128"></span><span class="h-text">5.1.9 Nest</span></h4>
 <p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/object_nest_example.png" width="375"></p>
 <ul>
 <li>The nest from the main game.</li>
@@ -682,7 +840,7 @@
 </ul>
 <h4 tabindex="-1" class="mt-3 mb-2 opacity-75" id="section-5110-other-objects">5.1.10 Other Objects</h4>
 <p>There are a few other objects in the main game map (such as the spawn-only checkpoint), but they have unusual or hard-coded behaviour tied to the main game, so they aren't in the palette. It's fine to leave them in place if you're modding the main game map, just be careful to not modify these objects or their surrounding geometry.</p>
-<h3 tabindex="-1" class="mt-4 mb-3" id="section-52-img-srcmap-editor-imagesentity_tool_triggersvg--trigger-box-tool">5.2 <img class="img-fluid rounded shadow-sm d-block my-3" alt="" src="./map-editor-images/entity_tool_trigger.svg" width="36" height="36"> Trigger-Box Tool</h3>
+<h3 tabindex="-1" class="mt-4 mb-3" id="section-52-img-srcmap-editor-imagesentity_tool_triggersvg--trigger-box-tool"><span class="h-tile" aria-hidden="true"><img class="img-fluid rounded shadow-sm d-block my-3" alt="" src="./map-editor-images/entity_tool_trigger.svg" width="36" height="36"></span><span class="h-text">5.2 Trigger-Box Tool</span></h3>
 <ul>
 <li>Trigger boxes are big invisible areas that do something (e.g. playing music or displaying a message) when the player enters them.</li>
 <li>The controls are the same as for the Object Tool; <span class="shortcut"><strong>Wheel</strong></span> or <span class="shortcut"><kbd>Shift</kbd>+<kbd>Number Key</kbd></span> choose which kind of trigger box to place.</li>
@@ -699,7 +857,7 @@
 <ul>
 <li>Note that each trigger box has a 1×1×1 'core' that you click to select it. (Technically this core doesn't need to be inside the trigger area, but…why would you do that?)</li>
 </ul>
-<h4 tabindex="-1" class="mt-3 mb-2 opacity-75" id="section-521-img-srcmap-editor-imagestrigger_1_musicsvg--music">5.2.1 <img class="img-fluid rounded shadow-sm d-block my-3" alt="" src="./map-editor-images/trigger_1_music.svg" width="36" height="36"> music</h4>
+<h4 tabindex="-1" class="mt-3 mb-2 opacity-75" id="section-521-img-srcmap-editor-imagestrigger_1_musicsvg--music"><span class="h-tile" aria-hidden="true"><img class="img-fluid rounded shadow-sm d-block my-3" alt="" src="./map-editor-images/line/trigger_1_music.svg" width="36" height="36"></span><span class="h-text">5.2.1 music</span></h4>
 <ul>
 <li>Starts playing a music track when the player enters.</li>
 <li>Usually you want to have a music trigger at each checkpoint so that the correct music plays when a player resumes a saved game.</li>
@@ -709,11 +867,11 @@
 <li>You can't add your own music files, but in addition to the main OST there are several hours of bonus tracks included for use in custom maps.</li>
 <li>The OST is <a href="https://store.steampowered.com/app/4217410/Oeuvre_Oeuf_Soundtrack/">here</a> if you want to listen to it outside the game.</li>
 </ul>
-<h4 tabindex="-1" class="mt-3 mb-2 opacity-75" id="section-522-img-srcmap-editor-imagestrigger_2_arealabelsvg--arealabel">5.2.2 <img class="img-fluid rounded shadow-sm d-block my-3" alt="" src="./map-editor-images/trigger_2_arealabel.svg" width="36" height="36"> arealabel</h4>
+<h4 tabindex="-1" class="mt-3 mb-2 opacity-75" id="section-522-img-srcmap-editor-imagestrigger_2_arealabelsvg--arealabel"><span class="h-tile" aria-hidden="true"><img class="img-fluid rounded shadow-sm d-block my-3" alt="" src="./map-editor-images/line/trigger_2_arealabel.svg" width="36" height="36"></span><span class="h-text">5.2.2 arealabel</span></h4>
 <p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/arealabel_props.png" width="396"></p>
 <p>'arealabel' trigger boxes display a message on screen when the player enters, independently of checkpoints.  If its <strong>Name</strong> (<code>area_name</code>) matches a built-in location name (case-sensitive), the game localises it - e.g. entering <code>FOREST</code> displays "Forest of Branching Paths" in English.  Otherwise it just displays your text verbatim, so entering <code>Hello, world!</code> displays "Hello, world!".</p>
 <p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/arealabel2.png" width="476"></p>
-<h4 tabindex="-1" class="mt-3 mb-2 opacity-75" id="section-523-img-srcmap-editor-imagestrigger_3_killboxsvg--killbox">5.2.3 <img class="img-fluid rounded shadow-sm d-block my-3" alt="" src="./map-editor-images/trigger_3_killbox.svg" width="36" height="36"> KILLBOX</h4>
+<h4 tabindex="-1" class="mt-3 mb-2 opacity-75" id="section-523-img-srcmap-editor-imagestrigger_3_killboxsvg--killbox"><span class="h-tile" aria-hidden="true"><img class="img-fluid rounded shadow-sm d-block my-3" alt="" src="./map-editor-images/line/trigger_3_killbox.svg" width="36" height="36"></span><span class="h-text">5.2.3 KILLBOX</span></h4>
 <p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/killbox.png" width="402"></p>
 <ul>
 <li>If you enter a killbox, you are internally marked as <em>doomed</em>, and will oof the next time you touch horizontal-ish map geometry (ramps included).</li>
@@ -721,13 +879,13 @@
 <li>While <em>doomed</em>, you cannot trigger checkpoints until you restart.</li>
 <li>For want of a better place to put this information: there's a global killplane below y=-51.  Also, because the fog gets thicker when you go down, <em>nothing</em> below this level will be visible.  There's no reason to have any geometry below y=-51.</li>
 </ul>
-<h4 tabindex="-1" class="mt-3 mb-2 opacity-75" id="section-524-img-srcmap-editor-imagestrigger_4_torchsvg--torch">5.2.4 <img class="img-fluid rounded shadow-sm d-block my-3" alt="" src="./map-editor-images/trigger_4_torch.svg" width="36" height="36"> TORCH</h4>
+<h4 tabindex="-1" class="mt-3 mb-2 opacity-75" id="section-524-img-srcmap-editor-imagestrigger_4_torchsvg--torch"><span class="h-tile" aria-hidden="true"><img class="img-fluid rounded shadow-sm d-block my-3" alt="" src="./map-editor-images/line/trigger_4_torch.svg" width="36" height="36"></span><span class="h-text">5.2.4 TORCH</span></h4>
 <p>While inside this trigger box, the player emits light.  Handy for subtly brightening dark areas without placing lots of torch props (which can be expensive to render and visually distracting).</p>
 <p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/torchbox.png" width="418"></p>
-<h4 tabindex="-1" class="mt-3 mb-2 opacity-75" id="section-525-img-srcmap-editor-imagestrigger_5_advancedsvg--generic-trigger-boxes">5.2.5 <img class="img-fluid rounded shadow-sm d-block my-3" alt="" src="./map-editor-images/trigger_5_advanced.svg" width="36" height="36"> Generic Trigger-Boxes</h4>
+<h4 tabindex="-1" class="mt-3 mb-2 opacity-75" id="section-525-img-srcmap-editor-imagestrigger_5_advancedsvg--generic"><span class="h-tile" aria-hidden="true"><img class="img-fluid rounded shadow-sm d-block my-3" alt="" src="./map-editor-images/line/trigger_5_advanced.svg" width="36" height="36"></span><span class="h-text">5.2.5 Generic</span></h4>
 <p>There are a few other really finicky trigger-box types - what they do is specified by their meta tags.  I don't think they're appropriate for general use, so I won't document them.  If you're modding the main game map it's fine to leave them in place - but pls don't use them in maps you're making from scratch, as they may behave unexpectedly.</p>
 <hr class="my-5 opacity-0">
-<h2 tabindex="-1" class="mt-5 mb-3 pb-2 border-bottom" id="section-6-layer-mode">6. Layer Mode</h2>
+<h2 tabindex="-1" class="mt-5 mb-3 pb-2 border-bottom" id="section-6-layer-mode"><span class="h-tile h-num" aria-hidden="true">6</span><span class="h-text"><span class="visually-hidden">6. </span>Layer Mode</span></h2>
 <p>Cycle to Layer Mode with <span class="shortcut"><kbd>Backtick</kbd></span> (<span class="shortcut"><kbd>`</kbd></span>).</p>
 <ul>
 <li>It can be useful to divide large maps into layers.</li>
@@ -736,30 +894,31 @@
 </ul>
 <h3 tabindex="-1" class="mt-4 mb-3" id="section-61-layer-visibility">6.1 Layer Visibility</h3>
 <ul>
-<li><span class="shortcut"><kbd>Shift</kbd>+<img class="img-inline mouse-icon" src="./map-editor-images/mouse_left.svg" alt="" width="90" height="102"><strong>Click</strong></span> a layer's visibility button to hide all other layers; <span class="shortcut"><kbd>Shift</kbd>+<strong>Click</strong></span> again to restore them.</li>
+<li><span class="shortcut"><kbd>Shift</kbd><span class="join"> and </span><img class="img-inline mouse-icon" src="./map-editor-images/mouse_left.svg" alt="" width="90" height="102"><strong>Click</strong></span> a layer's visibility button to hide all other layers; <span class="shortcut"><kbd>Shift</kbd><span class="join"> and </span><strong>Click</strong></span> again to restore them.</li>
 </ul>
 <p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/layer_visibility_example.png" width="650"></p>
 <hr class="my-5 opacity-0">
 <h3 tabindex="-1" class="mt-4 mb-3" id="section-62-layer-tools">6.2 Layer Tools</h3>
-<h4 tabindex="-1" class="mt-3 mb-2 opacity-75" id="section-621-img-srcmap-editor-imageslayer_transform_tool_iconsvg--layer-transform-tool">6.2.1 <img class="img-fluid rounded shadow-sm d-block my-3" alt="" src="./map-editor-images/layer_transform_tool_icon.svg" width="36" height="36"> Layer Transform Tool</h4>
+<h4 tabindex="-1" class="mt-3 mb-2 opacity-75" id="section-621-img-srcmap-editor-imageslayer_transform_tool_iconsvg--layer-transform"><span class="h-tile" aria-hidden="true"><img class="img-fluid rounded shadow-sm d-block my-3" alt="" src="./map-editor-images/layer_transform_tool_icon.svg" width="36" height="36"></span><span class="h-text">6.2.1 Layer Transform</span></h4>
 <p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/layer_transform_example.png" width="650"></p>
 <ul>
 <li><span class="shortcut"><img class="img-inline mouse-icon" src="./map-editor-images/mouse_left.svg" alt="" width="90" height="102"><strong>Click</strong></span> : Select a layer.</li>
 <li>You can then <strong>move</strong>, <strong>rotate</strong>, or <strong>mirror/flip</strong> the entire layer using the gizmo.</li>
-<li>Note : only one block can occupy a given position - if you drag one layer to overlap another, blocks are going to get deleted from one of the layers!</li>
 </ul>
+<blockquote class="blockquote border-start border-3 ps-3 py-1 my-3 callout callout-info" role="note"><p><span class="callout-label">Note</span> Only one block can occupy a given position - if you drag one layer to overlap another, blocks are going to get deleted from one of the layers!</p>
+</blockquote>
 <hr class="my-5 opacity-0">
-<h4 tabindex="-1" class="mt-3 mb-2 opacity-75" id="section-622-img-srcmap-editor-imageslayer_assignment_tool_iconsvg--layer-assignment-tool">6.2.2 <img class="img-fluid rounded shadow-sm d-block my-3" alt="" src="./map-editor-images/layer_assignment_tool_icon.svg" width="36" height="36"> Layer Assignment Tool</h4>
+<h4 tabindex="-1" class="mt-3 mb-2 opacity-75" id="section-622-img-srcmap-editor-imageslayer_assignment_tool_iconsvg--layer-assignment"><span class="h-tile" aria-hidden="true"><img class="img-fluid rounded shadow-sm d-block my-3" alt="" src="./map-editor-images/layer_assignment_tool_icon.svg" width="36" height="36"></span><span class="h-text">6.2.2 Layer Assignment</span></h4>
 <ul>
-<li><span class="shortcut"><img class="img-inline mouse-icon" src="./map-editor-images/mouse_left.svg" alt="" width="90" height="102"><strong>Click</strong>+<strong>Drag</strong></span> to define an area, then move your mouse and <span class="shortcut"><strong>Click</strong></span> to set the depth : All visible blocks and entities inside get assigned to the currently selected layer.</li>
+<li><span class="shortcut"><img class="img-inline mouse-icon" src="./map-editor-images/mouse_left.svg" alt="" width="90" height="102"><strong>Click</strong><span class="join"> and </span><strong>Drag</strong></span> to define an area, then move your mouse and <span class="shortcut"><strong>Click</strong></span> to set the depth : All visible blocks and entities inside get assigned to the currently selected layer.</li>
 <li><span class="shortcut"><img class="img-inline mouse-icon" src="./map-editor-images/mouse_left.svg" alt="" width="90" height="102"><strong>Click</strong></span> an entity : Assign it to the currently selected layer.</li>
-<li><span class="shortcut"><kbd>Alt</kbd>+<img class="img-inline mouse-icon" src="./map-editor-images/mouse_left.svg" alt="" width="90" height="102"><strong>Click</strong></span> : Select the highlighted layer.</li>
+<li><span class="shortcut"><kbd>Alt</kbd><span class="join"> and </span><img class="img-inline mouse-icon" src="./map-editor-images/mouse_left.svg" alt="" width="90" height="102"><strong>Click</strong></span> : Select the highlighted layer.</li>
 <li><span class="shortcut"><kbd>Alt</kbd> while dragging</span> : Use the initial click point as the <em>centre</em> of the area rather than a corner.</li>
 <li>Useful for correcting blocks assigned to the wrong layer.</li>
 </ul>
 <p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/layer_assignment_example.png" width="650"></p>
 <hr class="my-5 opacity-0">
-<h3 tabindex="-1" class="mt-4 mb-3" id="section-63-img-srcmap-editor-imageslayer_clipboardsvg--clipboard">6.3 <img class="img-fluid rounded shadow-sm d-block my-3" alt="" src="./map-editor-images/layer_clipboard.svg" width="36" height="36"> Clipboard</h3>
+<h3 tabindex="-1" class="mt-4 mb-3" id="section-63-img-srcmap-editor-imageslayer_clipboardsvg--clipboard"><span class="h-tile" aria-hidden="true"><img class="img-fluid rounded shadow-sm d-block my-3" alt="" src="./map-editor-images/layer_clipboard.svg" width="36" height="36"></span><span class="h-text">6.3 Clipboard</span></h3>
 <ul>
 <li><span class="shortcut"><img class="img-inline mouse-icon" src="./map-editor-images/mouse_left.svg" alt="" width="90" height="102"><strong>Click</strong></span> on a layer to copy it to the clipboard.</li>
 <li><span class="shortcut"><img class="img-inline mouse-icon" src="./map-editor-images/mouse_right.svg" alt="" width="90" height="102"><strong>Right-Click</strong></span> : Paste the clipboard contents in the indicated position (shown as a purple box).</li>
@@ -767,21 +926,21 @@
 </ul>
 <p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="Layer copy and paste example" src="./map-editor-images/layer_copy_paste_example.png" width="650"></p>
 <hr class="my-5 opacity-0">
-<h2 tabindex="-1" class="mt-5 mb-3 pb-2 border-bottom" id="section-7-layer-list">7. Layer List</h2>
+<h2 tabindex="-1" class="mt-5 mb-3 pb-2 border-bottom" id="section-7-layer-list"><span class="h-tile h-num" aria-hidden="true">7</span><span class="h-text"><span class="visually-hidden">7. </span>Layer List</span></h2>
 <p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="Layer list" src="./map-editor-images/layer_list_view.png" width="425"></p>
 <p>To the right-hand side of the screen you have the layer list, with the following buttons :</p>
-<h3 tabindex="-1" class="mt-4 mb-3" id="section-71-img-srcmap-editor-imageslayer_item_gripsvg--drag-handle">7.1 <img class="img-fluid rounded shadow-sm d-block my-3" alt="" src="./map-editor-images/layer_item_grip.svg" width="15" height="18"> Drag Handle</h3>
+<h3 tabindex="-1" class="mt-4 mb-3" id="section-71-img-srcmap-editor-imageslayer_item_gripsvg--drag-handle"><span class="h-tile" aria-hidden="true"><img class="img-fluid rounded shadow-sm d-block my-3" alt="" src="./map-editor-images/layer_item_grip.svg" width="15" height="18"></span><span class="h-text">7.1 Drag Handle</span></h3>
 <p>Drag a layer by its handle to rearrange layers.</p>
-<h3 tabindex="-1" class="mt-4 mb-3" id="section-72-img-srcmap-editor-imageslayer_item_visiblesvg--visibility">7.2 <img class="img-fluid rounded shadow-sm d-block my-3" alt="" src="./map-editor-images/layer_item_visible.svg" width="15" height="15"> Visibility</h3>
+<h3 tabindex="-1" class="mt-4 mb-3" id="section-72-img-srcmap-editor-imageslayer_item_visiblesvg--visibility"><span class="h-tile" aria-hidden="true"><img class="img-fluid rounded shadow-sm d-block my-3" alt="" src="./map-editor-images/layer_item_visible.svg" width="15" height="15"></span><span class="h-text">7.2 Visibility</span></h3>
 <p>Toggles the visibility of the layer (visible : <img alt="" class="img-inline" src="./map-editor-images/layer_item_visible_black.svg" width="15" height="15">, hidden : <img alt="" class="img-inline" src="./map-editor-images/layer_item_invisible_black.svg" width="15" height="15">).</p>
-<h3 tabindex="-1" class="mt-4 mb-3" id="section-73-img-srcmap-editor-imageslayer_item_merge_upsvg--merge-up">7.3 <img class="img-fluid rounded shadow-sm d-block my-3" alt="" src="./map-editor-images/layer_item_merge_up.svg" width="15" height="15"> Merge Up</h3>
+<h3 tabindex="-1" class="mt-4 mb-3" id="section-73-img-srcmap-editor-imageslayer_item_merge_upsvg--merge-up"><span class="h-tile" aria-hidden="true"><img class="img-fluid rounded shadow-sm d-block my-3" alt="" src="./map-editor-images/layer_item_merge_up.svg" width="15" height="15"></span><span class="h-text">7.3 Merge Up</span></h3>
 <p>Merges the layer into the layer above it.</p>
-<h3 tabindex="-1" class="mt-4 mb-3" id="section-74-img-srcmap-editor-imageslayer_item_deletesvg--delete">7.4 <img class="img-fluid rounded shadow-sm d-block my-3" alt="" src="./map-editor-images/layer_item_delete.svg" width="15" height="15"> Delete</h3>
+<h3 tabindex="-1" class="mt-4 mb-3" id="section-74-img-srcmap-editor-imageslayer_item_deletesvg--delete"><span class="h-tile" aria-hidden="true"><img class="img-fluid rounded shadow-sm d-block my-3" alt="" src="./map-editor-images/layer_item_delete.svg" width="15" height="15"></span><span class="h-text">7.4 Delete</span></h3>
 <p>Deletes the layer.</p>
-<h3 tabindex="-1" class="mt-4 mb-3" id="section-75-img-srcmap-editor-imageslayer_item_newsvg--new-layer">7.5 <img class="img-fluid rounded shadow-sm d-block my-3" alt="" src="./map-editor-images/layer_item_new.svg" width="16" height="16"> New Layer</h3>
+<h3 tabindex="-1" class="mt-4 mb-3" id="section-75-img-srcmap-editor-imageslayer_item_newsvg--new-layer"><span class="h-tile" aria-hidden="true"><img class="img-fluid rounded shadow-sm d-block my-3" alt="" src="./map-editor-images/layer_item_new.svg" width="16" height="16"></span><span class="h-text">7.5 New Layer</span></h3>
 <p>Creates a new empty layer.</p>
 <hr class="my-5 opacity-0">
-<h2 tabindex="-1" class="mt-5 mb-3 pb-2 border-bottom" id="section-8-img-srcmap-editor-imagesupload_iconsvg--upload-to-steam-workshop">8. <img class="img-fluid rounded shadow-sm d-block my-3" alt="" src="./map-editor-images/upload_icon.svg" width="36" height="36"> Upload to Steam Workshop</h2>
+<h2 tabindex="-1" class="mt-5 mb-3 pb-2 border-bottom" id="section-8-img-srcmap-editor-imagesupload_iconsvg--upload-to-steam-workshop"><span class="h-tile" aria-hidden="true"><img class="img-fluid rounded shadow-sm d-block my-3" alt="" src="./map-editor-images/upload_icon.svg" width="36" height="36"></span><span class="h-text">8. Upload to Steam Workshop</span></h2>
 <p>When you're happy with your map and want to share it on the Steam Workshop, click the Steam button in the toolbar :</p>
 <p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="Steam Workshop upload form" src="./map-editor-images/workshop_upload.png" width="2188"></p>
 <p>After a moment, you'll see a confirmation message and the Steam Workshop page for your map will open automatically.</p>
@@ -792,18 +951,19 @@
 <p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="Custom Maps list" src="./map-editor-images/custom_level_list.png" width="478"></p>
 <p>I have recently added a bunch of <em>tags</em> to Steam Workshop, which are displayed in the in-game browser.  They indicate difficulty, and also if I've given it my personal stamp of approval.  This is a bit dictatorial, but it's genuinely important to me that new players can have fun browsing the workshop and easily find things they might like.  They are set by me right now.  I try to play all games and rate them as easy/medium/hard if I can complete them.  If you think I've overlooked your game, drop me a line at <a href="mailto:analytic@gmail.com">analytic@gmail.com</a> - I love playing Oeuf maps!</p>
 <hr class="my-5 opacity-0">
-<h2 tabindex="-1" class="mt-5 mb-3 pb-2 border-bottom" id="section-9-img-srcmap-editor-imagesmp_mapediting_iconpng--multiplayer-map-editor">9. <img class="img-fluid rounded shadow-sm d-block my-3" alt="" src="./map-editor-images/mp_mapediting_icon.png" width="15" height="13"> Multiplayer Map Editor</h2>
+<h2 tabindex="-1" class="mt-5 mb-3 pb-2 border-bottom" id="section-9-img-srcmap-editor-imagesmp_mapediting_iconpng--multiplayer-map-editor"><span class="h-tile" aria-hidden="true"><img class="img-fluid rounded shadow-sm d-block my-3" alt="" src="./map-editor-images/mp_mapediting_icon.png" width="15" height="13"></span><span class="h-text">9. Multiplayer Map Editor</span></h2>
 <h3 tabindex="-1" class="mt-4 mb-3" id="section-91-setting-up-a-co-op-editing-session">9.1 Setting up a Co-op Editing Session</h3>
 <p>You can edit maps with your friends by turning on co-op editing when you are setting up to host a game.</p>
 <p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="Co-op editing settings" src="./map-editor-images/coop_editing.png" width="415"></p>
 <p>In the multiplayer lobby list, games that have co-op editing enabled have a <img alt="" src="./map-editor-images/mp_mapediting.png" class="img-inline" width="29" height="26"> icon next to them.</p>
 <p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="Multiplayer editor permissions" src="./map-editor-images/mp_editor_permissions_list.png" width="241"></p>
 <p>You can set whether new players have permission to edit the map by default on this menu, and you can change it from the pause menu in-game.  You can also toggle editing permission on and off for specific players there.</p>
-<p>Note: Certain operations are restricted in co-op editing mode.  These are operations that would potentially modify large chunks of the map.  So layer operations, flood-fill etc.  If you need to do these, ask the host to do them for you. 🙃</p>
+<blockquote class="blockquote border-start border-3 ps-3 py-1 my-3 callout callout-info" role="note"><p><span class="callout-label">Note</span> Certain operations are restricted in co-op editing mode.  These are operations that would potentially modify large chunks of the map.  So layer operations, flood-fill etc.  If you need to do these, ask the host to do them for you. 🙃</p>
+</blockquote>
 <h3 tabindex="-1" class="mt-4 mb-3" id="section-92-banning-users-from-editing">9.2 Banning Users from Editing</h3>
 <p>You can also block Steam users from editing the map based on their Steam IDs - this will not prevent them from joining/playing the map, but they won't be able to edit it.  To find a user's Steam ID, look at the log files  (open the maps folder, go up, then go into the logs folder).  You'll see some text like <em>"[Network] Player STEAM_ID has username USERNAME"</em>.  Then, in the directory above logs, there'll be a file called <code>banned_steam_users.txt</code> where you can add a line <strong>STEAM_ID|REASON</strong> - banned users will be told the reason if they try to edit a map.  You need to restart the game after this to reload the ban list.</p>
 <hr class="my-5 opacity-0">
-<h2 tabindex="-1" class="mt-5 mb-3 pb-2 border-bottom" id="section-10-comparing-different-versions-of-a-map">10. Comparing different versions of a map</h2>
+<h2 tabindex="-1" class="mt-5 mb-3 pb-2 border-bottom" id="section-10-comparing-different-versions-of-a-map"><span class="h-tile h-num" aria-hidden="true">10</span><span class="h-text"><span class="visually-hidden">10. </span>Comparing different versions of a map</span></h2>
 <p>In the map editor, if you press <span class="shortcut"><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>D</kbd></span>, a lovely little menu will pop up:</p>
 <p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="Map comparison" src="./map-editor-images/diff.png" width="207"></p>
 <p>This looks at what things (blocks or entities) are different between the two maps, and separates them into layers so you can easily see what changed:</p>
@@ -811,7 +971,7 @@
 <p>By hiding/showing layers you can get a pretty great overview of what the differences are.</p>
 <p>This is a <em>very</em> useful tool when you've left a multiplayer editing server open overnight and want to know what happened while you were away.</p>
 <hr class="my-5 opacity-0">
-<h2 tabindex="-1" class="mt-5 mb-3 pb-2 border-bottom" id="section-11-map-file-format-specs">11. Map file format specs</h2>
+<h2 tabindex="-1" class="mt-5 mb-3 pb-2 border-bottom" id="section-11-map-file-format-specs"><span class="h-tile h-num" aria-hidden="true">11</span><span class="h-text"><span class="visually-hidden">11. </span>Map file format specs</span></h2>
 <p>Oeuf stores its maps as plaintext, with space-separated values.  Each line starts with a token which indicates the type of data stored, and then information about it.  This is not a comprehensive spec, the idea is to give you enough to get started parsing/generating if you want to.  Happy to explain more if you want to know more.  Just drop me an email.</p>
 <ul>
 <li><strong>version</strong> VERSION_NUMBER<ul>
@@ -849,7 +1009,7 @@
 <li><strong>size_WUN</strong> : west/up/north extents (x y z)</li></ul></li></ul></li>
 </ul>
 <hr class="my-5 opacity-0">
-<h2 tabindex="-1" class="mt-5 mb-3 pb-2 border-bottom" id="section-12-feedback-and-bug-reports">12. Feedback and Bug Reports</h2>
+<h2 tabindex="-1" class="mt-5 mb-3 pb-2 border-bottom" id="section-12-feedback-and-bug-reports"><span class="h-tile h-num" aria-hidden="true">12</span><span class="h-text"><span class="visually-hidden">12. </span>Feedback and Bug Reports</span></h2>
 <p>Does this make sense? I hope so! Feedback and bug reports are always welcome - e-mail me at <a href="mailto:analytic@gmail.com">analytic@gmail.com</a>.</p></main>
     </div>
   </div>

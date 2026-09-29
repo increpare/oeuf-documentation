@@ -130,7 +130,9 @@ The block tools are laid out in the top toolbar in the order below; **1**–**0*
 - **Ctrl+Shift+Wheel** : Cycle through the shapes (with the Basic, Plane and 2D Draw tools).
 - **R** : Rotate selected shape.
 - **V** : Flip vertically.
-- Do *not* use the staircase block anywhere the player might roll across it - it doesn't play well with egg physics.
+
+> [!NOTE]
+> Do *not* use the staircase block anywhere the player might roll across it - it doesn't play well with egg physics.
 
 ### 4.2 <img src="./map-editor-images/tool_2.svg" /> Plane
 
@@ -281,7 +283,9 @@ In Entity Mode there are two tools - the **Object Tool** and the **Trigger-Box T
 
 #### 5.1.2 <img src="./map-editor-images/object_2_Bonfire_Start.svg" /> Start-Checkpoint
 
-- Every map *must* include a **Start-Checkpoint**.
+> [!NOTE]
+> Every map *must* include a **Start-Checkpoint**.
+
 - This is where the player spawns in custom maps; it looks just like a normal checkpoint.
 - The **Name** field (the `area_name` tag) controls the text shown when the player starts a new game on your map.  The default value is `"CUSTOM_LEVEL_LETS_GO"`, a localisation tag that amounts to "Let's go!" in English, but you can change it to whatever message you like.
 
@@ -393,7 +397,7 @@ While inside this trigger box, the player emits light.  Handy for subtly brighte
 
 <img height="300" alt="image" src="./map-editor-images/torchbox.png" />
 
-#### 5.2.5 <img src="./map-editor-images/trigger_5_advanced.svg" /> Generic Trigger-Boxes
+#### 5.2.5 <img src="./map-editor-images/trigger_5_advanced.svg" /> Generic
 
 There are a few other really finicky trigger-box types - what they do is specified by their meta tags.  I don't think they're appropriate for general use, so I won't document them.  If you're modding the main game map it's fine to leave them in place - but pls don't use them in maps you're making from scratch, as they may behave unexpectedly.
 
@@ -417,17 +421,19 @@ Cycle to Layer Mode with **Backtick** (**`**).
 
 ### 6.2 Layer Tools
 
-#### 6.2.1 <img src="./map-editor-images/layer_transform_tool_icon.svg" /> Layer Transform Tool
+#### 6.2.1 <img src="./map-editor-images/layer_transform_tool_icon.svg" /> Layer Transform
 
 <img height="300" alt="image" src="./map-editor-images/layer_transform_example.png" />
 
 - **Click** : Select a layer.
 - You can then **move**, **rotate**, or **mirror/flip** the entire layer using the gizmo.
-- Note : only one block can occupy a given position - if you drag one layer to overlap another, blocks are going to get deleted from one of the layers!
+
+> [!NOTE]
+> Only one block can occupy a given position - if you drag one layer to overlap another, blocks are going to get deleted from one of the layers!
 
 ---
 
-#### 6.2.2 <img src="./map-editor-images/layer_assignment_tool_icon.svg" /> Layer Assignment Tool
+#### 6.2.2 <img src="./map-editor-images/layer_assignment_tool_icon.svg" /> Layer Assignment
 
 - **Click+Drag** to define an area, then move your mouse and **Click** to set the depth : All visible blocks and entities inside get assigned to the currently selected layer.
 - **Click** an entity : Assign it to the currently selected layer.
@@ -513,7 +519,8 @@ In the multiplayer lobby list, games that have co-op editing enabled have a <img
 
 You can set whether new players have permission to edit the map by default on this menu, and you can change it from the pause menu in-game.  You can also toggle editing permission on and off for specific players there.
 
-Note: Certain operations are restricted in co-op editing mode.  These are operations that would potentially modify large chunks of the map.  So layer operations, flood-fill etc.  If you need to do these, ask the host to do them for you. 🙃
+> [!NOTE]
+> Certain operations are restricted in co-op editing mode.  These are operations that would potentially modify large chunks of the map.  So layer operations, flood-fill etc.  If you need to do these, ask the host to do them for you. 🙃
 
 ### 9.2 Banning Users from Editing
 
