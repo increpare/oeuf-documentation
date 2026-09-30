@@ -468,7 +468,7 @@ Creates a new empty layer.
 - **Right-Click** : Paste the clipboard contents in the indicated position (shown as a purple box).
 - You can copy and paste between different map files!
 
-<img height="300" alt="Layer copy and paste example" src="./map-editor-images/layer_copy_paste_example.png" />
+<img height="300" alt="Layer copy and paste example" src="./map-editor-images/copypastelayers.png" />
 
 ---
 
@@ -486,7 +486,7 @@ The thumbnail is generated from a screenshot of the current view when you save.
 
 <img height="300" alt="Map page on Steam Workshop" src="./map-editor-images/workshop_page_appearance.png" />
 
-If you'd like to customise the listing further, you can do so from that page.  The mod is associated with the file name of the map - if you resave the file it will update your map on the Steam Workshop.
+If you'd like to customise the listing further, you can do so from that page.  The mod is associated with the file name of the map - if you resubmit the same file, *or* the downloaded file from the workshop (resaved), it will update your map on the Steam Workshop.  Try to just use the OG filename though, it can be very confusing otherwise.
 
 <img height="300" alt="Custom Maps list" src="./map-editor-images/custom_level_list.png" />
 
@@ -494,7 +494,7 @@ I have recently added a bunch of *tags* to Steam Workshop, which are displayed i
 
 ---
 
-## 8. <img src="./map-editor-images/mp_mapediting_icon.png" /> Multiplayer Map Editor
+## 8. <img src="./map-editor-images/mp_mapediting.svg" /> Multiplayer Map Editor
 
 ### 8.1 Setting up a Co-op Editing Session
 
@@ -502,18 +502,18 @@ You can edit maps with your friends by turning on co-op editing when you are set
 
 <img height="300" alt="Co-op editing settings" src="./map-editor-images/coop_editing.png" />
 
-In the multiplayer lobby list, games that have co-op editing enabled have a <img src="./map-editor-images/mp_mapediting.png" class="img-inline" /> icon next to them.
-
-<img height="300" alt="Multiplayer editor permissions" src="./map-editor-images/mp_editor_permissions_list.png" />
+In the multiplayer lobby list, games that have co-op editing enabled have a <img src="./map-editor-images/mp_mapediting.svg" class="img-inline" /> icon next to them:
+<img height="300" alt="Multiplayer editor permissions" src="./map-editor-images/coop_editable_map.png" />
 
 You can set whether new players have permission to edit the map by default on this menu, and you can change it from the pause menu in-game.  You can also toggle editing permission on and off for specific players there.
+<img height="300" alt="Multiplayer editor permissions" src="./map-editor-images/mp_editor_permissions_list.png" />
 
 > [!NOTE]
 > Certain operations are restricted in co-op editing mode.  These are operations that would potentially modify large chunks of the map.  So layer operations, flood-fill etc.  If you need to do these, ask the host to do them for you. 🙃
 
 ### 8.2 Banning Users from Editing
 
-You can also block Steam users from editing the map based on their Steam IDs - this will not prevent them from joining/playing the map, but they won't be able to edit it.  To find a user's Steam ID, look at the log files  (open the maps folder, go up, then go into the logs folder).  You'll see some text like *"[Network] Player STEAM_ID has username USERNAME"*.  Then, in the directory above logs, there'll be a file called `banned_steam_users.txt` where you can add a line **STEAM_ID|REASON** - banned users will be told the reason if they try to edit a map.  You need to restart the game after this to reload the ban list.
+You can also block Steam users from editing the map based on their Steam IDs - this will not prevent them from *joining*/*playing* the map, but they won't be able to *edit* it.  To find a user's Steam ID, look at the log files  (open the maps folder, go up, then go into the logs folder).  You'll see some text like *"[Network] Player STEAM_ID has username USERNAME"*.  Then, in the directory above logs, there'll be a file called `banned_steam_users.txt` where you can add a line **STEAM_ID|REASON** - banned users will be told the reason if they try to edit a map.  You need to restart the game after this to reload the ban list.
 
 ---
 

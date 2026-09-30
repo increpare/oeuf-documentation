@@ -58,6 +58,10 @@ body = body.replace(/<(pre|code)\b[^>]*>[\s\S]*?<\/\1>|[^<>]+/g, (chunk, verbati
 // CSS selectors can't start with a digit, so prefix bare-numeric IDs
 body = body.replace(/(<h[2-4]\s+id=")(\d)/g, '$1section-$2');
 
+// Keep existing multiplayer-section bookmarks when changing the heading icon.
+body = body.replace('id="section-8-img-srcmap-editor-imagesmp_mapeditingsvg--multiplayer-map-editor"',
+  'id="section-8-img-srcmap-editor-imagesmp_mapediting_iconpng--multiplayer-map-editor"');
+
 // Heading/inline icons repeat their adjacent labels. Do this after Showdown
 // creates IDs so existing bookmarks keep working.
 const decorativeImage = tag => /\balt=/.test(tag) ? tag : tag.replace('<img', '<img alt=""');
