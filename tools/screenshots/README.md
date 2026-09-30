@@ -39,7 +39,7 @@ another machine substitute maps you have.
 
 ## Not captured
 
-Steam pages, in-game moments (star collection, area labels, the TORCH glow) and
+Steam pages, in-game moments (star collection, area labels, the ILLUMINATION glow) and
 the co-op permissions list need a live game or multiplayer session; those images
 are kept as they are.
 

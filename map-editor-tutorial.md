@@ -77,6 +77,7 @@ If you have a map file, you can add it like this (doesn't work on Steam Deck!) :
 - **Ctrl+K** : Export current map as a 3D mesh (for importing into other software/games).  This also exports the game tilemap/textures to the same directory.
 - **F1** : Open this tutorial.
 - **F12** : Take a screenshot.
+- **Middle-Click** : Same as **Alt+Click** - sample the block, entity or layer you're pointing at.
 
 ### 2.3 Loading and Saving
 
@@ -116,7 +117,7 @@ The block tools are laid out in the top toolbar in the order below; **1**–**0*
 - **Shift+Click (hold)** : Rapid placement.
 - **Shift+Right-Click (hold)** : Rapid deletion.
 - **Ctrl+Click** : Place a block offset one step back from the face you're highlighting.
-- **Alt+Click** : Sample an existing block (eyedropper).
+- **Alt+Click** or **Middle-Click** : Sample an existing block (eyedropper).
 - **Wheel** or **Shift+Number Key** : Change the selected block texture in the left toolbar.
 - **Ctrl+Wheel** or **- / =** : Change texture page in the left toolbar.
 
@@ -175,7 +176,7 @@ The block tools are laid out in the top toolbar in the order below; **1**–**0*
 ### 4.4 <img src="./map-editor-images/tool_4.svg" /> Paint
 
 - **Click (hold)** : Apply texture to highlighted block.
-- **Right-Click** or **Alt+Click** : Sample block texture and shape.
+- **Right-Click**, **Alt+Click** or **Middle-Click** : Sample block texture and shape.
 - **Shift+Wheel** : Adjust brush radius.
 - **Shift+Click** : Replace all blocks of the pointed-at texture in the current layer with the selected texture (undoable - but be careful).
 
@@ -252,7 +253,7 @@ Grow or shrink your terrain within a sphere.
 - **Right-Click** : Remove blocks on the plane where you're clicking.
 - **Ctrl+Right-Click** : Remove blocks on far side of the plane where you're clicking.
 - **Shift+Wheel** : Move the plane further/closer to you.
-- **Alt+Click** : Sample highlighted block
+- **Alt+Click** or **Middle-Click** : Sample highlighted block
 - **Alt+Right-Click** : Align plane to highlighted face
 
 
@@ -272,7 +273,7 @@ In Entity Mode there are two tools - the **Object Tool** and the **Trigger-Box T
 
 - **Click** : Place or select an object.
 - **Right-Click** : Delete an object.
-- **Alt+Click** : Sample an object (pick it as the kind of object to place next).
+- **Alt+Click** or **Middle-Click** : Sample an object (pick it as the kind of object to place next).
 - **Wheel** or **Shift+Number Key** : Choose which object to place.
 
 #### 5.1.1 <img src="./map-editor-images/object_1_Bonfire.svg" /> Normal Checkpoint
@@ -391,9 +392,9 @@ There are a few other objects in the main game map (such as the spawn-only check
 - While *doomed*, you cannot trigger checkpoints until you restart.
 - For want of a better place to put this information: there's a global killplane below y=-51.  Also, because the fog gets thicker when you go down, *nothing* below this level will be visible.  There's no reason to have any geometry below y=-51.
 
-#### 5.2.4 <img src="./map-editor-images/trigger_4_torch.svg" /> TORCH
+#### 5.2.4 <img src="./map-editor-images/trigger_4_torch.svg" /> ILLUMINATION
 
-While inside this trigger box, the player emits light.  Handy for subtly brightening dark areas without placing lots of torch props (which can be expensive to render and visually distracting).
+While inside this trigger box, the player emits light.  Handy for subtly brightening dark areas without placing lots of torch props (which can be expensive to render and visually distracting).  (It used to be called TORCH, and `TORCH` is still its meta tag in map files.)
 
 <img height="300" alt="image" src="./map-editor-images/torchbox.png" />
 
@@ -437,7 +438,7 @@ Cycle to Layer Mode with **Backtick** (**`**).
 
 - **Click+Drag** to define an area, then move your mouse and **Click** to set the depth : All visible blocks and entities inside get assigned to the currently selected layer.
 - **Click** an entity : Assign it to the currently selected layer.
-- **Alt+Click** : Select the highlighted layer.
+- **Alt+Click** or **Middle-Click** : Select the highlighted layer.
 - **Alt while dragging** : Use the initial click point as the *centre* of the area rather than a corner.
 - Useful for correcting blocks assigned to the wrong layer.
 
