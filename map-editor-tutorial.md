@@ -116,8 +116,8 @@ The following shortcuts work in all block tools :
 
 - **Click** : Place block.
 - **Right-Click** : Delete block.
-- **Shift+Click (hold)** : Rapid placement.
-- **Shift+Right-Click (hold)** : Rapid deletion.
+- **Shift (hold)** : Keep adding (or subtracting) blocks as you move the cursor.
+- **Shift+Right-Click (hold)** : Rapid deletion (as you move the cursor).
 - **Ctrl+Click** : Place a block offset one step back from the face you're highlighting.
 
 
@@ -178,26 +178,20 @@ The following shortcuts work in all block tools :
 
 ### 4.5 <img src="./map-editor-images/tool_5.svg" /> Grout
 
-<img height="300" alt="image" src="./map-editor-images/grout_tool_smoothing.png" />
 
 - **Click+Drag** to define an area, then move your mouse and **Click** to set the depth : Smooth the terrain inside that box by filling in edge voxels using intermediate block shapes.
+<img height="300" alt="image" src="./map-editor-images/grout_tool.gif" />
 - **Shift+Click** : Smooth terrain, but all blocks added use the currently selected texture.
 - **Right-Click+Drag** (then **Click** to set the depth) : Remove non-cube blocks.
 - **Alt while dragging** : Use the initial click point as the *centre* of the area rather than a corner.
-
-<img height="300" alt="image" src="./map-editor-images/grout_tool_cleanup.png" />
 
 ---
 
 ### 4.6 <img src="./map-editor-images/tool_6.svg" /> Hollow
 
-<img height="300" alt="image" src="./map-editor-images/hollow_tool_example.png" />
-
-- **Click+Drag** to define an area, then move your mouse and **Click** to set the depth : Remove the enclosed cube blocks inside that box, keeping a shell one block thick around the outside.
-- Blocks outside the box count as walls, so a box sunk into solid terrain carves out a sealed cave.
+- **Click+Drag** (then **Click** to set the depth) : Remove the enclosed cube blocks inside that box, keeping a shell one block thick around the outside of the cavity.
 - **Alt while dragging** : Use the initial click point as the *centre* of the area rather than a corner.
-- **Right-Click** : Cancel.
-
+ 
 ---
 
 ### 4.7 <img src="./map-editor-images/tool_7.svg" /> Hill
@@ -205,11 +199,13 @@ The following shortcuts work in all block tools :
 <img height="300" alt="image" src="./map-editor-images/hill_dropper_example.png" />
 
 - **Click** : Drop blocks from above to form organic hills.
-- **Right-Click** : Subtract hill-shape from terrain.
-- **Shift (hold)** : Keep raising (or subtracting) as you move the cursor.
-- **Ctrl+Shift+Wheel** : Adjust hill height.
+- **Right-Click** : Subtract hill-shape from terrain (will not make a hole in the terrain).
+- **Shift (hold)** : Keep adding (or subtracting) hills as you move the cursor.
 - **Shift+Wheel** : Adjust hill width.
-- Useful for mountains and natural terrain; can be used to create 'geological'-looking layers.
+- **Ctrl+Shift+Wheel** : Adjust hill height.
+
+> [!NOTE]
+> Useful for mountains and natural terrain; can be used to create 'geological'-looking layers.
 
 ---
 
@@ -217,13 +213,16 @@ The following shortcuts work in all block tools :
 
 <img height="300" alt="image" src="./map-editor-images/sculpt_tool_example.png" />
 
-Grow or shrink your terrain within a sphere.
+Sculpt and form terrain by dragging it about.
 
-- **Click** (and drag) : Grow existing terrain inside the sphere.
+- **Click** (and drag) : Grow existing terrain inside the sphere, and tug it along with your cursor.
 - **Right-Click** (and drag) : Shrink or erase terrain inside the sphere.
 - **Ctrl** : Keep it blocky (tends to square-off terrain).
 - **Shift+Click** : Grow terrain using the currently selected texture.
 - **Shift+Wheel** : Adjust brush radius.
+
+> [!NOTE]
+> In mouse-view mode, you're dragging the terrain in the sphere around youre camera.  In free cursor mode, you're dragging it around the plane in front of your camera.
 
 ---
 
@@ -235,17 +234,15 @@ Grow or shrink your terrain within a sphere.
 - **Right-Click** : Subtract a sphere (good for caves).
 - **Shift (hold)** : Keep adding (or subtracting) spheres as you move the cursor.
 - **Ctrl** : Centre sphere on the block you're highlighting.
-- **Wheel** : Choose texture.
 - **Shift+Wheel** : Change sphere size.
 
 ---
 
 ### 4.10 <img src="./map-editor-images/tool_0.svg" /> 2D Draw
 
-- **Click** : Add a block where you're clicking.
-- **Ctrl+Click** : Add a block on the far side of the plane.
+- **Click+Drag** : Add a block where you're clicking.
 - **Right-Click** : Remove blocks on the plane where you're clicking.
-- **Ctrl+Right-Click** : Remove blocks on far side of the plane where you're clicking.
+- **Ctrl (hold)** : Add/Remove blocks on the far side of the plane.
 - **Shift+Wheel** : Move the plane further/closer to you.
 - **Alt+Right-Click** : Align plane to highlighted face
 
@@ -256,48 +253,50 @@ Grow or shrink your terrain within a sphere.
 
 ## 5. Entity Mode
 
-Enter Entity Mode by pressing **Backtick** (**`**) until the Entity Mode UI appears.
+Cycle to Entity Mode by pressing **Backtick** (**`**) until the Entity Mode UI appears (or by clicking the **Entities** button in the top-right corner).
 
 <img height="300" alt="image" src="./map-editor-images/entity_mode.png" />
 
-In Entity Mode there are two tools - the **Object Tool** and the **Trigger-Box Tool**.  Objects are things placed at a single point in the world that you can see, like checkpoints and torches.  Trigger boxes are larger invisible areas that trigger an effect when the player enters them, such as playing a music track or displaying a message.  **1** and **2** select them.
+In Entity Mode there are two tools - the **Object Tool** and the **Trigger-Box Tool**.  Objects are things placed at a *single point* in the world that you can see, like checkpoints and torches.  Trigger boxes are larger invisible areas that trigger an effect when the player enters them, such as playing a music track or displaying a message.  
+
+### 5.1 Controls
+
+- **Click** : Place or select an entity.
+- **Right-Click** : Delete an entity.
+- **Wheel**, or **Shift+Number Key** : Choose which entity to place.
 
 ### 5.1 <img src="./map-editor-images/entity_tool_object.svg" /> Object Tool
-
-- **Click** : Place or select an object.
-- **Right-Click** : Delete an object.
-- **Wheel**, or **Shift+Number Key** : Choose which object to place.
 
 #### 5.1.1 <img src="./map-editor-images/object_1_Bonfire.svg" /> Normal Checkpoint
 
 - Totally normal checkpoint.
-- Set the **Name** field (the `area_name` tag) to control the text shown when the player activates it.
-- You will often want to put checkpoints inside music trigger-boxes so that if a player resumes a saved game, the correct music will play.
+<img height="300" alt="image" src="./map-editor-images/checkpoint.png" />
+- The **Name** field says what text is shown when the player activates it.
+
+> [!NOTE] 
+> You will often want to put checkpoints inside music trigger-boxes so that if a player resumes a saved game, the correct music will play.
 
 #### 5.1.2 <img src="./map-editor-images/object_2_Bonfire_Start.svg" /> Start-Checkpoint
 
-> [!NOTE]
-> Every map *must* include a **Start-Checkpoint**.
-
 - This is where the player spawns in custom maps; it looks just like a normal checkpoint.
-- The **Name** field (the `area_name` tag) controls the text shown when the player starts a new game on your map.  The default value is `"CUSTOM_LEVEL_LETS_GO"`, a localisation tag that amounts to "Let's go!" in English, but you can change it to whatever message you like.
-
-<img height="300" alt="image" src="./map-editor-images/start_checkpoint.png" />
+- The **Name** field says what text is shown when the player starts a new game on this map.  The default value is `CUSTOM_LEVEL_LETS_GO`, a localisation tag that amounts to "Let's go!" in English and will be auto-translated into whatever language the player is playing in, but you can change it to whatever message you like.
+- Every map *must* include a **Start-Checkpoint**.
 
 #### 5.1.3 <img src="./map-editor-images/object_3_Bonfire_End.svg" /> End-Checkpoint
 
-- This behaves like a normal checkpoint (only the main game's Nest can trigger the start/end cutscenes).
-- The default `area_name` tag value is `"CUSTOM_LEVEL_YOU_MADE_IT"`, which localises to "You made it!" in English - but you can put whatever you like in there.
+- This behaves like a normal checkpoint (only the main game's Nest can trigger the start/end cutscenes), but has a bit more visual flourish when you hit it, and is what the game uses to tell whether or not you've finished the map.
+- The default **Name** field value is `CUSTOM_LEVEL_YOU_MADE_IT`, which localises to "You made it!" in English and will be auto-translated into whatever language the player is playing in, but you can change it to whatever message you like.
+- Every map *must* include a **End-Checkpoint**.
 
 #### 5.1.4 <img src="./map-editor-images/object_4_Torch.svg" /> Torch
 
-<img height="300" alt="image" src="./map-editor-images/object_torch_example.png" />
+<img height="300" alt="image" src="./map-editor-images/torch.png" />
 
 Provides a point of light.  Handy when things are getting a bit dark - but don't overdo it, as each torch adds a light source and the performance cost can add up.
 
 #### 5.1.5 <img src="./map-editor-images/object_5_Star.svg" /> Star
 
-<img height="300" alt="image" src="./map-editor-images/star_props.png" />
+<img height="300" alt="image" src="./map-editor-images/star.png" />
 
 - Makes a nice sound when collected, and displays a running count of stars collected vs. the total number of stars on the map.
 
@@ -305,35 +304,34 @@ Provides a point of light.  Handy when things are getting a bit dark - but don't
 
 - Not used in the main game.
 
-<img height="300" alt="image" src="./map-editor-images/star_menu.png" />
+<img height="300" alt="image" src="./map-editor-images/starsmenu.png" />
 
 #### 5.1.6 <img src="./map-editor-images/object_6_Chair.svg" /> Chair
 
-<img height="300" alt="image" src="./map-editor-images/object_chair_example.png" />
+<img height="300" alt="image" src="./map-editor-images/chair.png" />
 
 - Inert geometric object.  
 - Not used in the main game.
 
 #### 5.1.7 <img src="./map-editor-images/object_7_Table.svg" /> Table
 
-<img height="300" alt="image" src="./map-editor-images/object_table_example.png" />
+<img height="300" alt="image" src="./map-editor-images/table.png" />
 
 - Inert geometric object.  
 - Not used in the main game.
 
 #### 5.1.8 <img src="./map-editor-images/object_8_Banana.svg" /> Banana
 
-<img height="300" alt="image" src="./map-editor-images/object_banana_example.png" />
+<img height="300" alt="image" src="./map-editor-images/banana.png" />
 
 - Inert geometric object.  
 - Not used in the main game.
 
 #### 5.1.9 <img src="./map-editor-images/object_9_Nest.svg" /> Nest
 
-<img height="300" alt="image" src="./map-editor-images/object_nest_example.png" />
+<img height="300" alt="image" src="./map-editor-images/nest.png" />
 
-- The nest from the main game.
-- In custom maps it's plain scenery - all its cutscene logic (and the invisible collision geometry it spawns during cutscenes) only happens in the main game.
+- In custom levels, this is an inert geometric object.  (in the base game level, it does lots of hard-coded stuff - if you're modding the base game you'll have to put in specific start/end-points).
 
 #### 5.1.10 Other Objects
 
@@ -341,19 +339,16 @@ There are a few other objects in the main game map (such as the spawn-only check
 
 ### 5.2 <img src="./map-editor-images/entity_tool_trigger.svg" /> Trigger-Box Tool
 
+
 - Trigger boxes are big invisible areas that do something (e.g. playing music or displaying a message) when the player enters them.
-- The controls are the same as for the Object Tool; **Wheel**, or **Shift+Number Key** : choose which kind of trigger box to place.
+<img height="300" alt="image" src="./map-editor-images/trigger_box.png" />
 
-<img height="300" alt="image" src="./map-editor-images/triggerbox.png" />
+- In the properties panel you can edit various values, including position dimensions :
+<img height="300" alt="image" src="./map-editor-images/triggerbox_inspector.png" />
 
-- In the properties panel you can edit various values, including position and bounds (how far the box extends west, up, north, east, down and south of its core) :
-
-<img height="300" alt="image" src="./map-editor-images/trigger_intro.png" />
-
-- You can also **move** and **resize** trigger boxes in the viewport using the **move gizmo** and **face resize handles** (drag the coloured handles on each face of the box).
+- You can also **move** and **resize** trigger boxes in the viewport using the **move gizmo** and **face resize handles** (drag the coloured squares in the centre of each face of the trigger-box).
 <img height="300" alt="image" src="./map-editor-images/resize_trigger.gif" />
-
-- Note that each trigger box has a 1×1×1 'core' that you click to select it. (Technically this core doesn't need to be inside the trigger area, but...why would you do that?)
+- Note that each trigger box has a 'core', the symbol that you click to select it. This occupies space in the the world - you can't have anything else at the same coordinate, though things can freely overlap the trigger area itself. (Technically the core doesn't need to be inside the trigger area, but...why would you do that?)
 
 #### 5.2.1 <img src="./map-editor-images/trigger_1_music.svg" /> music
 
@@ -362,15 +357,15 @@ There are a few other objects in the main game map (such as the spawn-only check
 - Choose the track from the dropdown in the properties panel.
 <img height="300" alt="image" src="./map-editor-images/music_property_panel.png" />
 - Any time you select a music trigger-box, you'll hear a preview of its music.
-- You can't add your own music files, but in addition to the main OST there are several hours of bonus tracks included for use in custom maps.
-- The OST is [here](https://store.steampowered.com/app/4217410/Oeuvre_Oeuf_Soundtrack/) if you want to listen to it outside the game.
+- You can't add your own music files, but in addition to the main sountrack there are several hours of bonus tracks included for use in custom maps.
+- The soundtrack is [here](https://store.steampowered.com/app/4217410/Oeuvre_Oeuf_Soundtrack/) if you want to listen to it outside the game.
 
 
 #### 5.2.2 <img src="./map-editor-images/trigger_2_arealabel.svg" /> arealabel
 
 <img height="300" alt="image" src="./map-editor-images/arealabel_props.png" />
 
-'arealabel' trigger boxes display a message on screen when the player enters, independently of checkpoints.  If its **Name** (`area_name`) matches a built-in location name (case-sensitive), the game localises it - e.g. entering `FOREST` displays "Forest of Branching Paths" in English.  Otherwise it just displays your text verbatim, so entering `Hello, world!` displays "Hello, world!".
+'arealabel' trigger boxes display a message on screen when the player enters, independently of checkpoints.  If its **Name** field matches a built-in location name (case-sensitive), the game localises it - e.g. entering `FOREST` displays "Forest of Branching Paths" in English.  Otherwise it just displays your text verbatim, so entering `Hello, world!` displays "Hello, world!".
 
 <img height="300" alt="image" src="./map-editor-images/arealabel2.png" />
 
@@ -380,34 +375,65 @@ There are a few other objects in the main game map (such as the spawn-only check
 
 - If you enter a killbox, you are internally marked as *doomed*, and will oof the next time you touch horizontal-ish map geometry (ramps included).
 - Drawn in red in the map view for easy identification.
-- While *doomed*, you cannot trigger checkpoints until you restart.
-- For want of a better place to put this information: there's a global killplane below y=-51.  Also, because the fog gets thicker when you go down, *nothing* below this level will be visible.  There's no reason to have any geometry below y=-51.
+- While *doomed*, you cannot trigger checkpoints until you restart *(but you can pick up stars!)*
+- For want of a better place to put this information: there's a global killplane below y=-51.  Also, because the fog gets thicker when you go down, *nothing* below this plane will be visible.  There's no reason to have any geometry below y=-51.
 
 #### 5.2.4 <img src="./map-editor-images/trigger_4_torch.svg" /> ILLUMINATION
 
-While inside this trigger box, the player emits light.  Handy for subtly brightening dark areas without placing lots of torch props (which can be expensive to render and visually distracting).  (It used to be called TORCH, and `TORCH` is still its meta tag in map files.)
+While inside this trigger box, the player emits light.  Handy for subtly brightening dark areas without placing lots of torches around (which can be expensive to render and visually distracting).
 
 <img height="300" alt="image" src="./map-editor-images/torchbox.png" />
 
 #### 5.2.5 <img src="./map-editor-images/trigger_5_advanced.svg" /> Generic
 
-There are a few other really finicky trigger-box types - what they do is specified by their meta tags.  I don't think they're appropriate for general use, so I won't document them.  If you're modding the main game map it's fine to leave them in place - but pls don't use them in maps you're making from scratch, as they may behave unexpectedly.
+There are a few other really finicky trigger-box types - what they do is specified by their **Command** field.  I don't think they're appropriate for general use, so I won't document them.  If you're modding the main game map it's fine to leave them in place - but pls don't use them in maps you're making from scratch, as they may behave unexpectedly.
 
 ---
 
 ## 6. Layer Mode
 
-Cycle to Layer Mode with **Backtick** (**`**).
+Cycle to Layer Mode with **Backtick** (**`**)  (or by clicking the Entities button in the top-right corner).  
 
-- It can be useful to divide large maps into layers.
-- There are three layer tools; **1**, **2** and **3** select them.
-- Empty layers are shown with a red tint in the layer list so you can spot them easily.
+It can be useful to divide large maps into layers - distinct blocks that can be manipulated independently of each other.
 
-### 6.1 Layer Visibility
+> [!NOTE]
+> Only one block (or entity) can occupy a given position - neither blocks nor entities from different layers can overlap eacho ther, (regardless of layer visibiltiy).
+
+### 6.1 Layer List
+
+<img height="300" alt="Layer list" src="./map-editor-images/layer_list_view.png" />
+
+To the right-hand side of the screen you have the layer list.  
+
+* You can double-click on a layer's name to edit it.
+* Empty layers are shown with their names tinted red.
+
+Here's an explanation of the avrious symbols:
+
+#### 6.1.1 <img src="./map-editor-images/layer_item_grip.svg" /> Drag Handle
+
+* Drag a layer entry by its handle to rearrange layers.
+
+#### 6.1.2 <img src="./map-editor-images/layer_item_visible.svg" /> Visibility
+
+- Toggles the visibility of the layer (visible : <img class="img-inline" src="./map-editor-images/layer_item_visible_black.svg" />, hidden : <img class="img-inline" src="./map-editor-images/layer_item_invisible_black.svg" />).
 
 - **Shift+Click** a layer's visibility button to hide all other layers; **Shift+Click** again to restore them.
+<img height="300" alt="image" src="./map-editor-images/layertoggle.gif" />
 
-<img height="300" alt="image" src="./map-editor-images/layer_visibility_example.png" />
+
+#### 6.1.3 <img src="./map-editor-images/layer_item_merge_up.svg" /> Merge Up
+
+Merges the layer into the layer above it.
+
+#### 6.1.4 <img src="./map-editor-images/layer_item_delete.svg" /> Delete
+
+Deletes the layer.
+
+#### 6.1.5 <img src="./map-editor-images/layer_item_new.svg" /> New Layer
+
+<img height="100" alt="image" src="./map-editor-images/newlayerbutton.png" />
+Creates a new empty layer.
 
 ---
 
@@ -415,13 +441,13 @@ Cycle to Layer Mode with **Backtick** (**`**).
 
 #### 6.2.1 <img src="./map-editor-images/layer_transform_tool_icon.svg" /> Layer Transform
 
-<img height="300" alt="image" src="./map-editor-images/layer_transform_example.png" />
+<img height="300" alt="image" src="./map-editor-images/layer_handles.png" />
 
 - **Click** : Select a layer.
-- You can then **move**, **rotate**, or **mirror/flip** the entire layer using the gizmo.
+- You can then **move**, **rotate**, or **mirror**/**flip** the entire layer using the gizmo.
 
 > [!NOTE]
-> Only one block can occupy a given position - if you drag one layer to overlap another, blocks are going to get deleted from one of the layers!
+> Remember, two things cannot exist at the same coordinate, even if they are in different layers. If you move one layer to overlap another, things are going to get removed from the pressed-upon layer.
 
 ---
 
@@ -446,35 +472,7 @@ Cycle to Layer Mode with **Backtick** (**`**).
 
 ---
 
-## 7. Layer List
-
-<img height="300" alt="Layer list" src="./map-editor-images/layer_list_view.png" />
-
-To the right-hand side of the screen you have the layer list, with the following buttons :
-
-### 7.1 <img src="./map-editor-images/layer_item_grip.svg" /> Drag Handle
-
-Drag a layer by its handle to rearrange layers.
-
-### 7.2 <img src="./map-editor-images/layer_item_visible.svg" /> Visibility
-
-Toggles the visibility of the layer (visible : <img class="img-inline" src="./map-editor-images/layer_item_visible_black.svg" />, hidden : <img class="img-inline" src="./map-editor-images/layer_item_invisible_black.svg" />).
-
-### 7.3 <img src="./map-editor-images/layer_item_merge_up.svg" /> Merge Up
-
-Merges the layer into the layer above it.
-
-### 7.4 <img src="./map-editor-images/layer_item_delete.svg" /> Delete
-
-Deletes the layer.
-
-### 7.5 <img src="./map-editor-images/layer_item_new.svg" /> New Layer
-
-Creates a new empty layer.
-
----
-
-## 8. <img src="./map-editor-images/upload_icon.svg" /> Upload to Steam Workshop
+## 7. <img src="./map-editor-images/upload_icon.svg" /> Upload to Steam Workshop
 
 When you're happy with your map and want to share it on the Steam Workshop, click the Steam button in the toolbar :
 
@@ -496,9 +494,9 @@ I have recently added a bunch of *tags* to Steam Workshop, which are displayed i
 
 ---
 
-## 9. <img src="./map-editor-images/mp_mapediting_icon.png" /> Multiplayer Map Editor
+## 8. <img src="./map-editor-images/mp_mapediting_icon.png" /> Multiplayer Map Editor
 
-### 9.1 Setting up a Co-op Editing Session
+### 8.1 Setting up a Co-op Editing Session
 
 You can edit maps with your friends by turning on co-op editing when you are setting up to host a game.
 
@@ -513,13 +511,13 @@ You can set whether new players have permission to edit the map by default on th
 > [!NOTE]
 > Certain operations are restricted in co-op editing mode.  These are operations that would potentially modify large chunks of the map.  So layer operations, flood-fill etc.  If you need to do these, ask the host to do them for you. 🙃
 
-### 9.2 Banning Users from Editing
+### 8.2 Banning Users from Editing
 
 You can also block Steam users from editing the map based on their Steam IDs - this will not prevent them from joining/playing the map, but they won't be able to edit it.  To find a user's Steam ID, look at the log files  (open the maps folder, go up, then go into the logs folder).  You'll see some text like *"[Network] Player STEAM_ID has username USERNAME"*.  Then, in the directory above logs, there'll be a file called `banned_steam_users.txt` where you can add a line **STEAM_ID|REASON** - banned users will be told the reason if they try to edit a map.  You need to restart the game after this to reload the ban list.
 
 ---
 
-## 10. Comparing different versions of a map
+## 9. Comparing different versions of a map
 
 In the map editor, if you press **Ctrl+Shift+D**, a lovely little menu will pop up:
 
@@ -535,7 +533,7 @@ This is a *very* useful tool when you've left a multiplayer editing server open 
 
 ---
 
-## 11. Map file format specs
+## 10. Map file format specs
 
 Oeuf stores its maps as plaintext, with space-separated values.  Each line starts with a token which indicates the type of data stored, and then information about it.  This is not a comprehensive spec, the idea is to give you enough to get started parsing/generating if you want to.  Happy to explain more if you want to know more.  Just drop me an email.
 
@@ -576,6 +574,6 @@ Oeuf stores its maps as plaintext, with space-separated values.  Each line start
 
 ---
 
-## 12. Feedback and Bug Reports
+## 11. Feedback and Bug Reports
 
 Does this make sense? I hope so! Feedback and bug reports are always welcome - e-mail me at [analytic@gmail.com](mailto:analytic@gmail.com).

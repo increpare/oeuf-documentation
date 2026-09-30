@@ -8,6 +8,15 @@ const root = path.resolve(__dirname, '..');
 const html = fs.readFileSync(path.join(root, 'map-editor-tutorial.html'), 'utf8');
 const document = new JSDOM(html).window.document;
 
+test('prose colons keep a non-breaking space before them', () => {
+  assert.match(html, /depth\u00A0:/);
+  assert.match(html, /click here\u00A0:/);
+  assert.match(html, /https:\/\/youtu\.be\/brkR8vVeSMg/);
+  for (const node of document.querySelectorAll('main code, main pre')) {
+    assert.equal(node.textContent.includes('\u00A0:'), false, node.textContent);
+  }
+});
+
 test('generated HTML contains the current navigation code', () => {
   assert.equal(document.querySelector('script:not([src])').textContent.trim(),
     fs.readFileSync(path.join(root, 'navigation.js'), 'utf8').trim());

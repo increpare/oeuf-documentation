@@ -23,6 +23,8 @@ let body = converter.makeHtml(md);
 // section, whose bold single letters are field names rather than keys.
 // A shortcut that opens a list item (a line of controls) also gets the editor's
 // mouse icons, as in its own hints; shortcuts inside sentences don't.
+// An image or a blank line makes Showdown wrap the item in <p>. That paragraph
+// is still the list item, so the opening shortcut still gets its icons.
 const KEY = String.raw`Ctrl|Cmd|Shift|Alt|Tab|Space|Enter|Backtick|Number Key|WASD|F1[0-2]|F[1-9]|[A-Z0-9]|\x60|-|=`;
 const MOUSE = String.raw`Right-Click|Click|Drag|Scroll Wheel|Wheel`;
 const TOKEN = `(?:${KEY}|${MOUSE})`;
@@ -40,12 +42,18 @@ const keycap = (text, icons) => text.replace(new RegExp(`(${MOUSE})|(${KEY})`, '
 // ("Hold down SHIFT and click", not "SHIFT+click"). Keep "+" for key combos only.
 const joinMouse = html => html.replace(/(<\/strong>)\+|\+(?=<img class="img-inline mouse-icon"|<strong>)/g,
   (_, end) => `${end || ''}<span class="join"> and </span>`);
-const keycaps = html => html.replace(/(<li>\s*)?<strong>([^<]+)<\/strong>/g,
+const keycaps = html => html.replace(/(<li>(?:\s*<p>)?\s*)?<strong>([^<]+)<\/strong>/g,
   (whole, li, text) => shortcutRe.test(text) ? `${li || ''}<span class="shortcut">${joinMouse(keycap(text, !!li))}</span>` : whole);
 {
   const spec = body.search(/<h2 id="11-/);
   body = spec < 0 ? keycaps(body) : keycaps(body.slice(0, spec)) + body.slice(spec);
 }
+
+// The space before a colon in prose is non-breaking, so the colon stays with
+// the word in front of it and a line never starts with ":". URLs and tags
+// have no space there, and code is left as written.
+body = body.replace(/<(pre|code)\b[^>]*>[\s\S]*?<\/\1>|[^<>]+/g, (chunk, verbatim) =>
+  verbatim ? chunk : chunk.replace(/ (?=:)/g, '\u00A0'));
 
 // CSS selectors can't start with a digit, so prefix bare-numeric IDs
 body = body.replace(/(<h[2-4]\s+id=")(\d)/g, '$1section-$2');
