@@ -194,7 +194,12 @@
       position: absolute;
       left: -.9em; top: .48em;
       width: 8.5px; height: 11.5px;
+      transform: rotate(90deg);
       background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='8.5' height='11.5' viewBox='0 0 85 115'%3e%3cpath fill='%23e3c8da' stroke='%237d4f76' stroke-width='10' d='M76.5 69.31C76.5 48.77 61.28 8.5 42.5 8.5C23.72 8.5 8.5 48.77 8.5 69.31C8.5 89.85 23.72 106.5 42.5 106.5C61.28 106.5 76.5 89.84 76.5 69.31z'/%3e%3c/svg%3e") center / contain no-repeat;
+    }
+    /* Nested bullets keep the egg outline with a transparent interior. */
+    main ul ul > li::before {
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='8.5' height='11.5' viewBox='0 0 85 115'%3e%3cpath fill='none' stroke='%237d4f76' stroke-width='10' d='M76.5 69.31C76.5 48.77 61.28 8.5 42.5 8.5C23.72 8.5 8.5 48.77 8.5 69.31C8.5 89.85 23.72 106.5 42.5 106.5C61.28 106.5 76.5 89.84 76.5 69.31z'/%3e%3c/svg%3e");
     }
 
     main h2, main h3, main h4 { display: flex; align-items: center; gap: .7rem; }
@@ -438,8 +443,8 @@
     </div>
     <div class="offcanvas-body">
       <nav id="toc-nav" aria-label="Mobile table of contents" class="nav flex-column"><a class="nav-link py-1 fw-semibold" href="#section-0-adding-player-made-maps">0. Adding Player-Made Maps</a>
-<a class="nav-link py-1 ms-3 small" href="#section-01-adding-maps-manually">0.1 Adding Maps Manually</a>
-<a class="nav-link py-1 ms-3 small" href="#section-02-adding-maps-from-steam-workshop">0.2 Adding Maps from Steam Workshop</a>
+<a class="nav-link py-1 ms-3 small" href="#section-01-adding-maps-from-steam-workshop">0.1 Adding Maps from Steam Workshop</a>
+<a class="nav-link py-1 ms-3 small" href="#section-02-adding-maps-manually">0.2 Adding Maps Manually</a>
 <a class="nav-link py-1 fw-semibold" href="#section-1-enabling-the-map-editor">1. Enabling the Map Editor</a>
 <a class="nav-link py-1 fw-semibold" href="#section-2-basic-workflow-in-the-map-editor">2. Basic Workflow in the Map Editor</a>
 <a class="nav-link py-1 ms-3 small" href="#section-21-map-editor-modes">2.1 Map-Editor Modes</a>
@@ -504,8 +509,8 @@
         <div class="sidebar py-4 pe-3">
           <h6 class="text-uppercase text-body-secondary mb-3 fw-bold small">Contents</h6>
           <nav id="sidebar-nav" aria-label="Table of contents" class="nav flex-column"><a class="nav-link py-1 fw-semibold" href="#section-0-adding-player-made-maps">0. Adding Player-Made Maps</a>
-<a class="nav-link py-1 ms-3 small" href="#section-01-adding-maps-manually">0.1 Adding Maps Manually</a>
-<a class="nav-link py-1 ms-3 small" href="#section-02-adding-maps-from-steam-workshop">0.2 Adding Maps from Steam Workshop</a>
+<a class="nav-link py-1 ms-3 small" href="#section-01-adding-maps-from-steam-workshop">0.1 Adding Maps from Steam Workshop</a>
+<a class="nav-link py-1 ms-3 small" href="#section-02-adding-maps-manually">0.2 Adding Maps Manually</a>
 <a class="nav-link py-1 fw-semibold" href="#section-1-enabling-the-map-editor">1. Enabling the Map Editor</a>
 <a class="nav-link py-1 fw-semibold" href="#section-2-basic-workflow-in-the-map-editor">2. Basic Workflow in the Map Editor</a>
 <a class="nav-link py-1 ms-3 small" href="#section-21-map-editor-modes">2.1 Map-Editor Modes</a>
@@ -568,41 +573,35 @@
 </blockquote>
 <h2 tabindex="-1" class="mt-5 mb-3 pb-2 border-bottom" id="section-0-adding-player-made-maps"><span class="h-tile h-num" aria-hidden="true">0</span><span class="h-text"><span class="visually-hidden">0. </span>Adding Player-Made Maps</span></h2>
 <p>You can add maps manually (if you already have the file) or download them from the Steam Workshop.</p>
-<h3 tabindex="-1" class="mt-4 mb-3" id="section-01-adding-maps-manually">0.1 Adding Maps Manually</h3>
-<p>If you have a map file, you can add it like this (doesn't work on Steam Deck!) :</p>
-<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/custom_maps_menu.png" width="478"></p>
+<h3 tabindex="-1" class="mt-4 mb-3" id="section-01-adding-maps-from-steam-workshop">0.1 Adding Maps from Steam Workshop</h3>
+<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/custom_maps_menu.png" width="309"></p>
 <ol>
 <li>Go to <strong>Custom Maps</strong> on the title screen.</li>
 </ol>
-<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/open_maps_folder_button.png" width="478"></p>
+<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/custom_maps_screen.png" width="533"></p>
 <ol start="2">
-<li>In the <strong>Local</strong> tab, click <strong>Open Maps Folder</strong> to open the maps folder in your file manager.  You can add map files from other people here.</li>
+<li>From here you can download maps from the steam workshop - the default 'Featured' tab displays my own personal picks, and you can browse and download many more in the other tabs. </li>
 </ol>
-<h3 tabindex="-1" class="mt-4 mb-3" id="section-02-adding-maps-from-steam-workshop">0.2 Adding Maps from Steam Workshop</h3>
+<h3 tabindex="-1" class="mt-4 mb-3" id="section-02-adding-maps-manually">0.2 Adding Maps Manually</h3>
+<p>If you have a map file (.txt or .zip), you can add it like this (doesn't work on Steam Deck!) :</p>
 <ol>
 <li>Go to <strong>Custom Maps</strong> on the title screen.</li>
-<li>In the <strong>Workshop</strong> tab, click <strong>Steam Workshop</strong>.  (You can also download maps straight from the list in that tab.)</li>
 </ol>
-<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/workshop_download.png" width="549"></p>
-<ol start="3">
-<li>On Steam Workshop, you 'subscribe' to things to download them.</li>
+<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/open_maps_folder_button.png" width="420"></p>
+<ol start="2">
+<li>In the <strong>Local</strong> tab, click <strong>Open Maps Folder</strong> to open the maps folder in your file manager.  You can add map files from other people by dragging them here.</li>
 </ol>
-<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/workshop_subscribed.png" width="753"></p>
-<ol start="4">
-<li>Once subscribed, maps will appear in the map list and are ready to play :</li>
-</ol>
-<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/map_in_list.png" width="478"></p>
 <h2 tabindex="-1" class="mt-5 mb-3 pb-2 border-bottom" id="section-1-enabling-the-map-editor"><span class="h-tile h-num" aria-hidden="true">1</span><span class="h-text"><span class="visually-hidden">1. </span>Enabling the Map Editor</span></h2>
 <ol>
 <li>Go to <strong>Settings</strong> :</li>
 </ol>
-<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/settings_menu.png" width="478"></p>
+<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/settings_menu.png" width="457"></p>
 <ol start="2">
 <li>Enable <strong>Map Editor</strong>.</li>
 <li>Load into a map (custom maps are easiest to work with - the main-game map has some hacky stuff in it).</li>
 <li>Press <span class="shortcut"><kbd>Tab</kbd></span> to open the map editor.</li>
 </ol>
-<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/map_editor_opened.png" width="478"></p>
+<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/map_editor_opened.png" width="533"></p>
 <hr class="my-5 opacity-0">
 <h2 tabindex="-1" class="mt-5 mb-3 pb-2 border-bottom" id="section-2-basic-workflow-in-the-map-editor"><span class="h-tile h-num" aria-hidden="true">2</span><span class="h-text"><span class="visually-hidden">2. </span>Basic Workflow in the Map Editor</span></h2>
 <h3 tabindex="-1" class="mt-4 mb-3" id="section-21-map-editor-modes">2.1 Map-Editor Modes</h3>

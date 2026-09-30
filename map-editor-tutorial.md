@@ -6,32 +6,25 @@
 
 You can add maps manually (if you already have the file) or download them from the Steam Workshop.
 
-### 0.1 Adding Maps Manually
-
-If you have a map file, you can add it like this (doesn't work on Steam Deck!) :
+### 0.1 Adding Maps from Steam Workshop
 
 <img height="300" alt="image" src="./map-editor-images/custom_maps_menu.png" />
 
 1. Go to **Custom Maps** on the title screen.
 
-<img height="300" alt="image" src="./map-editor-images/open_maps_folder_button.png" />
+<img height="300" alt="image" src="./map-editor-images/custom_maps_screen.png" />
 
-2. In the **Local** tab, click **Open Maps Folder** to open the maps folder in your file manager.  You can add map files from other people here.
+2. From here you can download maps from the steam workshop - the default 'Featured' tab displays my own personal picks, and you can browse and download many more in the other tabs. 
 
-### 0.2 Adding Maps from Steam Workshop
+### 0.2 Adding Maps Manually
+
+If you have a map file (.txt or .zip), you can add it like this (doesn't work on Steam Deck!) :
 
 1. Go to **Custom Maps** on the title screen.
-2. In the **Workshop** tab, click **Steam Workshop**.  (You can also download maps straight from the list in that tab.)
 
-<img height="300" alt="image" src="./map-editor-images/workshop_download.png" />
+<img height="300" alt="image" src="./map-editor-images/open_maps_folder_button.png" />
 
-3. On Steam Workshop, you 'subscribe' to things to download them.
-
-<img height="300" alt="image" src="./map-editor-images/workshop_subscribed.png" />
-
-4. Once subscribed, maps will appear in the map list and are ready to play :
-
-<img height="300" alt="image" src="./map-editor-images/map_in_list.png" />
+2. In the **Local** tab, click **Open Maps Folder** to open the maps folder in your file manager.  You can add map files from other people by dragging them here.
 
 ## 1. Enabling the Map Editor
 

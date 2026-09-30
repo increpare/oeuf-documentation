@@ -389,7 +389,12 @@ const page = `<!DOCTYPE html>
       position: absolute;
       left: -.9em; top: .48em;
       width: 8.5px; height: 11.5px;
+      transform: rotate(90deg);
       background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='8.5' height='11.5' viewBox='0 0 85 115'%3e%3cpath fill='%23e3c8da' stroke='%237d4f76' stroke-width='10' d='M76.5 69.31C76.5 48.77 61.28 8.5 42.5 8.5C23.72 8.5 8.5 48.77 8.5 69.31C8.5 89.85 23.72 106.5 42.5 106.5C61.28 106.5 76.5 89.84 76.5 69.31z'/%3e%3c/svg%3e") center / contain no-repeat;
+    }
+    /* Nested bullets keep the egg outline with a transparent interior. */
+    main ul ul > li::before {
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='8.5' height='11.5' viewBox='0 0 85 115'%3e%3cpath fill='none' stroke='%237d4f76' stroke-width='10' d='M76.5 69.31C76.5 48.77 61.28 8.5 42.5 8.5C23.72 8.5 8.5 48.77 8.5 69.31C8.5 89.85 23.72 106.5 42.5 106.5C61.28 106.5 76.5 89.84 76.5 69.31z'/%3e%3c/svg%3e");
     }
 
     main h2, main h3, main h4 { display: flex; align-items: center; gap: .7rem; }
