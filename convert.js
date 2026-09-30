@@ -134,6 +134,11 @@ body = body.replace(/<blockquote class="([^"]*)">\s*<p>\[!(NOTE|WARNING|CAUTION)
   return `<blockquote class="${cls} callout callout-${type}" role="note"><p><span class="callout-label">${label}</span> `;
 });
 
+// Showdown merges consecutive blockquotes, so a pair that should stay separate
+// needs an HTML comment between them. <!-- side-by-side --> then lays that pair out in a row.
+body = body.replace(/<!-- side-by-side -->\s*((?:<blockquote class="[^"]*\bcallout\b[^"]*"[^>]*>[\s\S]*?<\/blockquote>\s*(?:<!--\s*-->\s*)?){2})/g,
+  '<div class="callout-row">$1</div>');
+
 // Headings: put the icon (or, for icon-less h2s, the section number) into a
 // glossy tile in front of the title. Runs after the sidebar has been built.
 body = body.replace(/(<h([2-4])\b[^>]*>)([\s\S]*?)<\/h\2>/g, (whole, open, level, inner) => {
@@ -515,7 +520,16 @@ const page = `<!DOCTYPE html>
       margin: 1rem 0;
       font-size: 1rem;
     }
-    main blockquote.callout { width: auto; font-size: inherit; }
+    main blockquote.callout { width: auto; font-size: inherit; flex-wrap: wrap; }
+    main blockquote.callout p + p { flex: 1 0 100%; }
+    main .callout-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: stretch;
+      gap: 1rem;
+      margin: 1rem 0;
+    }
+    main .callout-row > .callout { flex: 1 1 14rem; width: auto; margin: 0; min-width: 0; }
     main blockquote.video-callout::before, main blockquote.callout::before {
       content: "i";
       flex: none;

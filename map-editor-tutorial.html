@@ -320,7 +320,16 @@
       margin: 1rem 0;
       font-size: 1rem;
     }
-    main blockquote.callout { width: auto; font-size: inherit; }
+    main blockquote.callout { width: auto; font-size: inherit; flex-wrap: wrap; }
+    main blockquote.callout p + p { flex: 1 0 100%; }
+    main .callout-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: stretch;
+      gap: 1rem;
+      margin: 1rem 0;
+    }
+    main .callout-row > .callout { flex: 1 1 14rem; width: auto; margin: 0; min-width: 0; }
     main blockquote.video-callout::before, main blockquote.callout::before {
       content: "i";
       flex: none;
@@ -452,6 +461,7 @@
 <a class="nav-link py-1 ms-3 small" href="#section-23-loading-and-saving">2.3 Loading and Saving</a>
 <a class="nav-link py-1 fw-semibold" href="#section-3-camera-and-movement-in-the-map-editor">3. Camera and Movement (in the Map Editor)</a>
 <a class="nav-link py-1 fw-semibold" href="#section-4-block-tools">4. Block Tools</a>
+<a class="nav-link py-1 ms-3 small" href="#section-40-universal-shortcuts">4.0 Universal Shortcuts</a>
 <a class="nav-link py-1 ms-3 small" href="#section-41-img-srcmap-editor-imagestool_1svg--basic-tool">4.1 <img alt="" src="./map-editor-images/tool_1.svg"> Basic Tool</a>
 <a class="nav-link py-1 ms-5 small" href="#section-41b-block-shapes">4.1b Block Shapes</a>
 <a class="nav-link py-1 ms-3 small" href="#section-42-img-srcmap-editor-imagestool_2svg--plane">4.2 <img alt="" src="./map-editor-images/tool_2.svg"> Plane</a>
@@ -518,6 +528,7 @@
 <a class="nav-link py-1 ms-3 small" href="#section-23-loading-and-saving">2.3 Loading and Saving</a>
 <a class="nav-link py-1 fw-semibold" href="#section-3-camera-and-movement-in-the-map-editor">3. Camera and Movement (in the Map Editor)</a>
 <a class="nav-link py-1 fw-semibold" href="#section-4-block-tools">4. Block Tools</a>
+<a class="nav-link py-1 ms-3 small" href="#section-40-universal-shortcuts">4.0 Universal Shortcuts</a>
 <a class="nav-link py-1 ms-3 small" href="#section-41-img-srcmap-editor-imagestool_1svg--basic-tool">4.1 <img alt="" src="./map-editor-images/tool_1.svg"> Basic Tool</a>
 <a class="nav-link py-1 ms-5 small" href="#section-41b-block-shapes">4.1b Block Shapes</a>
 <a class="nav-link py-1 ms-3 small" href="#section-42-img-srcmap-editor-imagestool_2svg--plane">4.2 <img alt="" src="./map-editor-images/tool_2.svg"> Plane</a>
@@ -576,136 +587,130 @@
 <h3 tabindex="-1" class="mt-4 mb-3" id="section-01-adding-maps-from-steam-workshop">0.1 Adding Maps from Steam Workshop</h3>
 <p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/custom_maps_menu.png" width="309"></p>
 <ol>
-<li>Go to <strong>Custom Maps</strong> on the title screen.</li>
-</ol>
-<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/custom_maps_screen.png" width="533"></p>
-<ol start="2">
-<li>From here you can download maps from the steam workshop - the default 'Featured' tab displays my own personal picks, and you can browse and download many more in the other tabs. </li>
+<li><p>Go to <strong>Custom Maps</strong> on the title screen.
+<img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/custom_maps_screen.png" width="533"></p></li>
+<li><p>From here you can download maps from the steam workshop - the default 'Featured' tab displays my own personal picks, and you can browse and download many more in the other tabs. </p></li>
 </ol>
 <h3 tabindex="-1" class="mt-4 mb-3" id="section-02-adding-maps-manually">0.2 Adding Maps Manually</h3>
 <p>If you have a map file (.txt or .zip), you can add it like this (doesn't work on Steam Deck!) :</p>
 <ol>
-<li>Go to <strong>Custom Maps</strong> on the title screen.</li>
-</ol>
-<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/open_maps_folder_button.png" width="420"></p>
-<ol start="2">
-<li>In the <strong>Local</strong> tab, click <strong>Open Maps Folder</strong> to open the maps folder in your file manager.  You can add map files from other people by dragging them here.</li>
+<li><p>Go to <strong>Custom Maps</strong> on the title screen.
+<img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/open_maps_folder_button.png" width="420"></p></li>
+<li><p>In the <strong>Local</strong> tab, click <strong>Open Maps Folder</strong> to open the maps folder in your file manager.  You can add map files from other people by dragging them here.</p></li>
 </ol>
 <h2 tabindex="-1" class="mt-5 mb-3 pb-2 border-bottom" id="section-1-enabling-the-map-editor"><span class="h-tile h-num" aria-hidden="true">1</span><span class="h-text"><span class="visually-hidden">1. </span>Enabling the Map Editor</span></h2>
 <ol>
-<li>Go to <strong>Settings</strong> :</li>
+<li><p>Go to <strong>Settings</strong> :
+<img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/settings_menu.png" width="457"></p></li>
+<li><p>Enable <strong>Map Editor</strong>.</p></li>
+<li><p>Load into a map (custom maps are easiest to work with - the main-game map has some hacky stuff in it).</p></li>
+<li><p>Press <span class="shortcut"><kbd>Tab</kbd></span> to open the map editor.
+<img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/map_editor_opened.png" width="533"></p></li>
 </ol>
-<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/settings_menu.png" width="457"></p>
-<ol start="2">
-<li>Enable <strong>Map Editor</strong>.</li>
-<li>Load into a map (custom maps are easiest to work with - the main-game map has some hacky stuff in it).</li>
-<li>Press <span class="shortcut"><kbd>Tab</kbd></span> to open the map editor.</li>
-</ol>
-<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/map_editor_opened.png" width="533"></p>
 <hr class="my-5 opacity-0">
 <h2 tabindex="-1" class="mt-5 mb-3 pb-2 border-bottom" id="section-2-basic-workflow-in-the-map-editor"><span class="h-tile h-num" aria-hidden="true">2</span><span class="h-text"><span class="visually-hidden">2. </span>Basic Workflow in the Map Editor</span></h2>
 <h3 tabindex="-1" class="mt-4 mb-3" id="section-21-map-editor-modes">2.1 Map-Editor Modes</h3>
 <ul>
 <li><span class="shortcut"><kbd>Tab</kbd></span><ul>
 <li>In-game : Open the Map Editor.</li>
-<li>In the Map Editor : Toggle mouse control between camera-look and cursor-pointing.</li></ul></li>
+<li>In the Map Editor : Toggle between controlling the camera with your mouse, or having a free cursor to click on things with.</li></ul></li>
 <li><span class="shortcut"><kbd>Space</kbd></span> : Exit edit mode back into the game, spawning at the point you're aiming at.</li>
-<li><span class="shortcut"><kbd>Backtick</kbd></span> (<span class="shortcut"><kbd>`</kbd></span>, likely the key to the left of <span class="shortcut"><kbd>1</kbd></span>) : cycle between<ul>
+<li><span class="shortcut"><kbd>Backtick</kbd></span> (<span class="shortcut"><kbd>`</kbd></span>, likely the key to the left of <span class="shortcut"><kbd>1</kbd></span>) : Cycle between<ul>
 <li><strong>Block Mode</strong> : Edit terrain.</li>
 <li><strong>Entity Mode</strong> : Checkpoints, props, trigger boxes.</li>
 <li><strong>Layer Mode</strong> : Move large sections of terrain.</li></ul></li>
-<li>You can also switch modes with the <strong>Blocks</strong> / <strong>Entities</strong> / <strong>Layers</strong> buttons in the top-right corner.</li>
+<li>You can also switch modes with the <strong>Blocks</strong> / <strong>Entities</strong> / <strong>Layers</strong> buttons in the top-right corner.
+<img class="img-fluid rounded shadow-sm d-block my-3" height="100" alt="image" src="./map-editor-images/top_right_buttons.png" width="428"></li>
 </ul>
 <h3 tabindex="-1" class="mt-4 mb-3" id="section-22-general-shortcuts">2.2 General Shortcuts</h3>
-<p>(On a Mac, use <span class="shortcut"><kbd>Cmd</kbd></span> wherever it says <span class="shortcut"><kbd>Ctrl</kbd></span>.)</p>
+<p><img class="img-fluid rounded shadow-sm d-block my-3" height="50" alt="image" src="./map-editor-images/toolbar_file_buttons.png" width="433">
+(On a Mac, use <span class="shortcut"><kbd>Cmd</kbd></span> wherever it says <span class="shortcut"><kbd>Ctrl</kbd></span>.)</p>
 <ul>
 <li><span class="shortcut"><kbd>Ctrl</kbd>+<kbd>N</kbd></span> : New map</li>
+<li><span class="shortcut"><kbd>Ctrl</kbd>+<kbd>L</kbd></span> : Open the local maps folder in your file manager.</li>
 <li><span class="shortcut"><kbd>Ctrl</kbd>+<kbd>S</kbd></span> : Save</li>
 <li><span class="shortcut"><kbd>F5</kbd></span> : Reload</li>
 <li><span class="shortcut"><kbd>Ctrl</kbd>+<kbd>Z</kbd></span> : Undo</li>
 <li><span class="shortcut"><kbd>Ctrl</kbd>+<kbd>Y</kbd></span> : Redo</li>
 <li><span class="shortcut"><kbd>Ctrl</kbd>+<kbd>R</kbd></span> : Randomly rotate all <em>cube-shaped blocks</em> with the currently selected texture in the currently selected layer.</li>
 <li><span class="shortcut"><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>R</kbd></span> : Unrandomizes the rotation of all <em>cube-shaped blocks</em> (with the currently-selected texture in the currently-selected layer) to face a single direction.  Cycles direction each time it's pressed.</li>
-<li><span class="shortcut"><kbd>Ctrl</kbd>+<kbd>L</kbd></span> : Open the maps folder with your file manager.</li>
-<li><span class="shortcut"><kbd>Ctrl</kbd>+<kbd>K</kbd></span> : Export current map as a 3D mesh (for importing into other software/games).  This also exports the game tilemap/textures to the same directory.</li>
+<li><span class="shortcut"><kbd>Ctrl</kbd>+<kbd>K</kbd></span> : Export current map as a 3D mesh (for importing into other software/games).  This also exports the game tilemap/textures to a .png file in the same directory.</li>
 <li><span class="shortcut"><kbd>F1</kbd></span> : Open this tutorial.</li>
-<li><span class="shortcut"><kbd>F12</kbd></span> : Take a screenshot.</li>
-<li><span class="shortcut"><kbd>Alt</kbd><span class="join"> and </span><img class="img-inline mouse-icon" src="./map-editor-images/mouse_left.svg" alt="" width="90" height="102"><strong>Click</strong></span>, or <strong>Middle-Click</strong> : Sample whatever you're pointing at - the block (texture and shape), entity or layer, depending on the mode.  This works the same in every tool, so it isn't repeated in the tool descriptions below.</li>
+<li><span class="shortcut"><kbd>F12</kbd></span> : Take a screenshot (saved to your operating system's pictures folder in the Oeuf directory).</li>
 </ul>
 <h3 tabindex="-1" class="mt-4 mb-3" id="section-23-loading-and-saving">2.3 Loading and Saving</h3>
-<p><img class="img-fluid rounded shadow-sm d-block my-3" width="322" height="142" alt="image" src="./map-editor-images/editor_ui_top_left.png"></p>
+<p><img class="img-fluid rounded shadow-sm d-block my-3" height="50" alt="image" src="./map-editor-images/toolbar_file_buttons.png" width="433"></p>
 <p>To the top left of the screen you can see :</p>
 <ul>
 <li>The current map name (edit it and press <span class="shortcut"><kbd>Enter</kbd></span> to save as a new file).</li>
-<li>The file dropdown.  This lists all <strong>built-in maps</strong> (e.g. <code>minimal</code>, <code>eggworld</code>), <strong>Steam Workshop maps</strong>, and <strong>user maps</strong> (saved in your maps folder).  </li>
-<li>Note : built-in and Steam Workshop maps are <em>read-only</em>, but you can save them under new filenames.</li>
+<li>The file dropdown.  This lists all <strong>built-in maps</strong> (e.g. <code>minimal</code>, <code>eggworld</code>), <strong>Steam Workshop maps</strong>, and <strong>local maps</strong> (saved in your maps folder).<br />
+<img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/file_dropdown.png" width="294"></li>
+<li>Built-in and Steam Workshop maps are <em>read-only</em>, but you can save them under new filenames.
+<img class="img-fluid rounded shadow-sm d-block my-3" height="80" alt="Map name with an asterisk showing unsaved changes" src="./map-editor-images/unsaved_changes.png" width="313"></li>
 <li>An asterisk after the map name means you have unsaved changes.  The editor also keeps recovery autosaves (in the <code>autosave</code> folder inside your maps folder), but these don't replace saving.</li>
 </ul>
-<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/file_dropdown.png" width="294"></p>
 <hr class="my-5 opacity-0">
 <h2 tabindex="-1" class="mt-5 mb-3 pb-2 border-bottom" id="section-3-camera-and-movement-in-the-map-editor"><span class="h-tile h-num" aria-hidden="true">3</span><span class="h-text"><span class="visually-hidden">3. </span>Camera and Movement (in the Map Editor)</span></h2>
 <ul>
-<li><span class="shortcut"><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd></span> : Move camera</li>
-<li><span class="shortcut"><kbd>Shift</kbd></span> : Faster movement</li>
-<li><span class="shortcut"><kbd>Q</kbd> / <kbd>E</kbd></span> : Move down / up</li>
-<li><span class="shortcut"><kbd>Z</kbd> / <kbd>C</kbd></span> : Rotate left / right</li>
+<li><span class="shortcut"><kbd>W</kbd>, <kbd>A</kbd>, <kbd>S</kbd>, <kbd>D</kbd></span> : Move camera</li>
+<li><span class="shortcut"><kbd>Q</kbd>, <kbd>E</kbd></span> : Move down / up</li>
+<li><span class="shortcut"><kbd>Z</kbd>, <kbd>C</kbd></span> : Rotate left / right</li>
+<li><span class="shortcut"><kbd>Shift</kbd> (hold)</span> : Faster movement</li>
 </ul>
 <p>(Don't forget : <span class="shortcut"><kbd>Tab</kbd></span> toggles between camera-look and cursor-pointing modes.)</p>
 <hr class="my-5 opacity-0">
 <h2 tabindex="-1" class="mt-5 mb-3 pb-2 border-bottom" id="section-4-block-tools"><span class="h-tile h-num" aria-hidden="true">4</span><span class="h-text"><span class="visually-hidden">4. </span>Block Tools</span></h2>
-<p>The block tools are laid out in the top toolbar in the order below; <span class="shortcut"><kbd>1</kbd></span>–<span class="shortcut"><kbd>0</kbd></span> select them.</p>
+<p><img class="img-fluid rounded shadow-sm d-block my-3" height="70" alt="image" src="./map-editor-images/tools_toollbar.png" width="375"></p>
+<h3 tabindex="-1" class="mt-4 mb-3" id="section-40-universal-shortcuts">4.0 Universal Shortcuts</h3>
+<p>The following shortcuts work in all block tools :</p>
+<ul>
+<li><span class="shortcut"><img class="img-inline mouse-icon" src="./map-editor-images/mouse_wheel.svg" alt="" width="126" height="102"><strong>Wheel</strong></span>, or <span class="shortcut"><kbd>Shift</kbd>+<kbd>Number Key</kbd></span> : Change the selected block texture in the left toolbar.</li>
+<li><span class="shortcut"><kbd>Ctrl</kbd><span class="join"> and </span><img class="img-inline mouse-icon" src="./map-editor-images/mouse_wheel.svg" alt="" width="126" height="102"><strong>Wheel</strong></span>, or <span class="shortcut"><kbd>-</kbd> / <kbd>=</kbd></span> : Change texture page in the left toolbar.</li>
+<li><span class="shortcut"><kbd>Alt</kbd><span class="join"> and </span><img class="img-inline mouse-icon" src="./map-editor-images/mouse_left.svg" alt="" width="90" height="102"><strong>Click</strong></span>, or <strong>Middle-Click</strong> : Sample whatever you're pointing at; the block (texture, shape, direction), entity or layer, depending on the mode. </li>
+</ul>
 <!--nearest neighbour upscaling-->
 <h3 tabindex="-1" class="mt-4 mb-3" id="section-41-img-srcmap-editor-imagestool_1svg--basic-tool"><span class="h-tile" aria-hidden="true"><img class="img-fluid rounded shadow-sm d-block my-3" alt="" src="./map-editor-images/tool_1.svg" width="36" height="36"></span><span class="h-text">4.1 Basic Tool</span></h3>
+<p><img class="img-fluid rounded shadow-sm d-block my-3" height="200" alt="image" src="./map-editor-images/voxel_tool.gif" width="293"></p>
 <ul>
 <li><span class="shortcut"><img class="img-inline mouse-icon" src="./map-editor-images/mouse_left.svg" alt="" width="90" height="102"><strong>Click</strong></span> : Place block.</li>
 <li><span class="shortcut"><img class="img-inline mouse-icon" src="./map-editor-images/mouse_right.svg" alt="" width="90" height="102"><strong>Right-Click</strong></span> : Delete block.</li>
 <li><span class="shortcut"><kbd>Shift</kbd><span class="join"> and </span><img class="img-inline mouse-icon" src="./map-editor-images/mouse_left.svg" alt="" width="90" height="102"><strong>Click</strong> (hold)</span> : Rapid placement.</li>
 <li><span class="shortcut"><kbd>Shift</kbd><span class="join"> and </span><img class="img-inline mouse-icon" src="./map-editor-images/mouse_right.svg" alt="" width="90" height="102"><strong>Right-Click</strong> (hold)</span> : Rapid deletion.</li>
 <li><span class="shortcut"><kbd>Ctrl</kbd><span class="join"> and </span><img class="img-inline mouse-icon" src="./map-editor-images/mouse_left.svg" alt="" width="90" height="102"><strong>Click</strong></span> : Place a block offset one step back from the face you're highlighting.</li>
-<li><span class="shortcut"><img class="img-inline mouse-icon" src="./map-editor-images/mouse_wheel.svg" alt="" width="126" height="102"><strong>Wheel</strong></span>, or <span class="shortcut"><kbd>Shift</kbd>+<kbd>Number Key</kbd></span> : Change the selected block texture in the left toolbar.</li>
-<li><span class="shortcut"><kbd>Ctrl</kbd><span class="join"> and </span><img class="img-inline mouse-icon" src="./map-editor-images/mouse_wheel.svg" alt="" width="126" height="102"><strong>Wheel</strong></span>, or <span class="shortcut"><kbd>-</kbd> / <kbd>=</kbd></span> : Change texture page in the left toolbar.</li>
 </ul>
 <h4 tabindex="-1" class="mt-3 mb-2 opacity-75" id="section-41b-block-shapes">4.1b Block Shapes</h4>
 <p><img class="img-fluid rounded shadow-sm d-block my-3" height="91" alt="image" src="./map-editor-images/shape_toolbar.png" width="483"></p>
 <ul>
 <li>The shape toolbar, to the right of the tools, includes ramps and other shapes.</li>
 <li><span class="shortcut"><kbd>F</kbd></span>, <span class="shortcut"><kbd>G</kbd></span>, <span class="shortcut"><kbd>H</kbd></span>… and <span class="shortcut"><kbd>Shift</kbd>+<kbd>F</kbd></span>, <span class="shortcut"><kbd>Shift</kbd>+<kbd>G</kbd></span>, <span class="shortcut"><kbd>Shift</kbd>+<kbd>H</kbd></span>… : Select a shape (each shape's key is shown on its button).</li>
-<li><span class="shortcut"><kbd>Ctrl</kbd>+<kbd>Shift</kbd><span class="join"> and </span><img class="img-inline mouse-icon" src="./map-editor-images/mouse_wheel.svg" alt="" width="126" height="102"><strong>Wheel</strong></span> : Cycle through the shapes (with the Basic, Plane and 2D Draw tools).</li>
-<li><span class="shortcut"><kbd>R</kbd></span> : Rotate selected shape.</li>
+<li><span class="shortcut"><kbd>Ctrl</kbd>+<kbd>Shift</kbd><span class="join"> and </span><img class="img-inline mouse-icon" src="./map-editor-images/mouse_wheel.svg" alt="" width="126" height="102"><strong>Wheel</strong></span> : Cycle through the shapes.</li>
+<li><span class="shortcut"><kbd>R</kbd></span> : Rotate selected shape about the vertical axis.</li>
 <li><span class="shortcut"><kbd>V</kbd></span> : Flip vertically.</li>
 </ul>
-<blockquote class="blockquote border-start border-3 ps-3 py-1 my-3 callout callout-info" role="note"><p><span class="callout-label">Note</span> Do <em>not</em> use the staircase block anywhere the player might roll across it - it doesn't play well with egg physics.</p>
+<blockquote class="blockquote border-start border-3 ps-3 py-1 my-3 callout callout-warning" role="note"><p><span class="callout-label">Warning</span> Do <em>not</em> use the staircase block anywhere the player might roll across it - it doesn't play well with egg physics.</p>
 </blockquote>
 <h3 tabindex="-1" class="mt-4 mb-3" id="section-42-img-srcmap-editor-imagestool_2svg--plane"><span class="h-tile" aria-hidden="true"><img class="img-fluid rounded shadow-sm d-block my-3" alt="" src="./map-editor-images/tool_2.svg" width="36" height="36"></span><span class="h-text">4.2 Plane</span></h3>
-<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/plane_drag_basic.png" width="553"></p>
 <ul>
-<li><p><span class="shortcut"><strong>Click</strong><span class="join"> and </span><strong>Drag</strong></span> : Draw a planar sheet (floor or wall).</p></li>
-<li><p><span class="shortcut"><kbd>Ctrl</kbd> while clicking</span> : Push the plane one block into the highlighted surface for a flush fit :</p></li>
+<li><p><span class="shortcut"><strong>Click</strong><span class="join"> and </span><strong>Drag</strong></span> : Draw a planar sheet (floor or wall).
+<img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/plane_tool.gif" width="282"></p></li>
+<li><p><span class="shortcut"><kbd>Ctrl</kbd> while clicking</span> : Push the plane one block into the highlighted surface for a flush fit :
+<img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/plane_tool_flush.gif" width="533"></p></li>
+<li><p><span class="shortcut"><strong>Right-Click</strong><span class="join"> and </span><strong>Drag</strong></span> : Delete a planar region (useful for doors and openings).
+<img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/plane_tool_delete.gif" width="315"></p></li>
+<li><p><span class="shortcut"><kbd>Alt</kbd> while dragging</span> : Use the initial click point as the <em>centre</em> of the plane rather than a corner.
+<img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/plane_tool_centre.gif" width="309"></p></li>
+<li><p>When using the tool with the 45° slope-shape selected, you drag the plane along the slope :
+<img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/plane_tool_slope.gif" width="287"></p></li>
 </ul>
-<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/plane_drag_ctrl_flush.png" width="553"></p>
-<ul>
-<li><span class="shortcut"><img class="img-inline mouse-icon" src="./map-editor-images/mouse_right.svg" alt="" width="90" height="102"><strong>Right-Click</strong><span class="join"> and </span><strong>Drag</strong></span> : Delete a planar region (useful for doors and openings).</li>
-</ul>
-<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/plane_drag_delete_region.png" width="553"></p>
-<ul>
-<li><span class="shortcut"><kbd>Alt</kbd> while dragging</span> : Use the initial click point as the <em>centre</em> of the plane rather than a corner.</li>
-</ul>
-<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/plane_drag_alt_centered.png" width="553"></p>
-<ul>
-<li>When using the tool with the 45° slope-shape selected, you drag the plane along the slope :</li>
-</ul>
-<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/slope_plane_drag.png" width="553"></p>
 <hr class="my-5 opacity-0">
 <h3 tabindex="-1" class="mt-4 mb-3" id="section-43-img-srcmap-editor-imagestool_3svg--extrude"><span class="h-tile" aria-hidden="true"><img class="img-fluid rounded shadow-sm d-block my-3" alt="" src="./map-editor-images/tool_3.svg" width="36" height="36"></span><span class="h-text">4.3 Extrude</span></h3>
 <ul>
-<li><span class="shortcut"><img class="img-inline mouse-icon" src="./map-editor-images/mouse_left.svg" alt="" width="90" height="102"><strong>Click</strong><span class="join"> and </span><strong>Drag</strong></span> to define a 2D area, then move your mouse and <span class="shortcut"><strong>Click</strong></span> to extrude to that depth.  Very useful!</li>
-<li>Works on irregular shapes :</li>
-</ul>
-<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/extrude_irregular_shape.png" width="553"></p>
-<ul>
-<li><span class="shortcut"><kbd>Shift</kbd><span class="join"> and </span><img class="img-inline mouse-icon" src="./map-editor-images/mouse_left.svg" alt="" width="90" height="102"><strong>Click</strong></span> : Extrude using the currently selected texture.</li>
-<li><span class="shortcut"><kbd>Alt</kbd> while dragging</span> : Use the initial click point as the <em>centre</em> of the area rather than a corner.</li>
-<li><span class="shortcut"><img class="img-inline mouse-icon" src="./map-editor-images/mouse_right.svg" alt="" width="90" height="102"><strong>Right-Click</strong><span class="join"> and </span><strong>Drag</strong></span> (then <span class="shortcut"><strong>Click</strong></span> to set the depth) : Nothing to do with extrude, really, more a "delete everything inside this box" tool.</li>
+<li><p><span class="shortcut"><strong>Click</strong><span class="join"> and </span><strong>Drag</strong></span> to define a 2D area, then move your mouse and <span class="shortcut"><strong>Click</strong></span> to extrude to that depth.  Very useful!</p></li>
+<li><p>Works on irregular shapes :
+<img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/extrude_tool.gif" width="308"></p></li>
+<li><p><span class="shortcut"><kbd>Shift</kbd><span class="join"> and </span><strong>Click</strong></span> : Extrude using the currently selected texture.</p></li>
+<li><p><span class="shortcut"><kbd>Alt</kbd> while dragging</span> : Use the initial click point as the <em>centre</em> of the area rather than a corner.</p></li>
+<li><p><span class="shortcut"><strong>Right-Click</strong><span class="join"> and </span><strong>Drag</strong></span> (then <span class="shortcut"><strong>Click</strong></span> to set the depth) : Nothing to do with extrude, really, more a "delete everything inside this box" tool.</p></li>
 </ul>
 <hr class="my-5 opacity-0">
 <h3 tabindex="-1" class="mt-4 mb-3" id="section-44-img-srcmap-editor-imagestool_4svg--paint"><span class="h-tile" aria-hidden="true"><img class="img-fluid rounded shadow-sm d-block my-3" alt="" src="./map-editor-images/tool_4.svg" width="36" height="36"></span><span class="h-text">4.4 Paint</span></h3>
@@ -856,11 +861,9 @@
 </ul>
 <p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/trigger_intro.png" width="396"></p>
 <ul>
-<li>You can also <strong>move</strong> and <strong>resize</strong> trigger boxes in the viewport using the <strong>move gizmo</strong> and <strong>face resize handles</strong> (drag the coloured handles on each face of the box).</li>
-</ul>
-<p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/resize_trigger.gif" width="427"></p>
-<ul>
-<li>Note that each trigger box has a 1×1×1 'core' that you click to select it. (Technically this core doesn't need to be inside the trigger area, but…why would you do that?)</li>
+<li><p>You can also <strong>move</strong> and <strong>resize</strong> trigger boxes in the viewport using the <strong>move gizmo</strong> and <strong>face resize handles</strong> (drag the coloured handles on each face of the box).
+<img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/resize_trigger.gif" width="427"></p></li>
+<li><p>Note that each trigger box has a 1×1×1 'core' that you click to select it. (Technically this core doesn't need to be inside the trigger area, but…why would you do that?)</p></li>
 </ul>
 <h4 tabindex="-1" class="mt-3 mb-2 opacity-75" id="section-521-img-srcmap-editor-imagestrigger_1_musicsvg--music"><span class="h-tile" aria-hidden="true"><img class="img-fluid rounded shadow-sm d-block my-3" alt="" src="./map-editor-images/line/trigger_1_music.svg" width="36" height="36"></span><span class="h-text">5.2.1 music</span></h4>
 <ul>

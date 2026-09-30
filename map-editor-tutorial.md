@@ -11,7 +11,6 @@ You can add maps manually (if you already have the file) or download them from t
 <img height="300" alt="image" src="./map-editor-images/custom_maps_menu.png" />
 
 1. Go to **Custom Maps** on the title screen.
-
 <img height="300" alt="image" src="./map-editor-images/custom_maps_screen.png" />
 
 2. From here you can download maps from the steam workshop - the default 'Featured' tab displays my own personal picks, and you can browse and download many more in the other tabs. 
@@ -21,7 +20,6 @@ You can add maps manually (if you already have the file) or download them from t
 If you have a map file (.txt or .zip), you can add it like this (doesn't work on Steam Deck!) :
 
 1. Go to **Custom Maps** on the title screen.
-
 <img height="300" alt="image" src="./map-editor-images/open_maps_folder_button.png" />
 
 2. In the **Local** tab, click **Open Maps Folder** to open the maps folder in your file manager.  You can add map files from other people by dragging them here.
@@ -29,13 +27,11 @@ If you have a map file (.txt or .zip), you can add it like this (doesn't work on
 ## 1. Enabling the Map Editor
 
 1. Go to **Settings** :
-
 <img height="300" alt="image" src="./map-editor-images/settings_menu.png" />
 
 2. Enable **Map Editor**.
 3. Load into a map (custom maps are easiest to work with - the main-game map has some hacky stuff in it).
 4. Press **Tab** to open the map editor.
-
 <img height="300" alt="image" src="./map-editor-images/map_editor_opened.png" />
 
 
@@ -47,52 +43,55 @@ If you have a map file (.txt or .zip), you can add it like this (doesn't work on
 
 - **Tab**
     - In-game : Open the Map Editor.
-    - In the Map Editor : Toggle mouse control between camera-look and cursor-pointing.
+    - In the Map Editor : Toggle between controlling the camera with your mouse, or having a free cursor to click on things with.
 - **Space** : Exit edit mode back into the game, spawning at the point you're aiming at.
-- **Backtick** (**`**, likely the key to the left of **1**) : cycle between
+- **Backtick** (**`**, likely the key to the left of **1**) : Cycle between
     - **Block Mode** : Edit terrain.
     - **Entity Mode** : Checkpoints, props, trigger boxes.
     - **Layer Mode** : Move large sections of terrain.
 - You can also switch modes with the **Blocks** / **Entities** / **Layers** buttons in the top-right corner.
+<img height="100" alt="image" src="./map-editor-images/top_right_buttons.png" />
 
 ### 2.2 General Shortcuts
 
+<img height="50" alt="image" src="./map-editor-images/toolbar_file_buttons.png" />
 (On a Mac, use **Cmd** wherever it says **Ctrl**.)
 
 - **Ctrl+N** : New map
+- **Ctrl+L** : Open the local maps folder in your file manager.
 - **Ctrl+S** : Save
 - **F5** : Reload
 - **Ctrl+Z** : Undo
 - **Ctrl+Y** : Redo
 - **Ctrl+R** : Randomly rotate all *cube-shaped blocks* with the currently selected texture in the currently selected layer.
 - **Ctrl+Shift+R** : Unrandomizes the rotation of all *cube-shaped blocks* (with the currently-selected texture in the currently-selected layer) to face a single direction.  Cycles direction each time it's pressed.
-- **Ctrl+L** : Open the maps folder with your file manager.
-- **Ctrl+K** : Export current map as a 3D mesh (for importing into other software/games).  This also exports the game tilemap/textures to the same directory.
+- **Ctrl+K** : Export current map as a 3D mesh (for importing into other software/games).  This also exports the game tilemap/textures to a .png file in the same directory.
 - **F1** : Open this tutorial.
-- **F12** : Take a screenshot.
-- **Alt+Click**, or **Middle-Click** : Sample whatever you're pointing at - the block (texture and shape), entity or layer, depending on the mode.  This works the same in every tool, so it isn't repeated in the tool descriptions below.
+- **F12** : Take a screenshot (saved to your operating system's pictures folder in the Oeuf directory).
 
 ### 2.3 Loading and Saving
 
-<img width="322" height="142" alt="image" src="./map-editor-images/editor_ui_top_left.png" />
+<img height="50" alt="image" src="./map-editor-images/toolbar_file_buttons.png" />
 
 To the top left of the screen you can see :
 
 - The current map name (edit it and press **Enter** to save as a new file).
-- The file dropdown.  This lists all **built-in maps** (e.g. `minimal`, `eggworld`), **Steam Workshop maps**, and **user maps** (saved in your maps folder).  
-- Note : built-in and Steam Workshop maps are *read-only*, but you can save them under new filenames.
+- The file dropdown.  This lists all **built-in maps** (e.g. `minimal`, `eggworld`), **Steam Workshop maps**, and **local maps** (saved in your maps folder).  
+<img height="300" alt="image" src="./map-editor-images/file_dropdown.png" />
+- Built-in and Steam Workshop maps are *read-only*, but you can save them under new filenames.
+<img height="80" alt="Map name with an asterisk showing unsaved changes" src="./map-editor-images/unsaved_changes.png" />
 - An asterisk after the map name means you have unsaved changes.  The editor also keeps recovery autosaves (in the `autosave` folder inside your maps folder), but these don't replace saving.
 
-<img height="300" alt="image" src="./map-editor-images/file_dropdown.png" />
+
 
 ---
 
 ## 3. Camera and Movement (in the Map Editor)
 
-- **WASD** : Move camera
-- **Shift** : Faster movement
-- **Q / E** : Move down / up
-- **Z / C** : Rotate left / right
+- **W, A, S, D** : Move camera
+- **Q, E** : Move down / up
+- **Z, C** : Rotate left / right
+- **Shift (hold)** : Faster movement
 
 (Don't forget : **Tab** toggles between camera-look and cursor-pointing modes.)
 
@@ -100,18 +99,26 @@ To the top left of the screen you can see :
 
 ## 4. Block Tools
 
-The block tools are laid out in the top toolbar in the order below; **1**–**0** select them.
+<img height="70" alt="image" src="./map-editor-images/tools_toollbar.png" />
+
+### 4.0 Universal Shortcuts
+
+The following shortcuts work in all block tools :
+
+- **Wheel**, or **Shift+Number Key** : Change the selected block texture in the left toolbar.
+- **Ctrl+Wheel**, or **- / =** : Change texture page in the left toolbar.
+- **Alt+Click**, or **Middle-Click** : Sample whatever you're pointing at; the block (texture, shape, direction), entity or layer, depending on the mode. 
 
 <!--nearest neighbour upscaling-->
 ### 4.1 <img src="./map-editor-images/tool_1.svg" /> Basic Tool
+
+<img height="200" alt="image" src="./map-editor-images/voxel_tool.gif" />
 
 - **Click** : Place block.
 - **Right-Click** : Delete block.
 - **Shift+Click (hold)** : Rapid placement.
 - **Shift+Right-Click (hold)** : Rapid deletion.
 - **Ctrl+Click** : Place a block offset one step back from the face you're highlighting.
-- **Wheel**, or **Shift+Number Key** : Change the selected block texture in the left toolbar.
-- **Ctrl+Wheel**, or **- / =** : Change texture page in the left toolbar.
 
 
 #### 4.1b Block Shapes
@@ -120,34 +127,30 @@ The block tools are laid out in the top toolbar in the order below; **1**–**0*
 
 - The shape toolbar, to the right of the tools, includes ramps and other shapes.
 - **F**, **G**, **H**... and **Shift+F**, **Shift+G**, **Shift+H**... : Select a shape (each shape's key is shown on its button).
-- **Ctrl+Shift+Wheel** : Cycle through the shapes (with the Basic, Plane and 2D Draw tools).
-- **R** : Rotate selected shape.
+- **Ctrl+Shift+Wheel** : Cycle through the shapes.
+- **R** : Rotate selected shape about the vertical axis.
 - **V** : Flip vertically.
 
-> [!NOTE]
+> [!WARNING]
 > Do *not* use the staircase block anywhere the player might roll across it - it doesn't play well with egg physics.
 
 ### 4.2 <img src="./map-editor-images/tool_2.svg" /> Plane
 
-<img height="300" alt="image" src="./map-editor-images/plane_drag_basic.png" />
 
 - **Click+Drag** : Draw a planar sheet (floor or wall).
+<img height="300" alt="image" src="./map-editor-images/plane_tool.gif" />
 
 - **Ctrl while clicking** : Push the plane one block into the highlighted surface for a flush fit :
-
-<img height="300" alt="image" src="./map-editor-images/plane_drag_ctrl_flush.png" />
+<img height="300" alt="image" src="./map-editor-images/plane_tool_flush.gif" />
 
 - **Right-Click+Drag** : Delete a planar region (useful for doors and openings).
-
-<img height="300" alt="image" src="./map-editor-images/plane_drag_delete_region.png" />
+<img height="300" alt="image" src="./map-editor-images/plane_tool_delete.gif" />
 
 - **Alt while dragging** : Use the initial click point as the *centre* of the plane rather than a corner.
-
-<img height="300" alt="image" src="./map-editor-images/plane_drag_alt_centered.png" />
+<img height="300" alt="image" src="./map-editor-images/plane_tool_centre.gif" />
 
 - When using the tool with the 45° slope-shape selected, you drag the plane along the slope :
-
-<img height="300" alt="image" src="./map-editor-images/slope_plane_drag.png" />
+<img height="300" alt="image" src="./map-editor-images/plane_tool_slope.gif" />
 
 
 ---
@@ -156,8 +159,7 @@ The block tools are laid out in the top toolbar in the order below; **1**–**0*
 
 - **Click+Drag** to define a 2D area, then move your mouse and **Click** to extrude to that depth.  Very useful!
 - Works on irregular shapes :
-
-<img height="300" alt="image" src="./map-editor-images/extrude_irregular_shape.png" />
+<img height="300" alt="image" src="./map-editor-images/extrude_tool.gif" />
 
 - **Shift+Click** : Extrude using the currently selected texture.
 - **Alt while dragging** : Use the initial click point as the *centre* of the area rather than a corner.
@@ -349,7 +351,6 @@ There are a few other objects in the main game map (such as the spawn-only check
 <img height="300" alt="image" src="./map-editor-images/trigger_intro.png" />
 
 - You can also **move** and **resize** trigger boxes in the viewport using the **move gizmo** and **face resize handles** (drag the coloured handles on each face of the box).
-
 <img height="300" alt="image" src="./map-editor-images/resize_trigger.gif" />
 
 - Note that each trigger box has a 1×1×1 'core' that you click to select it. (Technically this core doesn't need to be inside the trigger area, but...why would you do that?)
