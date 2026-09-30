@@ -631,7 +631,7 @@
 <li><span class="shortcut"><kbd>Ctrl</kbd>+<kbd>K</kbd></span> : Export current map as a 3D mesh (for importing into other software/games).  This also exports the game tilemap/textures to the same directory.</li>
 <li><span class="shortcut"><kbd>F1</kbd></span> : Open this tutorial.</li>
 <li><span class="shortcut"><kbd>F12</kbd></span> : Take a screenshot.</li>
-<li><strong>Middle-Click</strong> : Same as <span class="shortcut"><kbd>Alt</kbd><span class="join"> and </span><strong>Click</strong></span> - sample the block, entity or layer you're pointing at.</li>
+<li><span class="shortcut"><kbd>Alt</kbd><span class="join"> and </span><img class="img-inline mouse-icon" src="./map-editor-images/mouse_left.svg" alt="" width="90" height="102"><strong>Click</strong></span>, or <strong>Middle-Click</strong> : Sample whatever you're pointing at - the block (texture and shape), entity or layer, depending on the mode.  This works the same in every tool, so it isn't repeated in the tool descriptions below.</li>
 </ul>
 <h3 tabindex="-1" class="mt-4 mb-3" id="section-23-loading-and-saving">2.3 Loading and Saving</h3>
 <p><img class="img-fluid rounded shadow-sm d-block my-3" width="322" height="142" alt="image" src="./map-editor-images/editor_ui_top_left.png"></p>
@@ -663,9 +663,8 @@
 <li><span class="shortcut"><kbd>Shift</kbd><span class="join"> and </span><img class="img-inline mouse-icon" src="./map-editor-images/mouse_left.svg" alt="" width="90" height="102"><strong>Click</strong> (hold)</span> : Rapid placement.</li>
 <li><span class="shortcut"><kbd>Shift</kbd><span class="join"> and </span><img class="img-inline mouse-icon" src="./map-editor-images/mouse_right.svg" alt="" width="90" height="102"><strong>Right-Click</strong> (hold)</span> : Rapid deletion.</li>
 <li><span class="shortcut"><kbd>Ctrl</kbd><span class="join"> and </span><img class="img-inline mouse-icon" src="./map-editor-images/mouse_left.svg" alt="" width="90" height="102"><strong>Click</strong></span> : Place a block offset one step back from the face you're highlighting.</li>
-<li><span class="shortcut"><kbd>Alt</kbd><span class="join"> and </span><img class="img-inline mouse-icon" src="./map-editor-images/mouse_left.svg" alt="" width="90" height="102"><strong>Click</strong></span> or <strong>Middle-Click</strong> : Sample an existing block (eyedropper).</li>
-<li><span class="shortcut"><img class="img-inline mouse-icon" src="./map-editor-images/mouse_wheel.svg" alt="" width="126" height="102"><strong>Wheel</strong></span> or <span class="shortcut"><kbd>Shift</kbd>+<kbd>Number Key</kbd></span> : Change the selected block texture in the left toolbar.</li>
-<li><span class="shortcut"><kbd>Ctrl</kbd><span class="join"> and </span><img class="img-inline mouse-icon" src="./map-editor-images/mouse_wheel.svg" alt="" width="126" height="102"><strong>Wheel</strong></span> or <span class="shortcut"><kbd>-</kbd> / <kbd>=</kbd></span> : Change texture page in the left toolbar.</li>
+<li><span class="shortcut"><img class="img-inline mouse-icon" src="./map-editor-images/mouse_wheel.svg" alt="" width="126" height="102"><strong>Wheel</strong></span>, or <span class="shortcut"><kbd>Shift</kbd>+<kbd>Number Key</kbd></span> : Change the selected block texture in the left toolbar.</li>
+<li><span class="shortcut"><kbd>Ctrl</kbd><span class="join"> and </span><img class="img-inline mouse-icon" src="./map-editor-images/mouse_wheel.svg" alt="" width="126" height="102"><strong>Wheel</strong></span>, or <span class="shortcut"><kbd>-</kbd> / <kbd>=</kbd></span> : Change texture page in the left toolbar.</li>
 </ul>
 <h4 tabindex="-1" class="mt-3 mb-2 opacity-75" id="section-41b-block-shapes">4.1b Block Shapes</h4>
 <p><img class="img-fluid rounded shadow-sm d-block my-3" height="91" alt="image" src="./map-editor-images/shape_toolbar.png" width="483"></p>
@@ -713,7 +712,7 @@
 <h3 tabindex="-1" class="mt-4 mb-3" id="section-44-img-srcmap-editor-imagestool_4svg--paint"><span class="h-tile" aria-hidden="true"><img class="img-fluid rounded shadow-sm d-block my-3" alt="" src="./map-editor-images/tool_4.svg" width="36" height="36"></span><span class="h-text">4.4 Paint</span></h3>
 <ul>
 <li><span class="shortcut"><img class="img-inline mouse-icon" src="./map-editor-images/mouse_left.svg" alt="" width="90" height="102"><strong>Click</strong> (hold)</span> : Apply texture to highlighted block.</li>
-<li><span class="shortcut"><img class="img-inline mouse-icon" src="./map-editor-images/mouse_right.svg" alt="" width="90" height="102"><strong>Right-Click</strong></span>, <span class="shortcut"><kbd>Alt</kbd><span class="join"> and </span><strong>Click</strong></span> or <strong>Middle-Click</strong> : Sample block texture and shape.</li>
+<li><span class="shortcut"><img class="img-inline mouse-icon" src="./map-editor-images/mouse_right.svg" alt="" width="90" height="102"><strong>Right-Click</strong></span> : Sample block texture and shape (same as <span class="shortcut"><kbd>Alt</kbd><span class="join"> and </span><strong>Click</strong></span>).</li>
 <li><span class="shortcut"><kbd>Shift</kbd><span class="join"> and </span><img class="img-inline mouse-icon" src="./map-editor-images/mouse_wheel.svg" alt="" width="126" height="102"><strong>Wheel</strong></span> : Adjust brush radius.</li>
 <li><span class="shortcut"><kbd>Shift</kbd><span class="join"> and </span><img class="img-inline mouse-icon" src="./map-editor-images/mouse_left.svg" alt="" width="90" height="102"><strong>Click</strong></span> : Replace all blocks of the pointed-at texture in the current layer with the selected texture (undoable - but be careful).</li>
 </ul>
@@ -777,7 +776,6 @@
 <li><span class="shortcut"><img class="img-inline mouse-icon" src="./map-editor-images/mouse_right.svg" alt="" width="90" height="102"><strong>Right-Click</strong></span> : Remove blocks on the plane where you're clicking.</li>
 <li><span class="shortcut"><kbd>Ctrl</kbd><span class="join"> and </span><img class="img-inline mouse-icon" src="./map-editor-images/mouse_right.svg" alt="" width="90" height="102"><strong>Right-Click</strong></span> : Remove blocks on far side of the plane where you're clicking.</li>
 <li><span class="shortcut"><kbd>Shift</kbd><span class="join"> and </span><img class="img-inline mouse-icon" src="./map-editor-images/mouse_wheel.svg" alt="" width="126" height="102"><strong>Wheel</strong></span> : Move the plane further/closer to you.</li>
-<li><span class="shortcut"><kbd>Alt</kbd><span class="join"> and </span><img class="img-inline mouse-icon" src="./map-editor-images/mouse_left.svg" alt="" width="90" height="102"><strong>Click</strong></span> or <strong>Middle-Click</strong> : Sample highlighted block</li>
 <li><span class="shortcut"><kbd>Alt</kbd><span class="join"> and </span><img class="img-inline mouse-icon" src="./map-editor-images/mouse_right.svg" alt="" width="90" height="102"><strong>Right-Click</strong></span> : Align plane to highlighted face</li>
 </ul>
 <p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/planar_draw_example.png" width="553"></p>
@@ -790,8 +788,7 @@
 <ul>
 <li><span class="shortcut"><img class="img-inline mouse-icon" src="./map-editor-images/mouse_left.svg" alt="" width="90" height="102"><strong>Click</strong></span> : Place or select an object.</li>
 <li><span class="shortcut"><img class="img-inline mouse-icon" src="./map-editor-images/mouse_right.svg" alt="" width="90" height="102"><strong>Right-Click</strong></span> : Delete an object.</li>
-<li><span class="shortcut"><kbd>Alt</kbd><span class="join"> and </span><img class="img-inline mouse-icon" src="./map-editor-images/mouse_left.svg" alt="" width="90" height="102"><strong>Click</strong></span> or <strong>Middle-Click</strong> : Sample an object (pick it as the kind of object to place next).</li>
-<li><span class="shortcut"><img class="img-inline mouse-icon" src="./map-editor-images/mouse_wheel.svg" alt="" width="126" height="102"><strong>Wheel</strong></span> or <span class="shortcut"><kbd>Shift</kbd>+<kbd>Number Key</kbd></span> : Choose which object to place.</li>
+<li><span class="shortcut"><img class="img-inline mouse-icon" src="./map-editor-images/mouse_wheel.svg" alt="" width="126" height="102"><strong>Wheel</strong></span>, or <span class="shortcut"><kbd>Shift</kbd>+<kbd>Number Key</kbd></span> : Choose which object to place.</li>
 </ul>
 <h4 tabindex="-1" class="mt-3 mb-2 opacity-75" id="section-511-img-srcmap-editor-imagesobject_1_bonfiresvg--normal-checkpoint"><span class="h-tile" aria-hidden="true"><img class="img-fluid rounded shadow-sm d-block my-3" alt="" src="./map-editor-images/line/object_1_Bonfire.svg" width="128" height="128"></span><span class="h-text">5.1.1 Normal Checkpoint</span></h4>
 <ul>
@@ -852,7 +849,7 @@
 <h3 tabindex="-1" class="mt-4 mb-3" id="section-52-img-srcmap-editor-imagesentity_tool_triggersvg--trigger-box-tool"><span class="h-tile" aria-hidden="true"><img class="img-fluid rounded shadow-sm d-block my-3" alt="" src="./map-editor-images/entity_tool_trigger.svg" width="36" height="36"></span><span class="h-text">5.2 Trigger-Box Tool</span></h3>
 <ul>
 <li>Trigger boxes are big invisible areas that do something (e.g. playing music or displaying a message) when the player enters them.</li>
-<li>The controls are the same as for the Object Tool; <span class="shortcut"><strong>Wheel</strong></span> or <span class="shortcut"><kbd>Shift</kbd>+<kbd>Number Key</kbd></span> choose which kind of trigger box to place.</li>
+<li>The controls are the same as for the Object Tool; <span class="shortcut"><strong>Wheel</strong></span>, or <span class="shortcut"><kbd>Shift</kbd>+<kbd>Number Key</kbd></span> : choose which kind of trigger box to place.</li>
 </ul>
 <p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/triggerbox.png" width="553"></p>
 <ul>
@@ -921,7 +918,6 @@
 <ul>
 <li><span class="shortcut"><img class="img-inline mouse-icon" src="./map-editor-images/mouse_left.svg" alt="" width="90" height="102"><strong>Click</strong><span class="join"> and </span><strong>Drag</strong></span> to define an area, then move your mouse and <span class="shortcut"><strong>Click</strong></span> to set the depth : All visible blocks and entities inside get assigned to the currently selected layer.</li>
 <li><span class="shortcut"><img class="img-inline mouse-icon" src="./map-editor-images/mouse_left.svg" alt="" width="90" height="102"><strong>Click</strong></span> an entity : Assign it to the currently selected layer.</li>
-<li><span class="shortcut"><kbd>Alt</kbd><span class="join"> and </span><img class="img-inline mouse-icon" src="./map-editor-images/mouse_left.svg" alt="" width="90" height="102"><strong>Click</strong></span> or <strong>Middle-Click</strong> : Select the highlighted layer.</li>
 <li><span class="shortcut"><kbd>Alt</kbd> while dragging</span> : Use the initial click point as the <em>centre</em> of the area rather than a corner.</li>
 <li>Useful for correcting blocks assigned to the wrong layer.</li>
 </ul>

@@ -77,7 +77,7 @@ If you have a map file, you can add it like this (doesn't work on Steam Deck!) :
 - **Ctrl+K** : Export current map as a 3D mesh (for importing into other software/games).  This also exports the game tilemap/textures to the same directory.
 - **F1** : Open this tutorial.
 - **F12** : Take a screenshot.
-- **Middle-Click** : Same as **Alt+Click** - sample the block, entity or layer you're pointing at.
+- **Alt+Click**, or **Middle-Click** : Sample whatever you're pointing at - the block (texture and shape), entity or layer, depending on the mode.  This works the same in every tool, so it isn't repeated in the tool descriptions below.
 
 ### 2.3 Loading and Saving
 
@@ -117,9 +117,8 @@ The block tools are laid out in the top toolbar in the order below; **1**–**0*
 - **Shift+Click (hold)** : Rapid placement.
 - **Shift+Right-Click (hold)** : Rapid deletion.
 - **Ctrl+Click** : Place a block offset one step back from the face you're highlighting.
-- **Alt+Click** or **Middle-Click** : Sample an existing block (eyedropper).
-- **Wheel** or **Shift+Number Key** : Change the selected block texture in the left toolbar.
-- **Ctrl+Wheel** or **- / =** : Change texture page in the left toolbar.
+- **Wheel**, or **Shift+Number Key** : Change the selected block texture in the left toolbar.
+- **Ctrl+Wheel**, or **- / =** : Change texture page in the left toolbar.
 
 
 #### 4.1b Block Shapes
@@ -176,7 +175,7 @@ The block tools are laid out in the top toolbar in the order below; **1**–**0*
 ### 4.4 <img src="./map-editor-images/tool_4.svg" /> Paint
 
 - **Click (hold)** : Apply texture to highlighted block.
-- **Right-Click**, **Alt+Click** or **Middle-Click** : Sample block texture and shape.
+- **Right-Click** : Sample block texture and shape (same as **Alt+Click**).
 - **Shift+Wheel** : Adjust brush radius.
 - **Shift+Click** : Replace all blocks of the pointed-at texture in the current layer with the selected texture (undoable - but be careful).
 
@@ -253,7 +252,6 @@ Grow or shrink your terrain within a sphere.
 - **Right-Click** : Remove blocks on the plane where you're clicking.
 - **Ctrl+Right-Click** : Remove blocks on far side of the plane where you're clicking.
 - **Shift+Wheel** : Move the plane further/closer to you.
-- **Alt+Click** or **Middle-Click** : Sample highlighted block
 - **Alt+Right-Click** : Align plane to highlighted face
 
 
@@ -273,8 +271,7 @@ In Entity Mode there are two tools - the **Object Tool** and the **Trigger-Box T
 
 - **Click** : Place or select an object.
 - **Right-Click** : Delete an object.
-- **Alt+Click** or **Middle-Click** : Sample an object (pick it as the kind of object to place next).
-- **Wheel** or **Shift+Number Key** : Choose which object to place.
+- **Wheel**, or **Shift+Number Key** : Choose which object to place.
 
 #### 5.1.1 <img src="./map-editor-images/object_1_Bonfire.svg" /> Normal Checkpoint
 
@@ -350,7 +347,7 @@ There are a few other objects in the main game map (such as the spawn-only check
 ### 5.2 <img src="./map-editor-images/entity_tool_trigger.svg" /> Trigger-Box Tool
 
 - Trigger boxes are big invisible areas that do something (e.g. playing music or displaying a message) when the player enters them.
-- The controls are the same as for the Object Tool; **Wheel** or **Shift+Number Key** choose which kind of trigger box to place.
+- The controls are the same as for the Object Tool; **Wheel**, or **Shift+Number Key** : choose which kind of trigger box to place.
 
 <img height="300" alt="image" src="./map-editor-images/triggerbox.png" />
 
@@ -438,7 +435,6 @@ Cycle to Layer Mode with **Backtick** (**`**).
 
 - **Click+Drag** to define an area, then move your mouse and **Click** to set the depth : All visible blocks and entities inside get assigned to the currently selected layer.
 - **Click** an entity : Assign it to the currently selected layer.
-- **Alt+Click** or **Middle-Click** : Select the highlighted layer.
 - **Alt while dragging** : Use the initial click point as the *centre* of the area rather than a corner.
 - Useful for correcting blocks assigned to the wrong layer.
 
