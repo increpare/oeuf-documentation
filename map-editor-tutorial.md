@@ -30,7 +30,7 @@ If you have a map file (.txt or .zip), you can add it like this (doesn't work on
 <img height="300" alt="image" src="./map-editor-images/settings_menu.png" />
 
 2. Enable **Map Editor**.
-3. Load into a map (custom maps are easiest to work with - the main-game map `eggworld`, has some hacky stuff in it).
+3. Load into a map (custom maps are easiest to work with - the main game map, `eggworld`, has some hacky stuff in it).
 4. Press **Tab** to open the map editor.
 <img height="300" alt="image" src="./map-editor-images/map_editor_opened.png" />
 
@@ -64,10 +64,10 @@ If you have a map file (.txt or .zip), you can add it like this (doesn't work on
 - **Ctrl+Z** : Undo
 - **Ctrl+Y** : Redo
 - **Ctrl+R** : Randomly rotate all *cube-shaped blocks* with the selected texture in the selected layer.
-- **Ctrl+Shift+R** : Unrandomise the rotation of all *cube-shaped blocks* (with the currently selected texture in the currently selected layer) to face a single direction.  Cycles direction each time it's pressed.
+- **Ctrl+Shift+R** : Unrandomise the rotation of all *cube-shaped blocks* (with the selected texture in the selected layer) to face a single direction.  Cycles direction each time it's pressed.
 - **Ctrl+K** : Export current map as a 3D mesh (for importing into other software/games).  This also exports the game tilemap/textures to a .png file in the same folder.
 - **F1** : Open this tutorial.
-- **F12** : Take a screenshot (saved to your the Oeuf subfolder of your operating system's picture folder).
+- **F12** : Take a screenshot (saved to the Oeuf subfolder of your operating system's Pictures folder).
 
 ### 2.3 Loading and Saving
 
@@ -171,7 +171,7 @@ The following shortcuts work in all block tools :
 - **Click (hold)** : Apply texture to highlighted block.
 - **Right-Click** : Sample block texture, shape and direction (same as **Alt+Click**).
 - **Shift+Wheel** : Adjust brush radius.
-- **Shift+Click** : Replace all blocks of the pointed-at texture in the selected layer with the selected texture (undoable - but be careful).
+- **Shift+Click** : Paint the highlighted block as well as all other blocks in its layer that share its texture (undoable - but be careful).
 
 ---
 
@@ -198,7 +198,7 @@ The following shortcuts work in all block tools :
 <img height="300" alt="image" src="./map-editor-images/hill_dropper_example.png" />
 
 - **Click** : Drop blocks from above to form organic hills.
-- **Right-Click** : Subtract hill-shape from terrain (will remove blocks from the top without cutting a hole through the terrain).
+- **Right-Click** : Subtract hill shape from terrain (will remove blocks from the top without cutting a hole through the terrain).
 - **Shift (hold)** : Keep adding (or subtracting) hills as you move the cursor.
 - **Shift+Wheel** : Adjust hill width.
 - **Ctrl+Shift+Wheel** : Adjust hill height.
@@ -214,14 +214,14 @@ The following shortcuts work in all block tools :
 
 Sculpt and form terrain by dragging it about.
 
-- **Click+Drag** : Grow existing terrain inside the sphere, and tug it along with your cursor.
-- **Right-Click+Drag** : Shrink or erase terrain inside the sphere.
+- **Click+Drag** : Grow existing terrain, and tug it along with your cursor.
+- **Right-Click+Drag** : Shrink or erase terrain.
 - **Ctrl** : Keep it blocky (tends to square off terrain).
 - **Shift+Click** : Grow terrain using the selected texture.
 - **Shift+Wheel** : Adjust brush radius.
 
 > [!NOTE]
-> In mouse-view mode, you're dragging the terrain in the sphere around your camera.  In cursor-pointing mode, you're dragging it around the plane in front of your camera.
+> In camera-look mode, you're dragging the terrain in the sphere around your camera.  In cursor-pointing mode, you're dragging it around the plane in front of your camera.
 
 ---
 
@@ -330,7 +330,7 @@ Provides a point of light.  Handy when things are getting a bit dark - but don't
 
 <img height="300" alt="image" src="./map-editor-images/nest.png" />
 
-- In player-made maps, this is an inert geometric object.  (in the main game map it does lots of hard-coded stuff - if you're modding the main game map you'll have to put in specific start/end-points).
+- In player-made maps, this is an inert geometric object.  (In the main game map it does lots of hard-coded stuff - if you're modding the main game map you'll have to put in specific start/end-points).
 
 #### 5.1.10 Other Objects
 
@@ -364,7 +364,7 @@ There are a few other objects in the main game map (such as the spawn-only check
 
 <img height="300" alt="image" src="./map-editor-images/arealabel_props.png" />
 
-'arealabel' trigger boxes display a message on screen when the player enters, independently of checkpoints.  If the **Name** field matches a built-in location name (case-sensitive), the game localises it - e.g. entering `FOREST` displays "The Forest of Branching Paths" in English.  Otherwise it just displays your text verbatim, so entering `Hello, world!` displays "Hello, world!".
+'arealabel' trigger boxes display a message on screen when the player enters them, independently of checkpoints.  If the **Name** field matches a built-in location name (case-sensitive), then the game localises it - e.g. entering `FOREST` displays "The Forest of Branching Paths" in English.  Otherwise it just displays your text verbatim, so entering `Hello, world!` displays "Hello, world!".
 
 <img height="300" alt="image" src="./map-editor-images/arealabel2.png" />
 
@@ -393,7 +393,7 @@ There are a few other really finicky trigger-box types - what they do is specifi
 
 Cycle to Layer Mode with **Backtick** (**`**)  (or by clicking the **Layers** button in the top-right corner).  
 
-It can be useful to divide large maps into layers - distinct blocks that can be manipulated independently of each other.
+It can be useful to divide large maps into layers - distinct regions that can be manipulated independently of each other.
 
 > [!NOTE]
 > Only one block (or entity) can occupy a given position - neither blocks nor entities from different layers can overlap each other (regardless of layer visibility).
@@ -491,11 +491,11 @@ When it's finally uploaded, this page should open automatically in the Steam ove
 <img height="300" alt="Map page on Steam Workshop" src="./map-editor-images/workshop_page_appearance.png" />
 
 
-If you'd like to customise the listing further, you can do so from that page.  The Steam Workshop "Mod" is associated with the file name of the map - if you resubmit the same file, *or* the downloaded file from the workshop (resaved), it will update your map on the Steam Workshop.  Try to just use the OG filename though, it can be very confusing otherwise.
+If you'd like to customise the listing further, you can do so from that page.  The Steam Workshop "Mod" is associated with the filename of the map - if you resubmit the same file, *or* the downloaded file from the workshop (resaved), it will update your map on the Steam Workshop.  Try to just use the OG filename though, it can be very confusing otherwise.
 
 <img height="300" alt="Custom Maps list" src="./map-editor-images/custom_level_list.png" />
 
-I have recently added a bunch of *tags* to Steam Workshop, which are displayed in the in-game browser.  They indicate difficulty, and also if I've given it my personal stamp of approval.  This is a bit dictatorial, but it's genuinely important to me that new players can have fun browsing the workshop and easily find things they might like.  They are set by me right now.  I try to play all maps and rate them as easy/medium/hard if I can complete them.  If you think I've overlooked your map, drop me a line at [analytic@gmail.com](mailto:analytic@gmail.com) - I love playing Oeuf maps!
+I have recently added a bunch of *tags* to Steam Workshop, which are displayed in the in-game browser.  They indicate difficulty, and also if I've given a map my personal stamp of approval.  This is a bit dictatorial, but it's genuinely important to me that new players can have fun browsing the workshop and easily find things they might like.  They are set by me right now.  I try to play all maps and rate them as easy/medium/hard if I can complete them.  If you think I've overlooked your map, drop me a line at [analytic@gmail.com](mailto:analytic@gmail.com) - I love playing Oeuf maps!
 
 ---
 
@@ -508,7 +508,7 @@ You can edit maps with your friends by turning on co-op editing when you are set
 <img height="300" alt="Co-op editing settings" src="./map-editor-images/coop_editing.png" />
 
 In the multiplayer lobby list, games that have co-op editing enabled have a <img src="./map-editor-images/mp_mapediting.svg" class="img-inline" /> icon next to them :
-<img height="300" alt="showing the 'co-op' editing icon the lobby browser." src="./map-editor-images/coop_editable_map.png" />
+<img height="300" alt="showing the 'co-op' editing icon in the lobby browser." src="./map-editor-images/coop_editable_map.png" />
 
 You can set whether new players have permission to edit the map by default on this menu, and you can change it from the pause menu in-game.  You can also toggle editing permission on and off for specific players there.
 <img height="300" alt="Multiplayer editor permissions" src="./map-editor-images/mp_editor_permissions_list.png" />
@@ -540,7 +540,7 @@ This is a *very* useful tool when you've left a multiplayer editing server open 
 
 ## 10. Map file format specs
 
-Oeuf stores its maps as UTF-8 plaintext, with space-separated values.  Each line starts with a token which indicates the type of data stored, and then information about it.  This describes the current format: main `version 5` and `entities_version 6` (they're versioned separately because voxel parsing is done in C++, separately to gdscript entity parsing which changes more frequently).  This is not a comprehensive spec, the idea is to give you enough to get started parsing/generating if you want to.  Happy to explain more if you want to know more.  Just drop me an e-mail.
+Oeuf stores its maps as UTF-8 plaintext, with space-separated values.  Each line starts with a token which indicates the type of data stored, and then information about it.  This describes the current format: main `version 5` and `entities_version 6` (they're versioned separately because voxel parsing is done in C++, separately to GDScript  entity parsing which changes more frequently).  This is not a comprehensive spec, the idea is to give you enough to get started parsing/generating if you want to.  Happy to explain more if you want to know more.  Just drop me an e-mail.
 
 Write the records in the order below, with `version 5` at the very start of the file.  All layer indices are zero-based and refer to the order of the `l` records.  Coordinates and extents are integers, except for the camera fields (`cp`, `cbr`, `crr`), which use floating-point numbers.
 
@@ -566,7 +566,7 @@ Write the records in the order below, with `version 5` at the very start of the 
 - **entities** `ENTITY_COUNT` : number of entities
 - **e** `"ENTITY_NAME"` `ENTITY_TYPE` `X` `Y` `Z` `LAYER` `FLAGS` [...FLAG-DEPENDENT FIELDS] `"PLACED_USER_ID"` `"PLACED_USER_DISPLAY_NAME"` `"EDITED_USER_ID"` `"EDITED_USER_DISPLAY_NAME"` [...TRIGGER-BOX EXTENTS]
     - `e` : "this is an entity"
-    - `ENTITY_NAME` : entity name, surrounded by double-quotes
+    - `ENTITY_NAME` : entity name, surrounded by double quotes
     - `ENTITY_TYPE` : entity type (integer).  `3` means a trigger box (see below)
     - `X` `Y` `Z` : entity position (x y z)
     - `LAYER` : entity layer index
