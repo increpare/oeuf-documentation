@@ -13,7 +13,7 @@ You can add maps manually (if you already have the file) or download them from t
 1. Go to **Custom Maps** on the title screen.
 <img height="300" alt="image" src="./map-editor-images/custom_maps_screen.png" />
 
-2. From here you can download maps from the Steam Workshop - the default 'Featured' tab displays my own personal picks, and you can browse and download many more in the other tabs. 
+2. From here you can download maps from the Steam Workshop - the default **Featured** tab displays my own personal picks, and you can browse and download many more in the other tabs. 
 
 ### 0.2 Adding Maps Manually
 
@@ -63,8 +63,8 @@ If you have a map file (.txt or .zip), you can add it like this (doesn't work on
 - **F5** : Reload
 - **Ctrl+Z** : Undo
 - **Ctrl+Y** : Redo
-- **Ctrl+R** : Randomly rotate all *cube-shaped blocks* with the currently selected texture in the currently selected layer.
-- **Ctrl+Shift+R** : Unrandomises the rotation of all *cube-shaped blocks* (with the currently-selected texture in the currently-selected layer) to face a single direction.  Cycles direction each time it's pressed.
+- **Ctrl+R** : Randomly rotate all *cube-shaped blocks* with the selected texture in the selected layer.
+- **Ctrl+Shift+R** : Unrandomise the rotation of all *cube-shaped blocks* (with the currently selected texture in the currently selected layer) to face a single direction.  Cycles direction each time it's pressed.
 - **Ctrl+K** : Export current map as a 3D mesh (for importing into other software/games).  This also exports the game tilemap/textures to a .png file in the same folder.
 - **F1** : Open this tutorial.
 - **F12** : Take a screenshot (saved to your the Oeuf subfolder of your operating system's picture folder).
@@ -116,8 +116,7 @@ The following shortcuts work in all block tools :
 
 - **Click** : Place block.
 - **Right-Click** : Delete block.
-- **Shift (hold)** : Keep adding (or subtracting) blocks as you move the cursor.
-- **Shift+Right-Click (hold)** : Rapid deletion (as you move the cursor).
+- **Shift (hold)** : Keep placing (or deleting) blocks as you move the cursor.
 - **Ctrl+Click** : Place a block offset one step away from the face you're highlighting.
 
 
@@ -140,7 +139,7 @@ The following shortcuts work in all block tools :
 - **Click+Drag** : Draw a planar sheet (floor or wall).
 <img height="300" alt="image" src="./map-editor-images/plane_tool.gif" />
 
-- **Ctrl while clicking** : Push the plane one block into the highlighted surface for a flush fit :
+- **Ctrl while clicking** : Push the plane one step into the highlighted surface for a flush fit :
 <img height="300" alt="image" src="./map-editor-images/plane_tool_flush.gif" />
 
 - **Right-Click+Drag** : Delete a planar region (useful for doors and openings).
@@ -161,7 +160,7 @@ The following shortcuts work in all block tools :
 - Works on irregular shapes :
 <img height="300" alt="image" src="./map-editor-images/extrude_tool.gif" />
 
-- **Shift+Click** : Extrude using the currently selected texture.
+- **Shift+Click** : Extrude using the selected texture.
 - **Alt while dragging** : Use the initial click point as the *centre* of the area rather than a corner.
 - **Right-Click+Drag** (then **Click** to set the depth) : Nothing to do with extrude, really, more a "delete everything inside this box" tool.
 
@@ -172,7 +171,7 @@ The following shortcuts work in all block tools :
 - **Click (hold)** : Apply texture to highlighted block.
 - **Right-Click** : Sample block texture, shape and direction (same as **Alt+Click**).
 - **Shift+Wheel** : Adjust brush radius.
-- **Shift+Click** : Replace all blocks of the pointed-at texture in the current layer with the selected texture (undoable - but be careful).
+- **Shift+Click** : Replace all blocks of the pointed-at texture in the selected layer with the selected texture (undoable - but be careful).
 
 ---
 
@@ -181,7 +180,7 @@ The following shortcuts work in all block tools :
 
 - **Click+Drag** to define an area, then move your mouse and **Click** to set the depth : Smooth the terrain inside that box by filling in gaps using intermediate block shapes.
 <img height="300" alt="image" src="./map-editor-images/grout_tool.gif" />
-- **Shift+Click** : Smooth terrain, but all blocks added use the currently selected texture.
+- **Shift+Click** : Smooth terrain, but all blocks added use the selected texture.
 - **Right-Click+Drag** (then **Click** to set the depth) : Remove non-cube blocks.
 - **Alt while dragging** : Use the initial click point as the *centre* of the area rather than a corner.
 
@@ -205,7 +204,7 @@ The following shortcuts work in all block tools :
 - **Ctrl+Shift+Wheel** : Adjust hill height.
 
 > [!NOTE]
-> Useful for mountains and natural terrain; can be used to create 'geological'-looking layers.
+> Useful for mountains and natural terrain; can be used to create 'geological'-looking strata.
 
 ---
 
@@ -217,12 +216,12 @@ Sculpt and form terrain by dragging it about.
 
 - **Click+Drag** : Grow existing terrain inside the sphere, and tug it along with your cursor.
 - **Right-Click+Drag** : Shrink or erase terrain inside the sphere.
-- **Ctrl** : Keep it blocky (tends to square-off terrain).
-- **Shift+Click** : Grow terrain using the currently selected texture.
+- **Ctrl** : Keep it blocky (tends to square off terrain).
+- **Shift+Click** : Grow terrain using the selected texture.
 - **Shift+Wheel** : Adjust brush radius.
 
 > [!NOTE]
-> In mouse-view mode, you're dragging the terrain in the sphere around your camera.  In free cursor mode, you're dragging it around the plane in front of your camera.
+> In mouse-view mode, you're dragging the terrain in the sphere around your camera.  In cursor-pointing mode, you're dragging it around the plane in front of your camera.
 
 ---
 
@@ -284,7 +283,7 @@ In Entity Mode there are two tools - the **Object Tool** and the **Trigger-Box T
 
 #### 5.1.3 <img src="./map-editor-images/object_3_Bonfire_End.svg" /> End-Checkpoint
 
-- This behaves like a normal checkpoint (only the main game's Nest can trigger the start/end cutscenes), but has a bit more visual flourish when you hit it, and is what the game uses to tell whether or not you've finished the map.
+- This behaves like a normal checkpoint (only the main game's Nest can trigger the start/end cutscenes), but has a bit more visual flourish when you activate it, and is what the game uses to tell whether or not you've finished the map.
 - The default **Name** field value is `CUSTOM_LEVEL_YOU_MADE_IT`, which localises to "You made it!" in English and will be auto-translated into whatever language the player is playing in, but you can change it to whatever message you like.
 - Every map *must* include an **End-Checkpoint**.
 
@@ -331,7 +330,7 @@ Provides a point of light.  Handy when things are getting a bit dark - but don't
 
 <img height="300" alt="image" src="./map-editor-images/nest.png" />
 
-- In player-made maps, this is an inert geometric object.  (in the base game map it does lots of hard-coded stuff - if you're modding the base game you'll have to put in specific start/end-points).
+- In player-made maps, this is an inert geometric object.  (in the main game map it does lots of hard-coded stuff - if you're modding the main game map you'll have to put in specific start/end-points).
 
 #### 5.1.10 Other Objects
 
@@ -365,7 +364,7 @@ There are a few other objects in the main game map (such as the spawn-only check
 
 <img height="300" alt="image" src="./map-editor-images/arealabel_props.png" />
 
-'arealabel' trigger boxes display a message on screen when the player enters, independently of checkpoints.  If its **Name** field matches a built-in location name (case-sensitive), the game localises it - e.g. entering `FOREST` displays "The Forest of Branching Paths" in English.  Otherwise it just displays your text verbatim, so entering `Hello, world!` displays "Hello, world!".
+'arealabel' trigger boxes display a message on screen when the player enters, independently of checkpoints.  If the **Name** field matches a built-in location name (case-sensitive), the game localises it - e.g. entering `FOREST` displays "The Forest of Branching Paths" in English.  Otherwise it just displays your text verbatim, so entering `Hello, world!` displays "Hello, world!".
 
 <img height="300" alt="image" src="./map-editor-images/arealabel2.png" />
 
@@ -374,8 +373,8 @@ There are a few other objects in the main game map (such as the spawn-only check
 <img height="300" alt="image" src="./map-editor-images/killbox.png" />
 
 - If you enter a killbox, you are internally marked as *doomed*, and will oof the next time you touch horizontal-ish map geometry (ramps included).
-- Drawn in red in the map view for easy identification.
-- While *doomed*, you cannot trigger checkpoints until you restart *(but you can pick up stars!)*
+- Drawn in red in the viewport for easy identification.
+- While *doomed*, you cannot activate checkpoints until you restart *(but you can pick up stars!)*
 - For want of a better place to put this information: there's a global killplane below y=-51.  Also, because the fog gets thicker when you go down, *nothing* below this plane will be visible.  There's no reason to have any geometry below y=-51.
 
 #### 5.2.4 <img src="./map-editor-images/trigger_4_torch.svg" /> ILLUMINATION
@@ -453,8 +452,8 @@ Creates a new empty layer.
 
 #### 6.2.2 <img src="./map-editor-images/layer_assignment_tool_icon.svg" /> Layer Assignment
 
-- **Click+Drag** to define an area, then move your mouse and **Click** to set the depth : All visible blocks and entities inside get assigned to the currently selected layer.
-- **Click** an entity : Assign it to the currently selected layer.
+- **Click+Drag** to define an area, then move your mouse and **Click** to set the depth : All visible blocks and entities inside get assigned to the selected layer.
+- **Click** an entity : Assign it to the selected layer.
 - **Alt while dragging** : Use the initial click point as the *centre* of the area rather than a corner.
 - Useful for correcting blocks assigned to the wrong layer.
 
@@ -487,7 +486,7 @@ The thumbnail is generated from a screenshot of the current view taken when you 
 > [!NOTE]
 > If you hover over the Steam Workshop button you'll see an overlay showing the screenshot area (it will be cropped to be square). <img height="300" alt="Screenshot crop area" src="./map-editor-images/screenshotcroparea.png" />
 
-When it's finally uploaded, this page should open automatically in the steam overlay or your browser :
+When it's finally uploaded, this page should open automatically in the Steam overlay or your browser :
 
 <img height="300" alt="Map page on Steam Workshop" src="./map-editor-images/workshop_page_appearance.png" />
 
@@ -541,7 +540,7 @@ This is a *very* useful tool when you've left a multiplayer editing server open 
 
 ## 10. Map file format specs
 
-Oeuf stores its maps as UTF-8 plaintext, with space-separated values.  Each line starts with a token which indicates the type of data stored, and then information about it.  This describes the current format: main `version 5` and `entities_version 6` (they're versioned separately because voxel parsing is done in C++, separately to gdscript entity parsing which changes more frequently).  This is not a comprehensive spec, the idea is to give you enough to get started parsing/generating if you want to.  Happy to explain more if you want to know more.  Just drop me an email.
+Oeuf stores its maps as UTF-8 plaintext, with space-separated values.  Each line starts with a token which indicates the type of data stored, and then information about it.  This describes the current format: main `version 5` and `entities_version 6` (they're versioned separately because voxel parsing is done in C++, separately to gdscript entity parsing which changes more frequently).  This is not a comprehensive spec, the idea is to give you enough to get started parsing/generating if you want to.  Happy to explain more if you want to know more.  Just drop me an e-mail.
 
 Write the records in the order below, with `version 5` at the very start of the file.  All layer indices are zero-based and refer to the order of the `l` records.  Coordinates and extents are integers, except for the camera fields (`cp`, `cbr`, `crr`), which use floating-point numbers.
 
@@ -568,7 +567,7 @@ Write the records in the order below, with `version 5` at the very start of the 
 - **e** `"ENTITY_NAME"` `ENTITY_TYPE` `X` `Y` `Z` `LAYER` `FLAGS` [...FLAG-DEPENDENT FIELDS] `"PLACED_USER_ID"` `"PLACED_USER_DISPLAY_NAME"` `"EDITED_USER_ID"` `"EDITED_USER_DISPLAY_NAME"` [...TRIGGER-BOX EXTENTS]
     - `e` : "this is an entity"
     - `ENTITY_NAME` : entity name, surrounded by double-quotes
-    - `ENTITY_TYPE` : entity type (integer).  `3` means a trigger-box (see below)
+    - `ENTITY_TYPE` : entity type (integer).  `3` means a trigger box (see below)
     - `X` `Y` `Z` : entity position (x y z)
     - `LAYER` : entity layer index
     - `FLAGS` : bitfield controlling which optional fields follow immediately after `FLAGS`, in the order below.  Add the values of the fields which are present; use 0 if none are present.
@@ -577,7 +576,7 @@ Write the records in the order below, with `version 5` at the very start of the 
         - If `bit2` (value `4`) is set : include `"ASSET_NAME"` (e.g. `"Bonfire.tscn"`)
         - If `bit3` (value `8`) is set : include `COLOUR`, a star palette index (0 to 6, in red/orange/yellow/green/blue/indigo/violet order).  It is written as a decimal integer; the stored range is 0 to 255.
     - The four user-attribution strings always follow the flag-dependent fields, even when empty (`""`).  They identify who placed the entity and who last edited it, respectively.  User IDs are strings, not integers.
-    - If `ENTITY_TYPE` is `3` (trigger-box), the line also includes two extra integer vectors after the user-attribution strings, at the end:
+    - If `ENTITY_TYPE` is `3` (trigger box), the line also includes two extra integer vectors after the user-attribution strings, at the end:
         - `size_EDS` : east/down/south extents (x y z)
         - `size_WUN` : west/up/north extents (x y z)
 
