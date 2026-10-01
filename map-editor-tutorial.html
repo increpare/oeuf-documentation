@@ -603,7 +603,7 @@
 <li><p>Go to <strong>Settings</strong> :
 <img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/settings_menu.png" width="457"></p></li>
 <li><p>Enable <strong>Map Editor</strong>.</p></li>
-<li><p>Load into a map (custom maps are easiest to work with - the main-game map. <code>eggworld</code>, has some hacky stuff in it).</p></li>
+<li><p>Load into a map (custom maps are easiest to work with - the main-game map <code>eggworld</code>, has some hacky stuff in it).</p></li>
 <li><p>Press <span class="shortcut"><kbd>Tab</kbd></span> to open the map editor.
 <img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/map_editor_opened.png" width="533"></p></li>
 </ol>
@@ -636,7 +636,7 @@
 <li><span class="shortcut"><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>R</kbd></span> : Unrandomises the rotation of all <em>cube-shaped blocks</em> (with the currently-selected texture in the currently-selected layer) to face a single direction.  Cycles direction each time it's pressed.</li>
 <li><span class="shortcut"><kbd>Ctrl</kbd>+<kbd>K</kbd></span> : Export current map as a 3D mesh (for importing into other software/games).  This also exports the game tilemap/textures to a .png file in the same folder.</li>
 <li><span class="shortcut"><kbd>F1</kbd></span> : Open this tutorial.</li>
-<li><span class="shortcut"><kbd>F12</kbd></span> : Take a screenshot (saved to your operating system's pictures folder in the Oeuf folder).</li>
+<li><span class="shortcut"><kbd>F12</kbd></span> : Take a screenshot (saved to your the Oeuf subfolder of your operating system's picture folder).</li>
 </ul>
 <h3 tabindex="-1" class="mt-4 mb-3" id="section-23-loading-and-saving">2.3 Loading and Saving</h3>
 <p><img class="img-fluid rounded shadow-sm d-block my-3" height="50" alt="image" src="./map-editor-images/toolbar_file_buttons.png" width="433"></p>
@@ -758,7 +758,7 @@
 <li><span class="shortcut"><kbd>Shift</kbd><span class="join"> and </span><img class="img-inline mouse-icon" src="./map-editor-images/mouse_left.svg" alt="" width="90" height="102"><strong>Click</strong></span> : Grow terrain using the currently selected texture.</li>
 <li><span class="shortcut"><kbd>Shift</kbd><span class="join"> and </span><img class="img-inline mouse-icon" src="./map-editor-images/mouse_wheel.svg" alt="" width="126" height="102"><strong>Wheel</strong></span> : Adjust brush radius.</li>
 </ul>
-<blockquote class="blockquote border-start border-3 ps-3 py-1 my-3 callout callout-info" role="note"><p><span class="callout-label">Note</span> In mouse-view mode, you're dragging the terrain in the sphere around you're camera.  In free cursor mode, you're dragging it around the plane in front of your camera.</p>
+<blockquote class="blockquote border-start border-3 ps-3 py-1 my-3 callout callout-info" role="note"><p><span class="callout-label">Note</span> In mouse-view mode, you're dragging the terrain in the sphere around your camera.  In free cursor mode, you're dragging it around the plane in front of your camera.</p>
 </blockquote>
 <hr class="my-5 opacity-0">
 <h3 tabindex="-1" class="mt-4 mb-3" id="section-49-img-srcmap-editor-imagestool_9svg--sphere"><span class="h-tile" aria-hidden="true"><img class="img-fluid rounded shadow-sm d-block my-3" alt="" src="./map-editor-images/tool_9.svg" width="36" height="36"></span><span class="h-text">4.9 Sphere</span></h3>
@@ -847,12 +847,12 @@
 <li>In player-made maps, this is an inert geometric object.  (in the base game map it does lots of hard-coded stuff - if you're modding the base game you'll have to put in specific start/end-points).</li>
 </ul>
 <h4 tabindex="-1" class="mt-3 mb-2 opacity-75" id="section-5110-other-objects">5.1.10 Other Objects</h4>
-<p>There are a few other objects in the main game map (such as the spawn-only checkpoint), but they have unusual or hard-coded behaviour tied to the main game, so they aren't in the texture palette. It's fine to leave them in place if you're modding the main game map, just be careful to not modify these objects or their surrounding geometry.</p>
+<p>There are a few other objects in the main game map (such as the spawn-only checkpoint), but they have unusual or hard-coded behaviour tied to the main game, so they aren't in the object palette. It's fine to leave them in place if you're modding the main game map, just be careful to not modify these objects or their surrounding geometry.</p>
 <h3 tabindex="-1" class="mt-4 mb-3" id="section-52-img-srcmap-editor-imagesentity_tool_triggersvg--trigger-box-tool"><span class="h-tile" aria-hidden="true"><img class="img-fluid rounded shadow-sm d-block my-3" alt="" src="./map-editor-images/entity_tool_trigger.svg" width="36" height="36"></span><span class="h-text">5.2 Trigger-Box Tool</span></h3>
 <ul>
 <li><p>Trigger boxes are big invisible areas that do something (e.g. playing music or displaying a message) when the player enters them.
 <img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/trigger_box.png" width="365"></p></li>
-<li><p>In the properties panel you can edit various values, including position dimensions :
+<li><p>In the properties panel you can edit various values, including position and dimensions :
 <img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/triggerbox_inspector.png" width="650"></p></li>
 <li><p>You can also <strong>move</strong> and <strong>resize</strong> trigger boxes in the viewport using the <strong>move gizmo</strong> and <strong>face resize handles</strong> (drag the coloured squares in the centre of each face of the trigger box).
 <img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="image" src="./map-editor-images/resize_trigger.gif" width="312"></p></li>
@@ -887,7 +887,7 @@
 <p>There are a few other really finicky trigger-box types - what they do is specified by their <strong>Command</strong> field.  I don't think they're appropriate for general use, so I won't document them.  If you're modding the main game map it's fine to leave them in place - but pls don't use them in maps you're making from scratch, as they may behave unexpectedly.</p>
 <hr class="my-5 opacity-0">
 <h2 tabindex="-1" class="mt-5 mb-3 pb-2 border-bottom" id="section-6-layer-mode"><span class="h-tile h-num" aria-hidden="true">6</span><span class="h-text"><span class="visually-hidden">6. </span>Layer Mode</span></h2>
-<p>Cycle to Layer Mode with <span class="shortcut"><kbd>Backtick</kbd></span> (<span class="shortcut"><kbd>`</kbd></span>)  (or by clicking the Layers button in the top-right corner).  </p>
+<p>Cycle to Layer Mode with <span class="shortcut"><kbd>Backtick</kbd></span> (<span class="shortcut"><kbd>`</kbd></span>)  (or by clicking the <strong>Layers</strong> button in the top-right corner).  </p>
 <p>It can be useful to divide large maps into layers - distinct blocks that can be manipulated independently of each other.</p>
 <blockquote class="blockquote border-start border-3 ps-3 py-1 my-3 callout callout-info" role="note"><p><span class="callout-label">Note</span> Only one block (or entity) can occupy a given position - neither blocks nor entities from different layers can overlap each other (regardless of layer visibility).</p>
 </blockquote>
@@ -981,7 +981,6 @@ Creates a new empty layer.</p>
 <hr class="my-5 opacity-0">
 <h2 tabindex="-1" class="mt-5 mb-3 pb-2 border-bottom" id="section-10-map-file-format-specs"><span class="h-tile h-num" aria-hidden="true">10</span><span class="h-text"><span class="visually-hidden">10. </span>Map file format specs</span></h2>
 <p>Oeuf stores its maps as UTF-8 plaintext, with space-separated values.  Each line starts with a token which indicates the type of data stored, and then information about it.  This describes the current format: main <code>version 5</code> and <code>entities_version 6</code> (they're versioned separately because voxel parsing is done in C++, separately to gdscript entity parsing which changes more frequently).  This is not a comprehensive spec, the idea is to give you enough to get started parsing/generating if you want to.  Happy to explain more if you want to know more.  Just drop me an email.</p>
-<p>String fields are surrounded by double-quotes, including layer names, entity names, metadata, asset names and user attribution.  Spaces inside the quotes belong to the string.  Strings use Godot's <code>c_escape()</code> / <code>c_unescape()</code> convention: for example, <code>\"</code> for a double-quote, <code>\\</code> for a backslash and <code>\n</code> for a newline.  An empty string is written as <code>""</code>.  Don't just split each line on spaces!</p>
 <p>Write the records in the order below, with <code>version 5</code> at the very start of the file.  All layer indices are zero-based and refer to the order of the <code>l</code> records.  Coordinates and extents are integers, except for the camera fields (<code>cp</code>, <code>cbr</code>, <code>crr</code>), which use floating-point numbers.</p>
 <ul>
 <li><strong>version</strong> <code>VERSION_NUMBER</code><ul>

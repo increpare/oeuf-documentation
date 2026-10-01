@@ -30,7 +30,7 @@ If you have a map file (.txt or .zip), you can add it like this (doesn't work on
 <img height="300" alt="image" src="./map-editor-images/settings_menu.png" />
 
 2. Enable **Map Editor**.
-3. Load into a map (custom maps are easiest to work with - the main-game map. `eggworld`, has some hacky stuff in it).
+3. Load into a map (custom maps are easiest to work with - the main-game map `eggworld`, has some hacky stuff in it).
 4. Press **Tab** to open the map editor.
 <img height="300" alt="image" src="./map-editor-images/map_editor_opened.png" />
 
@@ -67,7 +67,7 @@ If you have a map file (.txt or .zip), you can add it like this (doesn't work on
 - **Ctrl+Shift+R** : Unrandomises the rotation of all *cube-shaped blocks* (with the currently-selected texture in the currently-selected layer) to face a single direction.  Cycles direction each time it's pressed.
 - **Ctrl+K** : Export current map as a 3D mesh (for importing into other software/games).  This also exports the game tilemap/textures to a .png file in the same folder.
 - **F1** : Open this tutorial.
-- **F12** : Take a screenshot (saved to your operating system's pictures folder in the Oeuf folder).
+- **F12** : Take a screenshot (saved to your the Oeuf subfolder of your operating system's picture folder).
 
 ### 2.3 Loading and Saving
 
@@ -222,7 +222,7 @@ Sculpt and form terrain by dragging it about.
 - **Shift+Wheel** : Adjust brush radius.
 
 > [!NOTE]
-> In mouse-view mode, you're dragging the terrain in the sphere around you're camera.  In free cursor mode, you're dragging it around the plane in front of your camera.
+> In mouse-view mode, you're dragging the terrain in the sphere around your camera.  In free cursor mode, you're dragging it around the plane in front of your camera.
 
 ---
 
@@ -335,7 +335,7 @@ Provides a point of light.  Handy when things are getting a bit dark - but don't
 
 #### 5.1.10 Other Objects
 
-There are a few other objects in the main game map (such as the spawn-only checkpoint), but they have unusual or hard-coded behaviour tied to the main game, so they aren't in the texture palette. It's fine to leave them in place if you're modding the main game map, just be careful to not modify these objects or their surrounding geometry.
+There are a few other objects in the main game map (such as the spawn-only checkpoint), but they have unusual or hard-coded behaviour tied to the main game, so they aren't in the object palette. It's fine to leave them in place if you're modding the main game map, just be careful to not modify these objects or their surrounding geometry.
 
 ### 5.2 <img src="./map-editor-images/entity_tool_trigger.svg" /> Trigger-Box Tool
 
@@ -343,7 +343,7 @@ There are a few other objects in the main game map (such as the spawn-only check
 - Trigger boxes are big invisible areas that do something (e.g. playing music or displaying a message) when the player enters them.
 <img height="300" alt="image" src="./map-editor-images/trigger_box.png" />
 
-- In the properties panel you can edit various values, including position dimensions :
+- In the properties panel you can edit various values, including position and dimensions :
 <img height="300" alt="image" src="./map-editor-images/triggerbox_inspector.png" />
 
 - You can also **move** and **resize** trigger boxes in the viewport using the **move gizmo** and **face resize handles** (drag the coloured squares in the centre of each face of the trigger box).
@@ -392,7 +392,7 @@ There are a few other really finicky trigger-box types - what they do is specifi
 
 ## 6. Layer Mode
 
-Cycle to Layer Mode with **Backtick** (**`**)  (or by clicking the Layers button in the top-right corner).  
+Cycle to Layer Mode with **Backtick** (**`**)  (or by clicking the **Layers** button in the top-right corner).  
 
 It can be useful to divide large maps into layers - distinct blocks that can be manipulated independently of each other.
 
@@ -542,8 +542,6 @@ This is a *very* useful tool when you've left a multiplayer editing server open 
 ## 10. Map file format specs
 
 Oeuf stores its maps as UTF-8 plaintext, with space-separated values.  Each line starts with a token which indicates the type of data stored, and then information about it.  This describes the current format: main `version 5` and `entities_version 6` (they're versioned separately because voxel parsing is done in C++, separately to gdscript entity parsing which changes more frequently).  This is not a comprehensive spec, the idea is to give you enough to get started parsing/generating if you want to.  Happy to explain more if you want to know more.  Just drop me an email.
-
-String fields are surrounded by double-quotes, including layer names, entity names, metadata, asset names and user attribution.  Spaces inside the quotes belong to the string.  Strings use Godot's `c_escape()` / `c_unescape()` convention: for example, `\"` for a double-quote, `\\` for a backslash and `\n` for a newline.  An empty string is written as `""`.  Don't just split each line on spaces!
 
 Write the records in the order below, with `version 5` at the very start of the file.  All layer indices are zero-based and refer to the order of the `l` records.  Coordinates and extents are integers, except for the camera fields (`cp`, `cbr`, `crr`), which use floating-point numbers.
 
