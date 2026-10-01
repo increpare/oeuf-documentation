@@ -949,7 +949,10 @@ Creates a new empty layer.</p>
 <p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="Steam Workshop upload form" src="./map-editor-images/workshop_upload.png" width="2188"></p>
 <p>After a moment, you'll see a confirmation message and the Steam Workshop page for your map will open automatically.</p>
 <p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="Steam Workshop upload confirmation" src="./map-editor-images/workshop_success.png" width="699"></p>
-<p>The thumbnail is generated from a screenshot of the current view when you save.</p>
+<p>The thumbnail is generated from a screenshot of the current view when you save. </p>
+<blockquote class="blockquote border-start border-3 ps-3 py-1 my-3 callout callout-info" role="note"><p><span class="callout-label">Note</span> If you hover over the 'submit to steam' icon you'll see an overlay showing the screenshot area (it will be cropped to be square). <img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="Screenshot crop area" src="./map-editor-images/screenshotcroparea.png" width="533"></p>
+</blockquote>
+<p>When it's finally uploaded, this page should open automatically in the steam overlay or your browser:</p>
 <p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="Map page on Steam Workshop" src="./map-editor-images/workshop_page_appearance.png" width="548"></p>
 <p>If you'd like to customise the listing further, you can do so from that page.  The mod is associated with the file name of the map - if you resubmit the same file, <em>or</em> the downloaded file from the workshop (resaved), it will update your map on the Steam Workshop.  Try to just use the OG filename though, it can be very confusing otherwise.</p>
 <p><img class="img-fluid rounded shadow-sm d-block my-3" height="300" alt="Custom Maps list" src="./map-editor-images/custom_level_list.png" width="478"></p>
@@ -979,39 +982,39 @@ Creates a new empty layer.</p>
 <h2 tabindex="-1" class="mt-5 mb-3 pb-2 border-bottom" id="section-10-map-file-format-specs"><span class="h-tile h-num" aria-hidden="true">10</span><span class="h-text"><span class="visually-hidden">10. </span>Map file format specs</span></h2>
 <p>Oeuf stores its maps as plaintext, with space-separated values.  Each line starts with a token which indicates the type of data stored, and then information about it.  This is not a comprehensive spec, the idea is to give you enough to get started parsing/generating if you want to.  Happy to explain more if you want to know more.  Just drop me an email.</p>
 <ul>
-<li><strong>version</strong> VERSION_NUMBER<ul>
-<li><strong>VERSION_NUMBER</strong> : the version number of the map file format.</li></ul></li>
-<li><strong>voxels</strong> voxelcount : how many voxels are in the map.</li>
-<li><strong>vx</strong> A B C D E F G H I<ul>
-<li><strong>vx</strong> : "this is a voxel"</li>
-<li><span class="shortcut"><kbd>A</kbd></span> : 1 if what follows is an absolute coordinate, or 0 if given relative to the last-specified coordinate (saves file size a lot!)</li>
-<li><strong>BCD</strong> : (x,y,z) coordinates of voxel (either absolute or relative depending on above)</li>
-<li><span class="shortcut"><kbd>E</kbd></span> : block shape index</li>
-<li><strong>FG</strong> : tilemap coordinates</li>
-<li><span class="shortcut"><kbd>H</kbd></span> : rotation encoded as (rot + vflip * 4) (vflip = if vertically flipped)</li>
-<li><span class="shortcut"><kbd>I</kbd></span> : layer index</li></ul></li>
-<li><strong>layers</strong> layercount : how many layers are in the map.</li>
-<li><strong>l</strong> LAYER_NAME VISIBILITY</li>
-<li><strong>selected</strong> SELECTED_LAYER_INDEX</li>
-<li><strong>cp</strong> X Y Z : editor camera position</li>
-<li><strong>cbr</strong> X Y Z : editor camera base rotation</li>
-<li><strong>crr</strong> X Y Z : editor camera rot rotation (cbr and crr just encode rotations of the camera and its parents, can't be bothered to check what exactly they are)</li>
-<li><strong>entities_version</strong> ENTITY_VERSION_NUMBER : version number of the entity section.</li>
-<li><strong>entities</strong> entitycount : number of entities</li>
-<li><strong>e</strong> ENTITY_NAME ENTITY_TYPE X Y Z LAYER FLAGS […FLAG-DEPENDENT FIELDS]<ul>
-<li><strong>e</strong> : "this is an entity"</li>
-<li><strong>ENTITY_NAME</strong> : entity name, surrounded by double-quotes</li>
-<li><strong>ENTITY_TYPE</strong> : entity type (integer).  <code>3</code> means a trigger-box (see below)</li>
-<li><strong>X Y Z</strong> : entity position (x y z)</li>
-<li><strong>LAYER</strong> : entity layer (present in <code>entities_version &gt;= 3</code>)</li>
-<li><strong>FLAGS</strong> : bitfield controlling which optional fields follow (immediately after <strong>FLAGS</strong>)<ul>
-<li>If <strong>bit0</strong> (value <span class="shortcut"><kbd>1</kbd></span>) is set : include <strong>DIR_PLUS_ONE</strong> (stores <strong>dir+1</strong>)</li>
-<li>If <strong>bit1</strong> (value <span class="shortcut"><kbd>2</kbd></span>) is set : include <strong>"META"</strong></li>
-<li>If <strong>bit2</strong> (value <span class="shortcut"><kbd>4</kbd></span>) is set : include <strong>"ASSET_NAME"</strong> (e.g. <strong>"Bonfire.tscn"</strong>)</li>
-<li>If <strong>bit3</strong> (value <span class="shortcut"><kbd>8</kbd></span>) is set : include <strong>COLOUR</strong> (unsigned byte)</li></ul></li>
-<li>If <strong>ENTITY_TYPE</strong> is <span class="shortcut"><kbd>3</kbd></span> (trigger-box), the line also includes two extra vectors at the end:<ul>
-<li><strong>size_EDS</strong> : east/down/south extents (x y z)</li>
-<li><strong>size_WUN</strong> : west/up/north extents (x y z)</li></ul></li></ul></li>
+<li><strong>version</strong> <code>VERSION_NUMBER</code><ul>
+<li><code>VERSION_NUMBER</code> : the version number of the map file format.</li></ul></li>
+<li><strong>voxels</strong> <code>VOXEL_COUNT</code> : how many voxels are in the map.</li>
+<li><strong>vx</strong> <code>A</code> <code>B</code> <code>C</code> <code>D</code> <code>E</code> <code>F</code> <code>G</code> <code>H</code> <code>I</code><ul>
+<li><code>vx</code> : "this is a voxel"</li>
+<li><code>A</code> : 1 if what follows is an absolute coordinate, or 0 if given relative to the last-specified coordinate (saves file size a lot!)</li>
+<li><code>B</code> <code>C</code> <code>D</code> : (x,y,z) coordinates of voxel (either absolute or relative depending on above)</li>
+<li><code>E</code> : block shape index</li>
+<li><code>F</code> <code>G</code> : tilemap coordinates</li>
+<li><code>H</code> : rotation encoded as (rot + vflip * 4) (vflip = if vertically flipped)</li>
+<li><code>I</code> : layer index</li></ul></li>
+<li><strong>layers</strong> <code>LAYER_COUNT</code> : how many layers are in the map.</li>
+<li><strong>l</strong> <code>LAYER_NAME</code> <code>VISIBILITY</code></li>
+<li><strong>selected</strong> <code>SELECTED_LAYER_INDEX</code></li>
+<li><strong>cp</strong> <code>X</code> <code>Y</code> <code>Z</code> : editor camera position</li>
+<li><strong>cbr</strong> <code>X</code> <code>Y</code> <code>Z</code> : editor camera base rotation</li>
+<li><strong>crr</strong> <code>X</code> <code>Y</code> <code>Z</code> : editor camera rot rotation (cbr and crr just encode rotations of the camera and its parents, can't be bothered to check what exactly they are)</li>
+<li><strong>entities_version</strong> <code>ENTITY_VERSION_NUMBER</code> : version number of the entity section.</li>
+<li><strong>entities</strong> <code>ENTITY_COUNT</code> : number of entities</li>
+<li><strong>e</strong> <code>ENTITY_NAME</code> <code>ENTITY_TYPE</code> <code>X</code> <code>Y</code> <code>Z</code> <code>LAYER</code> <code>FLAGS</code> […FLAG-DEPENDENT FIELDS]<ul>
+<li><code>e</code> : "this is an entity"</li>
+<li><code>ENTITY_NAME</code> : entity name, surrounded by double-quotes</li>
+<li><code>ENTITY_TYPE</code> : entity type (integer).  <code>3</code> means a trigger-box (see below)</li>
+<li><code>X</code> <code>Y</code> <code>Z</code> : entity position (x y z)</li>
+<li><code>LAYER</code> : entity layer (present in <code>ENTITY_VERSION_NUMBER &gt;= 3</code>)</li>
+<li><code>FLAGS</code> : bitfield controlling which optional fields follow (immediately after <code>FLAGS</code>)<ul>
+<li>If <code>bit0</code> (value <code>1</code>) is set : include <code>DIR_PLUS_ONE</code> (stores <code>dir+1</code>)</li>
+<li>If <code>bit1</code> (value <code>2</code>) is set : include <code>"META"</code></li>
+<li>If <code>bit2</code> (value <code>4</code>) is set : include <code>"ASSET_NAME"</code> (e.g. <code>"Bonfire.tscn"</code>)</li>
+<li>If <code>bit3</code> (value <code>8</code>) is set : include <code>COLOUR</code> (unsigned byte)</li></ul></li>
+<li>If <code>ENTITY_TYPE</code> is <code>3</code> (trigger-box), the line also includes two extra vectors at the end:<ul>
+<li><code>size_EDS</code> : east/down/south extents (x y z)</li>
+<li><code>size_WUN</code> : west/up/north extents (x y z)</li></ul></li></ul></li>
 </ul>
 <hr class="my-5 opacity-0">
 <h2 tabindex="-1" class="mt-5 mb-3 pb-2 border-bottom" id="section-11-feedback-and-bug-reports"><span class="h-tile h-num" aria-hidden="true">11</span><span class="h-text"><span class="visually-hidden">11. </span>Feedback and Bug Reports</span></h2>

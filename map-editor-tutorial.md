@@ -482,9 +482,15 @@ After a moment, you'll see a confirmation message and the Steam Workshop page fo
 
 <img height="300" alt="Steam Workshop upload confirmation" src="./map-editor-images/workshop_success.png" />
 
-The thumbnail is generated from a screenshot of the current view when you save.
+The thumbnail is generated from a screenshot of the current view when you save. 
+
+> [!NOTE]
+> If you hover over the 'submit to steam' icon you'll see an overlay showing the screenshot area (it will be cropped to be square). <img height="300" alt="Screenshot crop area" src="./map-editor-images/screenshotcroparea.png" />
+
+When it's finally uploaded, this page should open automatically in the steam overlay or your browser:
 
 <img height="300" alt="Map page on Steam Workshop" src="./map-editor-images/workshop_page_appearance.png" />
+
 
 If you'd like to customise the listing further, you can do so from that page.  The mod is associated with the file name of the map - if you resubmit the same file, *or* the downloaded file from the workshop (resaved), it will update your map on the Steam Workshop.  Try to just use the OG filename though, it can be very confusing otherwise.
 
@@ -537,39 +543,39 @@ This is a *very* useful tool when you've left a multiplayer editing server open 
 
 Oeuf stores its maps as plaintext, with space-separated values.  Each line starts with a token which indicates the type of data stored, and then information about it.  This is not a comprehensive spec, the idea is to give you enough to get started parsing/generating if you want to.  Happy to explain more if you want to know more.  Just drop me an email.
 
-- **version** VERSION_NUMBER
-    - **VERSION_NUMBER** : the version number of the map file format.
-- **voxels** voxelcount : how many voxels are in the map.
-- **vx** A B C D E F G H I
-    - **vx** : "this is a voxel"
-    - **A** : 1 if what follows is an absolute coordinate, or 0 if given relative to the last-specified coordinate (saves file size a lot!)
-    - **BCD** : (x,y,z) coordinates of voxel (either absolute or relative depending on above)
-    - **E** : block shape index
-    - **FG** : tilemap coordinates
-    - **H** : rotation encoded as (rot + vflip * 4) (vflip = if vertically flipped)
-    - **I** : layer index
-- **layers** layercount : how many layers are in the map.
-- **l** LAYER_NAME VISIBILITY
-- **selected** SELECTED_LAYER_INDEX
-- **cp** X Y Z : editor camera position
-- **cbr** X Y Z : editor camera base rotation
-- **crr** X Y Z : editor camera rot rotation (cbr and crr just encode rotations of the camera and its parents, can't be bothered to check what exactly they are)
-- **entities_version** ENTITY_VERSION_NUMBER : version number of the entity section.
-- **entities** entitycount : number of entities
-- **e** ENTITY_NAME ENTITY_TYPE X Y Z LAYER FLAGS [...FLAG-DEPENDENT FIELDS]
-    - **e** : "this is an entity"
-    - **ENTITY_NAME** : entity name, surrounded by double-quotes
-    - **ENTITY_TYPE** : entity type (integer).  `3` means a trigger-box (see below)
-    - **X Y Z** : entity position (x y z)
-    - **LAYER** : entity layer (present in `entities_version >= 3`)
-    - **FLAGS** : bitfield controlling which optional fields follow (immediately after **FLAGS**)
-        - If **bit0** (value **1**) is set : include **DIR_PLUS_ONE** (stores **dir+1**)
-        - If **bit1** (value **2**) is set : include **"META"**
-        - If **bit2** (value **4**) is set : include **"ASSET_NAME"** (e.g. **"Bonfire.tscn"**)
-        - If **bit3** (value **8**) is set : include **COLOUR** (unsigned byte)
-    - If **ENTITY_TYPE** is **3** (trigger-box), the line also includes two extra vectors at the end:
-        - **size_EDS** : east/down/south extents (x y z)
-        - **size_WUN** : west/up/north extents (x y z)
+- **version** `VERSION_NUMBER`
+    - `VERSION_NUMBER` : the version number of the map file format.
+- **voxels** `VOXEL_COUNT` : how many voxels are in the map.
+- **vx** `A` `B` `C` `D` `E` `F` `G` `H` `I`
+    - `vx` : "this is a voxel"
+    - `A` : 1 if what follows is an absolute coordinate, or 0 if given relative to the last-specified coordinate (saves file size a lot!)
+    - `B` `C` `D` : (x,y,z) coordinates of voxel (either absolute or relative depending on above)
+    - `E` : block shape index
+    - `F` `G` : tilemap coordinates
+    - `H` : rotation encoded as (rot + vflip * 4) (vflip = if vertically flipped)
+    - `I` : layer index
+- **layers** `LAYER_COUNT` : how many layers are in the map.
+- **l** `LAYER_NAME` `VISIBILITY`
+- **selected** `SELECTED_LAYER_INDEX`
+- **cp** `X` `Y` `Z` : editor camera position
+- **cbr** `X` `Y` `Z` : editor camera base rotation
+- **crr** `X` `Y` `Z` : editor camera rot rotation (cbr and crr just encode rotations of the camera and its parents, can't be bothered to check what exactly they are)
+- **entities_version** `ENTITY_VERSION_NUMBER` : version number of the entity section.
+- **entities** `ENTITY_COUNT` : number of entities
+- **e** `ENTITY_NAME` `ENTITY_TYPE` `X` `Y` `Z` `LAYER` `FLAGS` [...FLAG-DEPENDENT FIELDS]
+    - `e` : "this is an entity"
+    - `ENTITY_NAME` : entity name, surrounded by double-quotes
+    - `ENTITY_TYPE` : entity type (integer).  `3` means a trigger-box (see below)
+    - `X` `Y` `Z` : entity position (x y z)
+    - `LAYER` : entity layer (present in `ENTITY_VERSION_NUMBER >= 3`)
+    - `FLAGS` : bitfield controlling which optional fields follow (immediately after `FLAGS`)
+        - If `bit0` (value `1`) is set : include `DIR_PLUS_ONE` (stores `dir+1`)
+        - If `bit1` (value `2`) is set : include `"META"`
+        - If `bit2` (value `4`) is set : include `"ASSET_NAME"` (e.g. `"Bonfire.tscn"`)
+        - If `bit3` (value `8`) is set : include `COLOUR` (unsigned byte)
+    - If `ENTITY_TYPE` is `3` (trigger-box), the line also includes two extra vectors at the end:
+        - `size_EDS` : east/down/south extents (x y z)
+        - `size_WUN` : west/up/north extents (x y z)
 
 
 ---
