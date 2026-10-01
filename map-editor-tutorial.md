@@ -330,7 +330,7 @@ Provides a point of light.  Handy when things are getting a bit dark - but don't
 
 <img height="300" alt="image" src="./map-editor-images/nest.png" />
 
-- In player-made maps, this is an inert geometric object.  (In the main game map it does lots of hard-coded stuff - if you're modding the main game map you'll have to put in specific start/end-points).
+- In player-made maps, this is an inert geometric object.  (In the main game map it does lots of hard-coded stuff - if you're modding the main game map you'll have to put in specific start/end-points.)
 
 #### 5.1.10 Other Objects
 
@@ -375,7 +375,7 @@ There are a few other objects in the main game map (such as the spawn-only check
 - If you enter a killbox, you are internally marked as *doomed*, and will oof the next time you touch horizontal-ish map geometry (ramps included).
 - Drawn in red in the viewport for easy identification.
 - While *doomed*, you cannot activate checkpoints until you restart *(but you can pick up stars!)*
-- For want of a better place to put this information: there's a global killplane below y=-51.  Also, because the fog gets thicker when you go down, *nothing* below this plane will be visible.  There's no reason to have any geometry below y=-51.
+- For want of a better place to put this information : there's a global killplane below y=-51.  Also, because the fog gets thicker when you go down, *nothing* below this plane will be visible.  There's no reason to have any geometry below y=-51.
 
 #### 5.2.4 <img src="./map-editor-images/trigger_4_torch.svg" /> ILLUMINATION
 
@@ -391,7 +391,7 @@ There are a few other really finicky trigger-box types - what they do is specifi
 
 ## 6. Layer Mode
 
-Cycle to Layer Mode with **Backtick** (**`**)  (or by clicking the **Layers** button in the top-right corner).  
+Cycle to Layer Mode with **Backtick** (**`**) (or by clicking the **Layers** button in the top-right corner).  
 
 It can be useful to divide large maps into layers - distinct regions that can be manipulated independently of each other.
 
@@ -475,7 +475,7 @@ Creates a new empty layer.
 
 When you're happy with your map and want to share it on the Steam Workshop, click the Steam Workshop upload button in the toolbar :
 
-<img height="300" alt="Steam Workshop upload form" src="./map-editor-images/workshop_upload.png" />
+<img height="300" alt="toolbar with the upload button underlined" src="./map-editor-images/workshop_upload.png" />
 
 After a moment, you'll see a confirmation message and the Steam Workshop page for your map will open automatically.
 
@@ -495,7 +495,7 @@ If you'd like to customise the listing further, you can do so from that page.  T
 
 <img height="300" alt="Custom Maps list" src="./map-editor-images/custom_level_list.png" />
 
-I have recently added a bunch of *tags* to Steam Workshop, which are displayed in the in-game browser.  They indicate difficulty, and also if I've given a map my personal stamp of approval.  This is a bit dictatorial, but it's genuinely important to me that new players can have fun browsing the workshop and easily find things they might like.  They are set by me right now.  I try to play all maps and rate them as easy/medium/hard if I can complete them.  If you think I've overlooked your map, drop me a line at [analytic@gmail.com](mailto:analytic@gmail.com) - I love playing Oeuf maps!
+I have recently added a bunch of *tags* to the Steam Workshop, which are displayed in the in-game browser.  They indicate difficulty, and also if I've given a map my personal stamp of approval.  This is a bit dictatorial, but it's genuinely important to me that new players can have fun browsing the workshop and easily find things they might like.  They are set by me right now.  I try to play all maps and rate them as easy/medium/hard if I can complete them.  If you think I've overlooked your map, drop me a line at [analytic@gmail.com](mailto:analytic@gmail.com) - I love playing Oeuf maps!
 
 ---
 
@@ -518,7 +518,7 @@ You can set whether new players have permission to edit the map by default on th
 
 ### 8.2 Banning Users from Editing
 
-You can also block Steam users from editing the map based on their Steam IDs - this will not prevent them from *joining*/*playing* the map, but they won't be able to *edit* it.  To find a user's Steam ID, look at the log files  (open the maps folder, go up, then go into the logs folder).  You'll see some text like *"[Network] Player STEAM_ID has username USERNAME"*.  Then, in the folder above logs, there'll be a file called `banned_steam_users.txt` where you can add a line ```STEAM_ID|REASON``` - banned users will be told the reason if they try to edit a map.  You need to restart the game after this to reload the ban list.
+You can also block Steam users from editing the map based on their Steam IDs - this will not prevent them from *joining*/*playing* the map, but they won't be able to *edit* it.  To find a user's Steam ID, look at the log files (open the maps folder, go up, then go into the logs folder).  You'll see some text like *"[Network] Player STEAM_ID has username USERNAME"*.  Then, in the folder above logs, there'll be a file called `banned_steam_users.txt` where you can add a line ```STEAM_ID|REASON``` - banned users will be told the reason if they try to edit a map.  You need to restart the game after this to reload the ban list.
 
 ---
 
@@ -540,7 +540,7 @@ This is a *very* useful tool when you've left a multiplayer editing server open 
 
 ## 10. Map file format specs
 
-Oeuf stores its maps as UTF-8 plaintext, with space-separated values.  Each line starts with a token which indicates the type of data stored, and then information about it.  This describes the current format: main `version 5` and `entities_version 6` (they're versioned separately because voxel parsing is done in C++, separately to GDScript  entity parsing which changes more frequently).  This is not a comprehensive spec, the idea is to give you enough to get started parsing/generating if you want to.  Happy to explain more if you want to know more.  Just drop me an e-mail.
+Oeuf stores its maps as UTF-8 plaintext, with space-separated values.  Each line starts with a token which indicates the type of data stored, and then information about it.  This describes the current format : main `version 5` and `entities_version 6` (they're versioned separately because voxel parsing is done in C++, separately to GDScript entity parsing which changes more frequently).  This is not a comprehensive spec, the idea is to give you enough to get started parsing/generating if you want to.  Happy to explain more if you want to know more.  Just drop me an e-mail.
 
 Write the records in the order below, with `version 5` at the very start of the file.  All layer indices are zero-based and refer to the order of the `l` records.  Coordinates and extents are integers, except for the camera fields (`cp`, `cbr`, `crr`), which use floating-point numbers.
 
@@ -576,7 +576,7 @@ Write the records in the order below, with `version 5` at the very start of the 
         - If `bit2` (value `4`) is set : include `"ASSET_NAME"` (e.g. `"Bonfire.tscn"`)
         - If `bit3` (value `8`) is set : include `COLOUR`, a star palette index (0 to 6, in red/orange/yellow/green/blue/indigo/violet order).  It is written as a decimal integer; the stored range is 0 to 255.
     - The four user-attribution strings always follow the flag-dependent fields, even when empty (`""`).  They identify who placed the entity and who last edited it, respectively.  User IDs are strings, not integers.
-    - If `ENTITY_TYPE` is `3` (trigger box), the line also includes two extra integer vectors after the user-attribution strings, at the end:
+    - If `ENTITY_TYPE` is `3` (trigger box), the line also includes two extra integer vectors after the user-attribution strings, at the end :
         - `size_EDS` : east/down/south extents (x y z)
         - `size_WUN` : west/up/north extents (x y z)
 
