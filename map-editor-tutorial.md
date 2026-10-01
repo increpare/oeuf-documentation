@@ -13,7 +13,7 @@ You can add maps manually (if you already have the file) or download them from t
 1. Go to **Custom Maps** on the title screen.
 <img height="300" alt="image" src="./map-editor-images/custom_maps_screen.png" />
 
-2. From here you can download maps from the steam workshop - the default 'Featured' tab displays my own personal picks, and you can browse and download many more in the other tabs. 
+2. From here you can download maps from the Steam Workshop - the default 'Featured' tab displays my own personal picks, and you can browse and download many more in the other tabs. 
 
 ### 0.2 Adding Maps Manually
 
@@ -30,7 +30,7 @@ If you have a map file (.txt or .zip), you can add it like this (doesn't work on
 <img height="300" alt="image" src="./map-editor-images/settings_menu.png" />
 
 2. Enable **Map Editor**.
-3. Load into a map (custom maps are easiest to work with - the main-game map has some hacky stuff in it).
+3. Load into a map (custom maps are easiest to work with - the main-game map. `eggworld`, has some hacky stuff in it).
 4. Press **Tab** to open the map editor.
 <img height="300" alt="image" src="./map-editor-images/map_editor_opened.png" />
 
@@ -44,7 +44,7 @@ If you have a map file (.txt or .zip), you can add it like this (doesn't work on
 - **Tab**
     - In-game : Open the Map Editor.
     - In the Map Editor : Toggle between controlling the camera with your mouse, or having a free cursor to click on things with.
-- **Space** : Exit edit mode back into the game, spawning at the point you're aiming at.
+- **Space** : Exit the map editor back into the game, spawning at the point you're aiming at.
 - **Backtick** (**`**, likely the key to the left of **1**) : Cycle between
     - **Block Mode** : Edit terrain.
     - **Entity Mode** : Checkpoints, props, trigger boxes.
@@ -64,10 +64,10 @@ If you have a map file (.txt or .zip), you can add it like this (doesn't work on
 - **Ctrl+Z** : Undo
 - **Ctrl+Y** : Redo
 - **Ctrl+R** : Randomly rotate all *cube-shaped blocks* with the currently selected texture in the currently selected layer.
-- **Ctrl+Shift+R** : Unrandomizes the rotation of all *cube-shaped blocks* (with the currently-selected texture in the currently-selected layer) to face a single direction.  Cycles direction each time it's pressed.
-- **Ctrl+K** : Export current map as a 3D mesh (for importing into other software/games).  This also exports the game tilemap/textures to a .png file in the same directory.
+- **Ctrl+Shift+R** : Unrandomises the rotation of all *cube-shaped blocks* (with the currently-selected texture in the currently-selected layer) to face a single direction.  Cycles direction each time it's pressed.
+- **Ctrl+K** : Export current map as a 3D mesh (for importing into other software/games).  This also exports the game tilemap/textures to a .png file in the same folder.
 - **F1** : Open this tutorial.
-- **F12** : Take a screenshot (saved to your operating system's pictures folder in the Oeuf directory).
+- **F12** : Take a screenshot (saved to your operating system's pictures folder in the Oeuf folder).
 
 ### 2.3 Loading and Saving
 
@@ -105,9 +105,9 @@ To the top left of the screen you can see :
 
 The following shortcuts work in all block tools :
 
-- **Wheel**, or **Shift+Number Key** : Change the selected block texture in the left toolbar.
-- **Ctrl+Wheel**, or **- / =** : Change texture page in the left toolbar.
-- **Alt+Click**, or **Middle-Click** : Sample whatever you're pointing at; the block (texture, shape, direction), entity or layer, depending on the mode. 
+- **Wheel**, or **Shift+Number Key** : Change the selected block texture in the texture palette.
+- **Ctrl+Wheel**, or **- / =** : Change texture page in the texture palette.
+- **Alt+Click**, or **Middle-Click** : Sample texture, shape and direction of whatever block you're pointing at. 
 
 <!--nearest neighbour upscaling-->
 ### 4.1 <img src="./map-editor-images/tool_1.svg" /> Basic Tool
@@ -118,7 +118,7 @@ The following shortcuts work in all block tools :
 - **Right-Click** : Delete block.
 - **Shift (hold)** : Keep adding (or subtracting) blocks as you move the cursor.
 - **Shift+Right-Click (hold)** : Rapid deletion (as you move the cursor).
-- **Ctrl+Click** : Place a block offset one step back from the face you're highlighting.
+- **Ctrl+Click** : Place a block offset one step away from the face you're highlighting.
 
 
 #### 4.1b Block Shapes
@@ -170,7 +170,7 @@ The following shortcuts work in all block tools :
 ### 4.4 <img src="./map-editor-images/tool_4.svg" /> Paint
 
 - **Click (hold)** : Apply texture to highlighted block.
-- **Right-Click** : Sample block texture and shape (same as **Alt+Click**).
+- **Right-Click** : Sample block texture, shape and direction (same as **Alt+Click**).
 - **Shift+Wheel** : Adjust brush radius.
 - **Shift+Click** : Replace all blocks of the pointed-at texture in the current layer with the selected texture (undoable - but be careful).
 
@@ -179,7 +179,7 @@ The following shortcuts work in all block tools :
 ### 4.5 <img src="./map-editor-images/tool_5.svg" /> Grout
 
 
-- **Click+Drag** to define an area, then move your mouse and **Click** to set the depth : Smooth the terrain inside that box by filling in edge voxels using intermediate block shapes.
+- **Click+Drag** to define an area, then move your mouse and **Click** to set the depth : Smooth the terrain inside that box by filling in gaps using intermediate block shapes.
 <img height="300" alt="image" src="./map-editor-images/grout_tool.gif" />
 - **Shift+Click** : Smooth terrain, but all blocks added use the currently selected texture.
 - **Right-Click+Drag** (then **Click** to set the depth) : Remove non-cube blocks.
@@ -199,7 +199,7 @@ The following shortcuts work in all block tools :
 <img height="300" alt="image" src="./map-editor-images/hill_dropper_example.png" />
 
 - **Click** : Drop blocks from above to form organic hills.
-- **Right-Click** : Subtract hill-shape from terrain (will not make a hole in the terrain).
+- **Right-Click** : Subtract hill-shape from terrain (will remove blocks from the top without cutting a hole through the terrain).
 - **Shift (hold)** : Keep adding (or subtracting) hills as you move the cursor.
 - **Shift+Wheel** : Adjust hill width.
 - **Ctrl+Shift+Wheel** : Adjust hill height.
@@ -215,14 +215,14 @@ The following shortcuts work in all block tools :
 
 Sculpt and form terrain by dragging it about.
 
-- **Click** (and drag) : Grow existing terrain inside the sphere, and tug it along with your cursor.
-- **Right-Click** (and drag) : Shrink or erase terrain inside the sphere.
+- **Click+Drag** : Grow existing terrain inside the sphere, and tug it along with your cursor.
+- **Right-Click+Drag** : Shrink or erase terrain inside the sphere.
 - **Ctrl** : Keep it blocky (tends to square-off terrain).
 - **Shift+Click** : Grow terrain using the currently selected texture.
 - **Shift+Wheel** : Adjust brush radius.
 
 > [!NOTE]
-> In mouse-view mode, you're dragging the terrain in the sphere around youre camera.  In free cursor mode, you're dragging it around the plane in front of your camera.
+> In mouse-view mode, you're dragging the terrain in the sphere around you're camera.  In free cursor mode, you're dragging it around the plane in front of your camera.
 
 ---
 
@@ -244,7 +244,7 @@ Sculpt and form terrain by dragging it about.
 - **Right-Click** : Remove blocks on the plane where you're clicking.
 - **Ctrl (hold)** : Add/Remove blocks on the far side of the plane.
 - **Shift+Wheel** : Move the plane further/closer to you.
-- **Alt+Right-Click** : Align plane to highlighted face
+- **Alt+Right-Click** : Align plane to highlighted face.
 
 
 <img height="300" alt="image" src="./map-editor-images/planar_draw_example.png" />
@@ -259,7 +259,7 @@ Cycle to Entity Mode by pressing **Backtick** (**`**) until the Entity Mode UI a
 
 In Entity Mode there are two tools - the **Object Tool** and the **Trigger-Box Tool**.  Objects are things placed at a *single point* in the world that you can see, like checkpoints and torches.  Trigger boxes are larger invisible areas that trigger an effect when the player enters them, such as playing a music track or displaying a message.  
 
-### 5.1 Controls
+### 5.0 Controls
 
 - **Click** : Place or select an entity.
 - **Right-Click** : Delete an entity.
@@ -286,7 +286,7 @@ In Entity Mode there are two tools - the **Object Tool** and the **Trigger-Box T
 
 - This behaves like a normal checkpoint (only the main game's Nest can trigger the start/end cutscenes), but has a bit more visual flourish when you hit it, and is what the game uses to tell whether or not you've finished the map.
 - The default **Name** field value is `CUSTOM_LEVEL_YOU_MADE_IT`, which localises to "You made it!" in English and will be auto-translated into whatever language the player is playing in, but you can change it to whatever message you like.
-- Every map *must* include a **End-Checkpoint**.
+- Every map *must* include an **End-Checkpoint**.
 
 #### 5.1.4 <img src="./map-editor-images/object_4_Torch.svg" /> Torch
 
@@ -331,11 +331,11 @@ Provides a point of light.  Handy when things are getting a bit dark - but don't
 
 <img height="300" alt="image" src="./map-editor-images/nest.png" />
 
-- In custom levels, this is an inert geometric object.  (in the base game level, it does lots of hard-coded stuff - if you're modding the base game you'll have to put in specific start/end-points).
+- In player-made maps, this is an inert geometric object.  (in the base game map it does lots of hard-coded stuff - if you're modding the base game you'll have to put in specific start/end-points).
 
 #### 5.1.10 Other Objects
 
-There are a few other objects in the main game map (such as the spawn-only checkpoint), but they have unusual or hard-coded behaviour tied to the main game, so they aren't in the palette. It's fine to leave them in place if you're modding the main game map, just be careful to not modify these objects or their surrounding geometry.
+There are a few other objects in the main game map (such as the spawn-only checkpoint), but they have unusual or hard-coded behaviour tied to the main game, so they aren't in the texture palette. It's fine to leave them in place if you're modding the main game map, just be careful to not modify these objects or their surrounding geometry.
 
 ### 5.2 <img src="./map-editor-images/entity_tool_trigger.svg" /> Trigger-Box Tool
 
@@ -346,9 +346,9 @@ There are a few other objects in the main game map (such as the spawn-only check
 - In the properties panel you can edit various values, including position dimensions :
 <img height="300" alt="image" src="./map-editor-images/triggerbox_inspector.png" />
 
-- You can also **move** and **resize** trigger boxes in the viewport using the **move gizmo** and **face resize handles** (drag the coloured squares in the centre of each face of the trigger-box).
+- You can also **move** and **resize** trigger boxes in the viewport using the **move gizmo** and **face resize handles** (drag the coloured squares in the centre of each face of the trigger box).
 <img height="300" alt="image" src="./map-editor-images/resize_trigger.gif" />
-- Note that each trigger box has a 'core', the symbol that you click to select it. This occupies space in the the world - you can't have anything else at the same coordinate, though things can freely overlap the trigger area itself. (Technically the core doesn't need to be inside the trigger area, but...why would you do that?)
+- Note that each trigger box has a 'core', the symbol that you click to select it. This occupies space in the world - you can't have anything else at the same coordinate, though things can freely overlap the trigger area itself. (Technically the core doesn't need to be inside the trigger area, but...why would you do that?)
 
 #### 5.2.1 <img src="./map-editor-images/trigger_1_music.svg" /> music
 
@@ -357,7 +357,7 @@ There are a few other objects in the main game map (such as the spawn-only check
 - Choose the track from the dropdown in the properties panel.
 <img height="300" alt="image" src="./map-editor-images/music_property_panel.png" />
 - Any time you select a music trigger-box, you'll hear a preview of its music.
-- You can't add your own music files, but in addition to the main sountrack there are several hours of bonus tracks included for use in custom maps.
+- You can't add your own music files, but in addition to the main soundtrack there are several hours of bonus tracks included for use in custom maps.
 - The soundtrack is [here](https://store.steampowered.com/app/4217410/Oeuvre_Oeuf_Soundtrack/) if you want to listen to it outside the game.
 
 
@@ -365,7 +365,7 @@ There are a few other objects in the main game map (such as the spawn-only check
 
 <img height="300" alt="image" src="./map-editor-images/arealabel_props.png" />
 
-'arealabel' trigger boxes display a message on screen when the player enters, independently of checkpoints.  If its **Name** field matches a built-in location name (case-sensitive), the game localises it - e.g. entering `FOREST` displays "Forest of Branching Paths" in English.  Otherwise it just displays your text verbatim, so entering `Hello, world!` displays "Hello, world!".
+'arealabel' trigger boxes display a message on screen when the player enters, independently of checkpoints.  If its **Name** field matches a built-in location name (case-sensitive), the game localises it - e.g. entering `FOREST` displays "The Forest of Branching Paths" in English.  Otherwise it just displays your text verbatim, so entering `Hello, world!` displays "Hello, world!".
 
 <img height="300" alt="image" src="./map-editor-images/arealabel2.png" />
 
@@ -392,12 +392,12 @@ There are a few other really finicky trigger-box types - what they do is specifi
 
 ## 6. Layer Mode
 
-Cycle to Layer Mode with **Backtick** (**`**)  (or by clicking the Entities button in the top-right corner).  
+Cycle to Layer Mode with **Backtick** (**`**)  (or by clicking the Layers button in the top-right corner).  
 
 It can be useful to divide large maps into layers - distinct blocks that can be manipulated independently of each other.
 
 > [!NOTE]
-> Only one block (or entity) can occupy a given position - neither blocks nor entities from different layers can overlap eacho ther, (regardless of layer visibiltiy).
+> Only one block (or entity) can occupy a given position - neither blocks nor entities from different layers can overlap each other (regardless of layer visibility).
 
 ### 6.1 Layer List
 
@@ -408,7 +408,7 @@ To the right-hand side of the screen you have the layer list.
 * You can double-click on a layer's name to edit it.
 * Empty layers are shown with their names tinted red.
 
-Here's an explanation of the avrious symbols:
+Here's an explanation of the various symbols :
 
 #### 6.1.1 <img src="./map-editor-images/layer_item_grip.svg" /> Drag Handle
 
@@ -465,7 +465,7 @@ Creates a new empty layer.
 ### 6.3 <img src="./map-editor-images/layer_clipboard.svg" /> Clipboard
 
 - **Click** on a layer to copy it to the clipboard.
-- **Right-Click** : Paste the clipboard contents in the indicated position (shown as a purple box).
+- **Right-Click** : Paste the clipboard contents in the indicated position as a new layer (placement area shown as a yellow box).
 - You can copy and paste between different map files!
 
 <img height="300" alt="Layer copy and paste example" src="./map-editor-images/copypastelayers.png" />
@@ -474,7 +474,7 @@ Creates a new empty layer.
 
 ## 7. <img src="./map-editor-images/upload_icon.svg" /> Upload to Steam Workshop
 
-When you're happy with your map and want to share it on the Steam Workshop, click the Steam button in the toolbar :
+When you're happy with your map and want to share it on the Steam Workshop, click the Steam Workshop upload button in the toolbar :
 
 <img height="300" alt="Steam Workshop upload form" src="./map-editor-images/workshop_upload.png" />
 
@@ -482,25 +482,25 @@ After a moment, you'll see a confirmation message and the Steam Workshop page fo
 
 <img height="300" alt="Steam Workshop upload confirmation" src="./map-editor-images/workshop_success.png" />
 
-The thumbnail is generated from a screenshot of the current view when you save. 
+The thumbnail is generated from a screenshot of the current view taken when you submit. 
 
 > [!NOTE]
-> If you hover over the 'submit to steam' icon you'll see an overlay showing the screenshot area (it will be cropped to be square). <img height="300" alt="Screenshot crop area" src="./map-editor-images/screenshotcroparea.png" />
+> If you hover over the Steam Workshop button you'll see an overlay showing the screenshot area (it will be cropped to be square). <img height="300" alt="Screenshot crop area" src="./map-editor-images/screenshotcroparea.png" />
 
-When it's finally uploaded, this page should open automatically in the steam overlay or your browser:
+When it's finally uploaded, this page should open automatically in the steam overlay or your browser :
 
 <img height="300" alt="Map page on Steam Workshop" src="./map-editor-images/workshop_page_appearance.png" />
 
 
-If you'd like to customise the listing further, you can do so from that page.  The mod is associated with the file name of the map - if you resubmit the same file, *or* the downloaded file from the workshop (resaved), it will update your map on the Steam Workshop.  Try to just use the OG filename though, it can be very confusing otherwise.
+If you'd like to customise the listing further, you can do so from that page.  The Steam Workshop "Mod" is associated with the file name of the map - if you resubmit the same file, *or* the downloaded file from the workshop (resaved), it will update your map on the Steam Workshop.  Try to just use the OG filename though, it can be very confusing otherwise.
 
 <img height="300" alt="Custom Maps list" src="./map-editor-images/custom_level_list.png" />
 
-I have recently added a bunch of *tags* to Steam Workshop, which are displayed in the in-game browser.  They indicate difficulty, and also if I've given it my personal stamp of approval.  This is a bit dictatorial, but it's genuinely important to me that new players can have fun browsing the workshop and easily find things they might like.  They are set by me right now.  I try to play all games and rate them as easy/medium/hard if I can complete them.  If you think I've overlooked your game, drop me a line at [analytic@gmail.com](mailto:analytic@gmail.com) - I love playing Oeuf maps!
+I have recently added a bunch of *tags* to Steam Workshop, which are displayed in the in-game browser.  They indicate difficulty, and also if I've given it my personal stamp of approval.  This is a bit dictatorial, but it's genuinely important to me that new players can have fun browsing the workshop and easily find things they might like.  They are set by me right now.  I try to play all maps and rate them as easy/medium/hard if I can complete them.  If you think I've overlooked your map, drop me a line at [analytic@gmail.com](mailto:analytic@gmail.com) - I love playing Oeuf maps!
 
 ---
 
-## 8. <img src="./map-editor-images/mp_mapediting.svg" /> Multiplayer Map Editor
+## 8. <img src="./map-editor-images/mp_mapediting.svg" /> Co-op Map Editing
 
 ### 8.1 Setting up a Co-op Editing Session
 
@@ -508,28 +508,28 @@ You can edit maps with your friends by turning on co-op editing when you are set
 
 <img height="300" alt="Co-op editing settings" src="./map-editor-images/coop_editing.png" />
 
-In the multiplayer lobby list, games that have co-op editing enabled have a <img src="./map-editor-images/mp_mapediting.svg" class="img-inline" /> icon next to them:
-<img height="300" alt="Multiplayer editor permissions" src="./map-editor-images/coop_editable_map.png" />
+In the multiplayer lobby list, games that have co-op editing enabled have a <img src="./map-editor-images/mp_mapediting.svg" class="img-inline" /> icon next to them :
+<img height="300" alt="showing the 'co-op' editing icon the lobby browser." src="./map-editor-images/coop_editable_map.png" />
 
 You can set whether new players have permission to edit the map by default on this menu, and you can change it from the pause menu in-game.  You can also toggle editing permission on and off for specific players there.
 <img height="300" alt="Multiplayer editor permissions" src="./map-editor-images/mp_editor_permissions_list.png" />
 
 > [!NOTE]
-> Certain operations are restricted in co-op editing mode.  These are operations that would potentially modify large chunks of the map.  So layer operations, flood-fill etc.  If you need to do these, ask the host to do them for you. 🙃
+> Certain operations are restricted in co-op editing mode.  These are operations that would potentially modify large chunks of the map.  So layer operations, replace-all-textures etc.  If you need to do these, ask the host to do them for you. 🙃
 
 ### 8.2 Banning Users from Editing
 
-You can also block Steam users from editing the map based on their Steam IDs - this will not prevent them from *joining*/*playing* the map, but they won't be able to *edit* it.  To find a user's Steam ID, look at the log files  (open the maps folder, go up, then go into the logs folder).  You'll see some text like *"[Network] Player STEAM_ID has username USERNAME"*.  Then, in the directory above logs, there'll be a file called `banned_steam_users.txt` where you can add a line **STEAM_ID|REASON** - banned users will be told the reason if they try to edit a map.  You need to restart the game after this to reload the ban list.
+You can also block Steam users from editing the map based on their Steam IDs - this will not prevent them from *joining*/*playing* the map, but they won't be able to *edit* it.  To find a user's Steam ID, look at the log files  (open the maps folder, go up, then go into the logs folder).  You'll see some text like *"[Network] Player STEAM_ID has username USERNAME"*.  Then, in the folder above logs, there'll be a file called `banned_steam_users.txt` where you can add a line ```STEAM_ID|REASON``` - banned users will be told the reason if they try to edit a map.  You need to restart the game after this to reload the ban list.
 
 ---
 
 ## 9. Comparing different versions of a map
 
-In the map editor, if you press **Ctrl+Shift+D**, a lovely little menu will pop up:
+In the map editor, if you press **Ctrl+Shift+D**, a lovely little menu will pop up :
 
 <img height="300" alt="Map comparison" src="./map-editor-images/diff.png" />
 
-This looks at what things (blocks or entities) are different between the two maps, and separates them into layers so you can easily see what changed:
+This looks at what things (blocks or entities) are different between the two maps, and separates them into layers so you can easily see what changed :
 
 <img height="300" alt="Map comparison layers" src="./map-editor-images/diff_layers.png" />
 
@@ -541,39 +541,45 @@ This is a *very* useful tool when you've left a multiplayer editing server open 
 
 ## 10. Map file format specs
 
-Oeuf stores its maps as plaintext, with space-separated values.  Each line starts with a token which indicates the type of data stored, and then information about it.  This is not a comprehensive spec, the idea is to give you enough to get started parsing/generating if you want to.  Happy to explain more if you want to know more.  Just drop me an email.
+Oeuf stores its maps as UTF-8 plaintext, with space-separated values.  Each line starts with a token which indicates the type of data stored, and then information about it.  This describes the current format: main `version 5` and `entities_version 6` (they're versioned separately because voxel parsing is done in C++, separately to gdscript entity parsing which changes more frequently).  This is not a comprehensive spec, the idea is to give you enough to get started parsing/generating if you want to.  Happy to explain more if you want to know more.  Just drop me an email.
+
+String fields are surrounded by double-quotes, including layer names, entity names, metadata, asset names and user attribution.  Spaces inside the quotes belong to the string.  Strings use Godot's `c_escape()` / `c_unescape()` convention: for example, `\"` for a double-quote, `\\` for a backslash and `\n` for a newline.  An empty string is written as `""`.  Don't just split each line on spaces!
+
+Write the records in the order below, with `version 5` at the very start of the file.  All layer indices are zero-based and refer to the order of the `l` records.  Coordinates and extents are integers, except for the camera fields (`cp`, `cbr`, `crr`), which use floating-point numbers.
 
 - **version** `VERSION_NUMBER`
-    - `VERSION_NUMBER` : the version number of the map file format.
-- **voxels** `VOXEL_COUNT` : how many voxels are in the map.
+    - `VERSION_NUMBER` : `5`.
+- **voxels** `VOXEL_COUNT` : how many blocks are in the map.
 - **vx** `A` `B` `C` `D` `E` `F` `G` `H` `I`
-    - `vx` : "this is a voxel"
-    - `A` : 1 if what follows is an absolute coordinate, or 0 if given relative to the last-specified coordinate (saves file size a lot!)
-    - `B` `C` `D` : (x,y,z) coordinates of voxel (either absolute or relative depending on above)
-    - `E` : block shape index
+    - `vx` : "this is a block"
+    - `A` : 1 if what follows is an absolute coordinate, or 0 if given relative to the previous block's decoded absolute position (saves file size a lot!).  The initial previous position is `(0,0,0)`, so the first block can also use relative coordinates.  The saver chooses relative coordinates when each difference is in the range -128 to 127.
+    - `B` `C` `D` : (x,y,z) coordinates of block (either absolute or relative depending on above)
+    - `E` : block shape index from the current shape definitions (`Shapes.gd`)
     - `F` `G` : tilemap coordinates
-    - `H` : rotation encoded as (rot + vflip * 4) (vflip = if vertically flipped)
+    - `H` : rotation encoded as `rot + vflip * 4`, where `rot` is 0 to 3 and `vflip` is 1 if vertically flipped, or 0 otherwise (so `H` is 0 to 7)
     - `I` : layer index
 - **layers** `LAYER_COUNT` : how many layers are in the map.
-- **l** `LAYER_NAME` `VISIBILITY`
+- **l** `"LAYER_NAME"` `VISIBILITY`
+    - `VISIBILITY` : 1 if visible, or 0 if hidden.
 - **selected** `SELECTED_LAYER_INDEX`
-- **cp** `X` `Y` `Z` : editor camera position
-- **cbr** `X` `Y` `Z` : editor camera base rotation
-- **crr** `X` `Y` `Z` : editor camera rot rotation (cbr and crr just encode rotations of the camera and its parents, can't be bothered to check what exactly they are)
-- **entities_version** `ENTITY_VERSION_NUMBER` : version number of the entity section.
+- **cp** `X` `Y` `Z` : editor position (camera rig origin)
+- **cbr** `X` `Y` `Z` : editor camera base rotation (Euler angles, in radians)
+- **crr** `X` `Y` `Z` : rotation of the camera base's child rotation node (Euler angles, in radians)
+- **entities_version** `ENTITY_VERSION_NUMBER` : `6`.
 - **entities** `ENTITY_COUNT` : number of entities
-- **e** `ENTITY_NAME` `ENTITY_TYPE` `X` `Y` `Z` `LAYER` `FLAGS` [...FLAG-DEPENDENT FIELDS]
+- **e** `"ENTITY_NAME"` `ENTITY_TYPE` `X` `Y` `Z` `LAYER` `FLAGS` [...FLAG-DEPENDENT FIELDS] `"PLACED_USER_ID"` `"PLACED_USER_DISPLAY_NAME"` `"EDITED_USER_ID"` `"EDITED_USER_DISPLAY_NAME"` [...TRIGGER-BOX EXTENTS]
     - `e` : "this is an entity"
     - `ENTITY_NAME` : entity name, surrounded by double-quotes
     - `ENTITY_TYPE` : entity type (integer).  `3` means a trigger-box (see below)
     - `X` `Y` `Z` : entity position (x y z)
-    - `LAYER` : entity layer (present in `ENTITY_VERSION_NUMBER >= 3`)
-    - `FLAGS` : bitfield controlling which optional fields follow (immediately after `FLAGS`)
+    - `LAYER` : entity layer index
+    - `FLAGS` : bitfield controlling which optional fields follow immediately after `FLAGS`, in the order below.  Add the values of the fields which are present; use 0 if none are present.
         - If `bit0` (value `1`) is set : include `DIR_PLUS_ONE` (stores `dir+1`)
         - If `bit1` (value `2`) is set : include `"META"`
         - If `bit2` (value `4`) is set : include `"ASSET_NAME"` (e.g. `"Bonfire.tscn"`)
-        - If `bit3` (value `8`) is set : include `COLOUR` (unsigned byte)
-    - If `ENTITY_TYPE` is `3` (trigger-box), the line also includes two extra vectors at the end:
+        - If `bit3` (value `8`) is set : include `COLOUR`, a star palette index (0 to 6, in red/orange/yellow/green/blue/indigo/violet order).  It is written as a decimal integer; the stored range is 0 to 255.
+    - The four user-attribution strings always follow the flag-dependent fields, even when empty (`""`).  They identify who placed the entity and who last edited it, respectively.  User IDs are strings, not integers.
+    - If `ENTITY_TYPE` is `3` (trigger-box), the line also includes two extra integer vectors after the user-attribution strings, at the end:
         - `size_EDS` : east/down/south extents (x y z)
         - `size_WUN` : west/up/north extents (x y z)
 
