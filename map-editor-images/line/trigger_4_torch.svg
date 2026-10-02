@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 32 32">
+  <!-- One continuous bulb and screw base, with no detached rays or base bars. -->
+  <path fill="none" stroke="#7d4f76" stroke-width="1.5" vector-effect="non-scaling-stroke" d="M16 5a8 8 0 0 0-8 8c0 5 4 6 4 9v6q0 1 2 1l.5 2h3l.5-2q2 0 2-1v-6c0-3 4-4 4-9a8 8 0 0 0-8-8Z"/>
+  <path fill="none" stroke="#7d4f76" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M 13.5 25 H 18.5 M 14 28 H 18"/>
+</svg>
